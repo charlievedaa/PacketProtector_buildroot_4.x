@@ -1,0 +1,38 @@
+# checkout the OpenWrt and X-Wrt sources
+cd ~
+svn co svn://svn.openwrt.org/openwrt/trunk/ buildroot
+cd ~/buildroot/package
+svn co http://x-wrt.googlecode.com/svn/trunk/package/webif webif
+
+# (OPTIONAL) make a copy of the buildroot
+# for updating the PacketProtector patch
+cd ~
+cp -a buildroot buildroot.orig
+
+# apply PacketProtector patches
+cd ~/buildroot
+svn export https://packetprotector.org/repos/buildroot_3.x/trunk/PacketProtector_mipsel.patch
+patch -p1 < PacketProtector_mipsel.patch
+rm PacketProtector_mipsel.patch
+svn export https://packetprotector.org/repos/buildroot_3.x/trunk/PacketProtector_mipsel.sh
+./PacketProtector_mipsel.sh
+rm PacketProtector_mipsel.sh
+
+# additional patches
+# WL-500W only
+svn export https://packetprotector.org/repos/buildroot_3.x/trunk/PacketProtector_mimo.patch
+patch -p1 < PacketProtector_mimo.patch
+rm PacketProtector_mimo.patch
+
+# WRT350N only
+svn export https://packetprotector.org/repos/buildroot_3.x/trunk/PacketProtector_wrt350n_v1.patch
+patch -p1 < PacketProtector_wrt350n_v1.patch
+rm PacketProtector_wrt350n_v1.patch
+
+# (OPTIONAL) update the PacketProtector patch
+# aftering making changes to the buildroot
+cd ~
+diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig buildroot > PacketProtector_mipsel.patch
+
+# compile the firmware
+make V=99
