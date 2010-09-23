@@ -11,21 +11,21 @@ cp -a buildroot buildroot.orig
 
 # apply PacketProtector patches
 cd ~/buildroot
-svn export https://packetprotector.org/repos/buildroot_3.x/trunk/PacketProtector_mipsel.patch
+svn export https://packetprotector.org/repos/buildroot_4.x/trunk/PacketProtector_mipsel.patch
 patch -p1 < PacketProtector_mipsel.patch
 rm PacketProtector_mipsel.patch
-svn export https://packetprotector.org/repos/buildroot_3.x/trunk/PacketProtector_mipsel.sh
+svn export https://packetprotector.org/repos/buildroot_4.x/trunk/PacketProtector_mipsel.sh
 ./PacketProtector_mipsel.sh
 rm PacketProtector_mipsel.sh
 
 # additional patches
 # WL-500W only
-svn export https://packetprotector.org/repos/buildroot_3.x/trunk/PacketProtector_mimo.patch
+svn export https://packetprotector.org/repos/buildroot_4.x/trunk/PacketProtector_mimo.patch
 patch -p1 < PacketProtector_mimo.patch
 rm PacketProtector_mimo.patch
 
 # WRT350N only
-svn export https://packetprotector.org/repos/buildroot_3.x/trunk/PacketProtector_wrt350n_v1.patch
+svn export https://packetprotector.org/repos/buildroot_4.x/trunk/PacketProtector_wrt350n_v1.patch
 patch -p1 < PacketProtector_wrt350n_v1.patch
 rm PacketProtector_wrt350n_v1.patch
 
