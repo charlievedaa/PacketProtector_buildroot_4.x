@@ -1,6 +1,6 @@
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/.config buildroot/.config
 --- buildroot.orig/.config	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/.config	2010-06-27 22:30:38.000000000 -0400
++++ buildroot/.config	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,1505 @@
 +#
 +# Automatically generated make config: don't edit
@@ -1508,8 +1508,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_PACKAGE_lua-examples is not set
 +# CONFIG_PACKAGE_luac is not set
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/include/image.mk buildroot/include/image.mk
---- buildroot.orig/include/image.mk	2010-06-25 19:40:53.000000000 -0400
-+++ buildroot/include/image.mk	2010-06-25 19:10:00.000000000 -0400
+--- buildroot.orig/include/image.mk	2010-09-24 22:18:27.000000000 -0400
++++ buildroot/include/image.mk	2010-09-24 22:25:55.000000000 -0400
 @@ -150,6 +150,8 @@
  	- $(FIND) $(TARGET_DIR) -type d -print0 | $(XARGS) -0 chmod 0755
  	$(INSTALL_DIR) $(TARGET_DIR)/tmp
@@ -1521,7 +1521,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  define Image/mkfs/prepare
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/advanced_firewall.conf buildroot/package/base-files/files/etc/advanced_firewall.conf
 --- buildroot.orig/package/base-files/files/etc/advanced_firewall.conf	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/advanced_firewall.conf	2010-06-25 19:10:00.000000000 -0400
++++ buildroot/package/base-files/files/etc/advanced_firewall.conf	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,20 @@
 +https_from_outside=block
 +ssh_from_outside=block
@@ -1544,8 +1544,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +remoteaccess_logmein=0
 +remoteaccess_pcnow=0
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/banner buildroot/package/base-files/files/etc/banner
---- buildroot.orig/package/base-files/files/etc/banner	2010-06-25 19:41:27.000000000 -0400
-+++ buildroot/package/base-files/files/etc/banner	2010-06-25 19:10:00.000000000 -0400
+--- buildroot.orig/package/base-files/files/etc/banner	2010-09-24 22:19:20.000000000 -0400
++++ buildroot/package/base-files/files/etc/banner	2010-09-24 22:25:55.000000000 -0400
 @@ -1,10 +1,22 @@
 + ---------------------------------------------------
 +
@@ -1574,8 +1574,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +
   ---------------------------------------------------
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/config/system buildroot/package/base-files/files/etc/config/system
---- buildroot.orig/package/base-files/files/etc/config/system	2010-06-25 19:41:27.000000000 -0400
-+++ buildroot/package/base-files/files/etc/config/system	2010-06-25 19:10:00.000000000 -0400
+--- buildroot.orig/package/base-files/files/etc/config/system	2010-09-24 22:19:20.000000000 -0400
++++ buildroot/package/base-files/files/etc/config/system	2010-09-24 22:25:55.000000000 -0400
 @@ -1,6 +1,6 @@
  config system
 -	option hostname	OpenWrt
@@ -1587,14 +1587,14 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  	option interface	wan
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/config/timezone buildroot/package/base-files/files/etc/config/timezone
 --- buildroot.orig/package/base-files/files/etc/config/timezone	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/config/timezone	2010-06-25 19:10:00.000000000 -0400
++++ buildroot/package/base-files/files/etc/config/timezone	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,3 @@
 +config 'timezone'
 +        option 'posixtz' 'EST5EDT,M3.2.0,M11.1.0'
 +        option 'zoneinfo' 'America/New_York'
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-ca buildroot/package/base-files/files/etc/easy-rsa/build-ca
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-ca	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-ca	2010-06-25 19:10:00.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-ca	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,13 @@
 +#!/bin/sh
 +
@@ -1611,7 +1611,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-ca-batch buildroot/package/base-files/files/etc/easy-rsa/build-ca-batch
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-ca-batch	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-ca-batch	2010-06-25 19:10:00.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-ca-batch	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,14 @@
 +#!/bin/sh
 +
@@ -1629,7 +1629,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-dh buildroot/package/base-files/files/etc/easy-rsa/build-dh
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-dh	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-dh	2010-06-25 19:10:00.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-dh	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,12 @@
 +#!/bin/sh
 +
@@ -1645,7 +1645,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-inter buildroot/package/base-files/files/etc/easy-rsa/build-inter
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-inter	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-inter	2010-06-25 19:10:00.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-inter	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,19 @@
 +#!/bin/sh
 +
@@ -1668,7 +1668,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key buildroot/package/base-files/files/etc/easy-rsa/build-key
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key	2010-06-25 19:10:00.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,20 @@
 +#!/bin/sh
 +
@@ -1692,7 +1692,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-pass buildroot/package/base-files/files/etc/easy-rsa/build-key-pass
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-pass	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key-pass	2010-06-25 19:10:00.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key-pass	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,20 @@
 +#!/bin/sh
 +
@@ -1716,7 +1716,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-pass-batch buildroot/package/base-files/files/etc/easy-rsa/build-key-pass-batch
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-pass-batch	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key-pass-batch	2010-06-25 19:10:00.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key-pass-batch	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,21 @@
 +#!/bin/sh
 +
@@ -1741,7 +1741,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-pkcs12 buildroot/package/base-files/files/etc/easy-rsa/build-key-pkcs12
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-pkcs12	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key-pkcs12	2010-06-25 19:10:00.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key-pkcs12	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,21 @@
 +#!/bin/sh
 +
@@ -1766,7 +1766,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-radius-batch buildroot/package/base-files/files/etc/easy-rsa/build-key-radius-batch
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-radius-batch	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key-radius-batch	2010-06-25 19:10:00.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key-radius-batch	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,23 @@
 +#!/bin/sh
 +
@@ -1793,7 +1793,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-server buildroot/package/base-files/files/etc/easy-rsa/build-key-server
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-server	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key-server	2010-06-25 19:10:00.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key-server	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,22 @@
 +#!/bin/sh
 +
@@ -1819,7 +1819,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-server-batch buildroot/package/base-files/files/etc/easy-rsa/build-key-server-batch
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-server-batch	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key-server-batch	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key-server-batch	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,23 @@
 +#!/bin/sh
 +
@@ -1846,7 +1846,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-req buildroot/package/base-files/files/etc/easy-rsa/build-req
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-req	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-req	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-req	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,18 @@
 +#!/bin/sh
 +
@@ -1868,7 +1868,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-req-pass buildroot/package/base-files/files/etc/easy-rsa/build-req-pass
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-req-pass	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-req-pass	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/build-req-pass	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,18 @@
 +#!/bin/sh
 +
@@ -1890,7 +1890,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/clean-all buildroot/package/base-files/files/etc/easy-rsa/clean-all
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/clean-all	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/clean-all	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/clean-all	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,21 @@
 +#!/bin/sh
 +
@@ -1915,7 +1915,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/keys/dh1024.pem buildroot/package/base-files/files/etc/easy-rsa/keys/dh1024.pem
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/keys/dh1024.pem	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/keys/dh1024.pem	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/keys/dh1024.pem	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,5 @@
 +-----BEGIN DH PARAMETERS-----
 +MIGHAoGBALvGKBAgbQMEdRRfPVsPf7/QbT/TXhn4Mqe3mnP4WI0e8DELF5MUwUoI
@@ -1924,12 +1924,12 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +-----END DH PARAMETERS-----
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/keys/serial buildroot/package/base-files/files/etc/easy-rsa/keys/serial
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/keys/serial	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/keys/serial	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/keys/serial	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1 @@
 +01
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/list-crl buildroot/package/base-files/files/etc/easy-rsa/list-crl
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/list-crl	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/list-crl	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/list-crl	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,18 @@
 +#!/bin/sh
 +
@@ -1951,7 +1951,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/make-crl buildroot/package/base-files/files/etc/easy-rsa/make-crl
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/make-crl	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/make-crl	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/make-crl	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,18 @@
 +#!/bin/sh
 +
@@ -1973,7 +1973,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.1 buildroot/package/base-files/files/etc/easy-rsa/openssl.1
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.1	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl.1	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl.1	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,93 @@
 +#
 +# OpenSSL example configuration file.
@@ -2070,7 +2070,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +prompt			= no
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.2 buildroot/package/base-files/files/etc/easy-rsa/openssl.2
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.2	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl.2	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl.2	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,20 @@
 +# This sets a mask for permitted string types. There are several options. 
 +# default: PrintableString, T61String, BMPString.
@@ -2094,7 +2094,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +0.organizationName		= PacketProtector.org
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.3 buildroot/package/base-files/files/etc/easy-rsa/openssl.3
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.3	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl.3	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl.3	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,114 @@
 +emailAddress			= charlie@packetprotector.org
 +
@@ -2212,7 +2212,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +authorityKeyIdentifier=keyid:always,issuer:always
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-ca.cnf buildroot/package/base-files/files/etc/easy-rsa/openssl-ca.cnf
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-ca.cnf	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl-ca.cnf	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl-ca.cnf	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,230 @@
 +#
 +# OpenSSL example configuration file.
@@ -2446,7 +2446,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +authorityKeyIdentifier=keyid:always,issuer:always
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.cnf buildroot/package/base-files/files/etc/easy-rsa/openssl.cnf
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.cnf	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl.cnf	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl.cnf	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,255 @@
 +#
 +# OpenSSL example configuration file.
@@ -2705,7 +2705,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +authorityKeyIdentifier=keyid:always,issuer:always
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-radius.cnf buildroot/package/base-files/files/etc/easy-rsa/openssl-radius.cnf
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-radius.cnf	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl-radius.cnf	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl-radius.cnf	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,230 @@
 +#
 +# OpenSSL example configuration file.
@@ -2939,7 +2939,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +authorityKeyIdentifier=keyid:always,issuer:always
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-revoked.cnf buildroot/package/base-files/files/etc/easy-rsa/openssl-revoked.cnf
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-revoked.cnf	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl-revoked.cnf	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl-revoked.cnf	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,233 @@
 +#
 +# OpenSSL example configuration file.
@@ -3176,7 +3176,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +authorityKeyIdentifier=keyid:always,issuer:always
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-server.cnf buildroot/package/base-files/files/etc/easy-rsa/openssl-server.cnf
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-server.cnf	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl-server.cnf	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl-server.cnf	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,230 @@
 +#
 +# OpenSSL example configuration file.
@@ -3410,7 +3410,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +authorityKeyIdentifier=keyid:always,issuer:always
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/README buildroot/package/base-files/files/etc/easy-rsa/README
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/README	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/README	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/README	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,161 @@
 +This is a small RSA key management package,
 +based on the openssl command line tool, that
@@ -3575,7 +3575,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +  openssl x509 -in cert.crt -text
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/revoke-crt buildroot/package/base-files/files/etc/easy-rsa/revoke-crt
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/revoke-crt	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/revoke-crt	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/revoke-crt	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,18 @@
 +#!/bin/sh
 +
@@ -3597,7 +3597,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/revoke-full buildroot/package/base-files/files/etc/easy-rsa/revoke-full
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/revoke-full	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/revoke-full	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/revoke-full	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,29 @@
 +#!/bin/sh
 +
@@ -3630,7 +3630,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/sign-req buildroot/package/base-files/files/etc/easy-rsa/sign-req
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/sign-req	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/sign-req	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/sign-req	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,18 @@
 +#!/bin/sh
 +
@@ -3652,7 +3652,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/vars buildroot/package/base-files/files/etc/easy-rsa/vars
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/vars	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/vars	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/vars	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,49 @@
 +# easy-rsa parameter settings
 +
@@ -3705,7 +3705,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +export KEY_EMAIL="charlie@packetprotector.org"
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/xpextensions buildroot/package/base-files/files/etc/easy-rsa/xpextensions
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/xpextensions	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/easy-rsa/xpextensions	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/easy-rsa/xpextensions	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,4 @@
 +[ xpclient_ext]
 +extendedKeyUsage = 1.3.6.1.5.5.7.3.2
@@ -3713,18 +3713,18 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +extendedKeyUsage = 1.3.6.1.5.5.7.3.1
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/ethers buildroot/package/base-files/files/etc/ethers
 --- buildroot.orig/package/base-files/files/etc/ethers	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/ethers	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/ethers	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,2 @@
 +# example
 +# 11:22:33:44:55:66 192.168.1.2
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/freeradius/users buildroot/package/base-files/files/etc/freeradius/users
 --- buildroot.orig/package/base-files/files/etc/freeradius/users	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/freeradius/users	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/freeradius/users	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1 @@
 +"root"		Cleartext-Password := "packetprotector"
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/hotplug.d/usb/01-mount buildroot/package/base-files/files/etc/hotplug.d/usb/01-mount
 --- buildroot.orig/package/base-files/files/etc/hotplug.d/usb/01-mount	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/hotplug.d/usb/01-mount	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/hotplug.d/usb/01-mount	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,51 @@
 +mount_storage() {
 +	cd /dev/discs
@@ -3779,7 +3779,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +esac
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/init.d/dns buildroot/package/base-files/files/etc/init.d/dns
 --- buildroot.orig/package/base-files/files/etc/init.d/dns	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/init.d/dns	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/init.d/dns	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,13 @@
 +#!/bin/sh /etc/rc.common
 +
@@ -3796,7 +3796,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/init.d/packetprotector buildroot/package/base-files/files/etc/init.d/packetprotector
 --- buildroot.orig/package/base-files/files/etc/init.d/packetprotector	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-08-15 17:28:10.000000000 -0400
++++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,195 @@
 +#!/bin/sh /etc/rc.common
 +START=75
@@ -3995,7 +3995,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/packetprotector.conf buildroot/package/base-files/files/etc/packetprotector.conf
 --- buildroot.orig/package/base-files/files/etc/packetprotector.conf	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/packetprotector.conf	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/packetprotector.conf	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,9 @@
 +# no spaces before the equals signs!
 +# 1 is enabled; 0 is disabled
@@ -4007,8 +4007,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +openvpn=1
 +snort-inline=1
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/passwd buildroot/package/base-files/files/etc/passwd
---- buildroot.orig/package/base-files/files/etc/passwd	2010-06-25 19:41:27.000000000 -0400
-+++ buildroot/package/base-files/files/etc/passwd	2010-06-25 19:10:01.000000000 -0400
+--- buildroot.orig/package/base-files/files/etc/passwd	2010-09-24 22:19:20.000000000 -0400
++++ buildroot/package/base-files/files/etc/passwd	2010-09-24 22:25:55.000000000 -0400
 @@ -1,3 +1,2 @@
 -root:!:0:0:root:/root:/bin/ash
 +root:x:0:0:root:/root:/bin/ash
@@ -4016,14 +4016,14 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -daemon:*:65534:65534:daemon:/var:/bin/false
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/shadow buildroot/package/base-files/files/etc/shadow
 --- buildroot.orig/package/base-files/files/etc/shadow	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/shadow	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/etc/shadow	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,3 @@
 +root:$1$$3PU5jOpctFwuSGxWSJxAn0:13136:0:99999:7:::
 +nobody:*:13136:0:99999:7:::
 +
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/sysctl.conf buildroot/package/base-files/files/etc/sysctl.conf
---- buildroot.orig/package/base-files/files/etc/sysctl.conf	2010-06-25 19:41:27.000000000 -0400
-+++ buildroot/package/base-files/files/etc/sysctl.conf	2010-06-25 19:10:01.000000000 -0400
+--- buildroot.orig/package/base-files/files/etc/sysctl.conf	2010-09-24 22:19:20.000000000 -0400
++++ buildroot/package/base-files/files/etc/sysctl.conf	2010-09-24 22:25:55.000000000 -0400
 @@ -1,6 +1,7 @@
  kernel.panic=3
  net.ipv4.conf.default.arp_ignore=1
@@ -4034,12 +4034,12 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  net.ipv4.icmp_ignore_bogus_error_responses=1
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/version buildroot/package/base-files/files/etc/version
 --- buildroot.orig/package/base-files/files/etc/version	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/version	2010-06-25 19:31:23.000000000 -0400
++++ buildroot/package/base-files/files/etc/version	2010-09-24 22:41:30.000000000 -0400
 @@ -0,0 +1 @@
-+3.8
++4.0
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/lib/preinit/10_essential_fs buildroot/package/base-files/files/lib/preinit/10_essential_fs
---- buildroot.orig/package/base-files/files/lib/preinit/10_essential_fs	2010-06-25 19:41:27.000000000 -0400
-+++ buildroot/package/base-files/files/lib/preinit/10_essential_fs	2010-06-25 19:10:01.000000000 -0400
+--- buildroot.orig/package/base-files/files/lib/preinit/10_essential_fs	2010-09-24 22:19:19.000000000 -0400
++++ buildroot/package/base-files/files/lib/preinit/10_essential_fs	2010-09-24 22:25:55.000000000 -0400
 @@ -16,7 +16,7 @@
  
  do_mount_tmpfs() {
@@ -4051,7 +4051,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  boot_hook_add preinit_essential do_mount_procfs
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/root/.profile buildroot/package/base-files/files/root/.profile
 --- buildroot.orig/package/base-files/files/root/.profile	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/root/.profile	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/root/.profile	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,17 @@
 +#!/bin/sh
 +
@@ -4072,7 +4072,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/sbin/diskutils buildroot/package/base-files/files/sbin/diskutils
 --- buildroot.orig/package/base-files/files/sbin/diskutils	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/sbin/diskutils	2010-06-27 16:54:46.000000000 -0400
++++ buildroot/package/base-files/files/sbin/diskutils	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,24 @@
 +#!/bin/sh
 +
@@ -4100,7 +4100,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/sbin/pp_passwd buildroot/package/base-files/files/sbin/pp_passwd
 --- buildroot.orig/package/base-files/files/sbin/pp_passwd	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/sbin/pp_passwd	2010-06-25 19:10:01.000000000 -0400
++++ buildroot/package/base-files/files/sbin/pp_passwd	2010-09-24 22:25:55.000000000 -0400
 @@ -0,0 +1,64 @@
 +#!/bin/sh
 +#requires ash 'read -s' support
@@ -4167,8 +4167,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +	echo "Passwords do not match.  Please try again."
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/usr/lib/common.awk buildroot/package/base-files/files/usr/lib/common.awk
---- buildroot.orig/package/base-files/files/usr/lib/common.awk	2010-06-25 19:41:27.000000000 -0400
-+++ buildroot/package/base-files/files/usr/lib/common.awk	2010-06-25 19:10:01.000000000 -0400
+--- buildroot.orig/package/base-files/files/usr/lib/common.awk	2010-09-24 22:19:20.000000000 -0400
++++ buildroot/package/base-files/files/usr/lib/common.awk	2010-09-24 22:25:55.000000000 -0400
 @@ -1,5 +1,43 @@
  # Copyright (C) 2006 OpenWrt.org
  
@@ -4214,9 +4214,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  	c=and(rshift(c, 1),0x55555555)+and(c,0x55555555)
  	c=and(rshift(c, 2),0x33333333)+and(c,0x33333333)
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/Makefile buildroot/package/base-files/Makefile
---- buildroot.orig/package/base-files/Makefile	2010-06-25 19:41:28.000000000 -0400
-+++ buildroot/package/base-files/Makefile	2010-06-25 19:10:01.000000000 -0400
-@@ -350,12 +350,6 @@
+--- buildroot.orig/package/base-files/Makefile	2010-09-24 22:19:20.000000000 -0400
++++ buildroot/package/base-files/Makefile	2010-09-24 22:25:55.000000000 -0400
+@@ -351,12 +351,6 @@
  			$(CP) $(PLATFORM_SUBDIR)/$(PROFILE)/base-files/* $(1)/; \
  		fi \
  	)
@@ -4230,21 +4230,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  	mkdir -p $(1)/CONTROL
  	mkdir -p $(1)/dev
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/broadcom-wl/files/lib/wifi/broadcom.sh buildroot/package/broadcom-wl/files/lib/wifi/broadcom.sh
---- buildroot.orig/package/broadcom-wl/files/lib/wifi/broadcom.sh	2010-06-25 19:41:32.000000000 -0400
-+++ buildroot/package/broadcom-wl/files/lib/wifi/broadcom.sh	2010-06-25 19:10:01.000000000 -0400
-@@ -353,7 +353,7 @@
- 	option device   wl${i}
- 	option network	lan
- 	option mode     ap
--	option ssid     OpenWrt${i#0}
-+	option ssid     PacketProtector
- 	option encryption none
- 
- EOF
-diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/broadcom-wl-old/files/lib/wifi/broadcom.sh buildroot/package/broadcom-wl-old/files/lib/wifi/broadcom.sh
---- buildroot.orig/package/broadcom-wl-old/files/lib/wifi/broadcom.sh	2010-06-25 19:41:34.000000000 -0400
-+++ buildroot/package/broadcom-wl-old/files/lib/wifi/broadcom.sh	2010-06-27 16:35:38.000000000 -0400
-@@ -364,7 +364,7 @@
+--- buildroot.orig/package/broadcom-wl/files/lib/wifi/broadcom.sh	2010-09-24 22:19:24.000000000 -0400
++++ buildroot/package/broadcom-wl/files/lib/wifi/broadcom.sh	2010-09-24 22:25:55.000000000 -0400
+@@ -372,7 +372,7 @@
  	option device   wl${i}
  	option network	lan
  	option mode     ap
@@ -4254,29 +4242,37 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  
  EOF
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/busybox/files/telnet buildroot/package/busybox/files/telnet
---- buildroot.orig/package/busybox/files/telnet	2010-06-25 19:41:34.000000000 -0400
+--- buildroot.orig/package/busybox/files/telnet	2010-09-24 22:19:27.000000000 -0400
 +++ buildroot/package/busybox/files/telnet	1969-12-31 19:00:00.000000000 -0500
-@@ -1,16 +0,0 @@
+@@ -1,24 +0,0 @@
 -#!/bin/sh /etc/rc.common
--# Copyright (C) 2006 OpenWrt.org
+-# Copyright (C) 2006-2010 OpenWrt.org
 -START=50
 -
+-has_root_pwd() {
+-	local pwd=$([ -f "$1" ] && cat "$1")
+-	      pwd="${pwd#*root:}"
+-	      pwd="${pwd%%:*}"
+-
+-	test -n "${pwd#!}"
+-}
+-
 -start() {
--	if 	[ \! -f /etc/passwd ] || \
--		awk -F: '/^root:/ && ($2 != "") && ($2 !~ /\!/) {exit 1}' /etc/passwd 2>/dev/null || \
--		( [ \! -x /usr/sbin/dropbear ] && [ \! -x /usr/sbin/sshd ] )
--	then \
+-	if ( ! has_root_pwd /etc/passwd && ! has_root_pwd /etc/shadow ) || \
+-	   ( [ ! -x /usr/sbin/dropbear ] && [ ! -x /usr/sbin/sshd ] );
+-	then
 -		telnetd -l /bin/login.sh
 -	fi
 -}
 -
 -stop() {
--	killall telnetd
+-	killall telnetd 2>/dev/null
 -}
+-
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/busybox/Makefile buildroot/package/busybox/Makefile
---- buildroot.orig/package/busybox/Makefile	2010-06-25 19:41:37.000000000 -0400
-+++ buildroot/package/busybox/Makefile	2010-06-25 19:10:01.000000000 -0400
-@@ -25,7 +25,6 @@
+--- buildroot.orig/package/busybox/Makefile	2010-09-24 22:19:29.000000000 -0400
++++ buildroot/package/busybox/Makefile	2010-09-24 22:26:57.000000000 -0400
+@@ -27,7 +27,6 @@
  init-y :=
  init-$(CONFIG_BUSYBOX_CONFIG_HTTPD) += httpd
  init-$(CONFIG_BUSYBOX_CONFIG_CROND) += cron
@@ -4285,9 +4281,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  define Package/busybox
    SECTION:=base
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/dnsmasq/files/dhcp.conf buildroot/package/dnsmasq/files/dhcp.conf
---- buildroot.orig/package/dnsmasq/files/dhcp.conf	2010-06-25 19:41:29.000000000 -0400
-+++ buildroot/package/dnsmasq/files/dhcp.conf	2010-06-25 19:10:01.000000000 -0400
-@@ -10,7 +10,7 @@
+--- buildroot.orig/package/dnsmasq/files/dhcp.conf	2010-09-24 22:19:21.000000000 -0400
++++ buildroot/package/dnsmasq/files/dhcp.conf	2010-09-24 22:26:57.000000000 -0400
+@@ -13,7 +13,7 @@
  	option authoritative	1
  	option readethers	1
  	option leasefile	'/tmp/dhcp.leases'
@@ -4297,8 +4293,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  	#option nonwildcard	1
  	#list interface		br-lan
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/dnsmasq/files/dnsmasq.init buildroot/package/dnsmasq/files/dnsmasq.init
---- buildroot.orig/package/dnsmasq/files/dnsmasq.init	2010-06-25 19:41:29.000000000 -0400
-+++ buildroot/package/dnsmasq/files/dnsmasq.init	2010-06-25 19:10:01.000000000 -0400
+--- buildroot.orig/package/dnsmasq/files/dnsmasq.init	2010-09-24 22:19:21.000000000 -0400
++++ buildroot/package/dnsmasq/files/dnsmasq.init	2010-09-24 22:26:57.000000000 -0400
 @@ -2,7 +2,7 @@
  # Copyright (C) 2007 OpenWrt.org
  
@@ -4309,9 +4305,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  
  dhcp_calc() {
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/dropbear/Makefile buildroot/package/dropbear/Makefile
---- buildroot.orig/package/dropbear/Makefile	2010-06-25 19:41:31.000000000 -0400
-+++ buildroot/package/dropbear/Makefile	2010-06-25 19:10:01.000000000 -0400
-@@ -52,7 +52,7 @@
+--- buildroot.orig/package/dropbear/Makefile	2010-09-24 22:19:23.000000000 -0400
++++ buildroot/package/dropbear/Makefile	2010-09-24 22:26:57.000000000 -0400
+@@ -54,7 +54,7 @@
  	--disable-pam \
  	--enable-openpty \
  	--enable-syslog \
@@ -4321,7 +4317,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  	--disable-utmp \
  	--disable-utmpx \
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/bin/fw buildroot/package/firewall/files/bin/fw
---- buildroot.orig/package/firewall/files/bin/fw	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/bin/fw	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/bin/fw	1969-12-31 19:00:00.000000000 -0500
 @@ -1,49 +0,0 @@
 -#!/bin/sh
@@ -4374,7 +4370,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -fw "$cmd" "$fam" "$@"
 -exit $?
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/firewall.config buildroot/package/firewall/files/firewall.config
---- buildroot.orig/package/firewall/files/firewall.config	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/firewall.config	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/firewall.config	1969-12-31 19:00:00.000000000 -0500
 @@ -1,99 +0,0 @@
 -config defaults
@@ -4477,7 +4473,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -#	option dest_port	120
 -#	option proto	tcp
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/firewall.hotplug buildroot/package/firewall/files/firewall.hotplug
---- buildroot.orig/package/firewall/files/firewall.hotplug	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/firewall.hotplug	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/firewall.hotplug	1969-12-31 19:00:00.000000000 -0500
 @@ -1,22 +0,0 @@
 -#!/bin/sh
@@ -4499,11 +4495,11 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -		fw_configure_interface "$INTERFACE" add "$DEVICE" &
 -	;;
 -	ifdown)
--		fw_configure_interface "$INTERFACE" del "$DEVICE" &
+-		fw_configure_interface "$INTERFACE" del "$DEVICE"
 -	;;
 -esac
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/firewall.init buildroot/package/firewall/files/firewall.init
---- buildroot.orig/package/firewall/files/firewall.init	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/firewall.init	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/firewall.init	1969-12-31 19:00:00.000000000 -0500
 @@ -1,27 +0,0 @@
 -#!/bin/sh /etc/rc.common
@@ -4534,7 +4530,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	fw reload
 -}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/firewall.user buildroot/package/firewall/files/firewall.user
---- buildroot.orig/package/firewall/files/firewall.user	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/firewall.user	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/firewall.user	1969-12-31 19:00:00.000000000 -0500
 @@ -1,4 +0,0 @@
 -# This file is interpreted as shell script.
@@ -4542,7 +4538,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -# be executed with each firewall (re-)start.
 -
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/lib/config.sh buildroot/package/firewall/files/lib/config.sh
---- buildroot.orig/package/firewall/files/lib/config.sh	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/lib/config.sh	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/lib/config.sh	1969-12-31 19:00:00.000000000 -0500
 @@ -1,97 +0,0 @@
 -# Copyright (C) 2009-2010 OpenWrt.org
@@ -4643,9 +4639,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	export ${NO_EXPORT:+-n} -- "${varn}_version=${vers}"
 -}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/lib/core_forwarding.sh buildroot/package/firewall/files/lib/core_forwarding.sh
---- buildroot.orig/package/firewall/files/lib/core_forwarding.sh	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/lib/core_forwarding.sh	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/lib/core_forwarding.sh	1969-12-31 19:00:00.000000000 -0500
-@@ -1,43 +0,0 @@
+@@ -1,44 +0,0 @@
 -# Copyright (C) 2009-2010 OpenWrt.org
 -
 -fw_config_get_forwarding() {
@@ -4675,24 +4671,25 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -		target=zone_${forwarding_dest}_ACCEPT
 -	}
 -
--	local mode=$(fw_get_family_mode ${forwarding_family:-x} ${forwarding_dest:-${forwarding_src:--}} i)
+-	local mode
+-	fw_get_family_mode mode ${forwarding_family:-x} ${forwarding_dest:-${forwarding_src:--}} i
 -
 -	fw add $mode f $chain $target ^
 -
 -	# propagate masq zone flag
--	[ -n "$forwarding_src" ] && list_contains CONNTRACK_ZONES $forwarding_src && {
--		append CONNTRACK_ZONES $forwarding_dest
+-	[ -n "$forwarding_src" ] && list_contains FW_CONNTRACK_ZONES $forwarding_src && {
+-		append FW_CONNTRACK_ZONES $forwarding_dest
 -	}
--	[ -n "$forwarding_dest" ] && list_contains CONNTRACK_ZONES $forwarding_dest && {
--		append CONNTRACK_ZONES $forwarding_src
+-	[ -n "$forwarding_dest" ] && list_contains FW_CONNTRACK_ZONES $forwarding_dest && {
+-		append FW_CONNTRACK_ZONES $forwarding_src
 -	}
 -
 -	fw_callback post forwarding
 -}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/lib/core_init.sh buildroot/package/firewall/files/lib/core_init.sh
---- buildroot.orig/package/firewall/files/lib/core_init.sh	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/lib/core_init.sh	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/lib/core_init.sh	1969-12-31 19:00:00.000000000 -0500
-@@ -1,288 +0,0 @@
+@@ -1,316 +0,0 @@
 -# Copyright (C) 2009-2010 OpenWrt.org
 -# Copyright (C) 2008 John Crispin <blogic@openwrt.org>
 -
@@ -4737,7 +4734,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -		boolean disable_ipv6 0 \
 -	} || return
 -	[ -n "$FW_DEFAULTS_APPLIED" ] && {
--		echo "Error: multiple defaults sections detected"
+-		fw_log error "duplicate defaults section detected, skipping"
 -		return 1
 -	}
 -	FW_DEFAULTS_APPLIED=1
@@ -4779,13 +4776,16 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	[ $defaults_syn_flood == 1 ] && \
 -		defaults_synflood_protect=1
 -
+-	[ "${defaults_synflood_rate%/*}" == "$defaults_synflood_rate" ] && \
+-		defaults_synflood_rate="$defaults_synflood_rate/second"
+-
 -	[ $defaults_synflood_protect == 1 ] && {
 -		echo "Loading synflood protection"
 -		fw_callback pre synflood
 -		fw add i f syn_flood
 -		fw add i f syn_flood RETURN { \
 -			-p tcp --syn \
--			-m limit --limit "${defaults_synflood_rate}/second" --limit-burst "${defaults_synflood_burst}" \
+-			-m limit --limit "${defaults_synflood_rate}" --limit-burst "${defaults_synflood_burst}" \
 -		}
 -		fw add i f syn_flood DROP
 -		fw add i f INPUT syn_flood { -p tcp --syn }
@@ -4834,9 +4834,13 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -		string output "$FW_DEFAULT_OUTPUT_POLICY" \
 -		string forward "$FW_DEFAULT_FORWARD_POLICY" \
 -		boolean masq 0 \
+-		string masq_src "" \
+-		string masq_dest "" \
 -		boolean conntrack 0 \
 -		boolean mtu_fix 0 \
 -		boolean custom_chains "$FW_ADD_CUSTOM_CHAINS" \
+-		boolean log 0 \
+-		string log_limit 10 \
 -		string family "" \
 -	} || return
 -	[ -n "$zone_name" ] || zone_name=$zone_NAME
@@ -4847,14 +4851,15 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	fw_config_get_zone "$1"
 -
 -	list_contains FW_ZONES $zone_name && {
--		fw_die "zone ${zone_name}: duplicated zone"
+-		fw_log error "zone ${zone_name}: duplicated zone, skipping"
+-		return 0
 -	}
 -	append FW_ZONES $zone_name
 -
 -	fw_callback pre zone
 -
 -	[ $zone_conntrack = 1 -o $zone_masq = 1 ] && \
--		append FW_CONNTRACK_ZONES "$zone_NAME"
+-		append FW_CONNTRACK_ZONES "$zone_name"
 -
 -	local mode
 -	case "$zone_family" in
@@ -4899,8 +4904,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	fw add $mode n ${chain}_prerouting
 -
 -	fw add $mode r ${chain}_notrack
--	[ $zone_masq == 1 ] && \
--		fw add $mode n POSTROUTING ${chain}_nat $
 -
 -	[ $zone_mtu_fix == 1 ] && \
 -		fw add $mode f FORWARD ${chain}_MSSFIX ^
@@ -4919,17 +4922,39 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -		fw add $mode n ${chain}_prerouting prerouting_${zone_name} ^
 -	}
 -
+-	[ "$zone_log" == 1 ] && {
+-		[ "${zone_log_limit%/*}" == "$zone_log_limit" ] && \
+-			zone_log_limit="$zone_log_limit/minute"
+-
+-		local t
+-		for t in REJECT DROP MSSFIX; do
+-			fw add $mode f ${chain}_${t} LOG ^ \
+-				{ -m limit --limit $zone_log_limit --log-prefix "$t($zone_name): "  }
+-		done
+-	}
+-
+-	# NB: if MASQUERADING for IPv6 becomes available we'll need a family check here
+-	if [ "$zone_masq" == 1 ]; then
+-		local msrc mdst
+-		for msrc in ${zone_masq_src:-0.0.0.0/0}; do
+-			[ "${msrc#!}" != "$msrc" ] && msrc="! -s ${msrc#!}" || msrc="-s $msrc"
+-			for mdst in ${zone_masq_dest:-0.0.0.0/0}; do
+-				[ "${mdst#!}" != "$mdst" ] && mdst="! -d ${mdst#!}" || mdst="-d $mdst"
+-				fw add $mode n ${chain}_nat MASQUERADE $ { $msrc $mdst }
+-			done
+-		done
+-	fi
+-
 -	fw_callback post zone
 -}
 -
 -fw_load_notrack_zone() {
--	list_contains FW_CONNTRACK_ZONES "$1" && return
--
 -	fw_config_get_zone "$1"
+-	list_contains FW_CONNTRACK_ZONES "${zone_name}" && return
 -
 -	fw_callback pre notrack
 -
--	fw add i f zone_${zone_name}_notrack NOTRACK $
+-	fw add i r zone_${zone_name}_notrack NOTRACK $
 -
 -	fw_callback post notrack
 -}
@@ -4982,10 +5007,29 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	done
 -}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/lib/core_interface.sh buildroot/package/firewall/files/lib/core_interface.sh
---- buildroot.orig/package/firewall/files/lib/core_interface.sh	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/lib/core_interface.sh	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/lib/core_interface.sh	1969-12-31 19:00:00.000000000 -0500
-@@ -1,158 +0,0 @@
+@@ -1,188 +0,0 @@
 -# Copyright (C) 2009-2010 OpenWrt.org
+-
+-fw__uci_state_add() {
+-	local var="$1"
+-	local item="$2"
+-
+-	local val="$(uci_get_state firewall core $var)"
+-	uci_set_state firewall core $var "${val:+$val }$item"
+-}
+-
+-fw__uci_state_del() {
+-	local var="$1"
+-	local item="$2"
+-
+-	local val=" $(uci_get_state firewall core $var) "
+-	val="${val// $item / }"
+-	val="${val# }"
+-	val="${val% }"
+-	uci_set_state firewall core $var "$val"
+-}
 -
 -fw_configure_interface() {
 -	local iface=$1
@@ -4999,8 +5043,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	}
 -
 -	[ -n "$ifname" ] || {
--		ifname=$(uci_get_state network "$iface" ifname "$iface")
+-		ifname=$(uci_get_state network "$iface" ifname)
 -		ifname="${ifname%%:*}"
+-		[ -z "$ifname" ] && return 0
 -	}
 -
 -	[ "$ifname" == "lo" ] && return 0
@@ -5014,21 +5059,21 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -		local ifname=$3
 -		local subnet=$4
 -
--		local inet onet
--		local mode=$(fw_get_family_mode x $zone i)
+-		local inet onet mode
+-		fw_get_family_mode mode x $zone i
 -
 -		case "$mode/$subnet" in
 -			# Zone supports v6 only or dual, need v6
--			6/*:*|i/*:*)
--				inet="{ -s $subnet -d ::/0 }"
--				onet="{ -s ::/0 -d $subnet }"
+-			G6/*:*|i/*:*)
+-				inet="-s $subnet -d ::/0"
+-				onet="-s ::/0 -d $subnet"
 -				mode=6
 -			;;
 -
 -			# Zone supports v4 only or dual, need v4
--			4/*.*.*.*|i/*.*.*.*)
--				inet="{ -s $subnet -d 0.0.0.0/0 }"
--				onet="{ -s 0.0.0.0/0 -d $subnet }"
+-			G4/*.*.*.*|i/*.*.*.*)
+-				inet="-s $subnet -d 0.0.0.0/0"
+-				onet="-s 0.0.0.0/0 -d $subnet"
 -				mode=4
 -			;;
 -
@@ -5039,20 +5084,24 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -			*/*.*) fw_log info "zone $zone does not support IPv4 address family, skipping"; return ;;
 -		esac
 -
--		fw $action $mode f ${chain}_ACCEPT ACCEPT ^ $onet { -o "$ifname" }
--		fw $action $mode f ${chain}_ACCEPT ACCEPT ^ $inet { -i "$ifname" }
--		fw $action $mode f ${chain}_DROP   DROP   ^ $onet { -o "$ifname" }
--		fw $action $mode f ${chain}_DROP   DROP   ^ $inet { -i "$ifname" }
--		fw $action $mode f ${chain}_REJECT reject ^ $onet { -o "$ifname" }
--		fw $action $mode f ${chain}_REJECT reject ^ $inet { -i "$ifname" }
+-		lock /var/run/firewall-interface.lock
 -
--		fw $action $mode n ${chain}_nat MASQUERADE ^ $onet { -o "$ifname" }
--		fw $action $mode f ${chain}_MSSFIX TCPMSS  ^ $onet { -o "$ifname" -p tcp --tcp-flags SYN,RST SYN --clamp-mss-to-pmtu }
+-		fw $action $mode f ${chain}_ACCEPT ACCEPT $ { -o "$ifname" $onet }
+-		fw $action $mode f ${chain}_ACCEPT ACCEPT $ { -i "$ifname" $inet }
+-		fw $action $mode f ${chain}_DROP   DROP   $ { -o "$ifname" $onet }
+-		fw $action $mode f ${chain}_DROP   DROP   $ { -i "$ifname" $inet }
+-		fw $action $mode f ${chain}_REJECT reject $ { -o "$ifname" $onet }
+-		fw $action $mode f ${chain}_REJECT reject $ { -i "$ifname" $inet }
 -
--		fw $action $mode f input   ${chain}         $ $inet { -i "$ifname" }
--		fw $action $mode f forward ${chain}_forward $ $inet { -i "$ifname" }
--		fw $action $mode n PREROUTING ${chain}_prerouting ^ $inet { -i "$ifname" }
--		fw $action $mode r PREROUTING ${chain}_notrack    ^ $inet { -i "$ifname" }
+-		fw $action $mode f ${chain}_MSSFIX TCPMSS  $ { -o "$ifname" -p tcp --tcp-flags SYN,RST SYN --clamp-mss-to-pmtu $onet }
+-
+-		fw $action $mode f input   ${chain}         $ { -i "$ifname" $inet }
+-		fw $action $mode f forward ${chain}_forward $ { -i "$ifname" $inet }
+-		fw $action $mode n PREROUTING ${chain}_prerouting $ { -i "$ifname" $inet }
+-		fw $action $mode r PREROUTING ${chain}_notrack    $ { -i "$ifname" $inet }
+-		fw $action $mode n POSTROUTING ${chain}_nat       $ { -o "$ifname" $onet }
+-
+-		lock -u /var/run/firewall-interface.lock
 -	}
 -
 -	local old_zones old_ifname old_subnets
@@ -5069,7 +5118,10 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -				fw__do_rules del $z $old_ifname $n
 -			done
 -
--			[ -n "$old_subnets" ] || ACTION=remove ZONE="$z" INTERFACE="$iface" DEVICE="$ifname" /sbin/hotplug-call firewall
+-			[ -n "$old_subnets" ] || {
+-				fw__uci_state_del "${z}_networks" "$iface"
+-				env -i ACTION=remove ZONE="$z" INTERFACE="$iface" DEVICE="$ifname" /sbin/hotplug-call firewall
+-			}
 -		done
 -
 -		local old_aliases
@@ -5087,19 +5139,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	}
 -
 -	[ "$action" == del ] && return
--
--	local new_zones=
--	load_zone() {
--		fw_config_get_zone "$1"
--		list_contains zone_network "$iface" || return
--
--		fw_log info "adding $iface ($ifname${aliasnet:+ alias $aliasnet}) to zone $zone_name"
--		fw__do_rules add ${zone_name} "$ifname" $aliasnet
--		append new_zones $zone_name
--
--		[ -n "$aliasnet" ] || ACTION=add ZONE="$zone_name" INTERFACE="$iface" DEVICE="$ifname" /sbin/hotplug-call firewall
--	}
--	config_foreach load_zone zone
 -
 -	[ -z "$aliasnet" ] && {
 -		local aliases
@@ -5129,6 +5168,22 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -		uci_set_state firewall core "${iface}_subnets" "$subnets"
 -	}
 -
+-	local new_zones=
+-	load_zone() {
+-		fw_config_get_zone "$1"
+-		list_contains zone_network "$iface" || return
+-
+-		fw_log info "adding $iface ($ifname${aliasnet:+ alias $aliasnet}) to zone $zone_name"
+-		fw__do_rules add ${zone_name} "$ifname" "$aliasnet"
+-		append new_zones $zone_name
+-
+-		[ -n "$aliasnet" ] || {
+-			fw__uci_state_add "${zone_name}_networks" "${zone_network}"
+-			env -i ACTION=add ZONE="$zone_name" INTERFACE="$iface" DEVICE="$ifname" /sbin/hotplug-call firewall
+-		}
+-	}
+-	config_foreach load_zone zone
+-
 -	uci_set_state firewall core "${iface}_zone" "$new_zones"
 -	uci_set_state firewall core "${iface}_ifname" "$ifname"
 -}
@@ -5144,9 +5199,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -}
 -
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/lib/core_redirect.sh buildroot/package/firewall/files/lib/core_redirect.sh
---- buildroot.orig/package/firewall/files/lib/core_redirect.sh	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/lib/core_redirect.sh	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/lib/core_redirect.sh	1969-12-31 19:00:00.000000000 -0500
-@@ -1,64 +0,0 @@
+@@ -1,109 +0,0 @@
 -# Copyright (C) 2009-2010 OpenWrt.org
 -
 -fw_config_get_redirect() {
@@ -5166,6 +5221,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -		string dest_port "" \
 -		string proto "tcpudp" \
 -		string family "" \
+-		string target "DNAT" \
 -	} || return
 -	[ -n "$redirect_name" ] || redirect_name=$redirect__name
 -}
@@ -5175,36 +5231,80 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -
 -	fw_callback pre redirect
 -
--	[ -n "$redirect_src" -a -n "$redirect_dest_ip" ] || {
--		fw_die "redirect ${redirect_name}: needs src and dest_ip"
--	}
+-	local fwdchain natchain natopt nataddr natports srcdaddr srcdports
+-	if [ "$redirect_target" == "DNAT" ]; then
+-		[ -n "$redirect_src" -a -n "$redirect_dest_ip$redirect_dest_port" ] || {
+-			fw_log error "DNAT redirect ${redirect_name}: needs src and dest_ip or dest_port, skipping"
+-			return 0
+-		}
 -
--	local mode=$(fw_get_family_mode ${redirect_family:-x} $redirect_src I)
+-		fwdchain="zone_${redirect_src}_forward"
 -
--	local nat_dest_port=$redirect_dest_port
--	redirect_dest_port=$(fw_get_port_range $redirect_dest_port)
--	redirect_src_port=$(fw_get_port_range $redirect_src_port)
--	redirect_src_dport=$(fw_get_port_range $redirect_src_dport)
--	local fwd_dest_port=${redirect_dest_port:-$redirect_src_dport}
+-		natopt="--to-destination"
+-		natchain="zone_${redirect_src}_prerouting"
+-		nataddr="$redirect_dest_ip"
+-		fw_get_port_range natports "$redirect_dest_port" "-"
+-
+-		srcdaddr="${redirect_src_dip:+$redirect_src_dip/$redirect_src_dip_prefixlen}"
+-		fw_get_port_range srcdports "$redirect_src_dport" ":"
+-
+-		list_contains FW_CONNTRACK_ZONES $redirect_src || \
+-			append FW_CONNTRACK_ZONES $redirect_src
+-
+-	elif [ "$redirect_target" == "SNAT" ]; then
+-		[ -n "$redirect_dest" -a -n "$redirect_src_dip" ] || {
+-			fw_log error "SNAT redirect ${redirect_name}: needs dest and src_dip, skipping"
+-			return 0
+-		}
+-
+-		fwdchain="${redirect_src:+zone_${redirect_src}_forward}"
+-
+-		natopt="--to-source"
+-		natchain="zone_${redirect_dest}_nat"
+-		nataddr="$redirect_src_dip"
+-		fw_get_port_range natports "$redirect_src_dport" "-"
+-
+-		srcdaddr="${redirect_dest_ip:+$redirect_dest_ip/$redirect_dest_ip_prefixlen}"
+-		fw_get_port_range srcdports "$redirect_dest_port" ":"
+-
+-		list_contains FW_CONNTRACK_ZONES $redirect_dest || \
+-			append FW_CONNTRACK_ZONES $redirect_dest
+-
+-	else
+-		fw_log error "redirect ${redirect_name}: target must be either DNAT or SNAT, skipping"
+-		return 0
+-	fi
+-
+-	local mode
+-	fw_get_family_mode mode ${redirect_family:-x} ${redirect_src:-$redirect_dest} I
+-
+-	local srcaddr="${redirect_src_ip:+$redirect_src_ip/$redirect_src_ip_prefixlen}"
+-	local srcports
+-	fw_get_port_range srcports "$redirect_src_port" ":"
+-
+-	local destaddr="${redirect_dest_ip:+$redirect_dest_ip/$redirect_dest_ip_prefixlen}"
+-	local destports
+-	fw_get_port_range destports "${redirect_dest_port:-$redirect_src_dport}" ":"
 -
 -	[ "$redirect_proto" == "tcpudp" ] && redirect_proto="tcp udp"
 -	for redirect_proto in $redirect_proto; do
--		fw add $mode n zone_${redirect_src}_prerouting DNAT $ { $redirect_src_ip $redirect_dest_ip } { \
+-		fw add $mode n $natchain $redirect_target ^ { $redirect_src_ip $redirect_dest_ip } { \
 -			${redirect_proto:+-p $redirect_proto} \
--			${redirect_src_ip:+-s $redirect_src_ip/$redirect_src_ip_prefixlen} \
--			${redirect_src_dip:+-d $redirect_src_dip/$redirect_src_dip_prefixlen} \
--			${redirect_src_port:+--sport $redirect_src_port} \
--			${redirect_src_dport:+--dport $redirect_src_dport} \
+-			${srcaddr:+-s $srcaddr} \
+-			${srcports:+--sport $srcports} \
+-			${srcdaddr:+-d $srcdaddr} \
+-			${srcdports:+--dport $srcdports} \
 -			${redirect_src_mac:+-m mac --mac-source $redirect_src_mac} \
--			--to-destination ${redirect_dest_ip}${redirect_dest_port:+:$nat_dest_port} \
+-			$natopt $nataddr${natports:+:$natports} \
 -		}
 -
--		fw add $mode f zone_${redirect_src}_forward ACCEPT ^ { $redirect_src_ip $redirect_dest_ip } { \
--			-d $redirect_dest_ip \
+-		[ -n "$destaddr" ] && \
+-		fw add $mode f ${fwdchain:-forward} ACCEPT ^ { $redirect_src_ip $redirect_dest_ip } { \
 -			${redirect_proto:+-p $redirect_proto} \
--			${redirect_src_ip:+-s $redirect_src_ip/$redirect_src_ip_prefixlen} \
--			${redirect_src_port:+--sport $redirect_src_port} \
--			${fwd_dest_port:+--dport $fwd_dest_port} \
+-			${srcaddr:+-s $srcaddr} \
+-			${srcports:+--sport $srcports} \
+-			${destaddr:+-d $destaddr} \
+-			${destports:+--dport $destports} \
 -			${redirect_src_mac:+-m mac --mac-source $redirect_src_mac} \
 -		}
 -	done
@@ -5212,9 +5312,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	fw_callback post redirect
 -}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/lib/core_rule.sh buildroot/package/firewall/files/lib/core_rule.sh
---- buildroot.orig/package/firewall/files/lib/core_rule.sh	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/lib/core_rule.sh	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/lib/core_rule.sh	1969-12-31 19:00:00.000000000 -0500
-@@ -1,68 +0,0 @@
+@@ -1,69 +0,0 @@
 -# Copyright (C) 2009-2010 OpenWrt.org
 -
 -fw_config_get_rule() {
@@ -5243,8 +5343,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -
 -	fw_callback pre rule
 -
--	rule_src_port=$(fw_get_port_range $rule_src_port)
--	rule_dest_port=$(fw_get_port_range $rule_dest_port)
+-	fw_get_port_range rule_src_port $rule_src_port
+-	fw_get_port_range rule_dest_port $rule_dest_port
 -
 -	local chain=input
 -	[ -n "$rule_src" ] && {
@@ -5263,7 +5363,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -		target=zone_${rule_dest}_${target}
 -	}
 -
--	local mode=$(fw_get_family_mode ${rule_family:-x} $rule_src I)
+-	local mode
+-	fw_get_family_mode mode ${rule_family:-x} $rule_src I
 -
 -	local rule_pos
 -	eval 'rule_pos=$((++FW__RULE_COUNT_'$mode'_'$chain'))'
@@ -5284,9 +5385,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	fw_callback post rule
 -}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/lib/core.sh buildroot/package/firewall/files/lib/core.sh
---- buildroot.orig/package/firewall/files/lib/core.sh	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/lib/core.sh	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/lib/core.sh	1969-12-31 19:00:00.000000000 -0500
-@@ -1,143 +0,0 @@
+@@ -1,153 +0,0 @@
 -# Copyright (C) 2009-2010 OpenWrt.org
 -
 -FW_LIBDIR=${FW_LIBDIR:-/lib/firewall}
@@ -5328,7 +5429,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	echo "Loading includes"
 -	config_foreach fw_load_include include
 -
--	[ -n "$FW_NOTRACK_DISABLED" ] && {
+-	[ -z "$FW_NOTRACK_DISABLED" ] && {
 -		echo "Optimizing conntrack"
 -		config_foreach fw_load_notrack_zone zone
 -	}
@@ -5338,6 +5439,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -
 -	fw_callback post core
 -
+-	uci_set_state firewall core zones "$FW_ZONES"
 -	uci_set_state firewall core loaded 1
 -}
 -
@@ -5345,6 +5447,17 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	fw_init
 -
 -	fw_callback pre stop
+-
+-	local z n i
+-	config_get z core zones
+-	for z in $z; do
+-		config_get n core "${z}_networks"
+-		for n in $n; do
+-			config_get i core "${n}_ifname"
+-			[ -n "$i" ] && env -i ACTION=remove ZONE="$z" \
+-				INTERFACE="$n" DEVICE="$i" /sbin/hotplug-call firewall
+-		done
+-	done
 -
 -	fw_clear ACCEPT
 -
@@ -5384,10 +5497,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -
 -fw_log() {
 -	local level="$1"
--	[ -n "$2" ] || {
--		shift
--		level=notice
--	}
+-	[ -n "$2" ] && shift || level=notice
+-	[ "$level" != error ] || echo "Error: $@" >&2
 -	logger -t firewall -p user.$level "$@"
 -}
 -
@@ -5431,9 +5542,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	return 0
 -}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/lib/fw.sh buildroot/package/firewall/files/lib/fw.sh
---- buildroot.orig/package/firewall/files/lib/fw.sh	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/lib/fw.sh	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/lib/fw.sh	1969-12-31 19:00:00.000000000 -0500
-@@ -1,210 +0,0 @@
+@@ -1,220 +0,0 @@
 -# Copyright (C) 2009-2010 OpenWrt.org
 -# Copyright (C) 2009 Malte S. Stretz
 -
@@ -5472,7 +5583,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	done
 -
 -	fw__rc() {
--		export FW_${fam}_ERROR=$1
+-		export FW_${fam#G}_ERROR=$1
 -		return $1
 -	}
 -
@@ -5511,14 +5622,14 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -			return
 -		fi
 -		local mod
--		eval "mod=\$FW_${fam}_${tab}"
+-		eval "mod=\$FW_${fam#G}_${tab}"
 -		if [ "$mod" ]; then
 -			fw__rc $mod
 -			return
 -		fi
 -		case "$fam" in
--			4) mod=iptable_${tab} ;;
--			6) mod=ip6table_${tab} ;;
+-			*4) mod=iptable_${tab} ;;
+-			*6) mod=ip6table_${tab} ;;
 -			*) mod=. ;;
 -		esac
 -		grep -q "^${mod} " /proc/modules
@@ -5536,8 +5647,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	local app=
 -	local pol=
 -	case "$fam" in
--		4) [ $FW_DISABLE_IPV4 == 0 ] && app=iptables  || return ;;
--		6) [ $FW_DISABLE_IPV6 == 0 ] && app=ip6tables || return ;;
+-		*4) [ $FW_DISABLE_IPV4 == 0 ] && app=iptables  || return ;;
+-		*6) [ $FW_DISABLE_IPV6 == 0 ] && app=ip6tables || return ;;
 -		i) fw__dualip "$@"; return ;;
 -		I) fw__autoip "$@"; return ;;
 -		e) app=ebtables ;;
@@ -5584,68 +5695,78 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -		return 0
 -	fi
 -
+-	case "$fam" in
+-		G*) shift; while [ $# -gt 0 ] && [ "$1" != "{" ]; do shift; done ;;
+-	esac
+-
 -	if [ $# -gt 0 ]; then
 -		shift
 -		if [ $cmd == delete ]; then
 -			pos=
 -		fi
 -	fi
+-
+-	local cmdline="$app --table ${tab} --${cmd} ${chn} ${pol} ${pos} ${tgt:+--jump "$tgt"}"
 -	while [ $# -gt 1 ]; do
 -		case "$app:$1" in
--			ip6tables:--icmp-type) echo -n "--icmpv6-type" ;;
--			ip6tables:icmp|ip6tables:ICMP) echo -n "icmpv6" ;;
--			iptables:--icmpv6-type) echo -n "--icmp-type" ;;
--			iptables:icmpv6) echo -n "icmp" ;;
--			*:}|*:{) shift; continue ;;
--			*) echo -n "$1" ;;
+-			ip6tables:--icmp-type) cmdline="$cmdline --icmpv6-type" ;;
+-			ip6tables:icmp|ip6tables:ICMP) cmdline="$cmdline icmpv6" ;;
+-			iptables:--icmpv6-type) cmdline="$cmdline --icmp-type" ;;
+-			iptables:icmpv6) cmdline="$cmdline icmp" ;;
+-			*) cmdline="$cmdline $1" ;;
 -		esac
--		echo -ne "\0"
 -		shift
--	done | xargs -0 ${FW_TRACE:+-t} \
--		$app --table ${tab} --${cmd} ${chn} ${pol} ${pos} ${tgt:+--jump "$tgt"}
+-	done
+-
+-	[ -n "$FW_TRACE" ] && echo $cmdline >&2
+-
+-	$cmdline
+-
 -	fw__rc $?
 -}
 -
 -fw_get_port_range() {
--	local ports=$1
--	local delim=${2:-:}
--	if [ "$3" ]; then
--		fw_get_port_range "${ports}-${3}" $delim
+-	local _var=$1
+-	local _ports=$2
+-	local _delim=${3:-:}
+-	if [ "$4" ]; then
+-		fw_get_port_range $_var "${_ports}-${4}" $_delim
 -		return
 -	fi
 -
--	local first=${ports%-*}
--	local last=${ports#*-}
--	if [ "$first" != "$last" ]; then
--		echo "$first$delim$last"
+-	local _first=${_ports%-*}
+-	local _last=${_ports#*-}
+-	if [ "$_first" != "$_last" ]; then
+-		export -- "$_var=$_first$_delim$_last"
 -	else
--		echo "$first"
+-		export -- "$_var=$_first"
 -	fi
 -}
 -
 -fw_get_family_mode() {
--	local hint="$1"
--	local zone="$2"
--	local mode="$3"
+-	local _var="$1"
+-	local _hint="$2"
+-	local _zone="$3"
+-	local _mode="$4"
 -
--	local ipv4 ipv6
+-	local _ipv4 _ipv6
 -	[ -n "$FW_ZONES4$FW_ZONES6" ] && {
--		list_contains FW_ZONES4 $zone && ipv4=1 || ipv4=0
--		list_contains FW_ZONES6 $zone && ipv6=1 || ipv6=0
+-		list_contains FW_ZONES4 $_zone && _ipv4=1 || _ipv4=0
+-		list_contains FW_ZONES6 $_zone && _ipv6=1 || _ipv6=0
 -	} || {
--		ipv4=$(uci_get_state firewall core ${zone}_ipv4 0)
--		ipv6=$(uci_get_state firewall core ${zone}_ipv6 0)
+-		_ipv4=$(uci_get_state firewall core ${_zone}_ipv4 0)
+-		_ipv6=$(uci_get_state firewall core ${_zone}_ipv6 0)
 -	}
 -
--	case "$hint:$ipv4:$ipv6" in
--		*4:1:*|*:1:0) echo 4 ;;
--		*6:*:1|*:0:1) echo 6 ;;
--		*) echo $mode ;;
+-	case "$_hint:$_ipv4:$_ipv6" in
+-		*4:1:*|*:1:0) export -n -- "$_var=G4" ;;
+-		*6:*:1|*:0:1) export -n -- "$_var=G6" ;;
+-		*) export -n -- "$_var=$_mode" ;;
 -	esac
 -}
 -
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/lib/uci_firewall.sh buildroot/package/firewall/files/lib/uci_firewall.sh
---- buildroot.orig/package/firewall/files/lib/uci_firewall.sh	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/files/lib/uci_firewall.sh	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/files/lib/uci_firewall.sh	1969-12-31 19:00:00.000000000 -0500
 @@ -1,5 +0,0 @@
 -# This file is here for backwards compatibility and to override the
@@ -5653,10 +5774,122 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -type fw_is_loaded >/dev/null || {
 -	. /lib/firewall/core.sh
 -}
+diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/files/reflection.hotplug buildroot/package/firewall/files/reflection.hotplug
+--- buildroot.orig/package/firewall/files/reflection.hotplug	2010-09-24 22:19:29.000000000 -0400
++++ buildroot/package/firewall/files/reflection.hotplug	1969-12-31 19:00:00.000000000 -0500
+@@ -1,108 +0,0 @@
+-#!/bin/sh
+-
+-. /etc/functions.sh
+-
+-if [ "$ACTION" = "add" ] && [ "$INTERFACE" = "wan" ]; then
+-	local wanip=$(uci -P/var/state get network.wan.ipaddr)
+-
+-	iptables -t nat -F nat_reflection_in 2>/dev/null || {
+-		iptables -t nat -N nat_reflection_in
+-		iptables -t nat -A prerouting_rule -j nat_reflection_in
+-	}
+-
+-	iptables -t nat -F nat_reflection_out 2>/dev/null || {
+-		iptables -t nat -N nat_reflection_out
+-		iptables -t nat -A postrouting_rule -j nat_reflection_out
+-	}
+-
+-	find_networks() {
+-		find_networks_cb() {
+-			local cfg="$1"
+-			local zone="$2"
+-
+-			local name
+-			config_get name "$cfg" name
+-
+-			[ "$name" = "$zone" ] && {
+-				local network
+-				config_get network "$cfg" network
+-
+-				echo ${network:-$zone}
+-				return 1
+-			}
+-		}
+-
+-		config_foreach find_networks_cb zone "$1"
+-	}
+-	
+-	setup_fwd() {
+-		local cfg="$1"
+-
+-		local src
+-		config_get src "$cfg" src
+-
+-		local target
+-		config_get target "$cfg" target DNAT
+-
+-		[ "$src" = wan ] && [ "$target" = DNAT ] && {
+-			local dest
+-			config_get dest "$cfg" dest "lan"
+-
+-			local net
+-			for net in $(find_networks "$dest"); do
+-				local lanip=$(uci -P/var/state get network.$net.ipaddr)
+-				local lanmk=$(uci -P/var/state get network.$net.netmask)
+-
+-				local proto
+-				config_get proto "$cfg" proto
+-
+-				local reflection
+-				config_get_bool reflection "$cfg" reflection 1
+-				[ "$reflection" == 1 ] || return
+-
+-				local epmin epmax extport
+-				config_get extport "$cfg" src_dport
+-				[ -n "$extport" ] || return
+-
+-				epmin="${extport%[-:]*}"; epmax="${extport#*[-:]}"
+-				[ "$epmin" != "$epmax" ] || epmax=""
+-
+-				local ipmin ipmax intport
+-				config_get intport "$cfg" dest_port "$extport"
+-
+-				ipmin="${intport%[-:]*}"; ipmax="${intport#*[-:]}"
+-				[ "$ipmin" != "$ipmax" ] || ipmax=""
+-
+-				local exthost
+-				config_get exthost "$cfg" src_dip "$wanip"
+-
+-				local inthost
+-				config_get inthost "$cfg" dest_ip
+-				[ -n "$inthost" ] || return
+-
+-				[ "$proto" = tcpudp ] && proto="tcp udp"
+-
+-				local p
+-				for p in ${proto:-tcp udp}; do
+-					case "$p" in
+-						tcp|udp)
+-							iptables -t nat -A nat_reflection_in \
+-								-s $lanip/$lanmk -d $exthost \
+-								-p $p --dport $epmin${epmax:+:$epmax} \
+-								-j DNAT --to $inthost:$ipmin${ipmax:+-$ipmax}
+-
+-							iptables -t nat -A nat_reflection_out \
+-								-s $lanip/$lanmk -d $inthost \
+-								-p $p --dport $ipmin${ipmax:+:$ipmax} \
+-								-j SNAT --to-source $lanip
+-						;;
+-					esac
+-				done
+-			done
+-		}
+-	}
+-
+-	config_load firewall
+-	config_foreach setup_fwd redirect
+-fi
+-
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/firewall/Makefile buildroot/package/firewall/Makefile
---- buildroot.orig/package/firewall/Makefile	2010-06-25 19:41:37.000000000 -0400
+--- buildroot.orig/package/firewall/Makefile	2010-09-24 22:19:29.000000000 -0400
 +++ buildroot/package/firewall/Makefile	1969-12-31 19:00:00.000000000 -0500
-@@ -1,52 +0,0 @@
+@@ -1,54 +0,0 @@
 -#
 -# Copyright (C) 2008-2010 OpenWrt.org
 -#
@@ -5668,7 +5901,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -PKG_NAME:=firewall
 -
 -PKG_VERSION:=2
--PKG_RELEASE:=6
+-PKG_RELEASE:=17
 -
 -include $(INCLUDE_DIR)/package.mk
 -
@@ -5682,7 +5915,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -endef
 -
 -define Package/firewall/description
-- uci based firewall for openwrt
+- UCI based firewall for OpenWrt
 -endef
 -
 -define Build/Compile
@@ -5704,6 +5937,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -	$(INSTALL_BIN) ./files/firewall.init $(1)/etc/init.d/firewall
 -	$(INSTALL_DIR) $(1)/etc/hotplug.d/iface
 -	$(INSTALL_DATA) ./files/firewall.hotplug $(1)/etc/hotplug.d/iface/20-firewall
+-	$(INSTALL_DIR) $(1)/etc/hotplug.d/firewall
+-	$(INSTALL_DATA) ./files/reflection.hotplug $(1)/etc/hotplug.d/firewall/10-nat-reflection
 -	$(INSTALL_DIR) $(1)/etc
 -	$(INSTALL_DATA) ./files/firewall.user $(1)/etc
 -endef
@@ -5711,7 +5946,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -$(eval $(call BuildPackage,firewall))
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/haserl/Makefile buildroot/package/haserl/Makefile
 --- buildroot.orig/package/haserl/Makefile	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/haserl/Makefile	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/haserl/Makefile	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,33 @@
 +# 
 +# Copyright (C) 2006 OpenWrt.org
@@ -5748,7 +5983,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +$(eval $(call BuildPackage,haserl))
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/hdparm/Makefile buildroot/package/hdparm/Makefile
 --- buildroot.orig/package/hdparm/Makefile	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/hdparm/Makefile	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/hdparm/Makefile	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,43 @@
 +#
 +# Copyright (C) 2006-2008 OpenWrt.org
@@ -5795,7 +6030,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +$(eval $(call BuildPackage,hdparm))
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/hdparm/patches/100-compile-fix.patch buildroot/package/hdparm/patches/100-compile-fix.patch
 --- buildroot.orig/package/hdparm/patches/100-compile-fix.patch	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/hdparm/patches/100-compile-fix.patch	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/hdparm/patches/100-compile-fix.patch	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,11 @@
 +--- a/Makefile
 ++++ b/Makefile
@@ -5810,7 +6045,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 + 
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/firewall.awk buildroot/package/iptables/files/firewall.awk
 --- buildroot.orig/package/iptables/files/firewall.awk	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/firewall.awk	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/firewall.awk	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,50 @@
 +# Copyright (C) 2006 OpenWrt.org
 +
@@ -5864,7 +6099,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/firewall.config buildroot/package/iptables/files/firewall.config
 --- buildroot.orig/package/iptables/files/firewall.config	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/firewall.config	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/firewall.config	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,48 @@
 +# Copyright (C) 2006 OpenWrt.org
 +
@@ -5916,7 +6151,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# forward:dport=60168:192.168.1.2:60169
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/firewall.init buildroot/package/iptables/files/firewall.init
 --- buildroot.orig/package/iptables/files/firewall.init	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/firewall.init	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/firewall.init	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,160 @@
 +#!/bin/sh /etc/rc.common
 +# Copyright (C) 2006 OpenWrt.org
@@ -6080,7 +6315,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/firewall.user buildroot/package/iptables/files/firewall.user
 --- buildroot.orig/package/iptables/files/firewall.user	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/firewall.user	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/firewall.user	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,30 @@
 +#!/bin/sh
 +# Copyright (C) 2006 OpenWrt.org
@@ -6114,7 +6349,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# iptables        -A forwarding_wan -d 192.168.1.2 -j ACCEPT
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/applejuice.pat buildroot/package/iptables/files/l7/applejuice.pat
 --- buildroot.orig/package/iptables/files/l7/applejuice.pat	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/l7/applejuice.pat	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/l7/applejuice.pat	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,12 @@
 +# Apple Juice - P2P filesharing - http://www.applejuicenet.de
 +# Pattern attributes: great veryfast fast
@@ -6130,7 +6365,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +^ajprot\x0d\x0a
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/ares.pat buildroot/package/iptables/files/l7/ares.pat
 --- buildroot.orig/package/iptables/files/l7/ares.pat	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/l7/ares.pat	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/l7/ares.pat	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,63 @@
 +# Ares - P2P filesharing - http://aresgalaxy.sf.net
 +# Pattern attributes: good veryfast fast undermatch
@@ -6197,7 +6432,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# haven't found any patterns.
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/h323.pat buildroot/package/iptables/files/l7/h323.pat
 --- buildroot.orig/package/iptables/files/l7/h323.pat	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/l7/h323.pat	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/l7/h323.pat	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,36 @@
 +# H.323 - Voice over IP.
 +# Pattern attributes: ok veryfast fast
@@ -6237,7 +6472,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +^\x03..?\x08...?.?.?.?.?.?.?.?.?.?.?.?.?.?.?\x05
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/sip.pat buildroot/package/iptables/files/l7/sip.pat
 --- buildroot.orig/package/iptables/files/l7/sip.pat	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/l7/sip.pat	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/l7/sip.pat	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,19 @@
 +# SIP - Session Initiation Protocol - Internet telephony - RFC 3261
 +# Pattern attributes: ok fast fast
@@ -6260,7 +6495,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +^(invite|register|cancel) sip[\x09-\x0d -~]*sip/[0-2]\.[0-9]
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/skypeout.pat buildroot/package/iptables/files/l7/skypeout.pat
 --- buildroot.orig/package/iptables/files/l7/skypeout.pat	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/l7/skypeout.pat	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/l7/skypeout.pat	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,50 @@
 +# Skype to phone - UDP voice call (program to POTS phone) - http://skype.com
 +# Pattern attributes: ok slow notsofast overmatch
@@ -6314,7 +6549,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +^(\x01.?.?.?.?.?.?.?.?\x01|\x02.?.?.?.?.?.?.?.?\x02|\x03.?.?.?.?.?.?.?.?\x03|\x04.?.?.?.?.?.?.?.?\x04|\x05.?.?.?.?.?.?.?.?\x05|\x06.?.?.?.?.?.?.?.?\x06|\x07.?.?.?.?.?.?.?.?\x07|\x08.?.?.?.?.?.?.?.?\x08|\x09.?.?.?.?.?.?.?.?\x09|\x0a.?.?.?.?.?.?.?.?\x0a|\x0b.?.?.?.?.?.?.?.?\x0b|\x0c.?.?.?.?.?.?.?.?\x0c|\x0d.?.?.?.?.?.?.?.?\x0d|\x0e.?.?.?.?.?.?.?.?\x0e|\x0f.?.?.?.?.?.?.?.?\x0f|\x10.?.?.?.?.?.?.?.?\x10|\x11.?.?.?.?.?.?.?.?\x11|\x12.?.?.?.?.?.?.?.?\x12|\x13.?.?.?.?.?.?.?.?\x13|\x14.?.?.?.?.?.?.?.?\x14|\x15.?.?.?.?.?.?.?.?\x15|\x16.?.?.?.?.?.?.?.?\x16|\x17.?.?.?.?.?.?.?.?\x17|\x18.?.?.?.?.?.?.?.?\x18|\x19.?.?.?.?.?.?.?.?\x19|\x1a.?.?.?.?.?.?.?.?\x1a|\x1b.?.?.?.?.?.?.?.?\x1b|\x1c.?.?.?.?.?.?.?.?\x1c|\x1d.?.?.?.?.?.?.?.?\x1d|\x1e.?.?.?.?.?.?.?.?\x1e|\x1f.?.?.?.?.?.?.?.?\x1f|\x20.?.?.?.?.?.?.?.?\x20|\x21.?.?.?.?.?.?.?.?\x21|\x22.?.?.?.?.?.?.?.?\x22|\x23.?.?.?.?.?.?.?.?\x23|\$.?.?.?.?.?.?.?.?\$|\x25.?.?.?.?.?.?.?.?\x25|\x26.?.?.?.?.?.?.?.?\x26|\x27.?.?.?.?.?.?.?.?\x27|\(.?.?.?.?.?.?.?.?\(|\).?.?.?.?.?.?.?.?\)|\*.?.?.?.?.?.?.?.?\*|\+.?.?.?.?.?.?.?.?\+|\x2c.?.?.?.?.?.?.?.?\x2c|\x2d.?.?.?.?.?.?.?.?\x2d|\..?.?.?.?.?.?.?.?\.|\x2f.?.?.?.?.?.?.?.?\x2f|\x30.?.?.?.?.?.?.?.?\x30|\x31.?.?.?.?.?.?.?.?\x31|\x32.?.?.?.?.?.?.?.?\x32|\x33.?.?.?.?.?.?.?.?\x33|\x34.?.?.?.?.?.?.?.?\x34|\x35.?.?.?.?.?.?.?.?\x35|\x36.?.?.?.?.?.?.?.?\x36|\x37.?.?.?.?.?.?.?.?\x37|\x38.?.?.?.?.?.?.?.?\x38|\x39.?.?.?.?.?.?.?.?\x39|\x3a.?.?.?.?.?.?.?.?\x3a|\x3b.?.?.?.?.?.?.?.?\x3b|\x3c.?.?.?.?.?.?.?.?\x3c|\x3d.?.?.?.?.?.?.?.?\x3d|\x3e.?.?.?.?.?.?.?.?\x3e|\?.?.?.?.?.?.?.?.?\?|\x40.?.?.?.?.?.?.?.?\x40|\x41.?.?.?.?.?.?.?.?\x41|\x42.?.?.?.?.?.?.?.?\x42|\x43.?.?.?.?.?.?.?.?\x43|\x44.?.?.?.?.?.?.?.?\x44|\x45.?.?.?.?.?.?.?.?\x45|\x46.?.?.?.?.?.?.?.?\x46|\x47.?.?.?.?.?.?.?.?\x47|\x48.?.?.?.?.?.?.?.?\x48|\x49.?.?.?.?.?.?.?.?\x49|\x4a.?.?.?.?.?.?.?.?\x4a|\x4b.?.?.?.?.?.?.?.?\x4b|\x4c.?.?.?.?.?.?.?.?\x4c|\x4d.?.?.?.?.?.?.?.?\x4d|\x4e.?.?.?.?.?.?.?.?\x4e|\x4f.?.?.?.?.?.?.?.?\x4f|\x50.?.?.?.?.?.?.?.?\x50|\x51.?.?.?.?.?.?.?.?\x51|\x52.?.?.?.?.?.?.?.?\x52|\x53.?.?.?.?.?.?.?.?\x53|\x54.?.?.?.?.?.?.?.?\x54|\x55.?.?.?.?.?.?.?.?\x55|\x56.?.?.?.?.?.?.?.?\x56|\x57.?.?.?.?.?.?.?.?\x57|\x58.?.?.?.?.?.?.?.?\x58|\x59.?.?.?.?.?.?.?.?\x59|\x5a.?.?.?.?.?.?.?.?\x5a|\[.?.?.?.?.?.?.?.?\[|\\.?.?.?.?.?.?.?.?\\|\].?.?.?.?.?.?.?.?\]|\^.?.?.?.?.?.?.?.?\^|\x5f.?.?.?.?.?.?.?.?\x5f|\x60.?.?.?.?.?.?.?.?\x60|\x61.?.?.?.?.?.?.?.?\x61|\x62.?.?.?.?.?.?.?.?\x62|\x63.?.?.?.?.?.?.?.?\x63|\x64.?.?.?.?.?.?.?.?\x64|\x65.?.?.?.?.?.?.?.?\x65|\x66.?.?.?.?.?.?.?.?\x66|\x67.?.?.?.?.?.?.?.?\x67|\x68.?.?.?.?.?.?.?.?\x68|\x69.?.?.?.?.?.?.?.?\x69|\x6a.?.?.?.?.?.?.?.?\x6a|\x6b.?.?.?.?.?.?.?.?\x6b|\x6c.?.?.?.?.?.?.?.?\x6c|\x6d.?.?.?.?.?.?.?.?\x6d|\x6e.?.?.?.?.?.?.?.?\x6e|\x6f.?.?.?.?.?.?.?.?\x6f|\x70.?.?.?.?.?.?.?.?\x70|\x71.?.?.?.?.?.?.?.?\x71|\x72.?.?.?.?.?.?.?.?\x72|\x73.?.?.?.?.?.?.?.?\x73|\x74.?.?.?.?.?.?.?.?\x74|\x75.?.?.?.?.?.?.?.?\x75|\x76.?.?.?.?.?.?.?.?\x76|\x77.?.?.?.?.?.?.?.?\x77|\x78.?.?.?.?.?.?.?.?\x78|\x79.?.?.?.?.?.?.?.?\x79|\x7a.?.?.?.?.?.?.?.?\x7a|\{.?.?.?.?.?.?.?.?\{|\|.?.?.?.?.?.?.?.?\||\}.?.?.?.?.?.?.?.?\}|\x7e.?.?.?.?.?.?.?.?\x7e|\x7f.?.?.?.?.?.?.?.?\x7f|\x80.?.?.?.?.?.?.?.?\x80|\x81.?.?.?.?.?.?.?.?\x81|\x82.?.?.?.?.?.?.?.?\x82|\x83.?.?.?.?.?.?.?.?\x83|\x84.?.?.?.?.?.?.?.?\x84|\x85.?.?.?.?.?.?.?.?\x85|\x86.?.?.?.?.?.?.?.?\x86|\x87.?.?.?.?.?.?.?.?\x87|\x88.?.?.?.?.?.?.?.?\x88|\x89.?.?.?.?.?.?.?.?\x89|\x8a.?.?.?.?.?.?.?.?\x8a|\x8b.?.?.?.?.?.?.?.?\x8b|\x8c.?.?.?.?.?.?.?.?\x8c|\x8d.?.?.?.?.?.?.?.?\x8d|\x8e.?.?.?.?.?.?.?.?\x8e|\x8f.?.?.?.?.?.?.?.?\x8f|\x90.?.?.?.?.?.?.?.?\x90|\x91.?.?.?.?.?.?.?.?\x91|\x92.?.?.?.?.?.?.?.?\x92|\x93.?.?.?.?.?.?.?.?\x93|\x94.?.?.?.?.?.?.?.?\x94|\x95.?.?.?.?.?.?.?.?\x95|\x96.?.?.?.?.?.?.?.?\x96|\x97.?.?.?.?.?.?.?.?\x97|\x98.?.?.?.?.?.?.?.?\x98|\x99.?.?.?.?.?.?.?.?\x99|\x9a.?.?.?.?.?.?.?.?\x9a|\x9b.?.?.?.?.?.?.?.?\x9b|\x9c.?.?.?.?.?.?.?.?\x9c|\x9d.?.?.?.?.?.?.?.?\x9d|\x9e.?.?.?.?.?.?.?.?\x9e|\x9f.?.?.?.?.?.?.?.?\x9f|\xa0.?.?.?.?.?.?.?.?\xa0|\xa1.?.?.?.?.?.?.?.?\xa1|\xa2.?.?.?.?.?.?.?.?\xa2|\xa3.?.?.?.?.?.?.?.?\xa3|\xa4.?.?.?.?.?.?.?.?\xa4|\xa5.?.?.?.?.?.?.?.?\xa5|\xa6.?.?.?.?.?.?.?.?\xa6|\xa7.?.?.?.?.?.?.?.?\xa7|\xa8.?.?.?.?.?.?.?.?\xa8|\xa9.?.?.?.?.?.?.?.?\xa9|\xaa.?.?.?.?.?.?.?.?\xaa|\xab.?.?.?.?.?.?.?.?\xab|\xac.?.?.?.?.?.?.?.?\xac|\xad.?.?.?.?.?.?.?.?\xad|\xae.?.?.?.?.?.?.?.?\xae|\xaf.?.?.?.?.?.?.?.?\xaf|\xb0.?.?.?.?.?.?.?.?\xb0|\xb1.?.?.?.?.?.?.?.?\xb1|\xb2.?.?.?.?.?.?.?.?\xb2|\xb3.?.?.?.?.?.?.?.?\xb3|\xb4.?.?.?.?.?.?.?.?\xb4|\xb5.?.?.?.?.?.?.?.?\xb5|\xb6.?.?.?.?.?.?.?.?\xb6|\xb7.?.?.?.?.?.?.?.?\xb7|\xb8.?.?.?.?.?.?.?.?\xb8|\xb9.?.?.?.?.?.?.?.?\xb9|\xba.?.?.?.?.?.?.?.?\xba|\xbb.?.?.?.?.?.?.?.?\xbb|\xbc.?.?.?.?.?.?.?.?\xbc|\xbd.?.?.?.?.?.?.?.?\xbd|\xbe.?.?.?.?.?.?.?.?\xbe|\xbf.?.?.?.?.?.?.?.?\xbf|\xc0.?.?.?.?.?.?.?.?\xc0|\xc1.?.?.?.?.?.?.?.?\xc1|\xc2.?.?.?.?.?.?.?.?\xc2|\xc3.?.?.?.?.?.?.?.?\xc3|\xc4.?.?.?.?.?.?.?.?\xc4|\xc5.?.?.?.?.?.?.?.?\xc5|\xc6.?.?.?.?.?.?.?.?\xc6|\xc7.?.?.?.?.?.?.?.?\xc7|\xc8.?.?.?.?.?.?.?.?\xc8|\xc9.?.?.?.?.?.?.?.?\xc9|\xca.?.?.?.?.?.?.?.?\xca|\xcb.?.?.?.?.?.?.?.?\xcb|\xcc.?.?.?.?.?.?.?.?\xcc|\xcd.?.?.?.?.?.?.?.?\xcd|\xce.?.?.?.?.?.?.?.?\xce|\xcf.?.?.?.?.?.?.?.?\xcf|\xd0.?.?.?.?.?.?.?.?\xd0|\xd1.?.?.?.?.?.?.?.?\xd1|\xd2.?.?.?.?.?.?.?.?\xd2|\xd3.?.?.?.?.?.?.?.?\xd3|\xd4.?.?.?.?.?.?.?.?\xd4|\xd5.?.?.?.?.?.?.?.?\xd5|\xd6.?.?.?.?.?.?.?.?\xd6|\xd7.?.?.?.?.?.?.?.?\xd7|\xd8.?.?.?.?.?.?.?.?\xd8|\xd9.?.?.?.?.?.?.?.?\xd9|\xda.?.?.?.?.?.?.?.?\xda|\xdb.?.?.?.?.?.?.?.?\xdb|\xdc.?.?.?.?.?.?.?.?\xdc|\xdd.?.?.?.?.?.?.?.?\xdd|\xde.?.?.?.?.?.?.?.?\xde|\xdf.?.?.?.?.?.?.?.?\xdf|\xe0.?.?.?.?.?.?.?.?\xe0|\xe1.?.?.?.?.?.?.?.?\xe1|\xe2.?.?.?.?.?.?.?.?\xe2|\xe3.?.?.?.?.?.?.?.?\xe3|\xe4.?.?.?.?.?.?.?.?\xe4|\xe5.?.?.?.?.?.?.?.?\xe5|\xe6.?.?.?.?.?.?.?.?\xe6|\xe7.?.?.?.?.?.?.?.?\xe7|\xe8.?.?.?.?.?.?.?.?\xe8|\xe9.?.?.?.?.?.?.?.?\xe9|\xea.?.?.?.?.?.?.?.?\xea|\xeb.?.?.?.?.?.?.?.?\xeb|\xec.?.?.?.?.?.?.?.?\xec|\xed.?.?.?.?.?.?.?.?\xed|\xee.?.?.?.?.?.?.?.?\xee|\xef.?.?.?.?.?.?.?.?\xef|\xf0.?.?.?.?.?.?.?.?\xf0|\xf1.?.?.?.?.?.?.?.?\xf1|\xf2.?.?.?.?.?.?.?.?\xf2|\xf3.?.?.?.?.?.?.?.?\xf3|\xf4.?.?.?.?.?.?.?.?\xf4|\xf5.?.?.?.?.?.?.?.?\xf5|\xf6.?.?.?.?.?.?.?.?\xf6|\xf7.?.?.?.?.?.?.?.?\xf7|\xf8.?.?.?.?.?.?.?.?\xf8|\xf9.?.?.?.?.?.?.?.?\xf9|\xfa.?.?.?.?.?.?.?.?\xfa|\xfb.?.?.?.?.?.?.?.?\xfb|\xfc.?.?.?.?.?.?.?.?\xfc|\xfd.?.?.?.?.?.?.?.?\xfd|\xfe.?.?.?.?.?.?.?.?\xfe|\xff.?.?.?.?.?.?.?.?\xff)
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/skypetoskype.pat buildroot/package/iptables/files/l7/skypetoskype.pat
 --- buildroot.orig/package/iptables/files/l7/skypetoskype.pat	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/l7/skypetoskype.pat	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/l7/skypetoskype.pat	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,14 @@
 +# Skype to Skype - UDP voice call (program to program) - http://skype.com
 +# Pattern attributes: ok veryfast fast overmatch
@@ -6332,7 +6567,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/soulseek.pat buildroot/package/iptables/files/l7/soulseek.pat
 --- buildroot.orig/package/iptables/files/l7/soulseek.pat	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/l7/soulseek.pat	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/l7/soulseek.pat	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,17 @@
 +# Soulseek - P2P filesharing - http://slsknet.org
 +# Pattern attributes: good fast fast
@@ -6353,7 +6588,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +^(\x05..?|.\x01.[ -~]+\x01F..?.?.?.?.?.?.?)$
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/teamspeak.pat buildroot/package/iptables/files/l7/teamspeak.pat
 --- buildroot.orig/package/iptables/files/l7/teamspeak.pat	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/l7/teamspeak.pat	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/l7/teamspeak.pat	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,15 @@
 +# TeamSpeak - VoIP application - http://goteamspeak.com
 +# Pattern attributes: good veryfast fast
@@ -6372,7 +6607,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/tor.pat buildroot/package/iptables/files/l7/tor.pat
 --- buildroot.orig/package/iptables/files/l7/tor.pat	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/iptables/files/l7/tor.pat	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/iptables/files/l7/tor.pat	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,17 @@
 +# Tor - The Onion Router - used for anonymization - http://tor.eff.org
 +# Pattern attributes: good notsofast notsofast
@@ -6392,9 +6627,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +tor
 +TOR1.*<identity>
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/iptables/Makefile buildroot/package/iptables/Makefile
---- buildroot.orig/package/iptables/Makefile	2010-06-25 19:41:27.000000000 -0400
-+++ buildroot/package/iptables/Makefile	2010-06-25 19:10:36.000000000 -0400
-@@ -87,7 +87,7 @@
+--- buildroot.orig/package/iptables/Makefile	2010-09-24 22:19:19.000000000 -0400
++++ buildroot/package/iptables/Makefile	2010-09-24 22:27:13.000000000 -0400
+@@ -89,7 +89,7 @@
  
  define Package/iptables-mod-filter
  $(call Package/iptables/Module, +kmod-ipt-filter)
@@ -6403,7 +6638,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  endef
  
  define Package/iptables-mod-filter/description
-@@ -131,7 +131,7 @@
+@@ -133,7 +133,7 @@
  
  define Package/iptables-mod-ipsec
  $(call Package/iptables/Module, +kmod-ipt-ipsec)
@@ -6412,7 +6647,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  endef
  
  define Package/iptables-mod-ipsec/description
-@@ -191,7 +191,7 @@
+@@ -204,7 +204,7 @@
  
  define Package/iptables-mod-iprange
  $(call Package/iptables/Module, +kmod-ipt-iprange)
@@ -6421,7 +6656,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  endef
  
  define Package/iptables-mod-iprange/description
-@@ -319,6 +319,13 @@
+@@ -334,6 +334,13 @@
  endef
  
  define Package/iptables/install
@@ -6435,7 +6670,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  	$(INSTALL_DIR) $(1)/usr/sbin
  	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/iptables $(1)/usr/sbin/
  	$(INSTALL_DIR) $(1)/usr/lib/iptables
-@@ -382,7 +389,6 @@
+@@ -402,7 +409,6 @@
  $(eval $(call BuildPackage,iptables))
  $(eval $(call BuildPackage,iptables-utils))
  $(eval $(call BuildPlugin,iptables-mod-conntrack,$(IPT_CONNTRACK-m)))
@@ -6443,21 +6678,21 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  $(eval $(call BuildPlugin,iptables-mod-extra,$(IPT_EXTRA-m)))
  $(eval $(call BuildPlugin,iptables-mod-filter,$(IPT_FILTER-m),$(L7_INSTALL)))
  $(eval $(call BuildPlugin,iptables-mod-imq,$(IPT_IMQ-m)))
-@@ -390,7 +396,6 @@
+@@ -410,7 +416,6 @@
  $(eval $(call BuildPlugin,iptables-mod-ipsec,$(IPT_IPSEC-m)))
  $(eval $(call BuildPlugin,iptables-mod-ipset,ipt_set ipt_SET))
  $(eval $(call BuildPlugin,iptables-mod-nat,$(IPT_NAT-m)))
 -$(eval $(call BuildPlugin,iptables-mod-nat-extra,$(IPT_NAT_EXTRA-m)))
  $(eval $(call BuildPlugin,iptables-mod-iprange,$(IPT_IPRANGE-m)))
  $(eval $(call BuildPlugin,iptables-mod-ulog,$(IPT_ULOG-m)))
- $(eval $(call BuildPlugin,iptables-mod-tproxy,$(IPT_TPROXY-m)))
+ $(eval $(call BuildPlugin,iptables-mod-hashlimit,$(IPT_HASHLIMIT-m)))
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/kernel/modules/usb.mk buildroot/package/kernel/modules/usb.mk
---- buildroot.orig/package/kernel/modules/usb.mk	2010-06-25 19:41:31.000000000 -0400
-+++ buildroot/package/kernel/modules/usb.mk	2010-06-25 19:15:27.000000000 -0400
-@@ -139,7 +139,7 @@
+--- buildroot.orig/package/kernel/modules/usb.mk	2010-09-24 22:19:22.000000000 -0400
++++ buildroot/package/kernel/modules/usb.mk	2010-09-24 22:29:56.000000000 -0400
+@@ -169,7 +169,7 @@
    KCONFIG:=CONFIG_USB_EHCI_HCD \
      CONFIG_USB_EHCI_AR71XX=y
-   FILES:=$(LINUX_DIR)/drivers/usb/host/ehci-hcd.$(LINUX_KMOD_SUFFIX)
+   FILES:=$(LINUX_DIR)/drivers/usb/host/ehci-hcd.ko
 -  AUTOLOAD:=$(call AutoLoad,40,ehci-hcd,1)
 +  AUTOLOAD:=$(call AutoLoad,50,ehci-hcd,1)
    $(call AddDepends/usb)
@@ -6465,7 +6700,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/libusb/Makefile buildroot/package/libusb/Makefile
 --- buildroot.orig/package/libusb/Makefile	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/libusb/Makefile	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/libusb/Makefile	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,72 @@
 +#
 +# Copyright (C) 2006-2008 OpenWrt.org
@@ -6541,7 +6776,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +$(eval $(call BuildPackage,libusb))
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/libusb/patches/001-no_libusbpp.patch buildroot/package/libusb/patches/001-no_libusbpp.patch
 --- buildroot.orig/package/libusb/patches/001-no_libusbpp.patch	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/libusb/patches/001-no_libusbpp.patch	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/libusb/patches/001-no_libusbpp.patch	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,106 @@
 +--- libusb-0.1.12/Makefile.in.old	2007-01-04 16:36:50.000000000 -0700
 ++++ libusb-0.1.12/Makefile.in	2007-01-04 16:42:55.000000000 -0700
@@ -6651,7 +6886,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 + @am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/mini_httpd/files/mini_httpd.conf buildroot/package/mini_httpd/files/mini_httpd.conf
 --- buildroot.orig/package/mini_httpd/files/mini_httpd.conf	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/mini_httpd/files/mini_httpd.conf	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/mini_httpd/files/mini_httpd.conf	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,7 @@
 +cgipat=cgi-bin/**|**.sh
 +dir=/www
@@ -6662,7 +6897,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +certfile=/etc/mini_httpd/server.pem
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/mini_httpd/Makefile buildroot/package/mini_httpd/Makefile
 --- buildroot.orig/package/mini_httpd/Makefile	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/mini_httpd/Makefile	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/mini_httpd/Makefile	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,178 @@
 +#
 +# Copyright (C) 2006 OpenWrt.org
@@ -6844,7 +7079,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +$(eval $(call BuildPackage,mini-httpd-htpasswd))
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/mini_httpd/patches/001-cgi_path.patch buildroot/package/mini_httpd/patches/001-cgi_path.patch
 --- buildroot.orig/package/mini_httpd/patches/001-cgi_path.patch	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/mini_httpd/patches/001-cgi_path.patch	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/mini_httpd/patches/001-cgi_path.patch	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,16 @@
 +diff -ruN mini_httpd-1.19-old/mini_httpd.c mini_httpd-1.19-new/mini_httpd.c
 +--- mini_httpd-1.19-old/mini_httpd.c	2005-10-19 01:11:24.000000000 +0200
@@ -6864,7 +7099,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 + #define AUTH_FILE ".htpasswd"
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/mini_httpd/patches/002-realm.patch buildroot/package/mini_httpd/patches/002-realm.patch
 --- buildroot.orig/package/mini_httpd/patches/002-realm.patch	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/mini_httpd/patches/002-realm.patch	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/mini_httpd/patches/002-realm.patch	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,10 @@
 +--- mini_httpd-1.19-old/mini_httpd.c	2005-06-29 13:31:17.000000000 -0400
 ++++ mini_httpd-1.19-new/mini_httpd.c	2008-11-19 23:51:31.000000000 -0500
@@ -6878,7 +7113,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 + 	header, sizeof(header), "WWW-Authenticate: Basic realm=\"%s\"", realm );
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/ntpclient/files/ntpclient.config buildroot/package/ntpclient/files/ntpclient.config
 --- buildroot.orig/package/ntpclient/files/ntpclient.config	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/ntpclient/files/ntpclient.config	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/ntpclient/files/ntpclient.config	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,22 @@
 +config ntpserver
 +	option hostname '0.openwrt.pool.ntp.org'
@@ -6904,7 +7139,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +	#option count	10
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/ntpclient/files/ntpclient.hotplug buildroot/package/ntpclient/files/ntpclient.hotplug
 --- buildroot.orig/package/ntpclient/files/ntpclient.hotplug	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/ntpclient/files/ntpclient.hotplug	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/ntpclient/files/ntpclient.hotplug	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,65 @@
 +#!/bin/sh
 +# Copyright (C) 2006 OpenWrt.org
@@ -6973,7 +7208,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +esac
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/ntpclient/Makefile buildroot/package/ntpclient/Makefile
 --- buildroot.orig/package/ntpclient/Makefile	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/ntpclient/Makefile	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/ntpclient/Makefile	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,49 @@
 +#
 +# Copyright (C) 2006 OpenWrt.org
@@ -7026,7 +7261,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +$(eval $(call BuildPackage,ntpclient))
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/ntpclient/patches/100-daemon.patch buildroot/package/ntpclient/patches/100-daemon.patch
 --- buildroot.orig/package/ntpclient/patches/100-daemon.patch	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/ntpclient/patches/100-daemon.patch	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/ntpclient/patches/100-daemon.patch	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,24 @@
 +Index: ntpclient-2007/ntpclient.c
 +===================================================================
@@ -7054,7 +7289,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 + 				exit(1);
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/usbutils/Makefile buildroot/package/usbutils/Makefile
 --- buildroot.orig/package/usbutils/Makefile	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/usbutils/Makefile	2010-06-25 19:10:36.000000000 -0400
++++ buildroot/package/usbutils/Makefile	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,52 @@
 +#
 +# Copyright (C) 2007 OpenWrt.org
@@ -7109,8 +7344,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +
 +$(eval $(call BuildPackage,usbutils))
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/etc/config/webif buildroot/package/webif/files/etc/config/webif
---- buildroot.orig/package/webif/files/etc/config/webif	2010-06-25 19:41:49.000000000 -0400
-+++ buildroot/package/webif/files/etc/config/webif	2010-06-25 19:10:36.000000000 -0400
+--- buildroot.orig/package/webif/files/etc/config/webif	2010-09-24 22:20:29.000000000 -0400
++++ buildroot/package/webif/files/etc/config/webif	2010-09-24 22:27:13.000000000 -0400
 @@ -1,6 +1,6 @@
  config webif general
  	option lang "en"
@@ -7129,7 +7364,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  config webif qos
  	option show_advanced_rules "0"
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/etc/httpd.conf buildroot/package/webif/files/etc/httpd.conf
---- buildroot.orig/package/webif/files/etc/httpd.conf	2010-06-25 19:41:49.000000000 -0400
+--- buildroot.orig/package/webif/files/etc/httpd.conf	2010-09-24 22:20:29.000000000 -0400
 +++ buildroot/package/webif/files/etc/httpd.conf	1969-12-31 19:00:00.000000000 -0500
 @@ -1,9 +0,0 @@
 -/cgi-bin/webif/:root:$p$root
@@ -7142,8 +7377,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -.js:application/x-javascript
 -
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/etc/init.d/webif buildroot/package/webif/files/etc/init.d/webif
---- buildroot.orig/package/webif/files/etc/init.d/webif	2010-06-25 19:41:49.000000000 -0400
-+++ buildroot/package/webif/files/etc/init.d/webif	2010-06-25 19:22:05.000000000 -0400
+--- buildroot.orig/package/webif/files/etc/init.d/webif	2010-09-24 22:20:29.000000000 -0400
++++ buildroot/package/webif/files/etc/init.d/webif	2010-09-24 22:27:13.000000000 -0400
 @@ -128,24 +128,7 @@
  	firmware_subtitle=$CONFIG_general_firmware_subtitle
  	firmware_version=$CONFIG_general_firmware_version
@@ -7171,8 +7406,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  	if [ "$CONFIG_general_firstboot" = "1" ]; then
  		opkg update
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/usr/lib/webif/apply.sh buildroot/package/webif/files/usr/lib/webif/apply.sh
---- buildroot.orig/package/webif/files/usr/lib/webif/apply.sh	2010-06-25 19:41:48.000000000 -0400
-+++ buildroot/package/webif/files/usr/lib/webif/apply.sh	2010-06-25 19:10:44.000000000 -0400
+--- buildroot.orig/package/webif/files/usr/lib/webif/apply.sh	2010-09-24 22:20:29.000000000 -0400
++++ buildroot/package/webif/files/usr/lib/webif/apply.sh	2010-09-24 22:27:13.000000000 -0400
 @@ -27,6 +27,7 @@
  HANDLERS_file='
  	hosts) rm -f /etc/hosts; mv $config /etc/hosts; killall -HUP dnsmasq ;;
@@ -7182,8 +7417,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  	httpd.conf) mv -f /tmp/.webif/file-httpd.conf /etc/httpd.conf && HTTP_RESTART=1 ;;
  '
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/usr/lib/webif/functions.sh buildroot/package/webif/files/usr/lib/webif/functions.sh
---- buildroot.orig/package/webif/files/usr/lib/webif/functions.sh	2010-06-25 19:41:48.000000000 -0400
-+++ buildroot/package/webif/files/usr/lib/webif/functions.sh	2010-06-25 19:10:44.000000000 -0400
+--- buildroot.orig/package/webif/files/usr/lib/webif/functions.sh	2010-09-24 22:20:29.000000000 -0400
++++ buildroot/package/webif/files/usr/lib/webif/functions.sh	2010-09-24 22:27:13.000000000 -0400
 @@ -135,14 +135,14 @@
  	# emit output to std devices.
  	echo "@TR<<Installing package>>..."
@@ -7202,8 +7437,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  		}
  	}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/usr/lib/webif/webif.sh buildroot/package/webif/files/usr/lib/webif/webif.sh
---- buildroot.orig/package/webif/files/usr/lib/webif/webif.sh	2010-06-25 19:41:48.000000000 -0400
-+++ buildroot/package/webif/files/usr/lib/webif/webif.sh	2010-06-25 19:10:44.000000000 -0400
+--- buildroot.orig/package/webif/files/usr/lib/webif/webif.sh	2010-09-24 22:20:29.000000000 -0400
++++ buildroot/package/webif/files/usr/lib/webif/webif.sh	2010-09-24 22:27:13.000000000 -0400
 @@ -312,7 +312,7 @@
  $_endform
  <hr />
@@ -7224,8 +7459,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  			;;
  	esac
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/.categories buildroot/package/webif/files/www/cgi-bin/webif/.categories
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/.categories	2010-06-25 19:41:48.000000000 -0400
-+++ buildroot/package/webif/files/www/cgi-bin/webif/.categories	2010-06-25 19:10:44.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/.categories	2010-09-24 22:20:28.000000000 -0400
++++ buildroot/package/webif/files/www/cgi-bin/webif/.categories	2010-09-24 22:27:13.000000000 -0400
 @@ -1,5 +1,4 @@
  ##WEBIF:category:Info
 -##WEBIF:category:Graphs
@@ -7233,8 +7468,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  ##WEBIF:category:Log
  ##WEBIF:category:-
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/info.sh buildroot/package/webif/files/www/cgi-bin/webif/info.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/info.sh	2010-06-25 19:41:48.000000000 -0400
-+++ buildroot/package/webif/files/www/cgi-bin/webif/info.sh	2010-06-25 19:10:44.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/info.sh	2010-09-24 22:20:28.000000000 -0400
++++ buildroot/package/webif/files/www/cgi-bin/webif/info.sh	2010-09-24 22:27:13.000000000 -0400
 @@ -70,6 +70,12 @@
  	echo "</pre><br />"
  }
@@ -7269,7 +7504,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  
  footer
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/network-firewall.sh buildroot/package/webif/files/www/cgi-bin/webif/network-firewall.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/network-firewall.sh	2010-06-25 19:41:48.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/network-firewall.sh	2010-09-24 22:20:28.000000000 -0400
 +++ buildroot/package/webif/files/www/cgi-bin/webif/network-firewall.sh	1969-12-31 19:00:00.000000000 -0500
 @@ -1,483 +0,0 @@
 -#!/usr/bin/webif-page
@@ -7756,7 +7991,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -##WEBIF:name:Network:415:Firewall
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/network-qos.sh buildroot/package/webif/files/www/cgi-bin/webif/network-qos.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/network-qos.sh	2010-06-25 19:41:48.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/network-qos.sh	2010-09-24 22:20:28.000000000 -0400
 +++ buildroot/package/webif/files/www/cgi-bin/webif/network-qos.sh	1969-12-31 19:00:00.000000000 -0500
 @@ -1,491 +0,0 @@
 -#!/usr/bin/webif-page
@@ -8251,8 +8486,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -##WEBIF:name:Network:600:QoS
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/reboot.sh buildroot/package/webif/files/www/cgi-bin/webif/reboot.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/reboot.sh	2010-06-25 19:41:48.000000000 -0400
-+++ buildroot/package/webif/files/www/cgi-bin/webif/reboot.sh	2010-08-15 17:32:17.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/reboot.sh	2010-09-24 22:20:28.000000000 -0400
++++ buildroot/package/webif/files/www/cgi-bin/webif/reboot.sh	2010-09-24 22:27:13.000000000 -0400
 @@ -9,7 +9,7 @@
  	uci_load "network"
  	router_ip="$CONFIG_lan_ipaddr"
@@ -8263,7 +8498,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  <br/><br/>
  @TR<<reboot_wait#Please wait about>> $timeout @TR<<reboot_seconds#seconds.>> @TR<<reboot_reload#The webif&sup2; should automatically reload.>>
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/status-asterisk.sh buildroot/package/webif/files/www/cgi-bin/webif/status-asterisk.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-asterisk.sh	2010-06-25 19:41:48.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-asterisk.sh	2010-09-24 22:20:28.000000000 -0400
 +++ buildroot/package/webif/files/www/cgi-bin/webif/status-asterisk.sh	1969-12-31 19:00:00.000000000 -0500
 @@ -1,128 +0,0 @@
 -#!/usr/bin/webif-page
@@ -8395,8 +8630,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -##WEBIF:name:Status:901:Asterisk
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/status-basic.sh buildroot/package/webif/files/www/cgi-bin/webif/status-basic.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-basic.sh	2010-06-25 19:41:48.000000000 -0400
-+++ buildroot/package/webif/files/www/cgi-bin/webif/status-basic.sh	2010-06-25 19:10:44.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-basic.sh	2010-09-24 22:20:28.000000000 -0400
++++ buildroot/package/webif/files/www/cgi-bin/webif/status-basic.sh	2010-09-24 22:27:13.000000000 -0400
 @@ -99,7 +99,7 @@
  		else
  			swap_type="@TR<<status_basic_swap_file#swap file>>"
@@ -8407,7 +8642,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  	}'
  )
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/status-qos.sh buildroot/package/webif/files/www/cgi-bin/webif/status-qos.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-qos.sh	2010-06-25 19:41:48.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-qos.sh	2010-09-24 22:20:28.000000000 -0400
 +++ buildroot/package/webif/files/www/cgi-bin/webif/status-qos.sh	1969-12-31 19:00:00.000000000 -0500
 @@ -1,221 +0,0 @@
 -#!/usr/bin/webif-page
@@ -8632,7 +8867,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -##WEBIF:name:Status:425:QoS
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/status-wwaninfo.sh buildroot/package/webif/files/www/cgi-bin/webif/status-wwaninfo.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-wwaninfo.sh	2010-06-25 19:41:48.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-wwaninfo.sh	2010-09-24 22:20:28.000000000 -0400
 +++ buildroot/package/webif/files/www/cgi-bin/webif/status-wwaninfo.sh	1969-12-31 19:00:00.000000000 -0500
 @@ -1,273 +0,0 @@
 -#!/usr/bin/webif-page
@@ -8909,7 +9144,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -##WEBIF:name:Status:170:UMTS
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-access-control.sh buildroot/package/webif/files/www/cgi-bin/webif/system-access-control.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-access-control.sh	2010-06-25 19:41:48.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-access-control.sh	2010-09-24 22:20:28.000000000 -0400
 +++ buildroot/package/webif/files/www/cgi-bin/webif/system-access-control.sh	1969-12-31 19:00:00.000000000 -0500
 @@ -1,180 +0,0 @@
 -#!/usr/bin/webif-page
@@ -9093,7 +9328,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -##WEBIF:name:System:160:Access Control
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-crontabs.sh buildroot/package/webif/files/www/cgi-bin/webif/system-crontabs.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-crontabs.sh	2010-06-25 19:41:48.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-crontabs.sh	2010-09-24 22:20:28.000000000 -0400
 +++ buildroot/package/webif/files/www/cgi-bin/webif/system-crontabs.sh	1969-12-31 19:00:00.000000000 -0500
 @@ -1,618 +0,0 @@
 -#!/usr/bin/webif-page
@@ -9715,7 +9950,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -##WEBIF:name:System:130:Crontabs
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-mount.sh buildroot/package/webif/files/www/cgi-bin/webif/system-mount.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-mount.sh	2010-06-25 19:41:48.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-mount.sh	2010-09-24 22:20:28.000000000 -0400
 +++ buildroot/package/webif/files/www/cgi-bin/webif/system-mount.sh	1969-12-31 19:00:00.000000000 -0500
 @@ -1,395 +0,0 @@
 -#!/usr/bin/webif-page
@@ -10114,7 +10349,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -##WEBIF:name:System:330:Mountpoints
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-password.sh buildroot/package/webif/files/www/cgi-bin/webif/system-password.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-password.sh	2010-06-25 19:41:48.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-password.sh	2010-09-24 22:20:28.000000000 -0400
 +++ buildroot/package/webif/files/www/cgi-bin/webif/system-password.sh	1969-12-31 19:00:00.000000000 -0500
 @@ -1,64 +0,0 @@
 -#!/usr/bin/webif-page
@@ -10182,8 +10417,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 -##WEBIF:name:System:250:Password
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-settings.sh buildroot/package/webif/files/www/cgi-bin/webif/system-settings.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-settings.sh	2010-06-25 19:41:48.000000000 -0400
-+++ buildroot/package/webif/files/www/cgi-bin/webif/system-settings.sh	2010-06-25 19:10:46.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-settings.sh	2010-09-24 22:20:28.000000000 -0400
++++ buildroot/package/webif/files/www/cgi-bin/webif/system-settings.sh	2010-09-24 22:27:13.000000000 -0400
 @@ -442,7 +442,6 @@
  field|@TR<<Theme>>
  select|theme|$FORM_theme
@@ -10193,8 +10428,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  start_form|@TR<<Web Configurator Settings>>
  field|@TR<<HTTP Port>>
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-upgrade.sh buildroot/package/webif/files/www/cgi-bin/webif/system-upgrade.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-upgrade.sh	2010-06-25 19:41:48.000000000 -0400
-+++ buildroot/package/webif/files/www/cgi-bin/webif/system-upgrade.sh	2010-06-25 19:10:46.000000000 -0400
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-upgrade.sh	2010-09-24 22:20:28.000000000 -0400
++++ buildroot/package/webif/files/www/cgi-bin/webif/system-upgrade.sh	2010-09-24 22:27:13.000000000 -0400
 @@ -37,6 +37,8 @@
  EOF
  	else
@@ -10206,7 +10441,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  			uci_commit "webif"
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err400.html buildroot/package/webif/files/www/errors/err400.html
 --- buildroot.orig/package/webif/files/www/errors/err400.html	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/webif/files/www/errors/err400.html	2010-06-25 19:10:46.000000000 -0400
++++ buildroot/package/webif/files/www/errors/err400.html	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -10254,7 +10489,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err401.html buildroot/package/webif/files/www/errors/err401.html
 --- buildroot.orig/package/webif/files/www/errors/err401.html	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/webif/files/www/errors/err401.html	2010-06-25 19:10:46.000000000 -0400
++++ buildroot/package/webif/files/www/errors/err401.html	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -10302,7 +10537,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err403.html buildroot/package/webif/files/www/errors/err403.html
 --- buildroot.orig/package/webif/files/www/errors/err403.html	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/webif/files/www/errors/err403.html	2010-06-25 19:10:46.000000000 -0400
++++ buildroot/package/webif/files/www/errors/err403.html	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -10350,7 +10585,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err404.html buildroot/package/webif/files/www/errors/err404.html
 --- buildroot.orig/package/webif/files/www/errors/err404.html	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/webif/files/www/errors/err404.html	2010-06-25 19:10:46.000000000 -0400
++++ buildroot/package/webif/files/www/errors/err404.html	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -10398,7 +10633,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err500.html buildroot/package/webif/files/www/errors/err500.html
 --- buildroot.orig/package/webif/files/www/errors/err500.html	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/webif/files/www/errors/err500.html	2010-06-25 19:10:46.000000000 -0400
++++ buildroot/package/webif/files/www/errors/err500.html	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -10446,7 +10681,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err501.html buildroot/package/webif/files/www/errors/err501.html
 --- buildroot.orig/package/webif/files/www/errors/err501.html	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/webif/files/www/errors/err501.html	2010-06-25 19:10:46.000000000 -0400
++++ buildroot/package/webif/files/www/errors/err501.html	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -10494,7 +10729,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err503.html buildroot/package/webif/files/www/errors/err503.html
 --- buildroot.orig/package/webif/files/www/errors/err503.html	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/webif/files/www/errors/err503.html	2010-06-25 19:10:46.000000000 -0400
++++ buildroot/package/webif/files/www/errors/err503.html	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -10542,8 +10777,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +</html>
 Binary files buildroot.orig/package/webif/files/www/favicon.ico and buildroot/package/webif/files/www/favicon.ico differ
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/webif/Makefile buildroot/package/webif/Makefile
---- buildroot.orig/package/webif/Makefile	2010-06-25 19:41:49.000000000 -0400
-+++ buildroot/package/webif/Makefile	2010-06-25 19:16:43.000000000 -0400
+--- buildroot.orig/package/webif/Makefile	2010-09-24 22:20:29.000000000 -0400
++++ buildroot/package/webif/Makefile	2010-09-24 22:27:13.000000000 -0400
 @@ -29,7 +29,6 @@
  define Package/webif/conffiles
  /etc/config/webif
@@ -10552,11 +10787,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
  /etc/init.d/custom-user-startup
  endef
  
-Binary files buildroot.orig/scripts/config/conf and buildroot/scripts/config/conf differ
-Binary files buildroot.orig/scripts/config/conf.o and buildroot/scripts/config/conf.o differ
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/scripts/config/lex.zconf.c buildroot/scripts/config/lex.zconf.c
 --- buildroot.orig/scripts/config/lex.zconf.c	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/scripts/config/lex.zconf.c	2010-06-25 19:10:46.000000000 -0400
++++ buildroot/scripts/config/lex.zconf.c	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,2341 @@
 +
 +#line 3 "lex.zconf.c"
@@ -12899,20 +13132,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +	return current_pos.file ? current_pos.file->name : "<none>";
 +}
 +
-Binary files buildroot.orig/scripts/config/lxdialog/checklist.o and buildroot/scripts/config/lxdialog/checklist.o differ
-Binary files buildroot.orig/scripts/config/lxdialog/inputbox.o and buildroot/scripts/config/lxdialog/inputbox.o differ
-Binary files buildroot.orig/scripts/config/lxdialog/lxdialog and buildroot/scripts/config/lxdialog/lxdialog differ
-Binary files buildroot.orig/scripts/config/lxdialog/lxdialog.o and buildroot/scripts/config/lxdialog/lxdialog.o differ
-Binary files buildroot.orig/scripts/config/lxdialog/menubox.o and buildroot/scripts/config/lxdialog/menubox.o differ
-Binary files buildroot.orig/scripts/config/lxdialog/msgbox.o and buildroot/scripts/config/lxdialog/msgbox.o differ
-Binary files buildroot.orig/scripts/config/lxdialog/textbox.o and buildroot/scripts/config/lxdialog/textbox.o differ
-Binary files buildroot.orig/scripts/config/lxdialog/util.o and buildroot/scripts/config/lxdialog/util.o differ
-Binary files buildroot.orig/scripts/config/lxdialog/yesno.o and buildroot/scripts/config/lxdialog/yesno.o differ
-Binary files buildroot.orig/scripts/config/mconf and buildroot/scripts/config/mconf differ
-Binary files buildroot.orig/scripts/config/mconf.o and buildroot/scripts/config/mconf.o differ
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/scripts/config/zconf.hash.c buildroot/scripts/config/zconf.hash.c
 --- buildroot.orig/scripts/config/zconf.hash.c	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/scripts/config/zconf.hash.c	2010-06-25 19:10:46.000000000 -0400
++++ buildroot/scripts/config/zconf.hash.c	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,235 @@
 +/* ANSI-C code produced by gperf version 3.0.1 */
 +/* Command-line: gperf  */
@@ -13151,7 +13373,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/scripts/config/zconf.tab.c buildroot/scripts/config/zconf.tab.c
 --- buildroot.orig/scripts/config/zconf.tab.c	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/scripts/config/zconf.tab.c	2010-06-25 19:10:46.000000000 -0400
++++ buildroot/scripts/config/zconf.tab.c	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,2175 @@
 +/* A Bison parser, made by GNU Bison 1.875d.  */
 +
@@ -15328,10 +15550,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#include "menu.c"
 +
 +
-Binary files buildroot.orig/scripts/config/zconf.tab.o and buildroot/scripts/config/zconf.tab.o differ
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/staging_dir/toolchain-mipsel_gcc-3.4.6_uClibc-0.9.30.1/info.mk buildroot/staging_dir/toolchain-mipsel_gcc-3.4.6_uClibc-0.9.30.1/info.mk
 --- buildroot.orig/staging_dir/toolchain-mipsel_gcc-3.4.6_uClibc-0.9.30.1/info.mk	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/staging_dir/toolchain-mipsel_gcc-3.4.6_uClibc-0.9.30.1/info.mk	2010-06-27 22:28:28.000000000 -0400
++++ buildroot/staging_dir/toolchain-mipsel_gcc-3.4.6_uClibc-0.9.30.1/info.mk	2010-09-24 22:27:13.000000000 -0400
 @@ -0,0 +1,6 @@
 +TARGET_CROSS=
 +GCC_VERSION=unknown
@@ -15339,15 +15560,3 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +LIBC_URL=unknown
 +LIBC_VERSION=unknown
 +LIBC_SO_VERSION=unknown
-diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/target/linux/brcm-2.4/image/Makefile buildroot/target/linux/brcm-2.4/image/Makefile
---- buildroot.orig/target/linux/brcm-2.4/image/Makefile	2010-06-25 19:41:16.000000000 -0400
-+++ buildroot/target/linux/brcm-2.4/image/Makefile	2010-06-25 19:10:46.000000000 -0400
-@@ -92,6 +92,8 @@
- define Image/Build/squashfs
- 	$(call Image/Build/jffs2-64k,$(1))
- 	$(call Image/Build/jffs2-128k,$(1))
-+	cp $(BIN_DIR)/openwrt-brcm-2.4-squashfs.trx $(BIN_DIR)/packetprotector-brcm-`cat $(TOPDIR)/package/base-files/files/etc/version`.trx
-+	cp $(BIN_DIR)/openwrt-wrtsl54gs-squashfs.bin $(BIN_DIR)/packetprotector-wrtsl54gs-`cat $(TOPDIR)/package/base-files/files/etc/version`.bin
- endef
- 
- define Image/Build/Initramfs
