@@ -1,31 +1,32 @@
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/.config buildroot/.config
 --- buildroot.orig/.config	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/.config	2010-09-24 22:25:55.000000000 -0400
-@@ -0,0 +1,1505 @@
++++ buildroot/.config	2010-09-24 22:53:46.000000000 -0400
+@@ -0,0 +1,1670 @@
 +#
 +# Automatically generated make config: don't edit
-+# OpenWrt version: Kamikaze (r21899)
-+# Sun Jun 27 17:12:37 2010
++# OpenWrt version: Kamikaze (r23118)
++# Fri Sep 24 22:51:19 2010
 +#
 +CONFIG_HAVE_DOT_CONFIG=y
 +# CONFIG_TARGET_ppc40x is not set
 +# CONFIG_TARGET_ppc44x is not set
 +# CONFIG_TARGET_atheros is not set
 +# CONFIG_TARGET_ar71xx is not set
++# CONFIG_TARGET_at91 is not set
 +# CONFIG_TARGET_avr32 is not set
++# CONFIG_TARGET_etrax is not set
 +# CONFIG_TARGET_brcm63xx is not set
-+# CONFIG_TARGET_brcm47xx is not set
-+CONFIG_TARGET_brcm_2_4=y
++CONFIG_TARGET_brcm47xx=y
 +# CONFIG_TARGET_sibyte is not set
++# CONFIG_TARGET_cns3xxx is not set
 +# CONFIG_TARGET_octeon is not set
 +# CONFIG_TARGET_ep93xx is not set
 +# CONFIG_TARGET_cobalt is not set
 +# CONFIG_TARGET_gemini is not set
-+# CONFIG_TARGET_etrax is not set
 +# CONFIG_TARGET_coldfire is not set
 +# CONFIG_TARGET_mpc52xx is not set
 +# CONFIG_TARGET_mpc83xx is not set
-+# CONFIG_TARGET_mx2 is not set
++# CONFIG_TARGET_imx21 is not set
 +# CONFIG_TARGET_goldfish is not set
 +# CONFIG_TARGET_amazon is not set
 +# CONFIG_TARGET_ifxmips is not set
@@ -38,7 +39,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_TARGET_orion is not set
 +# CONFIG_TARGET_pxa is not set
 +# CONFIG_TARGET_rb532 is not set
-+# CONFIG_TARGET_at91 is not set
 +# CONFIG_TARGET_pxcab is not set
 +# CONFIG_TARGET_rdc is not set
 +# CONFIG_TARGET_au1000 is not set
@@ -46,13 +46,14 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_TARGET_s3c24xx is not set
 +# CONFIG_TARGET_ps3 is not set
 +# CONFIG_TARGET_ar7 is not set
++# CONFIG_TARGET_omap24xx is not set
 +# CONFIG_TARGET_omap35xx is not set
 +# CONFIG_TARGET_ubicom32 is not set
 +# CONFIG_TARGET_uml is not set
 +# CONFIG_TARGET_x86 is not set
 +# CONFIG_TARGET_ppc40x_Default is not set
-+# CONFIG_TARGET_kirkwood_Default is not set
-+# CONFIG_TARGET_mx2_Default is not set
++# CONFIG_TARGET_kirkwood_Sheevaplug is not set
++# CONFIG_TARGET_kirkwood_Dockstar is not set
 +# CONFIG_TARGET_malta_le_Default is not set
 +# CONFIG_TARGET_malta_be_Default is not set
 +# CONFIG_TARGET_octeon_generic is not set
@@ -60,6 +61,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_TARGET_orion_generic_Default is not set
 +# CONFIG_TARGET_orion_harddisk_Default is not set
 +# CONFIG_TARGET_brcm63xx_Broadcom is not set
++# CONFIG_TARGET_brcm63xx_Broadcom-wl is not set
 +# CONFIG_TARGET_brcm63xx_Atheros is not set
 +# CONFIG_TARGET_brcm63xx_Ralink is not set
 +# CONFIG_TARGET_brcm63xx_NoWiFi is not set
@@ -69,20 +71,11 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_TARGET_xburst_qi_lb60_Default is not set
 +# CONFIG_TARGET_xburst_n516_Default is not set
 +# CONFIG_TARGET_xburst_n526_Default is not set
++# CONFIG_TARGET_xburst_id800wt_Default is not set
 +# CONFIG_TARGET_avr32_Default is not set
-+CONFIG_TARGET_brcm_2_4_Broadcom=y
-+# CONFIG_TARGET_brcm_2_4_BroadcomMimo is not set
-+# CONFIG_TARGET_brcm_2_4_None is not set
-+# CONFIG_TARGET_brcm_2_4_USBGeneric is not set
-+# CONFIG_TARGET_brcm_2_4_WL500G is not set
-+# CONFIG_TARGET_brcm_2_4_WL500GD is not set
-+# CONFIG_TARGET_brcm_2_4_WL500GP is not set
-+# CONFIG_TARGET_brcm_2_4_WL700GE is not set
-+# CONFIG_TARGET_brcm_2_4_WLHDD is not set
-+# CONFIG_TARGET_brcm_2_4_WRT300Nv11 is not set
-+# CONFIG_TARGET_brcm_2_4_WRT54G3G is not set
 +# CONFIG_TARGET_etrax_default is not set
 +# CONFIG_TARGET_etrax_vhdl_no_fb is not set
++# CONFIG_TARGET_imx21_Default is not set
 +# CONFIG_TARGET_ixp4xx_generic_Default is not set
 +# CONFIG_TARGET_ixp4xx_generic_Atheros-ath5k is not set
 +# CONFIG_TARGET_ixp4xx_generic_NSLU2 is not set
@@ -98,6 +91,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_TARGET_au1000_au1500_InternetBox is not set
 +# CONFIG_TARGET_au1000_au1500_MeshCube is not set
 +# CONFIG_TARGET_au1000_au1550_DBAu1550 is not set
++# CONFIG_TARGET_cns3xxx_Default is not set
 +# CONFIG_TARGET_goldfish_Default is not set
 +# CONFIG_TARGET_ifxmips_danube_None is not set
 +# CONFIG_TARGET_ifxmips_danube_Atheros is not set
@@ -118,9 +112,11 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_TARGET_x86_xen_domu_Default is not set
 +# CONFIG_TARGET_x86_ep80579_Default is not set
 +# CONFIG_TARGET_x86_net5501_Default is not set
++# CONFIG_TARGET_x86_kvm_guest_Default is not set
 +# CONFIG_TARGET_atheros_Default is not set
 +# CONFIG_TARGET_amazon_Default is not set
 +# CONFIG_TARGET_adm5120_router_le_Generic is not set
++# CONFIG_TARGET_adm5120_router_le_EB-214A is not set
 +# CONFIG_TARGET_adm5120_router_le_CAS630 is not set
 +# CONFIG_TARGET_adm5120_router_le_CAS630W is not set
 +# CONFIG_TARGET_adm5120_router_le_CAS670 is not set
@@ -183,6 +179,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_TARGET_ar71xx_generic_WNDR3700 is not set
 +# CONFIG_TARGET_ar71xx_generic_MZKW04NU is not set
 +# CONFIG_TARGET_ar71xx_generic_MZKW300NH is not set
++# CONFIG_TARGET_ar71xx_generic_TLWA901NDV1 is not set
 +# CONFIG_TARGET_ar71xx_generic_TLWR741NDV1 is not set
 +# CONFIG_TARGET_ar71xx_generic_TLWR841NV15 is not set
 +# CONFIG_TARGET_ar71xx_generic_TLWR841NDV3 is not set
@@ -196,6 +193,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_TARGET_ar71xx_generic_UBNTRS is not set
 +# CONFIG_TARGET_ar71xx_generic_UBNTRSPRO is not set
 +# CONFIG_TARGET_ar71xx_generic_UBNT is not set
++# CONFIG_TARGET_ar71xx_generic_ZCN1523H28 is not set
++# CONFIG_TARGET_ar71xx_generic_ZCN1523H516 is not set
 +# CONFIG_TARGET_ar71xx_generic_NBG_460N_550N_550NH is not set
 +# CONFIG_TARGET_ar71xx_nand_DefaultNoWifi is not set
 +# CONFIG_TARGET_ar71xx_nand_Madwifi is not set
@@ -204,7 +203,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_TARGET_ppc44x_Default is not set
 +# CONFIG_TARGET_mpc52xx_Default is not set
 +# CONFIG_TARGET_brcm47xx_Broadcom-b43 is not set
-+# CONFIG_TARGET_brcm47xx_Broadcom-wl is not set
++CONFIG_TARGET_brcm47xx_Broadcom-wl=y
 +# CONFIG_TARGET_brcm47xx_Atheros is not set
 +# CONFIG_TARGET_brcm47xx_Atheros-ath5k is not set
 +# CONFIG_TARGET_brcm47xx_None is not set
@@ -213,32 +212,37 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_TARGET_brcm47xx_WRT350Nv1 is not set
 +# CONFIG_TARGET_brcm47xx_WRTSL54GS is not set
 +# CONFIG_TARGET_gemini_Default is not set
-+CONFIG_TARGET_BOARD="brcm-2.4"
++# CONFIG_TARGET_omap24xx_n810-base is not set
++# CONFIG_TARGET_omap24xx_n810-gui is not set
++CONFIG_TARGET_BOARD="brcm47xx"
++CONFIG_TARGET_ARCH_PACKAGES="brcm47xx"
 +CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe -mips32 -mtune=mips32 -funit-at-a-time"
-+CONFIG_LINUX_2_4_37=y
++CONFIG_LINUX_2_6_34=y
 +CONFIG_DEFAULT_base-files=y
 +CONFIG_DEFAULT_busybox=y
 +CONFIG_DEFAULT_dnsmasq=y
 +CONFIG_DEFAULT_dropbear=y
 +CONFIG_DEFAULT_firewall=y
++CONFIG_DEFAULT_hotplug2=y
 +CONFIG_DEFAULT_iptables=y
-+CONFIG_DEFAULT_kmod-brcm-wl-old=y
++CONFIG_DEFAULT_kmod-brcm-wl=y
 +CONFIG_DEFAULT_kmod-diag=y
 +CONFIG_DEFAULT_kmod-ipt-nathelper=y
 +CONFIG_DEFAULT_kmod-switch=y
-+CONFIG_DEFAULT_kmod-wlcompat=y
 +CONFIG_DEFAULT_libc=y
 +CONFIG_DEFAULT_libgcc=y
 +CONFIG_DEFAULT_mtd=y
-+CONFIG_DEFAULT_nas-old=y
++CONFIG_DEFAULT_nas=y
 +CONFIG_DEFAULT_nvram=y
 +CONFIG_DEFAULT_opkg=y
 +CONFIG_DEFAULT_ppp=y
 +CONFIG_DEFAULT_ppp-mod-pppoe=y
 +CONFIG_DEFAULT_uci=y
-+CONFIG_DEFAULT_wlc-old=y
-+CONFIG_LINUX_2_4=y
++CONFIG_DEFAULT_udevtrigger=y
++CONFIG_DEFAULT_wlc=y
++CONFIG_LINUX_2_6=y
 +CONFIG_AUDIO_SUPPORT=y
++CONFIG_GPIO_SUPPORT=y
 +CONFIG_PCI_SUPPORT=y
 +CONFIG_PCMCIA_SUPPORT=y
 +CONFIG_USB_SUPPORT=y
@@ -249,6 +253,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Target Images
 +#
++# CONFIG_TARGET_ROOTFS_INITRAMFS is not set
 +
 +#
 +# Root filesystem archives
@@ -279,18 +284,23 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +CONFIG_LARGEFILE=y
 +CONFIG_SHADOW_PASSWORDS=y
 +# CONFIG_CLEAN_IPKG is not set
++# CONFIG_COLLECT_KERNEL_DEBUG is not set
 +
 +#
 +# Kernel build options
 +#
++CONFIG_KERNEL_DEBUG_FS=y
 +# CONFIG_KERNEL_PROFILING is not set
 +# CONFIG_KERNEL_KALLSYMS is not set
++# CONFIG_KERNEL_DEBUG_KERNEL is not set
++# CONFIG_KERNEL_DEBUG_INFO is not set
 +
 +#
 +# Package build options
 +#
 +# CONFIG_DEBUG is not set
 +# CONFIG_IPV6 is not set
++# CONFIG_PKG_BUILD_PARALLEL is not set
 +
 +#
 +# Stripping options
@@ -298,6 +308,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_NO_STRIP is not set
 +# CONFIG_USE_STRIP is not set
 +CONFIG_USE_SSTRIP=y
++# CONFIG_STRIP_KERNEL_EXPORTS is not set
 +# CONFIG_USE_MKLIBS is not set
 +# CONFIG_DEVEL is not set
 +# CONFIG_BROKEN is not set
@@ -315,22 +326,23 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_EXTRA_TARGET_ARCH is not set
 +CONFIG_EXTRA_BINUTILS_CONFIG_OPTIONS=""
 +CONFIG_BINUTILS_VERSION="2.19.1"
-+CONFIG_GCC_VERSION_3_4_6=y
++CONFIG_GCC_VERSION_4_3_3_CS=y
 +CONFIG_EXTRA_GCC_CONFIG_OPTIONS=""
++# CONFIG_SSP_SUPPORT is not set
 +CONFIG_INSTALL_LIBSTDCPP=y
 +# CONFIG_INSTALL_LIBGCJ is not set
 +CONFIG_USE_UCLIBC=y
 +# CONFIG_GDB is not set
 +# CONFIG_INSIGHT is not set
-+CONFIG_GCC_VERSION="3.4.6"
-+CONFIG_GCC_VERSION_3=y
-+CONFIG_GCC_VERSION_3_4=y
++CONFIG_GCC_VERSION="4.3.3+cs"
++CONFIG_GCC_VERSION_4=y
++CONFIG_GCC_VERSION_4_3=y
 +CONFIG_UCLIBC_VERSION="0.9.30.1"
 +CONFIG_LIBC="uClibc"
 +CONFIG_LIBC_VERSION="0.9.30.1"
 +CONFIG_TARGET_SUFFIX="uclibc"
 +# CONFIG_IB is not set
-+# CONFIG_SDK is not set
++CONFIG_SDK=y
 +# CONFIG_MAKE_TOOLCHAIN is not set
 +# CONFIG_IMAGEOPT is not set
 +CONFIG_UCI_PRECONFIG_network_lan_dns=""
@@ -357,6 +369,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# Base system
 +#
 +CONFIG_PACKAGE_base-files=y
++# CONFIG_PACKAGE_block-extroot is not set
++CONFIG_EXTROOT_SETTLETIME=20
 +# CONFIG_PACKAGE_block-hotplug is not set
 +# CONFIG_PACKAGE_block-mount is not set
 +# CONFIG_PACKAGE_br2684ctl is not set
@@ -366,9 +380,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Configuration
 +#
-+CONFIG_BUSYBOX_CONFIG_FEATURE_DEVFS=y
-+CONFIG_BUSYBOX_CONFIG_FEATURE_2_4_MODULES=y
-+# CONFIG_BUSYBOX_CONFIG_FEATURE_2_6_MODULES is not set
 +# CONFIG_BUSYBOX_CONFIG_NOMMU is not set
 +# CONFIG_CONFIG_BUSYBOX_CONFIG_FEATURE_SH_IS_HUSH is not set
 +# CONFIG_BUSYBOX_CONFIG_HUSH is not set
@@ -393,10 +404,12 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +CONFIG_BUSYBOX_CONFIG_FEATURE_COMPRESS_USAGE=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_INSTALLER is not set
 +# CONFIG_BUSYBOX_CONFIG_LOCALE_SUPPORT is not set
-+# CONFIG_BUSYBOX_CONFIG_FEATURE_ASSUME_UNICODE is not set
++# CONFIG_BUSYBOX_CONFIG_UNICODE_SUPPORT is not set
 +CONFIG_BUSYBOX_CONFIG_LONG_OPTS=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_DEVPTS=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_CLEAN_UP is not set
++# CONFIG_BUSYBOX_CONFIG_FEATURE_UTMP is not set
++# CONFIG_BUSYBOX_CONFIG_FEATURE_WTMP is not set
 +CONFIG_BUSYBOX_CONFIG_FEATURE_PIDFILE=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_SUID=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_SUID_CONFIG is not set
@@ -464,6 +477,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Archival Utilities
 +#
++# CONFIG_BUSYBOX_CONFIG_FEATURE_SEAMLESS_XZ is not set
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_SEAMLESS_LZMA is not set
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_SEAMLESS_BZ2 is not set
 +CONFIG_BUSYBOX_CONFIG_FEATURE_SEAMLESS_GZ=y
@@ -492,14 +506,24 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_TAR_NOPRESERVE_TIME is not set
 +# CONFIG_BUSYBOX_CONFIG_UNCOMPRESS is not set
 +# CONFIG_BUSYBOX_CONFIG_UNLZMA is not set
++# CONFIG_BUSYBOX_CONFIG_UNXZ is not set
 +# CONFIG_BUSYBOX_CONFIG_UNZIP is not set
 +
 +#
 +# Coreutils
 +#
 +CONFIG_BUSYBOX_CONFIG_BASENAME=y
-+CONFIG_BUSYBOX_CONFIG_CAL=y
 +CONFIG_BUSYBOX_CONFIG_CAT=y
++CONFIG_BUSYBOX_CONFIG_DATE=y
++CONFIG_BUSYBOX_CONFIG_FEATURE_DATE_ISOFMT=y
++# CONFIG_BUSYBOX_CONFIG_FEATURE_DATE_NANO is not set
++# CONFIG_BUSYBOX_CONFIG_FEATURE_DATE_COMPAT is not set
++CONFIG_BUSYBOX_CONFIG_TEST=y
++# CONFIG_BUSYBOX_CONFIG_FEATURE_TEST_64 is not set
++CONFIG_BUSYBOX_CONFIG_TR=y
++# CONFIG_BUSYBOX_CONFIG_FEATURE_TR_CLASSES is not set
++# CONFIG_BUSYBOX_CONFIG_FEATURE_TR_EQUIV is not set
++CONFIG_BUSYBOX_CONFIG_CAL=y
 +# CONFIG_BUSYBOX_CONFIG_CATV is not set
 +CONFIG_BUSYBOX_CONFIG_CHGRP=y
 +CONFIG_BUSYBOX_CONFIG_CHMOD=y
@@ -511,9 +535,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +CONFIG_BUSYBOX_CONFIG_CP=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_CP_LONG_OPTIONS is not set
 +CONFIG_BUSYBOX_CONFIG_CUT=y
-+CONFIG_BUSYBOX_CONFIG_DATE=y
-+CONFIG_BUSYBOX_CONFIG_FEATURE_DATE_ISOFMT=y
-+# CONFIG_BUSYBOX_CONFIG_FEATURE_DATE_COMPAT is not set
 +CONFIG_BUSYBOX_CONFIG_DD=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_DD_SIGNAL_HANDLING=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_DD_THIRD_STATUS_LINE is not set
@@ -589,12 +610,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +CONFIG_BUSYBOX_CONFIG_FEATURE_FANCY_TAIL=y
 +CONFIG_BUSYBOX_CONFIG_TEE=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_TEE_USE_BLOCK_IO=y
-+CONFIG_BUSYBOX_CONFIG_TEST=y
-+# CONFIG_BUSYBOX_CONFIG_FEATURE_TEST_64 is not set
 +CONFIG_BUSYBOX_CONFIG_TOUCH=y
-+CONFIG_BUSYBOX_CONFIG_TR=y
-+# CONFIG_BUSYBOX_CONFIG_FEATURE_TR_CLASSES is not set
-+# CONFIG_BUSYBOX_CONFIG_FEATURE_TR_EQUIV is not set
 +CONFIG_BUSYBOX_CONFIG_TRUE=y
 +# CONFIG_BUSYBOX_CONFIG_TTY is not set
 +CONFIG_BUSYBOX_CONFIG_UNAME=y
@@ -605,7 +621,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_BUSYBOX_CONFIG_UUENCODE is not set
 +CONFIG_BUSYBOX_CONFIG_WC=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_WC_LARGE is not set
-+# CONFIG_BUSYBOX_CONFIG_WHO is not set
 +# CONFIG_BUSYBOX_CONFIG_WHOAMI is not set
 +CONFIG_BUSYBOX_CONFIG_YES=y
 +
@@ -633,6 +648,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# Console Utilities
 +#
 +# CONFIG_BUSYBOX_CONFIG_CHVT is not set
++# CONFIG_BUSYBOX_CONFIG_FGCONSOLE is not set
 +CONFIG_BUSYBOX_CONFIG_CLEAR=y
 +# CONFIG_BUSYBOX_CONFIG_DEALLOCVT is not set
 +# CONFIG_BUSYBOX_CONFIG_DUMPKMAP is not set
@@ -683,6 +699,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +CONFIG_BUSYBOX_CONFIG_FEATURE_VI_SETOPTS=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_VI_SET=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_VI_WIN_RESIZE=y
++CONFIG_BUSYBOX_CONFIG_FEATURE_VI_ASK_TERMINAL=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_VI_OPTIMIZE_CURSOR=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_ALLOW_EXEC=y
 +
@@ -724,6 +741,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Init Utilities
 +#
++# CONFIG_BUSYBOX_CONFIG_BOOTCHARTD is not set
 +CONFIG_BUSYBOX_CONFIG_INIT=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_USE_INITTAB=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_KILL_REMOVED is not set
@@ -753,8 +771,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +CONFIG_BUSYBOX_CONFIG_LAST_SYSTEM_ID=999
 +CONFIG_BUSYBOX_CONFIG_DELUSER=y
 +# CONFIG_BUSYBOX_CONFIG_GETTY is not set
-+# CONFIG_BUSYBOX_CONFIG_FEATURE_UTMP is not set
-+# CONFIG_BUSYBOX_CONFIG_FEATURE_WTMP is not set
 +# CONFIG_BUSYBOX_CONFIG_LOGIN is not set
 +CONFIG_BUSYBOX_CONFIG_PASSWD=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_PASSWD_WEAK_CHECK=y
@@ -772,10 +788,12 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_BUSYBOX_CONFIG_CHATTR is not set
 +# CONFIG_BUSYBOX_CONFIG_FSCK is not set
 +# CONFIG_BUSYBOX_CONFIG_LSATTR is not set
++# CONFIG_BUSYBOX_CONFIG_TUNE2FS is not set
 +
 +#
 +# Linux Module Utilities
 +#
++# CONFIG_BUSYBOX_CONFIG_MODINFO is not set
 +# CONFIG_BUSYBOX_CONFIG_MODPROBE_SMALL is not set
 +CONFIG_BUSYBOX_CONFIG_INSMOD=y
 +CONFIG_BUSYBOX_CONFIG_RMMOD=y
@@ -787,6 +805,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Options common to multiple modutils
 +#
++CONFIG_BUSYBOX_CONFIG_FEATURE_2_4_MODULES=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_INSMOD_TRY_MMAP is not set
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_INSMOD_VERSION_CHECKING is not set
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_INSMOD_KSYMOOPS_SYMBOLS is not set
@@ -798,6 +817,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Linux System Utilities
 +#
++# CONFIG_BUSYBOX_CONFIG_REV is not set
 +# CONFIG_BUSYBOX_CONFIG_ACPID is not set
 +# CONFIG_BUSYBOX_CONFIG_BLKID is not set
 +CONFIG_BUSYBOX_CONFIG_DMESG=y
@@ -808,6 +828,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_BUSYBOX_CONFIG_FDISK is not set
 +CONFIG_BUSYBOX_CONFIG_FDISK_SUPPORT_LARGE_DISKS=y
 +# CONFIG_BUSYBOX_CONFIG_FINDFS is not set
++# CONFIG_BUSYBOX_CONFIG_FLOCK is not set
 +# CONFIG_BUSYBOX_CONFIG_FREERAMDISK is not set
 +# CONFIG_BUSYBOX_CONFIG_FSCK_MINIX is not set
 +# CONFIG_BUSYBOX_CONFIG_MKFS_EXT2 is not set
@@ -816,7 +837,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_BUSYBOX_CONFIG_MKFS_VFAT is not set
 +# CONFIG_BUSYBOX_CONFIG_GETOPT is not set
 +# CONFIG_BUSYBOX_CONFIG_HEXDUMP is not set
-+# CONFIG_BUSYBOX_CONFIG_HD is not set
 +CONFIG_BUSYBOX_CONFIG_HWCLOCK=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_HWCLOCK_LONG_OPTIONS is not set
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_HWCLOCK_ADJTIME_FHS is not set
@@ -829,7 +849,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_BUSYBOX_CONFIG_MKSWAP is not set
 +# CONFIG_BUSYBOX_CONFIG_MORE is not set
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_USE_TERMIOS is not set
-+# CONFIG_BUSYBOX_CONFIG_VOLUMEID is not set
 +CONFIG_BUSYBOX_CONFIG_MOUNT=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_MOUNT_FAKE is not set
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_MOUNT_VERBOSE is not set
@@ -856,11 +875,16 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# Common options for mount/umount
 +#
 +CONFIG_BUSYBOX_CONFIG_FEATURE_MOUNT_LOOP=y
++# CONFIG_BUSYBOX_CONFIG_FEATURE_MOUNT_LOOP_CREATE is not set
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_MTAB_SUPPORT is not set
++# CONFIG_BUSYBOX_CONFIG_VOLUMEID is not set
 +
 +#
 +# Miscellaneous Utilities
 +#
++# CONFIG_BUSYBOX_CONFIG_CONSPY is not set
++# CONFIG_BUSYBOX_CONFIG_UBIATTACH is not set
++# CONFIG_BUSYBOX_CONFIG_UBIDETACH is not set
 +# CONFIG_BUSYBOX_CONFIG_ADJTIMEX is not set
 +# CONFIG_BUSYBOX_CONFIG_BBCONFIG is not set
 +# CONFIG_BUSYBOX_CONFIG_BEEP is not set
@@ -873,6 +897,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +CONFIG_BUSYBOX_CONFIG_CRONTAB=y
 +# CONFIG_BUSYBOX_CONFIG_DC is not set
 +# CONFIG_BUSYBOX_CONFIG_DEVFSD is not set
++CONFIG_BUSYBOX_CONFIG_FEATURE_DEVFS=y
 +# CONFIG_BUSYBOX_CONFIG_DEVMEM is not set
 +# CONFIG_BUSYBOX_CONFIG_EJECT is not set
 +# CONFIG_BUSYBOX_CONFIG_FBSPLASH is not set
@@ -882,7 +907,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_BUSYBOX_CONFIG_FLASH_ERASEALL is not set
 +# CONFIG_BUSYBOX_CONFIG_IONICE is not set
 +# CONFIG_BUSYBOX_CONFIG_INOTIFYD is not set
-+# CONFIG_BUSYBOX_CONFIG_LAST is not set
 +CONFIG_BUSYBOX_CONFIG_LESS=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_LESS_MAXLINES=9999999
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_LESS_BRACKETS is not set
@@ -906,6 +930,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_BUSYBOX_CONFIG_MT is not set
 +# CONFIG_BUSYBOX_CONFIG_RAIDAUTORUN is not set
 +# CONFIG_BUSYBOX_CONFIG_READAHEAD is not set
++# CONFIG_BUSYBOX_CONFIG_RFKILL is not set
 +# CONFIG_BUSYBOX_CONFIG_RUNLEVEL is not set
 +# CONFIG_BUSYBOX_CONFIG_RX is not set
 +# CONFIG_BUSYBOX_CONFIG_SETSID is not set
@@ -921,6 +946,10 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Networking Utilities
 +#
++CONFIG_BUSYBOX_CONFIG_NC=y
++# CONFIG_BUSYBOX_CONFIG_NC_SERVER is not set
++# CONFIG_BUSYBOX_CONFIG_NC_EXTRA is not set
++# CONFIG_BUSYBOX_CONFIG_NC_110_COMPAT is not set
 +CONFIG_BUSYBOX_CONFIG_FEATURE_IPV6=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_UNIX_LOCAL is not set
 +CONFIG_BUSYBOX_CONFIG_FEATURE_PREFER_IPV4_ADDRESS=y
@@ -949,10 +978,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_BUSYBOX_CONFIG_IP is not set
 +# CONFIG_BUSYBOX_CONFIG_IPCALC is not set
 +# CONFIG_BUSYBOX_CONFIG_NAMEIF is not set
-+CONFIG_BUSYBOX_CONFIG_NC=y
 +# CONFIG_BUSYBOX_CONFIG_NETMSG is not set
-+# CONFIG_BUSYBOX_CONFIG_NC_SERVER is not set
-+# CONFIG_BUSYBOX_CONFIG_NC_EXTRA is not set
 +CONFIG_BUSYBOX_CONFIG_NETSTAT=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_NETSTAT_WIDE=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_NETSTAT_PRG=y
@@ -964,6 +990,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_BUSYBOX_CONFIG_PSCAN is not set
 +CONFIG_BUSYBOX_CONFIG_ROUTE=y
 +# CONFIG_BUSYBOX_CONFIG_SLATTACH is not set
++# CONFIG_BUSYBOX_CONFIG_TCPSVD is not set
 +CONFIG_BUSYBOX_CONFIG_TELNET=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_TELNET_TTYPE=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_TELNET_AUTOLOGIN is not set
@@ -977,6 +1004,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +CONFIG_BUSYBOX_CONFIG_FEATURE_TRACEROUTE_VERBOSE=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_TRACEROUTE_SOURCE_ROUTE is not set
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_TRACEROUTE_USE_ICMP is not set
++# CONFIG_BUSYBOX_CONFIG_TUNCTL is not set
 +# CONFIG_BUSYBOX_CONFIG_UDHCPD is not set
 +CONFIG_BUSYBOX_CONFIG_UDHCPC=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_UDHCPC_ARPING is not set
@@ -985,15 +1013,13 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +CONFIG_BUSYBOX_CONFIG_FEATURE_UDHCP_RFC3397=y
 +CONFIG_BUSYBOX_CONFIG_UDHCPC_DEFAULT_SCRIPT="/usr/share/udhcpc/default.script"
 +CONFIG_BUSYBOX_CONFIG_UDHCPC_SLACK_FOR_BUGGY_SERVERS=80
++# CONFIG_BUSYBOX_CONFIG_UDPSVD is not set
 +CONFIG_BUSYBOX_CONFIG_VCONFIG=y
 +CONFIG_BUSYBOX_CONFIG_WGET=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_WGET_STATUSBAR=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_WGET_AUTHENTICATION=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_WGET_LONG_OPTIONS=y
 +# CONFIG_BUSYBOX_CONFIG_ZCIP is not set
-+# CONFIG_BUSYBOX_CONFIG_TCPSVD is not set
-+# CONFIG_BUSYBOX_CONFIG_TUNCTL is not set
-+# CONFIG_BUSYBOX_CONFIG_UDPSVD is not set
 +
 +#
 +# Print Utilities
@@ -1013,6 +1039,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Process Utilities
 +#
++# CONFIG_BUSYBOX_CONFIG_SMEMCAP is not set
 +CONFIG_BUSYBOX_CONFIG_FREE=y
 +# CONFIG_BUSYBOX_CONFIG_FUSER is not set
 +CONFIG_BUSYBOX_CONFIG_KILL=y
@@ -1052,9 +1079,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Shells
 +#
-+CONFIG_BUSYBOX_CONFIG_FEATURE_SH_IS_ASH=y
-+# CONFIG_BUSYBOX_CONFIG_FEATURE_SH_IS_HUSH is not set
-+# CONFIG_BUSYBOX_CONFIG_FEATURE_SH_IS_NONE is not set
 +CONFIG_BUSYBOX_CONFIG_ASH=y
 +CONFIG_BUSYBOX_CONFIG_ASH_BASH_COMPAT=y
 +CONFIG_BUSYBOX_CONFIG_ASH_JOB_CONTROL=y
@@ -1068,6 +1092,12 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_BUSYBOX_CONFIG_ASH_OPTIMIZE_FOR_SIZE is not set
 +CONFIG_BUSYBOX_CONFIG_ASH_RANDOM_SUPPORT=y
 +CONFIG_BUSYBOX_CONFIG_ASH_EXPAND_PRMT=y
++CONFIG_BUSYBOX_CONFIG_FEATURE_SH_IS_ASH=y
++# CONFIG_BUSYBOX_CONFIG_FEATURE_SH_IS_HUSH is not set
++# CONFIG_BUSYBOX_CONFIG_FEATURE_SH_IS_NONE is not set
++# CONFIG_BUSYBOX_CONFIG_FEATURE_BASH_IS_ASH is not set
++# CONFIG_BUSYBOX_CONFIG_FEATURE_BASH_IS_HUSH is not set
++CONFIG_BUSYBOX_CONFIG_FEATURE_BASH_IS_NONE=y
 +# CONFIG_BUSYBOX_CONFIG_LASH is not set
 +# CONFIG_BUSYBOX_CONFIG_MSH is not set
 +CONFIG_BUSYBOX_CONFIG_SH_MATH_SUPPORT=y
@@ -1084,6 +1114,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +CONFIG_BUSYBOX_CONFIG_FEATURE_ROTATE_LOGFILE=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_REMOTE_LOG=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_SYSLOGD_DUP is not set
++CONFIG_BUSYBOX_CONFIG_FEATURE_SYSLOGD_READ_BUFFER_SIZE=256
 +CONFIG_BUSYBOX_CONFIG_FEATURE_IPC_SYSLOG=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_IPC_SYSLOG_BUFFER_SIZE=16
 +CONFIG_BUSYBOX_CONFIG_LOGREAD=y
@@ -1105,6 +1136,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_PACKAGE_qos-scripts is not set
 +CONFIG_PACKAGE_uci=y
 +CONFIG_PACKAGE_ucitrigger=y
++# CONFIG_PACKAGE_udev is not set
++CONFIG_PACKAGE_udevtrigger=y
 +CONFIG_PACKAGE_wireless-tools=y
 +
 +#
@@ -1124,37 +1157,48 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_PACKAGE_mini-httpd-matrixssl is not set
 +CONFIG_PACKAGE_mini-httpd-openssl=y
 +# CONFIG_PACKAGE_arptables is not set
++# CONFIG_PACKAGE_crda is not set
++# CONFIG_PACKAGE_ebtables is not set
++# CONFIG_PACKAGE_ebtables-utils is not set
 +# CONFIG_PACKAGE_genl is not set
 +# CONFIG_PACKAGE_hostapd is not set
 +# CONFIG_PACKAGE_hostapd-mini is not set
++# CONFIG_PACKAGE_ifenslave is not set
 +# CONFIG_PACKAGE_ip is not set
++# CONFIG_PACKAGE_ipset is not set
 +CONFIG_PACKAGE_iptables=y
 +CONFIG_PACKAGE_iptables-mod-conntrack=y
 +CONFIG_PACKAGE_iptables-mod-extra=y
 +CONFIG_PACKAGE_iptables-mod-filter=y
++# CONFIG_PACKAGE_iptables-mod-hashlimit is not set
 +# CONFIG_PACKAGE_iptables-mod-imq is not set
 +CONFIG_PACKAGE_iptables-mod-ipopt=y
 +CONFIG_PACKAGE_iptables-mod-iprange=y
 +# CONFIG_PACKAGE_iptables-mod-ipsec is not set
++# CONFIG_PACKAGE_iptables-mod-ipset is not set
 +CONFIG_PACKAGE_iptables-mod-nat=y
++# CONFIG_PACKAGE_iptables-mod-tproxy is not set
 +CONFIG_PACKAGE_iptables-mod-ulog=y
 +CONFIG_PACKAGE_iptables-utils=y
 +# CONFIG_PACKAGE_iw is not set
 +CONFIG_PACKAGE_ppp=y
 +# CONFIG_PACKAGE_chat is not set
++# CONFIG_PACKAGE_ppp-mod-pppoa is not set
 +CONFIG_PACKAGE_ppp-mod-pppoe=y
 +# CONFIG_PACKAGE_ppp-mod-radius is not set
 +# CONFIG_PACKAGE_pppdump is not set
 +# CONFIG_PACKAGE_pppstats is not set
 +# CONFIG_PACKAGE_pptp is not set
 +# CONFIG_PACKAGE_tc is not set
-+# CONFIG_PACKAGE_uhttpd is not set
++CONFIG_PACKAGE_uhttpd=y
 +# CONFIG_PACKAGE_uhttpd-mod-lua is not set
 +# CONFIG_PACKAGE_uhttpd-mod-tls is not set
 +# CONFIG_PACKAGE_wpa-supplicant is not set
 +# CONFIG_PACKAGE_wpa-supplicant-mini is not set
 +# CONFIG_PACKAGE_wpad is not set
 +# CONFIG_PACKAGE_wpad-mini is not set
++# CONFIG_PACKAGE_wprobe-export is not set
++# CONFIG_PACKAGE_wprobe-util is not set
 +
 +#
 +# Libraries
@@ -1165,6 +1209,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +CONFIG_PACKAGE_libblkid=y
 +CONFIG_PACKAGE_libext2fs=y
++# CONFIG_PACKAGE_libfuse is not set
 +CONFIG_PACKAGE_libuuid=y
 +
 +#
@@ -1177,6 +1222,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# Configuration
 +#
 +# CONFIG_OPENSSL_ENGINE is not set
++# CONFIG_PACKAGE_libipq is not set
 +CONFIG_PACKAGE_libiptc=y
 +# CONFIG_PACKAGE_libiw is not set
 +# CONFIG_PACKAGE_libltdl is not set
@@ -1206,6 +1252,10 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Block Devices
 +#
++# CONFIG_PACKAGE_kmod-aoe is not set
++# CONFIG_PACKAGE_kmod-ata-core is not set
++# CONFIG_PACKAGE_kmod-block2mtd is not set
++# CONFIG_PACKAGE_kmod-dm is not set
 +# CONFIG_PACKAGE_kmod-ide-core is not set
 +# CONFIG_PACKAGE_kmod-loop is not set
 +# CONFIG_PACKAGE_kmod-nbd is not set
@@ -1221,10 +1271,12 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# Filesystems
 +#
 +# CONFIG_PACKAGE_kmod-fs-autofs4 is not set
++# CONFIG_PACKAGE_kmod-fs-btrfs is not set
 +# CONFIG_PACKAGE_kmod-fs-cifs is not set
 +# CONFIG_PACKAGE_kmod-fs-exportfs is not set
 +# CONFIG_PACKAGE_kmod-fs-ext2 is not set
 +CONFIG_PACKAGE_kmod-fs-ext3=y
++# CONFIG_PACKAGE_kmod-fs-ext4 is not set
 +# CONFIG_PACKAGE_kmod-fs-hfs is not set
 +# CONFIG_PACKAGE_kmod-fs-hfsplus is not set
 +# CONFIG_PACKAGE_kmod-fs-isofs is not set
@@ -1249,10 +1301,13 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Hardware Monitoring Support
 +#
++# CONFIG_PACKAGE_kmod-hwmon-core is not set
 +
 +#
 +# I2C support
 +#
++# CONFIG_PACKAGE_kmod-i2c-core is not set
++# CONFIG_PACKAGE_kmod-i2c-gpio-custom is not set
 +
 +#
 +# Native Language Support
@@ -1276,64 +1331,118 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# Netfilter Extensions
 +#
 +# CONFIG_PACKAGE_kmod-arptables is not set
++# CONFIG_PACKAGE_kmod-ebtables is not set
 +# CONFIG_PACKAGE_kmod-ip6tables is not set
 +CONFIG_PACKAGE_kmod-ipt-core=y
 +CONFIG_PACKAGE_kmod-ipt-conntrack=y
 +CONFIG_PACKAGE_kmod-ipt-conntrack-extra=y
 +CONFIG_PACKAGE_kmod-ipt-extra=y
 +CONFIG_PACKAGE_kmod-ipt-filter=y
++# CONFIG_PACKAGE_kmod-ipt-hashlimit is not set
 +# CONFIG_PACKAGE_kmod-ipt-imq is not set
 +CONFIG_PACKAGE_kmod-ipt-ipopt=y
 +CONFIG_PACKAGE_kmod-ipt-iprange=y
 +# CONFIG_PACKAGE_kmod-ipt-ipsec is not set
++# CONFIG_PACKAGE_kmod-ipt-ipset is not set
 +CONFIG_PACKAGE_kmod-ipt-nat=y
 +# CONFIG_PACKAGE_kmod-ipt-nat-extra is not set
 +CONFIG_PACKAGE_kmod-ipt-nathelper=y
 +# CONFIG_PACKAGE_kmod-ipt-nathelper-extra is not set
 +CONFIG_PACKAGE_kmod-ipt-queue=y
++# CONFIG_PACKAGE_kmod-ipt-tproxy is not set
 +CONFIG_PACKAGE_kmod-ipt-ulog=y
++# CONFIG_PACKAGE_kmod-nf-conntrack-netlink is not set
++# CONFIG_PACKAGE_kmod-nfnetlink is not set
++# CONFIG_PACKAGE_kmod-nfnetlink-log is not set
++# CONFIG_PACKAGE_kmod-nfnetlink-queue is not set
 +
 +#
 +# Network Devices
 +#
-+# CONFIG_PACKAGE_kmod-brcm-57xx is not set
 +# CONFIG_PACKAGE_kmod-e1000 is not set
++# CONFIG_PACKAGE_kmod-gigaset is not set
++# CONFIG_PACKAGE_kmod-hfcmulti is not set
++# CONFIG_PACKAGE_kmod-libphy is not set
++# CONFIG_PACKAGE_kmod-macvlan is not set
++# CONFIG_PACKAGE_kmod-mvswitch is not set
 +# CONFIG_PACKAGE_kmod-siit is not set
++# CONFIG_PACKAGE_kmod-ssb-gige is not set
++# CONFIG_PACKAGE_kmod-swconfig is not set
++# CONFIG_PACKAGE_kmod-switch-ip17xx is not set
++# CONFIG_PACKAGE_kmod-tg3 is not set
++# CONFIG_PACKAGE_kmod-tulip is not set
 +
 +#
 +# Network Support
 +#
++# CONFIG_PACKAGE_kmod-appletalk is not set
++# CONFIG_PACKAGE_kmod-atm is not set
 +# CONFIG_PACKAGE_kmod-ax25 is not set
 +# CONFIG_PACKAGE_kmod-bonding is not set
++# CONFIG_PACKAGE_kmod-capi is not set
 +# CONFIG_PACKAGE_kmod-gre is not set
++# CONFIG_PACKAGE_kmod-ip6-tunnel is not set
 +# CONFIG_PACKAGE_kmod-ipip is not set
++# CONFIG_PACKAGE_kmod-ipsec is not set
++# CONFIG_PACKAGE_kmod-iptunnel4 is not set
++# CONFIG_PACKAGE_kmod-iptunnel6 is not set
 +# CONFIG_PACKAGE_kmod-ipv6 is not set
++# CONFIG_PACKAGE_kmod-isdn4linux is not set
++# CONFIG_PACKAGE_kmod-misdn is not set
++# CONFIG_PACKAGE_kmod-mp-alg is not set
++# CONFIG_PACKAGE_kmod-pktgen is not set
 +CONFIG_PACKAGE_kmod-ppp=y
 +# CONFIG_PACKAGE_kmod-mppe is not set
 +# CONFIG_PACKAGE_kmod-ppp-synctty is not set
++# CONFIG_PACKAGE_kmod-pppoa is not set
 +CONFIG_PACKAGE_kmod-pppoe=y
++# CONFIG_PACKAGE_kmod-pppol2tp is not set
 +# CONFIG_PACKAGE_kmod-sched is not set
++# CONFIG_PACKAGE_kmod-sctp is not set
 +# CONFIG_PACKAGE_kmod-sit is not set
 +CONFIG_PACKAGE_kmod-tun=y
++# CONFIG_PACKAGE_kmod-wprobe is not set
 +
 +#
 +# OCF Configuration
 +#
++# CONFIG_PACKAGE_kmod-ocf-ubsec-ssb is not set
 +
 +#
 +# Other modules
 +#
 +# CONFIG_PACKAGE_kmod-bluetooth is not set
++# CONFIG_PACKAGE_kmod-button-hotplug is not set
++CONFIG_PACKAGE_kmod-crc-ccitt=y
++# CONFIG_PACKAGE_kmod-crc-itu-t is not set
++# CONFIG_PACKAGE_kmod-crc16 is not set
++# CONFIG_PACKAGE_kmod-crc7 is not set
 +CONFIG_PACKAGE_kmod-diag=y
++# CONFIG_PACKAGE_kmod-eeprom-93cx6 is not set
++# CONFIG_PACKAGE_kmod-gpio-dev is not set
 +# CONFIG_PACKAGE_kmod-hid is not set
 +# CONFIG_PACKAGE_kmod-input-core is not set
 +# CONFIG_PACKAGE_kmod-input-evdev is not set
++# CONFIG_PACKAGE_kmod-input-gpio-buttons is not set
++# CONFIG_PACKAGE_kmod-input-gpio-encoder is not set
++# CONFIG_PACKAGE_kmod-input-gpio-keys is not set
 +# CONFIG_PACKAGE_kmod-input-joydev is not set
-+# CONFIG_PACKAGE_kmod-lp is not set
-+# CONFIG_PACKAGE_kmod-nozomi is not set
++# CONFIG_PACKAGE_kmod-input-polldev is not set
++# CONFIG_PACKAGE_kmod-leds-gpio is not set
++# CONFIG_PACKAGE_kmod-ledtrig-morse is not set
++# CONFIG_PACKAGE_kmod-ledtrig-netdev is not set
++# CONFIG_PACKAGE_kmod-libcrc32c is not set
++# CONFIG_PACKAGE_kmod-mmc is not set
++# CONFIG_PACKAGE_kmod-mmc-over-gpio is not set
++# CONFIG_PACKAGE_kmod-pwm is not set
++# CONFIG_PACKAGE_kmod-pwm-gpio is not set
++# CONFIG_PACKAGE_kmod-pwm-gpio-custom is not set
++# CONFIG_PACKAGE_kmod-rfkill is not set
++# CONFIG_PACKAGE_kmod-rotary-gpio-custom is not set
 +# CONFIG_PACKAGE_kmod-rtc-rv5c386a is not set
 +# CONFIG_PACKAGE_kmod-softdog is not set
 +CONFIG_PACKAGE_kmod-switch=y
++CONFIG_PACKAGE_kmod-textsearch=y
 +
 +#
 +# PCMCIA support
@@ -1343,35 +1452,46 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Proprietary BCM43xx WiFi driver
 +#
-+# CONFIG_PACKAGE_kmod-brcm-wl-mimo-old is not set
-+CONFIG_PACKAGE_kmod-brcm-wl-old=y
-+CONFIG_PACKAGE_kmod-wlcompat=y
-+# CONFIG_PACKAGE_kmod-wlcompat-debug is not set
-+CONFIG_PACKAGE_nas-old=y
-+# CONFIG_PACKAGE_wl-old is not set
-+CONFIG_PACKAGE_wlc-old=y
++CONFIG_PACKAGE_kmod-brcm-wl=y
++# CONFIG_PACKAGE_kmod-brcm-wl-mini is not set
++CONFIG_PACKAGE_nas=y
++# CONFIG_PACKAGE_wl is not set
++CONFIG_PACKAGE_wlc=y
 +
 +#
 +# SPI Support
 +#
++# CONFIG_PACKAGE_kmod-mmc-spi is not set
++# CONFIG_PACKAGE_kmod-spi-bitbang is not set
++# CONFIG_PACKAGE_kmod-spi-dev is not set
++# CONFIG_PACKAGE_kmod-spi-gpio is not set
++# CONFIG_PACKAGE_kmod-spi-gpio-old is not set
++# CONFIG_PACKAGE_kmod-spi-ks8995 is not set
 +
 +#
 +# Sound Support
 +#
++# CONFIG_PACKAGE_kmod-pcspkr is not set
 +# CONFIG_PACKAGE_kmod-sound-core is not set
 +
 +#
 +# USB Support
 +#
-+CONFIG_PACKAGE_kmod-usb-core=y
 +# CONFIG_PACKAGE_kmod-usb-acm is not set
++# CONFIG_PACKAGE_kmod-usb-atm is not set
++# CONFIG_PACKAGE_kmod-usb-cm109 is not set
++CONFIG_PACKAGE_kmod-usb-core=y
++# CONFIG_PACKAGE_kmod-usb-hid is not set
 +# CONFIG_PACKAGE_kmod-usb-net is not set
 +# CONFIG_PACKAGE_kmod-usb-ohci is not set
++# CONFIG_PACKAGE_kmod-usb-phidget is not set
 +# CONFIG_PACKAGE_kmod-usb-printer is not set
 +# CONFIG_PACKAGE_kmod-usb-serial is not set
 +CONFIG_PACKAGE_kmod-usb-storage=y
++# CONFIG_PACKAGE_kmod-usb-storage-extras is not set
 +# CONFIG_PACKAGE_kmod-usb-uhci is not set
-+# CONFIG_PACKAGE_kmod-usb-uhci-iv is not set
++# CONFIG_PACKAGE_kmod-usb-video is not set
++# CONFIG_PACKAGE_kmod-usb-yealink is not set
 +CONFIG_PACKAGE_kmod-usb2=y
 +
 +#
@@ -1380,27 +1500,70 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_PACKAGE_kmod-video-core is not set
 +
 +#
++# Virtualization Support
++#
++
++#
 +# Voice over IP
 +#
 +
 +#
 +# W1 support
 +#
++# CONFIG_PACKAGE_kmod-w1 is not set
 +
 +#
 +# Wireless Drivers
 +#
++# CONFIG_PACKAGE_kmod-acx is not set
++# CONFIG_PACKAGE_kmod-acx-mac80211 is not set
++# CONFIG_PACKAGE_kmod-ath is not set
++# CONFIG_PACKAGE_kmod-ath5k is not set
++# CONFIG_PACKAGE_kmod-ath9k is not set
++# CONFIG_PACKAGE_kmod-b43 is not set
++# CONFIG_B43_STABLE is not set
++# CONFIG_B43_EXPERIMENTAL is not set
++# CONFIG_B43_OPENFIRMWARE is not set
++# CONFIG_PACKAGE_kmod-b43legacy is not set
++# CONFIG_PACKAGE_kmod-carl9170 is not set
++# CONFIG_PACKAGE_kmod-cfg80211 is not set
 +# CONFIG_PACKAGE_kmod-hostap is not set
 +# CONFIG_PACKAGE_kmod-hostap-cs is not set
 +# CONFIG_PACKAGE_kmod-hostap-pci is not set
 +# CONFIG_PACKAGE_kmod-hostap-plx is not set
++# CONFIG_PACKAGE_kmod-lib80211 is not set
++# CONFIG_PACKAGE_kmod-libertas-sd is not set
++# CONFIG_PACKAGE_kmod-libertas-usb is not set
++# CONFIG_PACKAGE_kmod-mac80211 is not set
++# CONFIG_PACKAGE_kmod-mac80211-hwsim is not set
++# CONFIG_PACKAGE_kmod-madwifi is not set
++# CONFIG_PACKAGE_kmod-mwl8k is not set
 +# CONFIG_PACKAGE_kmod-net-airo is not set
++# CONFIG_PACKAGE_kmod-net-hermes is not set
++# CONFIG_PACKAGE_kmod-net-hermes-pci is not set
++# CONFIG_PACKAGE_kmod-net-hermes-pcmcia is not set
++# CONFIG_PACKAGE_kmod-net-hermes-plx is not set
++# CONFIG_PACKAGE_kmod-net-ipw2100 is not set
++# CONFIG_PACKAGE_kmod-net-ipw2200 is not set
++# CONFIG_PACKAGE_kmod-net-libipw is not set
 +# CONFIG_PACKAGE_kmod-net-prism54 is not set
-+# CONFIG_PACKAGE_kmod-rt2570 is not set
-+
-+#
-+# Xen paravirtualized guest support
-+#
++# CONFIG_PACKAGE_kmod-p54-common is not set
++# CONFIG_PACKAGE_kmod-p54-pci is not set
++# CONFIG_PACKAGE_kmod-p54-usb is not set
++# CONFIG_PACKAGE_kmod-rt2400-pci is not set
++# CONFIG_PACKAGE_kmod-rt2500-pci is not set
++# CONFIG_PACKAGE_kmod-rt2500-usb is not set
++# CONFIG_PACKAGE_kmod-rt2800-lib is not set
++# CONFIG_PACKAGE_kmod-rt2800-pci is not set
++# CONFIG_PACKAGE_kmod-rt2800-usb is not set
++# CONFIG_PACKAGE_kmod-rt2x00-lib is not set
++# CONFIG_PACKAGE_kmod-rt2x00-pci is not set
++# CONFIG_PACKAGE_kmod-rt2x00-usb is not set
++# CONFIG_PACKAGE_kmod-rt61-pci is not set
++# CONFIG_PACKAGE_kmod-rt73-usb is not set
++# CONFIG_PACKAGE_kmod-rtl8180 is not set
++# CONFIG_PACKAGE_kmod-rtl8187 is not set
++# CONFIG_PACKAGE_kmod-zd1211rw is not set
 +
 +#
 +# Boot Loaders
@@ -1453,6 +1616,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_PACKAGE_badblocks is not set
 +# CONFIG_PACKAGE_blkid is not set
 +# CONFIG_PACKAGE_e2fsprogs is not set
++# CONFIG_PACKAGE_fuse-utils is not set
 +# CONFIG_PACKAGE_resize2fs is not set
 +# CONFIG_PACKAGE_tune2fs is not set
 +# CONFIG_PACKAGE_uuidgen is not set
@@ -1466,8 +1630,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# disc
 +#
-+# CONFIG_PACKAGE_block-extroot is not set
-+CONFIG_EXTROOT_SETTLETIME=20
 +# CONFIG_PACKAGE_cfdisk is not set
 +# CONFIG_PACKAGE_fdisk is not set
 +# CONFIG_PACKAGE_sfdisk is not set
@@ -1478,6 +1640,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_PACKAGE_flock is not set
 +# CONFIG_PACKAGE_gdb is not set
 +# CONFIG_PACKAGE_gdbserver is not set
++# CONFIG_PACKAGE_gpioctl is not set
 +CONFIG_PACKAGE_haserl=y
 +# CONFIG_PACKAGE_hdparm is not set
 +# CONFIG_PACKAGE_hwclock is not set
@@ -1486,11 +1649,13 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +# CONFIG_PACKAGE_ldd is not set
 +# CONFIG_PACKAGE_losetup is not set
 +# CONFIG_PACKAGE_mount-utils is not set
++# CONFIG_PACKAGE_mountd is not set
 +# CONFIG_PACKAGE_ocf-crypto-headers is not set
 +CONFIG_PACKAGE_openssl-util=y
-+# CONFIG_PACKAGE_pcmcia-cs is not set
 +# CONFIG_PACKAGE_px5g is not set
 +# CONFIG_PACKAGE_robocfg is not set
++# CONFIG_PACKAGE_spidev-test is not set
++# CONFIG_PACKAGE_uboot-envtools is not set
 +# CONFIG_PACKAGE_usbutils is not set
 +
 +#
