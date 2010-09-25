@@ -3961,8 +3961,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +}
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/init.d/packetprotector buildroot/package/base-files/files/etc/init.d/packetprotector
 --- buildroot.orig/package/base-files/files/etc/init.d/packetprotector	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-09-24 22:25:55.000000000 -0400
-@@ -0,0 +1,195 @@
++++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-09-24 23:07:27.000000000 -0400
+@@ -0,0 +1,211 @@
 +#!/bin/sh /etc/rc.common
 +START=75
 +
@@ -4105,6 +4105,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +rm /www/index.html
 +rm /www/cgi-bin/webif/.categories
 +rm /www/cgi-bin/webif/*.sh
++rm -r /www/cgi-bin/webif/login
++rm -r /www/cgi-bin/webif/proxy
 +rm -r /www/cgi-bin/webif/vpn
 +
 +cd /rom/www/cgi-bin/webif
@@ -4116,17 +4118,31 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +	ln -s $USB_D/www/index.html /www/index.html
 +	ln -s $USB_D/www/cgi-bin/webif/.categories /www/cgi-bin/webif/.categories
 +
-+	if [ ! -d /www/cgi-bin/webif/vpn ] ; then
-+		mkdir /www/cgi-bin/webif/vpn
-+	fi
++	mkdir /www/cgi-bin/webif/login
++	mkdir /www/cgi-bin/webif/proxy
++	mkdir /www/cgi-bin/webif/vpn
++	grep -v '^nobody:' /etc/shadow | cut -d: -f1,2 > /www/cgi-bin/webif/login/.htpasswd
++	grep -v '^nobody:' /etc/shadow | cut -d: -f1,2 > /www/cgi-bin/webif/proxy/.htpasswd
 +	grep -v '^nobody:' /etc/shadow | cut -d: -f1,2 > /www/cgi-bin/webif/vpn/.htpasswd
++	chmod 600 /www/cgi-bin/webif/login/.htpasswd
++	chmod 600 /www/cgi-bin/webif/proxy/.htpasswd
 +	chmod 600 /www/cgi-bin/webif/vpn/.htpasswd
-+	ln -s $USB_D/www/cgi-bin/webif/vpn/redirect.sh /www/cgi-bin/webif/vpn/redirect.sh
-+	ln -s $USB_D/www/cgi-bin/webif/vpn/VPNconnect.sh /www/cgi-bin/webif/vpn/VPNconnect.sh
 +
 +	cd $USB_D/www/cgi-bin/webif
 +	for i in *.sh; do
 +		ln -fs $USB_D/www/cgi-bin/webif/$i /www/cgi-bin/webif/$i
++	done
++	cd $USB_D/www/cgi-bin/webif/login
++	for i in *.sh; do
++		ln -fs $USB_D/www/cgi-bin/webif/login/$i /www/cgi-bin/webif/login/$i
++	done
++	cd $USB_D/www/cgi-bin/webif/proxy
++	for i in *.sh; do
++		ln -fs $USB_D/www/cgi-bin/webif/proxy/$i /www/cgi-bin/webif/proxy/$i
++	done
++	cd $USB_D/www/cgi-bin/webif/vpn
++	for i in *.sh; do
++		ln -fs $USB_D/www/cgi-bin/webif/vpn/$i /www/cgi-bin/webif/vpn/$i
 +	done
 +else
 +	ln -s /rom/www/index.html /www/index.html
