@@ -1,6 +1,6 @@
 diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN buildroot.orig/.config buildroot/.config
 --- buildroot.orig/.config	1969-12-31 19:00:00.000000000 -0500
-+++ buildroot/.config	2010-09-24 22:53:46.000000000 -0400
++++ buildroot/.config	2010-09-27 22:10:00.000000000 -0400
 @@ -0,0 +1,1670 @@
 +#
 +# Automatically generated make config: don't edit
@@ -805,7 +805,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=brcm47xx --exclude=tmp -ruN 
 +#
 +# Options common to multiple modutils
 +#
-+CONFIG_BUSYBOX_CONFIG_FEATURE_2_4_MODULES=y
++# CONFIG_BUSYBOX_CONFIG_FEATURE_2_4_MODULES is not set
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_INSMOD_TRY_MMAP is not set
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_INSMOD_VERSION_CHECKING is not set
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_INSMOD_KSYMOOPS_SYMBOLS is not set
