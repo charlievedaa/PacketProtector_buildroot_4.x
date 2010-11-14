@@ -1715,3 +1715,27 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  endef
  
  define Image/mkfs/prepare
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/advanced_firewall.conf buildroot/package/base-files/files/etc/advanced_firewall.conf
+--- buildroot.orig/package/base-files/files/etc/advanced_firewall.conf	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/base-files/files/etc/advanced_firewall.conf	2010-11-14 00:32:08.000000000 +0000
+@@ -0,0 +1,20 @@
++https_from_outside=block
++ssh_from_outside=block
++openvpn_from_outside=unblock
++openvpn_to_internet=block
++external_dns=0
++voip=0
++ipt_unclean=1
++chat_IRC=0
++chat_MS=0
++chat_aim=0
++chat_googletalk=0
++chat_yahoomessenger=0
++p2p_bittorrent=0
++p2p_edonkey=0
++p2p_gnutella=0
++p2p_kazaa=0
++p2p_others=0
++remoteaccess_gotomypc=0
++remoteaccess_logmein=0
++remoteaccess_pcnow=0
