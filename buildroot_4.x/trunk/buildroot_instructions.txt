@@ -32,7 +32,7 @@ rm PacketProtector_wrt350n_v1.patch
 # (OPTIONAL) update the PacketProtector patch
 # aftering making changes to the buildroot
 cd ~
-diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/.config buildroot/.config
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig buildroot
 
 # compile the firmware
 make V=99
