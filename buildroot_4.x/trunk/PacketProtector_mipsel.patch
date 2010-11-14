@@ -1739,3 +1739,33 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +remoteaccess_gotomypc=0
 +remoteaccess_logmein=0
 +remoteaccess_pcnow=0
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/banner buildroot/package/base-files/files/etc/banner
+--- buildroot.orig/package/base-files/files/etc/banner	2010-10-17 11:56:32.000000000 +0000
++++ buildroot/package/base-files/files/etc/banner	2010-11-14 00:52:12.000000000 +0000
+@@ -1,10 +1,22 @@
++ ---------------------------------------------------
++
++        11111
++        10101
++        11011
++ .-----m-----m-----.
++ |                 |
++ |                 |
++ | PacketProtector |
++ |                 |
++ .                 .
++  \               /
++   ---------------     http://packetprotector.org
++
++ ---------------------------------------------------
+   _______                     ________        __
+  |       |.-----.-----.-----.|  |  |  |.----.|  |_
+  |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+  |_______||   __|_____|__|__||________||__|  |____|
+           |__| W I R E L E S S   F R E E D O M
+- KAMIKAZE (bleeding edge, $R) ------------------
+-  * 10 oz Vodka       Shake well with ice and strain
+-  * 10 oz Triple sec  mixture into 10 shot glasses.
+-  * 10 oz lime juice  Salute!
++
+  ---------------------------------------------------
