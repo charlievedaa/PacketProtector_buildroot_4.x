@@ -1769,3 +1769,15 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 -  * 10 oz lime juice  Salute!
 +
   ---------------------------------------------------
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/config/system buildroot/package/base-files/files/etc/config/system
+--- buildroot.orig/package/base-files/files/etc/config/system	2010-10-17 11:56:32.000000000 +0000
++++ buildroot/package/base-files/files/etc/config/system	2010-11-14 00:58:32.000000000 +0000
+@@ -1,6 +1,6 @@
+ config system
+-	option hostname	OpenWrt
+-	option timezone	UTC
++	option hostname	PacketProtector
++	option timezone	EST5EDT,M3.2.0,M11.1.0
+ 
+ config rdate
+ 	option interface	wan
