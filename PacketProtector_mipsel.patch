@@ -5473,6 +5473,17 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +endef
 +
 +$(eval $(call BuildPackage,usbutils))
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/Makefile buildroot/package/webif/Makefile
+--- buildroot.orig/package/webif/Makefile	2010-10-17 11:57:14.000000000 +0000
++++ buildroot/package/webif/Makefile	2010-12-09 03:30:31.000000000 +0000
+@@ -29,7 +29,6 @@
+ define Package/webif/conffiles
+ /etc/config/webif
+ /etc/config/cron
+-/etc/httpd.conf
+ /etc/init.d/custom-user-startup
+ endef
+ 
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/etc/config/webif buildroot/package/webif/files/etc/config/webif
 --- buildroot.orig/package/webif/files/etc/config/webif	2010-10-17 11:57:14.000000000 +0000
 +++ buildroot/package/webif/files/etc/config/webif	2010-12-09 03:21:13.000000000 +0000
@@ -5623,6 +5634,342 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  			killall -HUP mini_httpd
  			;;
  	esac
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err400.html buildroot/package/webif/files/www/errors/err400.html
+--- buildroot.orig/package/webif/files/www/errors/err400.html	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err400.html	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,44 @@
++<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
++<head>
++<title>PacketProtector Administrative Console</title>
++	<link rel="stylesheet" type="text/css" href="/themes/active/waitbox.css" media="screen" />
++	<link rel="stylesheet" type="text/css" href="/themes/active/webif.css" />
++	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
++	<meta http-equiv="expires" content="-1" />
++</head>
++<body >
++
++
++<div id="container">
++	<div id="header">
++
++		<h1>X-Wrt Administration Console</h1>
++		<div id="short-status">
++		<h3>Status:</h3>
++		<ul>
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++		</ul>
++		</div>
++	</div>
++
++	<div id="mainmenu"><h3>400</h3></div>
++	<div id="submenu"><ul><li><b>Bad Request</b></li></ul></div>
++	
++        <div id="content">
++
++<h2>400 Bad Request</h2>
++
++        </div>
++	<div id="footer">
++	<h3>PacketProtector</h3>
++	<em>with X-Wrt Extensions</em>
++
++	</div>
++</div>
++</body>
++
++</html>
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err401.html buildroot/package/webif/files/www/errors/err401.html
+--- buildroot.orig/package/webif/files/www/errors/err401.html	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err401.html	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,44 @@
++<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
++<head>
++<title>PacketProtector Administrative Console</title>
++	<link rel="stylesheet" type="text/css" href="/themes/active/waitbox.css" media="screen" />
++	<link rel="stylesheet" type="text/css" href="/themes/active/webif.css" />
++	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
++	<meta http-equiv="expires" content="-1" />
++</head>
++<body >
++
++
++<div id="container">
++	<div id="header">
++
++		<h1>X-Wrt Administration Console</h1>
++		<div id="short-status">
++		<h3>Status:</h3>
++		<ul>
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++		</ul>
++		</div>
++	</div>
++
++	<div id="mainmenu"><h3>401</h3></div>
++	<div id="submenu"><ul><li><b>Not Authorized</b></li></ul></div>
++	
++        <div id="content">
++
++<h2>401 Not Authorized</h2>
++
++        </div>
++	<div id="footer">
++	<h3>PacketProtector</h3>
++	<em>with X-Wrt Extensions</em>
++
++	</div>
++</div>
++</body>
++
++</html>
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err403.html buildroot/package/webif/files/www/errors/err403.html
+--- buildroot.orig/package/webif/files/www/errors/err403.html	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err403.html	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,44 @@
++<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
++<head>
++<title>PacketProtector Administrative Console</title>
++	<link rel="stylesheet" type="text/css" href="/themes/active/waitbox.css" media="screen" />
++	<link rel="stylesheet" type="text/css" href="/themes/active/webif.css" />
++	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
++	<meta http-equiv="expires" content="-1" />
++</head>
++<body >
++
++
++<div id="container">
++	<div id="header">
++
++		<h1>X-Wrt Administration Console</h1>
++		<div id="short-status">
++		<h3>Status:</h3>
++		<ul>
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++		</ul>
++		</div>
++	</div>
++
++	<div id="mainmenu"><h3>403</h3></div>
++	<div id="submenu"><ul><li><b>Forbidden</b></li></ul></div>
++	
++        <div id="content">
++
++<h2>403 Forbidden</h2>
++
++        </div>
++	<div id="footer">
++	<h3>PacketProtector</h3>
++	<em>with X-Wrt Extensions</em>
++
++	</div>
++</div>
++</body>
++
++</html>
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err404.html buildroot/package/webif/files/www/errors/err404.html
+--- buildroot.orig/package/webif/files/www/errors/err404.html	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err404.html	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,44 @@
++<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
++<head>
++<title>PacketProtector Administrative Console</title>
++	<link rel="stylesheet" type="text/css" href="/themes/active/waitbox.css" media="screen" />
++	<link rel="stylesheet" type="text/css" href="/themes/active/webif.css" />
++	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
++	<meta http-equiv="expires" content="-1" />
++</head>
++<body >
++
++
++<div id="container">
++	<div id="header">
++
++		<h1>X-Wrt Administration Console</h1>
++		<div id="short-status">
++		<h3>Status:</h3>
++		<ul>
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++		</ul>
++		</div>
++	</div>
++
++	<div id="mainmenu"><h3>404</h3></div>
++	<div id="submenu"><ul><li><b>File Not Found</b></li></ul></div>
++	
++        <div id="content">
++
++<h2>404 File Not Found</h2>
++
++        </div>
++	<div id="footer">
++	<h3>PacketProtector</h3>
++	<em>with X-Wrt Extensions</em>
++
++	</div>
++</div>
++</body>
++
++</html>
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err500.html buildroot/package/webif/files/www/errors/err500.html
+--- buildroot.orig/package/webif/files/www/errors/err500.html	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err500.html	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,44 @@
++<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
++<head>
++<title>PacketProtector Administrative Console</title>
++	<link rel="stylesheet" type="text/css" href="/themes/active/waitbox.css" media="screen" />
++	<link rel="stylesheet" type="text/css" href="/themes/active/webif.css" />
++	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
++	<meta http-equiv="expires" content="-1" />
++</head>
++<body >
++
++
++<div id="container">
++	<div id="header">
++
++		<h1>X-Wrt Administration Console</h1>
++		<div id="short-status">
++		<h3>Status:</h3>
++		<ul>
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++		</ul>
++		</div>
++	</div>
++
++	<div id="mainmenu"><h3>500</h3></div>
++	<div id="submenu"><ul><li><b>Internal Server Error</b></li></ul></div>
++	
++        <div id="content">
++
++<h2>500 Internal Server Error</h2>
++
++        </div>
++	<div id="footer">
++	<h3>PacketProtector</h3>
++	<em>with X-Wrt Extensions</em>
++
++	</div>
++</div>
++</body>
++
++</html>
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err501.html buildroot/package/webif/files/www/errors/err501.html
+--- buildroot.orig/package/webif/files/www/errors/err501.html	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err501.html	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,44 @@
++<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
++<head>
++<title>PacketProtector Administrative Console</title>
++	<link rel="stylesheet" type="text/css" href="/themes/active/waitbox.css" media="screen" />
++	<link rel="stylesheet" type="text/css" href="/themes/active/webif.css" />
++	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
++	<meta http-equiv="expires" content="-1" />
++</head>
++<body >
++
++
++<div id="container">
++	<div id="header">
++
++		<h1>X-Wrt Administration Console</h1>
++		<div id="short-status">
++		<h3>Status:</h3>
++		<ul>
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++		</ul>
++		</div>
++	</div>
++
++	<div id="mainmenu"><h3>501</h3></div>
++	<div id="submenu"><ul><li><b>Not Implemented</b></li></ul></div>
++	
++        <div id="content">
++
++<h2>501 Not Implemented</h2>
++
++        </div>
++	<div id="footer">
++	<h3>PacketProtector</h3>
++	<em>with X-Wrt Extensions</em>
++
++	</div>
++</div>
++</body>
++
++</html>
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err503.html buildroot/package/webif/files/www/errors/err503.html
+--- buildroot.orig/package/webif/files/www/errors/err503.html	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err503.html	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,44 @@
++<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
++<head>
++<title>PacketProtector Administrative Console</title>
++	<link rel="stylesheet" type="text/css" href="/themes/active/waitbox.css" media="screen" />
++	<link rel="stylesheet" type="text/css" href="/themes/active/webif.css" />
++	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
++	<meta http-equiv="expires" content="-1" />
++</head>
++<body >
++
++
++<div id="container">
++	<div id="header">
++
++		<h1>X-Wrt Administration Console</h1>
++		<div id="short-status">
++		<h3>Status:</h3>
++		<ul>
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++
++			<li><strong>*</strong></li>
++			<li><strong>*</strong></li>
++		</ul>
++		</div>
++	</div>
++
++	<div id="mainmenu"><h3>503</h3></div>
++	<div id="submenu"><ul><li><b>Service Unavailable</b></li></ul></div>
++	
++        <div id="content">
++
++<h2>503 Service Unavailable</h2>
++
++        </div>
++	<div id="footer">
++	<h3>PacketProtector</h3>
++	<em>with X-Wrt Extensions</em>
++
++	</div>
++</div>
++</body>
++
++</html>
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/target/linux/brcm47xx/image/Makefile buildroot/target/linux/brcm47xx/image/Makefile
 --- buildroot.orig/target/linux/brcm47xx/image/Makefile	2010-10-17 11:56:21.000000000 +0000
 +++ buildroot/target/linux/brcm47xx/image/Makefile	2010-12-09 03:18:35.000000000 +0000
