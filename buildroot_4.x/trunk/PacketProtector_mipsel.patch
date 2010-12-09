@@ -3913,3 +3913,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 @@ -0,0 +1,2 @@
 +# example
 +# 11:22:33:44:55:66 192.168.1.2
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/freeradius/users buildroot/package/base-files/files/etc/freeradius/users
+--- buildroot.orig/package/base-files/files/etc/freeradius/users	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/base-files/files/etc/freeradius/users	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1 @@
++"root"		Cleartext-Password := "packetprotector"
