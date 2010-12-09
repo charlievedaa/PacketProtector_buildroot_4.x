@@ -4189,3 +4189,47 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +
 +fi
 +}
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/packetprotector.conf buildroot/package/base-files/files/etc/packetprotector.conf
+--- buildroot.orig/package/base-files/files/etc/packetprotector.conf	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/base-files/files/etc/packetprotector.conf	2010-12-09 02:18:17.000000000 +0000
+@@ -0,0 +1,9 @@
++# no spaces before the equals signs!
++# 1 is enabled; 0 is disabled
++
++dansguardian=1
++dansguardian_cf=0
++dansguardian_av=1
++freeradius=1
++openvpn=1
++snort-inline=1
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/passwd buildroot/package/base-files/files/etc/passwd
+--- buildroot.orig/package/base-files/files/etc/passwd	2010-10-17 11:56:32.000000000 +0000
++++ buildroot/package/base-files/files/etc/passwd	2010-12-09 02:19:05.000000000 +0000
+@@ -1,3 +1,3 @@
+-root:!:0:0:root:/root:/bin/ash
++root:x:0:0:root:/root:/bin/ash
+ nobody:*:65534:65534:nobody:/var:/bin/false
+ daemon:*:65534:65534:daemon:/var:/bin/false
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/shadow buildroot/package/base-files/files/etc/shadow
+--- buildroot.orig/package/base-files/files/etc/shadow	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/base-files/files/etc/shadow	2010-12-09 02:19:15.000000000 +0000
+@@ -0,0 +1,3 @@
++root:$1$$3PU5jOpctFwuSGxWSJxAn0:13136:0:99999:7:::
++nobody:*:13136:0:99999:7:::
++
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/sysctl.conf buildroot/package/base-files/files/etc/sysctl.conf
+--- buildroot.orig/package/base-files/files/etc/sysctl.conf	2010-10-17 11:56:32.000000000 +0000
++++ buildroot/package/base-files/files/etc/sysctl.conf	2010-12-09 02:20:20.000000000 +0000
+@@ -1,6 +1,7 @@
+ kernel.panic=3
+ net.ipv4.conf.default.arp_ignore=1
+ net.ipv4.conf.all.arp_ignore=1
++net.ipv4.conf.all.rp_filter=2
+ net.ipv4.ip_forward=1
+ net.ipv4.icmp_echo_ignore_broadcasts=1
+ net.ipv4.icmp_ignore_bogus_error_responses=1
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/version buildroot/package/base-files/files/etc/version
+--- buildroot.orig/package/base-files/files/etc/version	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/base-files/files/etc/version	2010-12-09 02:20:48.000000000 +0000
+@@ -0,0 +1 @@
++4.0
