@@ -5493,6 +5493,136 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  
  config webif qos
  	option show_advanced_rules "0"
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/etc/httpd.conf buildroot/package/webif/files/etc/httpd.conf
+--- buildroot.orig/package/webif/files/etc/httpd.conf	2010-10-17 11:57:14.000000000 +0000
++++ buildroot/package/webif/files/etc/httpd.conf	1970-01-01 00:00:00.000000000 +0000
+@@ -1,9 +0,0 @@
+-/cgi-bin/webif/:root:$p$root
+-/cgi-bin/webif/:admin:$p$root
+-.asp:text/html
+-.svg:image/svg+xml
+-.png:image/png
+-.gif:image/gif
+-.jpg:image/jpg
+-.js:application/x-javascript
+-
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/etc/init.d/webif buildroot/package/webif/files/etc/init.d/webif
+--- buildroot.orig/package/webif/files/etc/init.d/webif	2010-10-17 11:57:14.000000000 +0000
++++ buildroot/package/webif/files/etc/init.d/webif	2010-12-09 03:25:07.000000000 +0000
+@@ -128,24 +128,7 @@
+ 	firmware_subtitle=$CONFIG_general_firmware_subtitle
+ 	firmware_version=$CONFIG_general_firmware_version
+ 
+-	if grep -qi "KAMIKAZE" "/etc/banner"; then
+-		firmware_name="OpenWrt Kamikaze"
+-	elif grep -qi "BackFire" "/etc/banner"; then
+-		firmware_name="OpenWrt BackFire"
+-	else
+-		firmware_name="Unknown Wrt"
+-	fi	
+-	firmware_subtitle="With X-Wrt Extensions"
+-
+-	if [ -f "/etc/openwrt_version" ]; then
+-		firmware_version=$(cat "/etc/openwrt_version")
+-	elif grep -q "KAMIKAZE" "/etc/banner"; then
+-		firmware_version=$(cat /etc/banner |grep KAMIKAZE |cut -d '(' -f 2 |cut -d ')' -f 1)
+-	elif grep -q "BackFire" "/etc/banner"; then
+-		firmware_version=$(cat /etc/banner |grep BackFire |cut -d '(' -f 2 |cut -d ')' -f 1)
+-	else
+-		firmware_version="unknown"
+-	fi
++	firmware_subtitle="with X-Wrt Extensions"
+ 
+ 	if [ "$CONFIG_general_firstboot" = "1" ]; then
+ 		opkg update
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/usr/lib/webif/apply.sh buildroot/package/webif/files/usr/lib/webif/apply.sh
+--- buildroot.orig/package/webif/files/usr/lib/webif/apply.sh	2010-10-17 11:57:13.000000000 +0000
++++ buildroot/package/webif/files/usr/lib/webif/apply.sh	2010-12-09 03:26:46.000000000 +0000
+@@ -27,6 +27,7 @@
+ HANDLERS_file='
+ 	hosts) rm -f /etc/hosts; mv $config /etc/hosts; killall -HUP dnsmasq ;;
+ 	ethers) rm -f /etc/ethers; mv $config /etc/ethers; killall -HUP dnsmasq ;;
++	firewall) mv /tmp/.webif/file-firewall /etc/firewall.config && /etc/init.d/firewall restart && reload_upnpd;;
+ 	dnsmasq.conf) mv /tmp/.webif/file-dnsmasq.conf /etc/dnsmasq.conf && /etc/init.d/dnsmasq restart;;
+ 	httpd.conf) mv -f /tmp/.webif/file-httpd.conf /etc/httpd.conf && HTTP_RESTART=1 ;;
+ '
+@@ -326,7 +327,9 @@
+ 			/etc/init.d/firewall restart && reload_upnpd
+ 			;;
+ 		"httpd")
+-			/etc/init.d/httpd restart
++			[ -e "/etc/init.d/httpd" ] && /etc/init.d/httpd restart
++			[ -e "/etc/init.d/uhttpd" ] && /etc/init.d/uhttpd restart
++#			/etc/init.d/httpd restart
+ 			;;
+ 		"uhttpd")
+ 			/etc/init.d/uhttpd restart
+@@ -349,5 +352,6 @@
+ rm /tmp/.webif/* >&- 2>&-
+ rm /tmp/.uci/* >&- 2>&-
+ if [ "$HTTP_RESTART" = "1" ]; then
+-	/etc/init.d/httpd restart
++	[ -e "/etc/init.d/httpd" ] && /etc/init.d/httpd restart
++	[ -e "/etc/init.d/uhttpd" ] && /etc/init.d/uhttpd restart
+ fi
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/usr/lib/webif/functions.sh buildroot/package/webif/files/usr/lib/webif/functions.sh
+--- buildroot.orig/package/webif/files/usr/lib/webif/functions.sh	2010-10-17 11:57:13.000000000 +0000
++++ buildroot/package/webif/files/usr/lib/webif/functions.sh	2010-12-09 03:27:02.000000000 +0000
+@@ -135,14 +135,14 @@
+ 	# emit output to std devices.
+ 	echo "@TR<<Installing package>>..."
+ 	local retval
+-	opkg -force-overwrite install "$@" | sed 's/&/\&amp;/; s/"/\&#34;/; s/'\''/\&#39;/; s/\$/\&#36;/; s/</\&lt;/; s/>/\&gt;/; s/\\/\&#92;/; s/|/\&#124;/;'
++	opkg -d root -force-overwrite install "$@" | sed 's/&/\&amp;/; s/"/\&#34;/; s/'\''/\&#39;/; s/\$/\&#36;/; s/</\&lt;/; s/>/\&gt;/; s/\\/\&#92;/; s/|/\&#124;/;'
+ 	retval="$?"
+ 	[ "$retval" != "0" ] && {
+ 		! equal "$(echo "$1" | grep -q ":\/\/")" "0" && {
+ 			# wasn't a URL, so update
+ 			echo "@TR<<Refreshing outdated packages lists>>..."
+ 			opkg update
+-			opkg -force-overwrite -force-defaults install "$@"
++			opkg -force-overwrite install "$@"
+ 			retval="$?"
+ 		}
+ 	}
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/usr/lib/webif/webif.sh buildroot/package/webif/files/usr/lib/webif/webif.sh
+--- buildroot.orig/package/webif/files/usr/lib/webif/webif.sh	2010-10-17 11:57:13.000000000 +0000
++++ buildroot/package/webif/files/usr/lib/webif/webif.sh	2010-12-09 03:27:33.000000000 +0000
+@@ -12,6 +12,7 @@
+ # Configuration files referenced:
+ #
+ 
++
+ libdir=/usr/lib/webif
+ wwwdir=/www
+ cgidir=/www/cgi-bin/webif
+@@ -22,6 +23,7 @@
+ . /usr/lib/webif/functions.sh
+ . /lib/config/uci.sh
+ 
++
+ uci_load "webif"
+ _device="$CONFIG_general_device_name"
+ 
+@@ -312,7 +314,7 @@
+ $_endform
+ <hr />
+ <div id="footer">
+-	<h3>X-Wrt</h3>
++	<h3>PacketProtector</h3>
+ 	<em>@TR<<making_usable#End user extensions for OpenWrt>></em>
+ </div>
+ </div> <!-- End #container -->
+@@ -325,7 +327,8 @@
+ apply_passwd() {
+ 	case ${SERVER_SOFTWARE%% *} in
+ 		mini_httpd/*)
+-			grep '^root:' /etc/passwd | cut -d: -f1,2 > $cgidir/.htpasswd
++			grep '^root:' /etc/shadow | cut -d: -f1,2 > $cgidir/.htpasswd
++			chmod 600 $cgidir/.htpasswd
+ 			killall -HUP mini_httpd
+ 			;;
+ 	esac
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/target/linux/brcm47xx/image/Makefile buildroot/target/linux/brcm47xx/image/Makefile
 --- buildroot.orig/target/linux/brcm47xx/image/Makefile	2010-10-17 11:56:21.000000000 +0000
 +++ buildroot/target/linux/brcm47xx/image/Makefile	2010-12-09 03:18:35.000000000 +0000
