@@ -4488,3 +4488,15 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  DOMAIN=""
  
  dhcp_calc() {
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/dropbear/Makefile buildroot/package/dropbear/Makefile
+--- buildroot.orig/package/dropbear/Makefile	2010-10-17 11:56:33.000000000 +0000
++++ buildroot/package/dropbear/Makefile	2010-12-09 02:49:31.000000000 +0000
+@@ -54,7 +54,7 @@
+ 	--disable-pam \
+ 	--enable-openpty \
+ 	--enable-syslog \
+-	$(if $(CONFIG_SHADOW_PASSWORDS),,--disable-shadow) \
++	--enable-shadow \
+ 	--disable-lastlog \
+ 	--disable-utmp \
+ 	--disable-utmpx \
