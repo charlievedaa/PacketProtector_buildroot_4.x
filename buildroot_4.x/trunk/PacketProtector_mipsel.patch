@@ -5473,3 +5473,35 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +endef
 +
 +$(eval $(call BuildPackage,usbutils))
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/etc/config/webif buildroot/package/webif/files/etc/config/webif
+--- buildroot.orig/package/webif/files/etc/config/webif	2010-10-17 11:57:14.000000000 +0000
++++ buildroot/package/webif/files/etc/config/webif	2010-12-09 03:21:13.000000000 +0000
+@@ -1,6 +1,6 @@
+ config webif general
+ 	option lang "en"
+-	option firmware_name ""
++	option firmware_name "PacketProtector"
+ 	option firmware_version ""
+ 	option firmware_subtitle "With X-Wrt Extensions"
+ 	option device_name ""
+@@ -8,7 +8,7 @@
+ 	option firstboot	"1"
+ 
+ config webif theme
+-	option id "clubman"
++	option id "xwrt"
+ 
+ config webif qos
+ 	option show_advanced_rules "0"
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/target/linux/brcm47xx/image/Makefile buildroot/target/linux/brcm47xx/image/Makefile
+--- buildroot.orig/target/linux/brcm47xx/image/Makefile	2010-10-17 11:56:21.000000000 +0000
++++ buildroot/target/linux/brcm47xx/image/Makefile	2010-12-09 03:18:35.000000000 +0000
+@@ -92,6 +92,8 @@
+ define Image/Build/squashfs
+ 	$(call Image/Build/jffs2-64k,$(1))
+ 	$(call Image/Build/jffs2-128k,$(1))
++	cp $(BIN_DIR)/openwrt-brcm47xx-squashfs.trx $(BIN_DIR)/packetprotector-brcm-`cat $(TOPDIR)/package/base-files/files/etc/version`.trx
++	cp $(BIN_DIR)/openwrt-wrtsl54gs-squashfs.bin $(BIN_DIR)/packetprotector-wrtsl54gs-`cat $(TOPDIR)/package/base-files/files/etc/version`.bin
+ endef
+ 
+ define Image/Build/Initramfs
