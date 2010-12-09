@@ -5241,3 +5241,179 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 + 
 +     (void) snprintf(
 + 	header, sizeof(header), "WWW-Authenticate: Basic realm=\"%s\"", realm );
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/ntpclient/Makefile buildroot/package/ntpclient/Makefile
+--- buildroot.orig/package/ntpclient/Makefile	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/ntpclient/Makefile	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,49 @@
++#
++# Copyright (C) 2006 OpenWrt.org
++#
++# This is free software, licensed under the GNU General Public License v2.
++# See /LICENSE for more information.
++#
++# $Id: Makefile 12305 2008-08-14 12:03:55Z blogic $
++
++include $(TOPDIR)/rules.mk
++
++PKG_NAME:=ntpclient
++PKG_VERSION:=2007_365
++PKG_RELEASE:=1
++
++PKG_SOURCE:=$(PKG_NAME)_$(PKG_VERSION).tar.gz
++PKG_SOURCE_URL:=http://doolittle.icarus.com/ntpclient/
++PKG_MD5SUM:=cb98711f11769cdd22fc592844cef414
++
++PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-2007
++
++include $(INCLUDE_DIR)/package.mk
++
++define Package/ntpclient
++  SUBMENU:=Time Synchronization
++  SECTION:=net
++  CATEGORY:=Network
++  TITLE:=NTP (Network Time Protocol) client
++  URL:=http://doolittle.icarus.com/ntpclient/
++endef
++
++define Package/ntpclient/description
++	NTP client for setting system time from NTP servers.
++endef
++
++MAKE_FLAGS += \
++	all adjtimex
++
++define Package/ntpclient/install
++	$(INSTALL_DIR) $(1)/etc/hotplug.d/iface
++	$(INSTALL_DATA) ./files/ntpclient.hotplug $(1)/etc/hotplug.d/iface/20-ntpclient
++	$(INSTALL_DIR) $(1)/etc/config
++	$(INSTALL_CONF) ./files/ntpclient.config $(1)/etc/config/ntpclient
++	$(INSTALL_DIR) $(1)/usr/sbin
++	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ntpclient $(1)/usr/sbin/
++	$(INSTALL_BIN) $(PKG_BUILD_DIR)/adjtimex $(1)/usr/sbin/
++	$(INSTALL_BIN) $(PKG_BUILD_DIR)/rate.awk $(1)/usr/sbin/
++endef
++
++$(eval $(call BuildPackage,ntpclient))
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/ntpclient/files/ntpclient.config buildroot/package/ntpclient/files/ntpclient.config
+--- buildroot.orig/package/ntpclient/files/ntpclient.config	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/ntpclient/files/ntpclient.config	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,22 @@
++config ntpserver
++	option hostname '0.openwrt.pool.ntp.org'
++	option port     '123'
++
++config ntpserver
++	option hostname '1.openwrt.pool.ntp.org'
++	option port     '123'
++
++config ntpserver
++	option hostname '2.openwrt.pool.ntp.org'
++	option port     '123'
++
++config ntpserver
++	option hostname '3.openwrt.pool.ntp.org'
++	option port     '123'
++
++config ntpdrift
++	option freq     '0'
++
++config ntpclient
++	option interval	60
++	#option count	10
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/ntpclient/files/ntpclient.hotplug buildroot/package/ntpclient/files/ntpclient.hotplug
+--- buildroot.orig/package/ntpclient/files/ntpclient.hotplug	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/ntpclient/files/ntpclient.hotplug	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,65 @@
++#!/bin/sh
++# Copyright (C) 2006 OpenWrt.org
++
++. /etc/functions.sh
++
++unset SERVER
++unset PORT
++unset INTERVAL
++unset COUNT
++NTPC=`which ntpclient`
++
++check_server() {
++	local hostname
++	local port
++	[ -n "$SERVER" ] && return
++	config_get hostname $1 hostname
++	config_get port $1 port
++	[ -z "$hostname" ] && return
++	$NTPC -c 1 -p ${port:-123} -h $hostname > /dev/null && { SERVER=$hostname; PORT=${port:-123}; }
++}
++
++set_drift() {
++	config_get freq $1 freq
++	[ -n "$freq" ] && adjtimex -f $freq >/dev/null
++}
++
++start_ntpclient() {
++	config_foreach set_drift ntpdrift
++	config_foreach check_server ntpserver
++	[ -z "$SERVER" ] && exit 0
++	logger starting ntpclient
++	$NTPC ${COUNT:+-c $COUNT} ${INTERVAL:+-i $INTERVAL} -s -l -D -p $PORT -h $SERVER 2> /dev/null
++}
++
++stop_ntpclient() {
++	logger stopping ntpclient
++	killall ntpclient
++}
++
++load_settings() {
++	local interval
++	local count
++	local iface
++	
++	config_get interval $1 interval
++	config_get count $1 count
++	
++	[ -n "$count" ] && COUNT=$count
++	[ -n "$interval" ] && INTERVAL=$interval
++}
++
++config_load ntpclient
++config_foreach load_settings ntpclient
++
++DEF_ROUTE=`route -n | grep '^0.0.0.0'`
++NTP_RUNNING=`ps  | grep $NTPC | grep -v grep`
++
++case "${ACTION:-ifup}" in
++	ifup)
++		[ -n "$DEF_ROUTE" -a -z "$NTP_RUNNING" ] && start_ntpclient 
++	;;
++	ifdown)
++		[ -n "$NTP_RUNNING" ] && stop_ntpclient 
++	;;
++esac
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/ntpclient/patches/100-daemon.patch buildroot/package/ntpclient/patches/100-daemon.patch
+--- buildroot.orig/package/ntpclient/patches/100-daemon.patch	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/ntpclient/patches/100-daemon.patch	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,24 @@
++Index: ntpclient-2007/ntpclient.c
++===================================================================
++--- ntpclient-2007.orig/ntpclient.c	2008-08-12 03:11:34.000000000 +0200
+++++ ntpclient-2007/ntpclient.c	2008-08-12 03:11:36.000000000 +0200
++@@ -614,7 +614,7 @@
++ 	ntpc.cross_check=1;
++ 
++ 	for (;;) {
++-		c = getopt( argc, argv, "c:" DEBUG_OPTION "f:g:h:i:lp:q:" REPLAY_OPTION "st");
+++		c = getopt( argc, argv, "c:" DEBUG_OPTION "f:g:h:i:lp:q:" REPLAY_OPTION "stD");
++ 		if (c == EOF) break;
++ 		switch (c) {
++ 			case 'c':
++@@ -663,6 +663,10 @@
++ 				(ntpc.cross_check)=0;
++ 				break;
++ 
+++			case 'D':
+++				daemon();
+++				break;
+++
++ 			default:
++ 				usage(argv[0]);
++ 				exit(1);
