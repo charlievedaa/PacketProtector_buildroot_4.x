@@ -4537,6 +4537,18 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +endef
 +
 +$(eval $(call BuildPackage,haserl))
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/hostap-driver/files/lib/wifi/hostap.sh buildroot/package/hostap-driver/files/lib/wifi/hostap.sh
+--- buildroot.orig/package/hostap-driver/files/lib/wifi/hostap.sh	2010-10-17 11:56:34.000000000 +0000
++++ buildroot/package/hostap-driver/files/lib/wifi/hostap.sh	2010-12-09 22:57:45.000000000 +0000
+@@ -203,7 +203,7 @@
+ 	option device	$dev
+ 	option network	lan
+ 	option mode	ap
+-	option ssid	OpenWrt
++	option ssid	PacketProtector
+ 	option encryption none
+ EOF
+ 	done
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/applejuice.pat buildroot/package/iptables/files/l7/applejuice.pat
 --- buildroot.orig/package/iptables/files/l7/applejuice.pat	1970-01-01 00:00:00.000000000 +0000
 +++ buildroot/package/iptables/files/l7/applejuice.pat	2010-12-09 02:57:48.000000000 +0000
