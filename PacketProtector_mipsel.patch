@@ -4464,3 +4464,27 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 -	killall telnetd 2>/dev/null
 -}
 -
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/dnsmasq/files/dhcp.conf buildroot/package/dnsmasq/files/dhcp.conf
+--- buildroot.orig/package/dnsmasq/files/dhcp.conf	2010-10-17 11:56:32.000000000 +0000
++++ buildroot/package/dnsmasq/files/dhcp.conf	2010-12-09 02:46:21.000000000 +0000
+@@ -13,7 +13,7 @@
+ 	option authoritative	1
+ 	option readethers	1
+ 	option leasefile	'/tmp/dhcp.leases'
+-	option resolvfile	'/tmp/resolv.conf.auto'
++	option resolvfile	'/tmp/resolv.conf'
+ 	#list server		'/mycompany.local/1.2.3.4'
+ 	#option nonwildcard	1
+ 	#list interface		br-lan
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/dnsmasq/files/dnsmasq.init buildroot/package/dnsmasq/files/dnsmasq.init
+--- buildroot.orig/package/dnsmasq/files/dnsmasq.init	2010-10-17 11:56:32.000000000 +0000
++++ buildroot/package/dnsmasq/files/dnsmasq.init	2010-12-09 02:46:35.000000000 +0000
+@@ -2,7 +2,7 @@
+ # Copyright (C) 2007 OpenWrt.org
+ 
+ START=60
+-DNS_SERVERS=""
++DNS_SERVERS="208.67.222.222 208.67.220.220"
+ DOMAIN=""
+ 
+ dhcp_calc() {
