@@ -1,11 +1,11 @@
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/.config buildroot/.config
 --- buildroot.orig/.config	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/.config	2010-11-13 23:59:22.000000000 +0000
-@@ -0,0 +1,1701 @@
++++ buildroot/.config	2010-12-09 23:14:06.000000000 +0000
+@@ -0,0 +1,1722 @@
 +#
 +# Automatically generated make config: don't edit
 +# OpenWrt version: Kamikaze (r23485)
-+# Sun Oct 24 02:38:26 2010
++# Thu Dec  9 23:12:06 2010
 +#
 +CONFIG_HAVE_DOT_CONFIG=y
 +# CONFIG_TARGET_ppc40x is not set
@@ -1158,6 +1158,19 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +#
 +# Network
 +#
++
++#
++# Time Synchronization
++#
++CONFIG_PACKAGE_ntpclient=y
++
++#
++# Web
++#
++CONFIG_PACKAGE_mini-httpd=y
++# CONFIG_PACKAGE_mini-httpd-htpasswd is not set
++# CONFIG_PACKAGE_mini-httpd-matrixssl is not set
++# CONFIG_PACKAGE_mini-httpd-openssl is not set
 +# CONFIG_PACKAGE_arptables is not set
 +# CONFIG_PACKAGE_chat is not set
 +CONFIG_PACKAGE_crda=y
@@ -1215,16 +1228,21 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +#
 +# Filesystem
 +#
-+# CONFIG_PACKAGE_libblkid is not set
++CONFIG_PACKAGE_libblkid=y
 +# CONFIG_PACKAGE_libext2fs is not set
 +# CONFIG_PACKAGE_libfuse is not set
-+# CONFIG_PACKAGE_libuuid is not set
++CONFIG_PACKAGE_libuuid=y
 +
 +#
 +# SSL
 +#
 +# CONFIG_PACKAGE_libcyassl is not set
-+# CONFIG_PACKAGE_libopenssl is not set
++CONFIG_PACKAGE_libopenssl=y
++
++#
++# Configuration
++#
++# CONFIG_OPENSSL_ENGINE is not set
 +# CONFIG_PACKAGE_libipq is not set
 +CONFIG_PACKAGE_libiptc=y
 +# CONFIG_PACKAGE_libiw is not set
@@ -1237,9 +1255,10 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_PACKAGE_libreadline is not set
 +CONFIG_PACKAGE_libuci=y
 +# CONFIG_PACKAGE_libuci-lua is not set
++CONFIG_PACKAGE_libusb=y
 +CONFIG_PACKAGE_libxtables=y
 +# CONFIG_PACKAGE_linux-atm is not set
-+# CONFIG_PACKAGE_zlib is not set
++CONFIG_PACKAGE_zlib=y
 +
 +#
 +# IPv6
@@ -1667,7 +1686,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_PACKAGE_cfdisk is not set
 +# CONFIG_PACKAGE_fdisk is not set
 +# CONFIG_PACKAGE_sfdisk is not set
-+# CONFIG_PACKAGE_swap-utils is not set
++CONFIG_PACKAGE_swap-utils=y
 +# CONFIG_PACKAGE_comgt is not set
 +# CONFIG_PACKAGE_compcache is not set
 +# CONFIG_PACKAGE_dropbearconvert is not set
@@ -1676,19 +1695,21 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_PACKAGE_gdb is not set
 +# CONFIG_PACKAGE_gdbserver is not set
 +# CONFIG_PACKAGE_gpioctl is not set
++CONFIG_PACKAGE_haserl=y
 +# CONFIG_PACKAGE_hwclock is not set
 +# CONFIG_PACKAGE_kexec-tools is not set
 +# CONFIG_PACKAGE_ldconfig is not set
-+# CONFIG_PACKAGE_ldd is not set
++CONFIG_PACKAGE_ldd=y
 +# CONFIG_PACKAGE_losetup is not set
 +# CONFIG_PACKAGE_mount-utils is not set
 +# CONFIG_PACKAGE_mountd is not set
 +# CONFIG_PACKAGE_ocf-crypto-headers is not set
-+# CONFIG_PACKAGE_openssl-util is not set
++CONFIG_PACKAGE_openssl-util=y
 +# CONFIG_PACKAGE_px5g is not set
 +# CONFIG_PACKAGE_robocfg is not set
 +# CONFIG_PACKAGE_spidev-test is not set
 +# CONFIG_PACKAGE_uboot-envtools is not set
++CONFIG_PACKAGE_usbutils=y
 +
 +#
 +# Emulators
