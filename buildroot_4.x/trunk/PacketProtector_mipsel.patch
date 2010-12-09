@@ -5634,6 +5634,1532 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  			killall -HUP mini_httpd
  			;;
  	esac
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/info.sh buildroot/package/webif/files/www/cgi-bin/webif/info.sh
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/info.sh	2010-10-17 11:57:12.000000000 +0000
++++ buildroot/package/webif/files/www/cgi-bin/webif/info.sh	2010-12-09 03:34:52.000000000 +0000
+@@ -70,6 +70,12 @@
+ 	echo "</pre><br />"
+ }
+ 
++#check for default password hash
++PASSWORD=`grep root /etc/shadow | cut -d: -f2`
++if [ $PASSWORD = "\$1\$\$3PU5jOpctFwuSGxWSJxAn0" ] ; then
++	echo "<h1><b>Default password hash found!  Please <a href='/cgi-bin/webif/users.sh'>change your password</a> (USB drive required).</b></h1><br/><br/>"
++fi
++
+ cat <<EOF
+ <table summary="System Information">
+ <tbody>
+@@ -110,19 +116,6 @@
+ </tbody>
+ </table>
+ 
+-<form action="" enctype="multipart/form-data" method="post">
+-<table summary="Update webif">
+-<tbody>
+-	<tr>
+-		<td colspan="2">
+-		<input type="submit" value=" @TR<<info_check_update#Check For Webif Update>> " name="update_check" />
+-		$upgrade_button
+-		</td>
+-	</tr>
+-</tbody>
+-</table>
+-</form>
+-
+ EOF
+ 
+ footer
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/reboot.sh buildroot/package/webif/files/www/cgi-bin/webif/reboot.sh
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/reboot.sh	2010-10-17 11:57:12.000000000 +0000
++++ buildroot/package/webif/files/www/cgi-bin/webif/reboot.sh	2010-12-09 03:35:47.000000000 +0000
+@@ -9,7 +9,7 @@
+ 	uci_load "network"
+ 	router_ip="$CONFIG_lan_ipaddr"
+ 	[ -n "$SERVER_PORT" ] && [ "$SERVER_PORT" != "80" ] && router_ip="$router_ip:$SERVER_PORT"
+-	header_inject_head="<meta http-equiv=\"refresh\" content=\"$timeout;http://$router_ip\" />"
++	header_inject_head="<meta http-equiv=\"refresh\" content=\"$timeout;https://$router_ip\" />"
+ 	reboot_msg="@TR<<Rebooting now>>...
+ <br/><br/>
+ @TR<<reboot_wait#Please wait about>> $timeout @TR<<reboot_seconds#seconds.>> @TR<<reboot_reload#The webif&sup2; should automatically reload.>>
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/status-asterisk.sh buildroot/package/webif/files/www/cgi-bin/webif/status-asterisk.sh
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-asterisk.sh	2010-10-17 11:57:12.000000000 +0000
++++ buildroot/package/webif/files/www/cgi-bin/webif/status-asterisk.sh	1970-01-01 00:00:00.000000000 +0000
+@@ -1,128 +0,0 @@
+-#!/usr/bin/webif-page
+-<?
+-. /usr/lib/webif/webif.sh
+-header "Status" "Asterisk" "@TR<<Asterisk Simple Managment>>"
+-
+-if [ -e /var/run/asterisk.pid ]; then
+-
+-ast_pid=$(cat /var/run/asterisk.pid)
+-
+-ast_proc_info="$(cat /proc/$ast_pid/cmdline | tr '\0' ' ')"
+-
+-asterisk_exec="$(echo $ast_proc_info | awk '{print $1}')"
+-
+-if [ -z "$asterisk_exec" ]; then
+-	asterisk_exec="/usr/sbin/asterisk"
+-fi
+-
+-ast_conf_file="$(echo $ast_proc_info | awk '{for (i=2; i<=NF; i++) if ($i == "-C") print $(i+1)}')"
+-
+-if [ -e "$ast_conf_file" ]; then
+-	ast_conf_path="$(cat $ast_conf_file | grep '^astetcdir => ')"
+-
+-	if [ -n "$ast_conf_path" ]; then
+-		ast_conf_path="$(echo $ast_conf_path | awk '{print $3}')"
+-	else
+-		ast_conf_path=/etc/asterisk
+-	fi
+-else
+-	ast_conf_path=/etc/asterisk
+-fi
+-
+-echo '<center>'
+-echo '<a href="'$SCRIPT_NAME'">Version</a>'
+-echo '<a href="'$SCRIPT_NAME'?action=sip_peers">SIP/Peers</a>'
+-echo '<a href="'$SCRIPT_NAME'?action=sip_channels">SIP/Channels</a>'
+-echo '<a href="'$SCRIPT_NAME'?action=sip_registry">SIP/Registry</a>'
+-echo '<a href="'$SCRIPT_NAME'?action=iax_peers">IAX/Peers</a>'
+-echo '<a href="'$SCRIPT_NAME'?action=iax_channels">IAX/Channels</a>'
+-echo '<a href="'$SCRIPT_NAME'?action=iax_registry">IAX/Registry</a>'
+-echo '<a href="'$SCRIPT_NAME'?action=modules">Global/Modules</a>'
+-echo '<a href="'$SCRIPT_NAME'?action=cust_com">Custom/Command</a>'
+-echo '<a href="'$SCRIPT_NAME'?action=editor">.conf Editor</a>'
+-echo '<a href="'$SCRIPT_NAME'?action=reload">Reload</a>'
+-echo '<br /><br /><br />'
+-echo '<table><tr><td align=left border=0>'
+-echo '<pre>'
+-if [ "$FORM_action" = "reload" ]; then
+-	echo "<h3>Reloading...</h3>"
+-	$asterisk_exec -r -x 'reload'
+-elif [ "$FORM_action" = "sip_peers" ]; then
+-	echo "<h3>SIP/Peers</h3>"
+-	$asterisk_exec -r -x 'sip show peers'
+-elif [ "$FORM_action" = "sip_channels" ]; then
+-	echo "<h3>SIP/Channels</h3>"
+-	$asterisk_exec -r -x 'sip show channels'
+-elif [ "$FORM_action" = "sip_registry" ]; then
+-	echo "<h3>SIP/Registry</h3>"
+-	$asterisk_exec -r -x 'sip show registry'
+-elif [ "$FORM_action" = "iax_peers" ]; then
+-	echo "<h3>IAX/Peers</h3>"
+-	$asterisk_exec -r -x 'iax2 show peers'
+-elif [ "$FORM_action" = "iax_channels" ]; then
+-	echo "<h3>IAX/Channels</h3>"
+-	$asterisk_exec -r -x 'iax2 show channels'
+-elif [ "$FORM_action" = "iax_registry" ]; then
+-	echo "<h3>IAX/Registration</h3>"
+-	$asterisk_exec -r -x 'iax2 show registry'
+-elif [ "$FORM_action" = "modules" ]; then
+-	echo "<h3>Global/Modules</h3>"
+-	$asterisk_exec -r -x 'module show'
+-elif [ "$FORM_action" = "execute" ]; then
+-	echo "<h3>$FORM_exec_com</h3>"
+-	$asterisk_exec -r -x "$FORM_exec_com"
+-elif [ "$FORM_action" = "" ]; then
+-	$asterisk_exec -r -x 'core show version'
+-fi
+-echo '</pre>'
+-echo '</td></tr></table>'
+-echo '</center>'
+-if [ "$FORM_action" = "cust_com" ]; then
+-	echo '<form action="'$SCRIPT_NAME'" method=POST>'
+-	echo '<center>'
+-	echo '<INPUT type=text name="exec_com" value="'$FORM_exec_com'" size="25" maxlength="150">'
+-	echo '<br /><br /><INPUT type="submit" value="@TR<<Accept>>">'
+-	echo '<INPUT name="action" type="hidden" value="execute">'
+-	echo "<br /><br />Enter 'help' for commands details."
+-	echo '</center>'
+-	echo '</form>'
+-fi
+-if [ "$FORM_action" = "editor" ]; then
+-	echo '<center><form action="'$SCRIPT_NAME'" method=POST>'
+-	echo '<table style="width: 25%; text-align: left;" border="0" cellpadding="2" cellspacing="2" align="center">'
+-	ls $ast_conf_path/.  | awk -F' ' '
+-	{
+-		link=$1
+-		gsub(/\+/,"%2B",link)
+-		print "<tr><td><a href=\"'$SCRIPT_NAME'?action=edit&target=" link "\">@TR<<Edit>></td><td>" $1 "</td></tr></a>"
+-	}'
+-	echo '</table></form></center>'
+-fi
+-if [ "$FORM_conf" != "" ]; then
+-	echo "$FORM_conf" | tr -d '\r' > $ast_conf_path/$FORM_target
+-fi
+-if [ "$FORM_action" = "edit" ]; then
+-	conf_file="$( cat $ast_conf_path/$FORM_target )"
+-	echo '<form action="'$SCRIPT_NAME'" method=POST>'
+-	echo '<center>'
+-	echo '<TEXTAREA name="conf" rows="30" cols="100">'
+-	echo -n "$conf_file"
+-	echo '</TEXTAREA>'
+-	echo '<INPUT name="target" type="hidden" value="'$FORM_target'">'
+-	echo '<br /><INPUT type="submit" value="@TR<<Save Changes>>">'
+-	echo '</center>'
+-	echo '</form>'
+-fi
+-else
+-	if [ -x /usr/sbin/asterisk ]; then
+-		echo "@TR<<Asterisk is not running.>>"
+-	else
+-		echo "@TR<<Asterisk is not installed.>>"
+-		echo "@TR<<Install one of asterisk packages:>>"
+-		has_pkgs asterisk14 asterisk14-mini asterisk16
+-	fi
+-fi
+-footer ?>
+-<!--
+-##WEBIF:name:Status:901:Asterisk
+--->
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/status-basic.sh buildroot/package/webif/files/www/cgi-bin/webif/status-basic.sh
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-basic.sh	2010-10-17 11:57:12.000000000 +0000
++++ buildroot/package/webif/files/www/cgi-bin/webif/status-basic.sh	2010-12-09 03:40:33.000000000 +0000
+@@ -99,7 +99,7 @@
+ 		else
+ 			swap_type="@TR<<status_basic_swap_file#swap file>>"
+ 		print "string|<tr><td><strong>"swap_type" "$5"</strong><br /><em>"$1"</em></td><td>"
+-		print "progressbar|swap_" mcount "|" $4 "@TR<<KiB>> @TR<<mount_of#of>> " $3 "@TR<<KiB>>|200|" $4 "|" filled_caption "%|"; mcount+=1
++		print "progressbar|swap_" mcount "|" $4 "@TR<<KiB>> @TR<<mount_of#of>> " $3 "@TR<<KiB>>|200|" filled_caption "|" filled_caption "%|"; mcount+=1
+ 		print "string|</td></tr>"
+ 	}'
+ )
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-access-control.sh buildroot/package/webif/files/www/cgi-bin/webif/system-access-control.sh
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-access-control.sh	2010-10-17 11:57:12.000000000 +0000
++++ buildroot/package/webif/files/www/cgi-bin/webif/system-access-control.sh	1970-01-01 00:00:00.000000000 +0000
+@@ -1,180 +0,0 @@
+-#!/usr/bin/webif-page
+-<?
+-. /usr/lib/webif/webif.sh
+-
+-###################################################################
+-#
+-# System configuration page
+-#
+-# Description:
+-#	Configures access control for the webif
+-#
+-# Author(s) [in order of work date]:
+-#	Travis Kemen <kemen04@gmail.com>
+-#
+-# Major revisions:
+-#
+-# Configuration files referenced:
+-#   /etc/config/webif_access_control
+-#
+-
+-cachedir=/tmp/.webcache
+-#admin is also a superuser but maybe removed in the future.
+-superuser=root
+-mkdir /tmp/.webif/
+-exists /etc/config/webif_access_control || touch /etc/config/webif_access_control
+-
+-if [ "$FORM_user_add" != "" ]; then
+-	validate <<EOF
+-string|FORM_password_add|@TR<<Password>>|required min=5|$FORM_password_add
+-EOF
+-	equal "$FORM_password_add" "$FORM_password2_add" || {
+-		[ -n "$ERROR" ] && ERROR="${ERROR}<br />"
+-		ERROR="${ERROR}@TR<<password_mismatch#The passwords do not match!>><br />"
+-	}
+-	if [ "${FORM_user_add}" = "root" -o "${FORM_user_add}" = "admin" ]; then
+-		[ -n "$ERROR" ] && ERROR="${ERROR}<br />"
+-		ERROR="${ERROR}@TR<<root and admin are already users>>.<br />"
+-	fi
+-	[ -e /tmp/.webif/file-httpd.conf ] && HTTPD_CONFIG_FILE=/tmp/.webif/file-httpd.conf
+-	[ -e /etc/httpd.conf ] && HTTPD_CONFIG_FILE="$HTTPD_CONFIG_FILE /etc/httpd.conf"
+-	[ -n "HTTPD_CONFIG_FILE" ] && grep -q "$FORM_user_add" $HTTPD_CONFIG_FILE
+-	if [ "$?" = "0" ]; then
+-		[ -n "$ERROR" ] && ERROR="${ERROR}<br />"
+-		ERROR="${ERROR}$FORM_user_add @TR<<already exists.>>.<br />"
+-	fi
+-	empty "$ERROR" && {
+-		password=$(uhttpd -m $FORM_password_add)
+-		[ -e /tmp/.webif/file-httpd.conf ] || cp /etc/httpd.conf /tmp/.webif/file-httpd.conf
+-		echo "/cgi-bin/webif/:${FORM_user_add}:${password}" >>/tmp/.webif/file-httpd.conf
+-		uci_add "webif_access_control" "accesscontrol" "${FORM_user_add}"
+-		unset FORM_user_add
+-	}
+-	unset FORM_submit
+-fi
+-header "System" "Access Control" "@TR<<Access Control>>" '' "$SCRIPT_NAME"
+-
+-exists /tmp/.webif/file-httpd.conf && HTTPD_CONFIG_FILE=/tmp/.webif/file-httpd.conf || HTTPD_CONFIG_FILE=/etc/httpd.conf
+-
+-awk -F: -v "cachedir=$cachedir" -v "superuser=$superuser" '
+-BEGIN { ucount = 0;
+-	include("/usr/lib/webif/common.awk");
+-	start_form("@TR<<Users>>");
+-
+-	if (ENVIRON["FORM_submit"] != "") {
+-		if (ENVIRON["FORM_remove_user_"$2] != "") {
+-			system("/bin/rm -f " cachedir "/cat" $2);
+-			system("/bin/rm -f " cachedir "/subcat" $2);
+-			system("touch /tmp/.webif/file-httpd.conf.2");
+-		} else if (ENVIRON["FORM_change_password_"$2] != "")
+-			system("touch /tmp/.webif/file-httpd.conf.2");
+-	}
+-}
+-($1 == "/cgi-bin/webif/" && $2 != superuser && $2 != "admin") {
+-	if (ENVIRON["FORM_remove_user_" $2] == "") {
+-		field($2);
+-		password("user_"$2, ENVIRON["FORM_user_" $2]);
+-		submit("change_password_"$2, "@TR<<system_acl_changepw#Change Password>>");
+-		field("&nbsp;");
+-		print "<span class=\"smalltext\"><a href=\"" ENVIRON["SCRIPT_NAME"] "?remove_user_" $2 "=" $2 "&submit=1" "\">@TR<<system_acl_remove_user#Remove user>> " $2 "</a></span>";
+-		field("&nbsp;");
+-		ucount = ucount + 1;
+-	}
+-}
+-((ENVIRON["FORM_submit"] != "") && ($1 != "")) {
+-	if (($1 == "/cgi-bin/webif/") && (ENVIRON["FORM_remove_user_"$2] != $2) && (ENVIRON["FORM_change_password_"$2] == "")) {
+-		print $1":"$2":"$3 >>"/tmp/.webif/file-httpd.conf.2";
+-	}
+-	if ($1 != "/cgi-bin/webif/") {
+-		print $0 >>"/tmp/.webif/file-httpd.conf.2";
+-	}
+-	if (ENVIRON["FORM_change_password_"$2] != "") {
+-		("uhttpd -m " ENVIRON["FORM_user_"$2]) | getline password;
+-		print $1":"$2":"password >>"/tmp/.webif/file-httpd.conf.2";
+-	}
+-}
+-END {
+-	if (ucount == 0)
+-		print "<tr><td>No users defined.";
+-
+-	end_form("","",1);
+-	start_form("@TR<<Add User>>");
+-	field("@TR<<Username>>");
+-	textinput3("user_add", ENVIRON["FORM_user_add"]);
+-	field("@TR<<Password>>");
+-	password("password_add");
+-	field("@TR<<Confirm Password>>");
+-	password("password2_add");
+-	field("&nbsp;","");
+-	submit("add_user", "@TR<<Add User>>");
+-	end_form("","",1);
+-}' $HTTPD_CONFIG_FILE 2>/dev/null
+-
+-[ -e /tmp/.webif/file-httpd.conf.2 ] && mv -f /tmp/.webif/file-httpd.conf.2 /tmp/.webif/file-httpd.conf
+-exists /tmp/.webif/file-httpd.conf && HTTPD_CONFIG_FILE=/tmp/.webif/file-httpd.conf || HTTPD_CONFIG_FILE=/etc/httpd.conf
+-users=$(awk -F":" '($1 == "/cgi-bin/webif/") { if (($2 != "root") && ($2 != "admin")) print $2 }' $HTTPD_CONFIG_FILE 2>/dev/null)
+-
+-for user in $users; do
+-	export user
+-	#[ -s $cachedir/subcat_${user} ] || init_cache "$user"
+-	awk -F: '
+-BEGIN {
+-	include("/usr/lib/webif/common.awk")
+-	config_load("webif_access_control")
+-	start_form("@TR<<ACL User>>: " ENVIRON["user"])
+-}
+-{
+-	if (ENVIRON["FORM_submit"] == "") {
+-		if ($1 != "Graphs") {
+-			var = config_get_bool(ENVIRON["user"], $1"_"$2, "0")
+-		} else {
+-			var = config_get_bool(ENVIRON["user"], "Graphs", "0")
+-		}
+-	} else {
+-		if ($1 != "Graphs") {
+-			varorig = config_get_bool(ENVIRON["user"], $1"_"$2, "0")
+-			var2 = "FORM_" ENVIRON["user"] "_" $1 "_" $2
+-			var = ENVIRON[var2]
+-			if (varorig != var) {
+-				uci_set("webif_access_control", ENVIRON["user"], $1 "_" $2, var)
+-			}
+-		} else {
+-			varorig = config_get_bool(ENVIRON["user"], "Graphs", "0")
+-			var2 = "FORM_" ENVIRON["user"] "_Graphs"
+-			var = ENVIRON[var2]
+-			if (varorig != var) {
+-				uci_set("webif_access_control", ENVIRON["user"], "Graphs", var)
+-			}
+-		}
+-	}
+-	if (($1 != category) && ($1 != GRAPHS)) {
+-		field("<h2>@TR<<"$1">></h2>")
+-	}
+-	category = $1
+-	if ($1 != GRAPHS) {
+-		if ($1 == "Graphs") {
+-			GRAPHS = $1
+-			field("@TR<<Graphs>>")
+-			select(ENVIRON["user"]"_Graphs", var)
+-		} else {
+-			field("@TR<<"$3">>")
+-			select(ENVIRON["user"]"_"$1"_"$2, var)
+-		}
+-		option("1", "@TR<<Enabled>>")
+-		option("0", "@TR<<Disabled>>")
+-		print "</select>"
+-		select_open = 0
+-	}
+-}
+-	END {
+-		end_form("","",1)
+-	}' $cachedir/subcat_$superuser
+-done
+-
+-footer
+-
+-?>
+-
+-<!--
+-##WEBIF:name:System:160:Access Control
+--->
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-crontabs.sh buildroot/package/webif/files/www/cgi-bin/webif/system-crontabs.sh
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-crontabs.sh	2010-10-17 11:57:12.000000000 +0000
++++ buildroot/package/webif/files/www/cgi-bin/webif/system-crontabs.sh	1970-01-01 00:00:00.000000000 +0000
+@@ -1,618 +0,0 @@
+-#!/usr/bin/webif-page
+-<%
+-. /usr/lib/webif/webif.sh
+-###################################################################
+-# Crontabs
+-#
+-# Description:
+-#
+-# Author(s) [in order of work date]:
+-#       m4rc0 <jansssenmaj@gmail.com>
+-#
+-# Major revisions:
+-#		Initial release 2008-11-28
+-#
+-# NVRAM variables referenced:
+-#       none
+-#
+-# Configuration files referenced:
+-#       various crontab files
+-#
+-# Required components:
+-# 
+-
+-header "System" "Crontabs" "@TR<<Crontabs>>" '' "$SCRIPT_NAME"
+-
+-#Check if config file exists
+-if [ ! -f /etc/config/crontabs ]; then
+-	touch /etc/config/crontabs
+-fi 
+-
+-
+-# Remove selected crontabentry
+-if  ! empty "$FORM_remove_crontabentry" ; then
+-	uci_remove "crontabs" "$FORM_remove_crontabentry"
+-fi
+-
+-# Add new cron-entry
+-if ! empty "$FORM_MINUTES_newCron"; then
+-	uci_add "crontabs" "crontab" ""; crontab="$CONFIG_SECTION"
+-	uci_set "crontabs" "$crontab" "minutes" "$FORM_MINUTES_newCron"
+-	uci_set "crontabs" "$crontab" "hours" "$FORM_HOURS_newCron"
+-	uci_set "crontabs" "$crontab" "days" "$FORM_DAYS_newCron"
+-	uci_set "crontabs" "$crontab" "months" "$FORM_MONTHS_newCron"
+-	uci_set "crontabs" "$crontab" "weekdays" "$FORM_WEEKDAYS_newCron"
+-	#uci_set "crontabs" "$crontab" "user" "$FORM_USER_newCron"
+-	uci_set "crontabs" "$crontab" "command" "$FORM_COMMAND_newCron"
+-	uci_set "crontabs" "$crontab" "enabled" "$FORM_ENABLED_newCron"
+-	FORM_MINUTES_newCron=""
+-fi
+-
+-
+-config_cb() {
+-	local cfg_type="$1"
+-	local cfg_name="$2"
+-
+-	case "$cfg_type" in
+-		crontab)
+-			append CRONTABS_cfg "$cfg_name"
+-		;;
+-		
+-	esac
+-}
+-
+-# change rowcolors
+-get_tr() {
+-	if equal "$cur_color" "odd"; then
+-		cur_color="even"
+-		tr="<tr>"
+-	else
+-		cur_color="odd"
+-		tr="<tr class=\"odd\">"
+-	fi
+-}
+-
+-
+-cat <<EOF
+-<script type="text/javascript" language="JavaScript"><!--
+-
+- 
+-var cX = 0; var cY = 0; var rX = 0; var rY = 0; var CronTab = ''; ConfigChanged = false;
+-
+-function UpdateCursorPosition(e){ cX = e.pageX; cY = e.pageY;}
+-function UpdateCursorPositionDocAll(e){ cX = event.clientX; cY = event.clientY;}
+-
+-if(document.all) { document.onmousemove = UpdateCursorPositionDocAll; }
+-else { document.onmousemove = UpdateCursorPosition; }
+-
+-function AssignPosition(d,offsetX,offsetY) {
+-if(self.pageYOffset) {
+-	rX = self.pageXOffset;
+-	rY = self.pageYOffset;
+-	}
+-else if(document.documentElement && document.documentElement.scrollTop) {
+-	rX = document.documentElement.scrollLeft;
+-	rY = document.documentElement.scrollTop;
+-	}
+-else if(document.body) {
+-	rX = document.body.scrollLeft;
+-	rY = document.body.scrollTop;
+-	}
+-if(document.all) {
+-	cX += rX; 
+-	cY += rY;
+-	}
+-
+-if (cY < 280) { cY = cY + 100; }
+-	
+-d.style.left = (cX-offsetX) + "px";
+-d.style.top = (cY-offsetY) + "px";
+-
+-}
+-
+-
+-function OpenEditWindow(d,CRONTAB) {
+-if(d.length < 1) { return; }
+-
+-document.getElementById('EditWindow').style.display = "none";
+-
+-if (CRONTAB == 'newCron') {
+-	ResetForm();
+-}
+-else {
+-	SetValueSelect('sltMinutes','ddEveryXminute',document.getElementById('MINUTES_'+CRONTAB).value,1);
+-	SetValueSelect('sltHours','ddEveryXhour',document.getElementById('HOURS_'+CRONTAB).value,1);
+-	SetValueSelect('sltDays','ddEveryXday',document.getElementById('DAYS_'+CRONTAB).value,0);
+-	SetValueSelect('sltMonths','',document.getElementById('MONTHS_'+CRONTAB).value,0);
+-	SetValueSelect('sltDaysOfWeek','',document.getElementById('WEEKDAYS_'+CRONTAB).value,1);
+-
+-	//document.getElementById('txtUsername').value = document.getElementById('USER_'+CRONTAB).value;
+-	document.getElementById('txtCommand').value = document.getElementById('COMMAND_'+CRONTAB).value;
+-
+-	if (document.getElementById('ENABLED_'+CRONTAB).value == '1') {
+-			document.forms[0].chkCronEnabled.checked = true;
+-			document.getElementById('txthCronEnabled').value = '1';
+-	}
+-	else {
+-			document.forms[0].chkCronEnabled.checked = false;
+-			document.getElementById('txthCronEnabled').value = '0';
+-	}
+-
+-	BuildInterval(false);
+-}
+-
+-var dd = document.getElementById(d);
+-AssignPosition(dd,710,480);
+-dd.style.display = "block";
+-
+-CronTab = CRONTAB;
+-}
+-
+-
+-function HideContent(d,doAction) {
+-
+-	if(d.length < 1) { return; }
+-	document.getElementById(d).style.display = "none";
+-
+-	//if (doAction == 'update' && document.getElementById('txtUsername').value != '' && document.getElementById('txtCommand').value != ''){
+-	if (doAction == 'update' && document.getElementById('txtCommand').value != ''){
+-		document.getElementById('MINUTES_'+CronTab).value = document.getElementById('txthMinutes').value;
+-		document.getElementById('HOURS_'+CronTab).value = document.getElementById('txthHours').value;
+-		document.getElementById('DAYS_'+CronTab).value = document.getElementById('txthDays').value;
+-		document.getElementById('MONTHS_'+CronTab).value = document.getElementById('txthMonths').value;
+-		document.getElementById('WEEKDAYS_'+CronTab).value = document.getElementById('txthDaysOfWeek').value;
+-		//document.getElementById('USER_'+CronTab).value = document.getElementById('txtUsername').value;
+-		document.getElementById('COMMAND_'+CronTab).value = document.getElementById('txtCommand').value;
+-		document.getElementById('ENABLED_'+CronTab).value = document.getElementById('txthCronEnabled').value;
+-	}
+-
+-	if (ConfigChanged == true) {
+-			document.getElementById('WarningConfigChange').style.display = "block";
+-	}
+-
+-}
+-
+-function SetConfigChanged() {
+-	
+-	ConfigChanged = true;
+-
+-}
+-
+-
+-function CheckValueSelect(SelectControl,IntervalControl) {
+-	
+-	var len = document.forms[0][SelectControl].length;
+-	var i = 0;
+-	var intervalSelected = '';
+-	var CurrentValue = -1;
+-	var sequenceCounter = 0;
+-	var chainStatus = false;
+-	var booleanSelected = false;
+-	var firstSelect = -1;
+-	var intervalCompleted = '';
+-
+-	for (i = 0; i < len; i++) {
+-
+-		booleanSelected = document.forms[0][SelectControl][i].selected;
+-
+-		if ( booleanSelected ) {
+-
+-			if ( document.forms[0][SelectControl][i].value != "" ) {
+-				var CurrentValue = parseInt(document.forms[0][SelectControl][i].value);
+-				
+-				sequenceCounter = sequenceCounter + 1;
+-				if ( sequenceCounter > 2 ) { chainStatus = true; }
+-
+-				if ( i+1 == len ) { booleanSelected = false; }
+-				else { booleanSelected = document.forms[0][SelectControl][i+1].selected;}
+-
+-				if ( intervalSelected == "" ) { 
+-					intervalSelected = CurrentValue + '';
+-					firstSelect = i;
+-				}
+-				
+-				
+-				if ( !booleanSelected ) {
+-					if ( chainStatus == true ) {
+-						intervalSelected = intervalSelected + '-' + CurrentValue;
+-					}
+-					else {
+-						if ( firstSelect != i ) {
+-							intervalSelected = intervalSelected + ',' + CurrentValue;
+-						}
+-					}
+-					
+-					chainStatus = false;
+-					sequenceCounter = 0;
+-					if ( intervalCompleted == '' ) {intervalCompleted = intervalCompleted + intervalSelected;}
+-					else { intervalCompleted = intervalCompleted + ',' + intervalSelected; }
+-					intervalSelected = '';
+-				}
+-			}
+-		}
+-	}
+-
+-	if (intervalCompleted == "" ) {intervalCompleted = '*';}
+-	if ( IntervalControl != '' ) {
+-		var SelectedIntervalValue = document.forms[0][IntervalControl].value;
+-		if (SelectedIntervalValue != '' ) {
+-			intervalCompleted = intervalCompleted + '/' + SelectedIntervalValue;	
+-		}
+-	}
+-
+-	
+-	return intervalCompleted;
+-}
+-
+-function BuildInterval(ChangeConfig) {
+-
+-	if (ConfigChanged == true) {
+-			document.getElementById('WarningConfigChange').style.display = "none";
+-	}
+-	
+-	document.getElementById('txthMinutes').value = CheckValueSelect('sltMinutes','ddEveryXminute');
+-	document.getElementById('txthHours').value = CheckValueSelect('sltHours','ddEveryXhour');
+-	document.getElementById('txthDays').value = CheckValueSelect('sltDays','ddEveryXday');
+-	document.getElementById('txthMonths').value = CheckValueSelect('sltMonths','');
+-	document.getElementById('txthDaysOfWeek').value = CheckValueSelect('sltDaysOfWeek','');
+-	
+-
+-	var IntervalString = CheckValueSelect('sltMinutes','ddEveryXminute') + ' ';
+-	IntervalString = IntervalString + CheckValueSelect('sltHours','ddEveryXhour') + ' ';
+-	IntervalString = IntervalString + CheckValueSelect('sltDays','ddEveryXday') + ' ';
+-	IntervalString = IntervalString + CheckValueSelect('sltMonths','') + ' ';
+-	IntervalString = IntervalString + CheckValueSelect('sltDaysOfWeek','') + ' ';
+-
+-//	if ( document.getElementById('txtUsername').value != '' ) {
+-//		IntervalString = IntervalString + document.getElementById('txtUsername').value + ' ';
+-//	}
+-//	else {
+-//		IntervalString = IntervalString + 'user' + ' ';
+-//		document.getElementById('txtUsername').value = 'user';
+-//	}
+-
+-	if ( document.getElementById('txtCommand').value != '' ) {
+-		IntervalString = IntervalString + document.getElementById('txtCommand').value;
+-	}
+-	else {
+-		IntervalString = IntervalString + 'echo "X-WRT \-\- End user extensions for OpenWrt" | logger' + ' ';
+-		document.getElementById('txtCommand').value = 'echo "X-WRT \-\- End user extensions for OpenWrt" | logger';
+-	}
+-	
+-	document.getElementById('txtCrontabEntry').value = IntervalString;
+-	
+-	if (ChangeConfig == true) {
+-		SetConfigChanged();
+-	}
+-}
+-
+-function ResetForm() {
+-	document.getElementById('sltMinutes').selectedIndex = 0;
+-	document.getElementById('sltHours').selectedIndex = 0;
+-	document.getElementById('sltDays').selectedIndex = 0;
+-	document.getElementById('sltMonths').selectedIndex = 0;
+-	document.getElementById('sltDaysOfWeek').selectedIndex = 0;
+-	
+-	document.getElementById('ddEveryXminute').selectedIndex = 0;
+-	document.getElementById('ddEveryXhour').selectedIndex = 0;
+-	document.getElementById('ddEveryXday').selectedIndex = 0;
+-
+-	document.getElementById('chkCronEnabled').checked = false;
+-	
+-	//document.getElementById('txtUsername').value = '$selectedcrontab';
+-	document.getElementById('txtCommand').value = '';
+-	document.getElementById('txtCrontabEntry').value = '';
+-	
+-	ConfigChanged = false;
+-
+-}
+-
+-function SetValueSelect(SelectControl,IntervalControl,IntervalString,offset) {
+-
+-	if (IntervalString.indexOf('/') > 0) {
+-		
+-		// Handle */5 and 20-40/5 variants
+-		var arrInterval = IntervalString.split('/');
+-		if (arrInterval[0] == '*') {
+-			SetControTopOption(SelectControl);
+-		}
+-		else {
+-			SetControlSelected(SelectControl,arrInterval[0],offset);
+-		}
+-		document.getElementById(IntervalControl).selectedIndex = arrInterval[1];
+-	}
+-	else {
+-		var arrIntervalString = IntervalString.split(',');
+-		if (arrIntervalString[0] == '*') {
+-			SetControTopOption(SelectControl);
+-		}
+-		else {	
+-			SetControlSelected(SelectControl,IntervalString,offset);
+-		}
+-		if (IntervalControl != '') {
+-				document.getElementById(IntervalControl).selectedIndex = 0;
+-		}
+-	}
+-}
+-
+-function SetControlSelected(SelectControl,IntervalString,offset) {
+-
+-	var arrIntervalString = IntervalString.split(',');
+-	var ArrayLen = arrIntervalString.length;
+-	var tempIntervalString = '';
+-	var j = 0;
+-	var i = 0;
+-	var len = document.forms[0][SelectControl].length;
+-	var arrIntervalString = IntervalString.split(',');
+-
+-	// translate 2-5 into 2,3,4,5
+-	for (i = 0; i < ArrayLen; i ++) {
+-		var PositionOfChar = arrIntervalString[i].indexOf('-');;
+-		if ( PositionOfChar > 0 ) {
+-			var arrInterval = arrIntervalString[i].split('-');
+-			tempIntervalString = arrInterval[0];
+-			var StartIndex = parseInt(arrInterval[0]);
+-			while ( StartIndex != arrInterval[1] ) {
+-				StartIndex = StartIndex + 1;
+-				tempIntervalString = tempIntervalString + ',' + StartIndex;
+-			}
+-		IntervalString = IntervalString.replace(arrIntervalString[i],tempIntervalString);
+-		}
+-	}
+-
+-	// Set all the members in the select control
+-	var i = 0;
+-	var arrIntervalString = IntervalString.split(',');
+-	len = len - 1;
+-
+-	document.forms[0][SelectControl].options[0].selected = false;
+-
+-	for (i = 0; i < len; i++) {
+-		if ( i == parseInt(arrIntervalString[j]) ) {
+-			document.forms[0][SelectControl].options[i+offset].selected = true;
+-			j = j + 1;
+-		}
+-		else {
+-			document.forms[0][SelectControl].options[i+offset].selected = false;
+-		}
+-	}
+-}
+-
+-function SetAllSelect(SelectControl) {
+-	document.forms[0][SelectControl].options[0].selected = false;
+-	var len = document.forms[0][SelectControl].length;
+-	var i = 1;
+-	for (i = 1; i < len; i++) {
+-		document.forms[0][SelectControl].options[i].selected = true;
+-		
+-	}
+-
+-}
+-
+-function SetControTopOption(SelectControl) {
+-	// Set the first member and reset all others
+-	document.forms[0][SelectControl].options[0].selected = true;
+-	var len = document.forms[0][SelectControl].length;
+-	var i = 1;
+-	for (i = 1; i < len; i++) {
+-		document.forms[0][SelectControl].options[i].selected = false;
+-	}
+-
+-}
+-
+-function SetEnabledStatusCron() {
+-
+-	if (document.forms[0].chkCronEnabled.checked == false) {
+-		document.getElementById('txthCronEnabled').value ='0';
+-		}
+-		
+-	else {
+-		document.getElementById('txthCronEnabled').value ='1';
+-		}
+-		SetConfigChanged();
+-}
+-
+-function RemoveCrontabEntry(crontabentry) {
+-	document.location.href='$SCRIPT_NAME?remove_crontabentry='+crontabentry;
+-}
+-
+-
+-//--></script>
+-EOF
+-
+-echo "<div id=\"EditWindow\" style=\"display:none;position:absolute;border-style: solid;background-color: white;padding: 5px;\">"
+-echo "<table style=\"text-align: left; font-size: 0.8em;\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" summary=\"@TR<<Crontab>>\">"
+-echo "<tr>"
+-echo "<td><strong>Minutes</strong></td>"
+-echo "<td><strong>Hours</strong></td>"
+-echo "<td><strong>Days</strong></td>"
+-echo "<td><strong>Months</strong></td>"
+-echo "<td><strong>Days of the week</strong></td>"
+-echo "</tr>"
+-echo "<tr>"
+-echo "<td>"
+-echo "<select id=\"sltMinutes\" size=\"8\" name=\"sltMinutes\" class=\"input\" style=\"width:160px;\" multiple=\"multiple\">"
+-echo "<option selected=\"selected\" value=\"\">every minute</option>"
+-i=0; while [ $i -le 59 ]; do echo "<option value=\"$i\">$i</option>"; i=$(($i+1)); done
+-echo "</select>"
+-echo "</td>"
+-echo "<td>"
+-echo "<select id=\"sltHours\" size=\"8\" name=\"sltHours\" class=\"input\" style=\"width:160px;\" multiple=\"multiple\">"
+-echo "<option selected=\"selected\" value=\"\">every hour</option>"
+-i=0; while [ $i -le 23 ]; do echo "<option value=\"$i\">$i</option>"; i=$(($i+1)); done
+-echo "</select>"
+-echo "</td>"
+-echo "<td>"
+-echo "<select id=\"sltDays\" size=\"8\" name=\"sltDays\" class=\"input\" style=\"width:160px;\" multiple=\"multiple\">"
+-echo "<option selected=\"selected\" value=\"\">every day</option>"
+-i=1; while [ $i -le 31 ]; do echo "<option value=\"$i\">$i</option>"; i=$(($i+1)); done
+-echo "</select>"
+-echo "</td>"
+-echo "<td>"
+-echo "<select id=\"sltMonths\" size=\"8\" name=\"sltMonths\" class=\"input\" style=\"width:160px;\" multiple=\"multiple\">"
+-echo "<option selected=\"selected\" value=\"\">every month</option>"
+-echo "<option value=\"1\">January</option>"
+-echo "<option value=\"2\">February</option>"
+-echo "<option value=\"3\">March</option>"
+-echo "<option value=\"4\">April</option>"
+-echo "<option value=\"5\">May</option>"
+-echo "<option value=\"6\">June</option>"
+-echo "<option value=\"7\">July</option>"
+-echo "<option value=\"8\">August</option>"
+-echo "<option value=\"9\">September</option>"
+-echo "<option value=\"10\">October</option>"
+-echo "<option value=\"11\">November</option>"
+-echo "<option value=\"12\">December</option>"
+-echo "</select>"
+-echo "</td>"
+-echo "<td>"
+-echo "<select id=\"sltDaysOfWeek\" size=\"8\" name=\"sltDaysOfWeek\" class=\"input\" style=\"width:160px;\" multiple=\"multiple\">"
+-echo "<option selected=\"selected\" value=\"\">every day of the week</option>"
+-echo "<option value=\"0\">Sunday</option>"
+-echo "<option value=\"1\">Monday</option>"
+-echo "<option value=\"2\">Tuesday</option>"
+-echo "<option value=\"3\">Wednesday</option>"
+-echo "<option value=\"4\">Thursday</option>"
+-echo "<option value=\"5\">Friday</option>"
+-echo "<option value=\"6\">Saturday</option>"
+-echo "</select>"
+-echo "</td>"
+-echo "</tr>"
+-echo "<tr>"
+-echo "<td align=\"right\"><input type=\"hidden\" id=\"txthMinutes\" name=\"txthMinutes\" value=\"\" /><a href=\"javascript:SetAllSelect('sltMinutes');\">set all</a>&nbsp;&nbsp;<a href=\"javascript:SetControTopOption('sltMinutes');\">clear</a></td>"
+-echo "<td align=\"right\"><input type=\"hidden\" id=\"txthHours\" name=\"txthHours\" value=\"\" /><a href=\"javascript:SetAllSelect('sltHours');\">set all</a>&nbsp;&nbsp;<a href=\"javascript:SetControTopOption('sltHours');\">clear</a></td>"
+-echo "<td align=\"right\"><input type=\"hidden\" id=\"txthDays\" name=\"txthDays\" value=\"\" /><a href=\"javascript:SetAllSelect('sltDays');\">set all</a>&nbsp;&nbsp;<a href=\"javascript:SetControTopOption('sltDays');\">clear</a></td>"
+-echo "<td align=\"right\"><input type=\"hidden\" id=\"txthMonths\" name=\"txthMonths\" value=\"\" /><a href=\"javascript:SetAllSelect('sltMonths');\">set all</a>&nbsp;&nbsp;<a href=\"javascript:SetControTopOption('sltMonths');\">clear</a></td>"
+-echo "<td align=\"right\"><input type=\"hidden\" id=\"txthDaysOfWeek\" name=\"txthDaysOfWeek\" value=\"\" /><a href=\"javascript:SetAllSelect('sltDaysOfWeek');\">set all</a>&nbsp;&nbsp;<a href=\"javascript:SetControTopOption('sltDaysOfWeek');\">clear</a></td>"
+-echo "</tr>"
+-echo "<tr>"
+-echo "<td>Every"
+-echo "<select id=\"ddEveryXminute\" name=\"ddEveryXminute\">"
+-echo "<option selected=\"selected\" value=\"\">none</option>"
+-i=1; while [ $i -le 59 ]; do echo "<option value=\"$i\">$i</option>"; i=$(($i+1)); done
+-echo "</select>"
+-echo "th"
+-echo "</td>"
+-echo "<td>Every"
+-echo "<select id=\"ddEveryXhour\" name=\"ddEveryXhour\">"
+-echo "<option selected=\"selected\" value=\"\">none</option>"
+-i=0; while [ $i -le 23 ]; do echo "<option value=\"$i\">$i</option>"; i=$(($i+1)); done
+-echo "</select>"
+-echo "th"
+-echo "</td>"
+-echo "<td>Every"
+-echo "<select id=\"ddEveryXday\" name=\"ddEveryXday\">"
+-echo "<option selected=\"selected\" value=\"\">none</option>"
+-i=1; while [ $i -le 31 ]; do echo "<option value=\"$i\">$i</option>"; i=$(($i+1)); done
+-echo "</select>"
+-echo "th"
+-echo "</td>"
+-echo "<td>&nbsp;</td>"
+-echo "<td>&nbsp;</td>"
+-echo "</tr>"
+-echo "<tr><td colspan=\"5\">&nbsp;</td></tr>"
+-#echo "<tr><td align=\"right\"><strong>User</strong></td><td colspan=\"3\"><input style=\"width:400px;\" id=\"txtUsername\" type=\"text\" name=\"txtUsername\" value=\"\" /></td><td><a href=\"javascript:BuildInterval(true);\">generate crontab entry</a></td></tr>"
+-echo "<tr><td align=\"right\"><strong>Command</strong></td><td colspan=\"3\"><input style=\"width:400px;\" id=\"txtCommand\" type=\"text\" name=\"txtCommand\" value=\"\" /></td><td><a href=\"javascript:BuildInterval(true);\">generate crontab entry</a></td></tr>"
+-echo "<tr><td align=\"right\"><strong>Enabled</strong></td><td colspan=\"3\"><input type=\"checkbox\" id=\"chkCronEnabled\" name=\"chkCronEnabled\" onchange=\"SetEnabledStatusCron();\"/><input type=\"hidden\" id=\"txthCronEnabled\" name=\"txthCronEnabled\" value=\"0\" /></td><td><a href=\"javascript:ResetForm();\">reset form</a></td></tr>"
+-echo "<tr><td colspan=\"5\">&nbsp;</td></tr>"
+-echo "<tr><td align=\"right\"><strong>Crontab entry</strong></td><td colspan=\"4\"><input readonly=\"readonly\" style=\"width:400px;\" id=\"txtCrontabEntry\" type=\"text\" name=\"txtCrontabEntry\" value=\"\" /></td></tr>"
+-echo "<tr><td colspan=\"5\"></td></tr>"
+-echo "<tr><td colspan=\"3\">&nbsp;</td><td colspan=\"2\"><a href=\"javascript:HideContent('EditWindow','update');\">update crontab entry</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:HideContent('EditWindow','cancel')\">cancel</a></td></tr>"
+-echo "</table>"
+-echo "</div>"
+-
+-echo "<h3><strong>@TR<<Crontab configuration root>></strong></h3>"
+-echo "<div id=\"WarningConfigChange\" style=\"left:300px;top:0px;display:none;position:absolute;border-style: solid;background-color: white;padding: 5px;\"><img width=\"17\" src=\"/images/warning.png\" alt=\"Configuration changed\" /> Configuration changed. Press 'Save Changes'</div>"
+-echo "<table style=\"width: 90%; margin-left: 2.5em; text-align: left; font-size: 0.8em;\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" summary=\"@TR<<Crontabs>>\">"
+-
+-uci_load crontabs
+-cur_color="odd"
+-
+-for crontab in $CRONTABS_cfg; do
+-
+-	if  [ "$FORM_submit" = "" ]; then
+-		config_get FORM_MINUTES $crontab minutes
+-		config_get FORM_HOURS $crontab hours
+-		config_get FORM_DAYS $crontab days
+-		config_get FORM_MONTHS $crontab months
+-		config_get FORM_WEEKDAYS $crontab weekdays
+-		#config_get FORM_USER $crontab user
+-		config_get FORM_COMMAND $crontab command
+-		config_get FORM_ENABLED $crontab enabled
+-	else
+-		
+-		
+-		eval FORM_MINUTES="\$FORM_MINUTES_${crontab}"
+-		eval FORM_HOURS="\$FORM_HOURS_${crontab}"
+-		eval FORM_DAYS="\$FORM_DAYS_${crontab}"
+-		eval FORM_MONTHS="\$FORM_MONTHS_${crontab}"
+-		eval FORM_WEEKDAYS="\$FORM_WEEKDAYS_${crontab}"
+-		#eval FORM_USER="\$FORM_USER_${crontab}"
+-		eval FORM_COMMAND="\$FORM_COMMAND_${crontab}"
+-		eval FORM_ENABLED="\$FORM_ENABLED_${crontab}"
+-
+-		if [ "$FORM_MINUTES" != "" ]; then
+-		
+-			uci_set "crontabs" "$crontab" "minutes" "$FORM_MINUTES"
+-			uci_set "crontabs" "$crontab" "hours" "$FORM_HOURS"
+-			uci_set "crontabs" "$crontab" "days" "$FORM_DAYS"
+-			uci_set "crontabs" "$crontab" "months" "$FORM_MONTHS"
+-			uci_set "crontabs" "$crontab" "weekdays" "$FORM_WEEKDAYS"
+-			#uci_set "crontabs" "$crontab" "user" "$FORM_USER"
+-			uci_set "crontabs" "$crontab" "command" "$FORM_COMMAND"
+-			uci_set "crontabs" "$crontab" "enabled" "$FORM_ENABLED"
+-		else
+-			config_get FORM_MINUTES $crontab minutes
+-			config_get FORM_HOURS $crontab hours
+-			config_get FORM_DAYS $crontab days
+-			config_get FORM_MONTHS $crontab months
+-			config_get FORM_WEEKDAYS $crontab weekdays
+-			#config_get FORM_USER $crontab user
+-			config_get FORM_COMMAND $crontab command
+-			config_get FORM_ENABLED $crontab enabled
+-		fi
+-	fi
+-
+-	#check if crontab is enabled
+-	if [ "$FORM_ENABLED" = "1" ]; then
+-		ENABLEDIMAGE="<img width=\"17\" src=\"/images/service_enabled.png\" alt=\"Cron entry Enabled\" />"
+-		CRON_ENABLED="Yes"
+-	else
+-		ENABLEDIMAGE="<img width=\"17\" src=\"/images/service_disabled.png\" alt=\"Cron entry Disabled\" />"
+-		CRON_ENABLED="No"
+-	fi
+-
+-	FORM_escCOMMAND=`echo "$FORM_COMMAND" | sed -e 's/\&/\&amp;/g' -e 's/"/\&quot;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'` 	
+-	
+-	get_tr
+-	echo $tr"<td width=\"35\" align=\"center\" valign=\"middle\" rowspan=\"7\">$ENABLEDIMAGE</td><td width=\"100\"><strong>Minutes</strong></td><td>$FORM_MINUTES</td><td width=\"35\" align=\"center\" valign=\"middle\" rowspan=\"7\"><a href=\"javascript:OpenEditWindow('EditWindow','$crontab')\">@TR<<edit>></a></td><td width=\"35\" align=\"center\" valign=\"middle\" rowspan=\"7\"><a href=\"javascript:RemoveCrontabEntry('$crontab')\">@TR<<remove>></a></td><td><input id=\"MINUTES_$crontab\" type=\"hidden\" name=\"MINUTES_$crontab\" value=\"$FORM_MINUTES\" /></td></tr>"
+-	echo $tr"<td width=\"100\"><strong>Hours</strong></td><td>$FORM_HOURS</td><td><input id=\"HOURS_$crontab\" type=\"hidden\" name=\"HOURS_$crontab\" value=\"$FORM_HOURS\" /></td></tr>"
+-	echo $tr"<td width=\"100\"><strong>Days</strong></td><td>$FORM_DAYS</td><td><input id=\"DAYS_$crontab\" type=\"hidden\" name=\"DAYS_$crontab\" value=\"$FORM_DAYS\" /></td></tr>"
+-	echo $tr"<td width=\"100\"><strong>Months</strong></td><td>$FORM_MONTHS</td><td><input id=\"MONTHS_$crontab\" type=\"hidden\" name=\"MONTHS_$crontab\" value=\"$FORM_MONTHS\" /></td></tr>"
+-	echo $tr"<td width=\"100\"><strong>Weekdays</strong></td><td>$FORM_WEEKDAYS</td><td><input id=\"WEEKDAYS_$crontab\" type=\"hidden\" name=\"WEEKDAYS_$crontab\" value=\"$FORM_WEEKDAYS\" /></td></tr>"
+-	#echo $tr"<td width=\"100\"><strong>User</strong></td><td>$FORM_USER</td><td><input id=\"USER_$crontab\" type=\"hidden\" name=\"USER_$crontab\" value=\"$FORM_USER\" /></td></tr>"
+-	echo $tr"<td width=\"100\"><strong>Command</strong></td><td>$FORM_escCOMMAND</td><td><input id=\"COMMAND_$crontab\" type=\"hidden\" name=\"COMMAND_$crontab\" value=\"$FORM_escCOMMAND\" /></td></tr>"
+-	echo $tr"<td width=\"100\"><strong>Enabled</strong></td><td>$CRON_ENABLED</td><td><input id=\"ENABLED_$crontab\" type=\"hidden\" name=\"ENABLED_$crontab\" value=\"$FORM_ENABLED\" /></td></tr>"
+-	echo "<tr><td colspan=\"6\"><img alt=\"\" height=\"5\" width=\"1\" src=\"/images/pixel.gif\" /></td></tr>"
+-	
+-done
+-
+-echo "<tr><td colspan=\"3\">&nbsp;</td><td>&nbsp;</td><td align=\"center\"><a href=\"javascript:OpenEditWindow('EditWindow','newCron')\">@TR<<add>></a></td><td></td></tr>"
+-
+-echo "</table>"
+-
+-
+-echo "<input id=\"MINUTES_newCron\" type=\"hidden\" name=\"MINUTES_newCron\" value=\"\" />"
+-echo "<input id=\"HOURS_newCron\" type=\"hidden\" name=\"HOURS_newCron\" value=\"\" />"
+-echo "<input id=\"DAYS_newCron\" type=\"hidden\" name=\"DAYS_newCron\" value=\"\" />"
+-echo "<input id=\"MONTHS_newCron\" type=\"hidden\" name=\"MONTHS_newCron\" value=\"\" />"
+-echo "<input id=\"WEEKDAYS_newCron\" type=\"hidden\" name=\"WEEKDAYS_newCron\" value=\"\" />"
+-#echo "<input id=\"USER_newCron\" type=\"hidden\" name=\"USER_newCron\" value=\"\" />"
+-echo "<input id=\"COMMAND_newCron\" type=\"hidden\" name=\"COMMAND_newCron\" value=\"\" />"
+-echo "<input id=\"ENABLED_newCron\" type=\"hidden\" name=\"ENABLED_newCron\" value=\"\" />"
+-
+-
+-footer %>
+-<!--
+-##WEBIF:name:System:130:Crontabs
+--->
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-mount.sh buildroot/package/webif/files/www/cgi-bin/webif/system-mount.sh
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-mount.sh	2010-10-17 11:57:12.000000000 +0000
++++ buildroot/package/webif/files/www/cgi-bin/webif/system-mount.sh	1970-01-01 00:00:00.000000000 +0000
+@@ -1,395 +0,0 @@
+-#!/usr/bin/webif-page
+-<?
+-. /usr/lib/webif/webif.sh
+-###################################################################
+-# Mount points
+-#
+-# Description:
+-#		Mountpoints
+-#			Add mount points to fstab 
+-#
+-# Author(s) [in order of work date]:
+-#       m4rc0 <jansssenmaj@gmail.com>
+-#       IVBela <ivbela@gmail.com>
+-#
+-# Major revisions:
+-#		2008-11-12	Initial release
+-#		2008-11-15  Made editable
+-#		2008-12-20  Added mount/umount support
+-#
+-# NVRAM variables referenced:
+-#       none
+-#
+-# Configuration files referenced:
+-#		/etc/config/fstab
+-#
+-# Required components:
+-
+-header "System" "Mountpoints" "@TR<<Mountpoints>>" '' "$SCRIPT_NAME"
+-
+-# Add new mountpint
+-if ! empty "$FORM_TARGET_newMount"; then
+-	uci_add "fstab" "mount" ""; mountpoint="$CONFIG_SECTION"
+-	uci_set "fstab" "$mountpoint" "target" "$FORM_TARGET_newMount"
+-	uci_set "fstab" "$mountpoint" "device" "$FORM_DEVICE_newMount"
+-	uci_set "fstab" "$mountpoint" "fstype" "$FORM_FSTYPE_newMount"
+-	uci_set "fstab" "$mountpoint" "options" "$FORM_OPTIONS_newMount"
+-	uci_set "fstab" "$mountpoint" "enabled" "$FORM_ENABLED_newMount"
+-	FORM_TARGET_newMount=""
+-fi
+-
+-# Remove selected mountpoint
+-if ! empty "$FORM_remove_mountpoint"; then
+-	uci_remove "fstab" "$FORM_remove_mountpoint"
+-fi
+-
+-# Mount/Unmount selected mountpoint
+-if ! empty "$FORM_domount_mountpoint"; then
+-  case "$FORM_domount_action" in
+-    mount)
+-      mount $FORM_domount_mountpoint
+-    ;;
+-    umount)
+-      umount $FORM_domount_mountpoint
+-    ;;
+-  esac
+-fi
+-
+-config_cb() {
+-	local cfg_type="$1"
+-	local cfg_name="$2"
+-
+-	case "$cfg_type" in
+-	        mount)
+-	                append MOUNTPOINTS "$cfg_name"
+-	        ;;
+-	        swap)
+-	                append SWAP "$cfg_name"
+-	        ;;	esac
+-}
+-
+-# change rowcolors
+-get_tr() {
+-	if equal "$cur_color" "odd"; then
+-		cur_color="even"
+-		tr="<tr>"
+-	else
+-		cur_color="odd"
+-		tr="<tr class=\"odd\">"
+-	fi
+-}
+-
+-
+-cat <<EOF
+-
+-<script type="text/javascript" language="JavaScript"><!--
+- 
+-var cX = 0; var cY = 0; var rX = 0; var rY = 0; var MountPoint = ''; var SwapMountPoint = ''; ConfigChanged = false;
+-
+-function UpdateCursorPosition(e){ cX = e.pageX; cY = e.pageY;}
+-function UpdateCursorPositionDocAll(e){ cX = event.clientX; cY = event.clientY;}
+-
+-if(document.all) { document.onmousemove = UpdateCursorPositionDocAll; }
+-else { document.onmousemove = UpdateCursorPosition; }
+-
+-function AssignPosition(d) {
+-if(self.pageYOffset) {
+-	rX = self.pageXOffset;
+-	rY = self.pageYOffset;
+-	}
+-else if(document.documentElement && document.documentElement.scrollTop) {
+-	rX = document.documentElement.scrollLeft;
+-	rY = document.documentElement.scrollTop;
+-	}
+-else if(document.body) {
+-	rX = document.body.scrollLeft;
+-	rY = document.body.scrollTop;
+-	}
+-if(document.all) {
+-	cX += rX; 
+-	cY += rY;
+-	}
+-
+-d.style.left = (cX-150) + "px";
+-d.style.top = (cY-240) + "px";
+-
+-}
+-
+-function HideContent(d,doAction) {
+-if(d.length < 1) { return; }
+-document.getElementById(d).style.display = "none";
+-
+-if (doAction == 'update' && ConfigChanged == true ){
+-
+-	document.getElementById('TARGET_'+MountPoint).value = document.getElementById('txtTarget').value;
+-	document.getElementById('DEVICE_'+MountPoint).value = document.getElementById('txtDevice').value;
+-	document.getElementById('FSTYPE_'+MountPoint).value = document.getElementById('txtFStype').value;
+-	document.getElementById('OPTIONS_'+MountPoint).value = document.getElementById('txtOptions').value;
+-	document.getElementById('ENABLED_'+MountPoint).value = document.getElementById('txtEnabled').value;
+-	document.getElementById('WarningConfigChange').style.display = "block";
+-	}
+-
+-}
+-
+-function RemoveMount(mountpoint) {
+-	document.location.href='$SCRIPT_NAME?remove_mountpoint='+mountpoint;
+-	}
+-
+-function DoMount(mountpoint,doAction) {
+-	document.location.href='$SCRIPT_NAME?domount_mountpoint='+mountpoint+'&domount_action='+doAction;
+-	}
+-
+-function OpenEditWindow(d,MOUNTPOINT) {
+-if(d.length < 1) { return; }
+-
+-document.getElementById('txtTarget').value = document.getElementById('TARGET_'+MOUNTPOINT).value;
+-document.getElementById('txtDevice').value = document.getElementById('DEVICE_'+MOUNTPOINT).value;
+-document.getElementById('txtFStype').value = document.getElementById('FSTYPE_'+MOUNTPOINT).value;
+-document.getElementById('txtOptions').value = document.getElementById('OPTIONS_'+MOUNTPOINT).value;
+-document.getElementById('txtEnabled').value = document.getElementById('ENABLED_'+MOUNTPOINT).value;
+-
+-if (document.getElementById('ENABLED_'+MOUNTPOINT).value == '1') {
+-		document.forms[0].MountEnable.checked = true;
+-	}
+-	else {
+-		document.forms[0].MountEnable.checked = false;
+-	}
+-
+-
+-var dd = document.getElementById(d);
+-AssignPosition(dd);
+-dd.style.display = "block";
+-
+-MountPoint = MOUNTPOINT;
+-}
+-
+-function OpenEditSwapWindow(d, SWAP) {
+-if(d.length < 1) { return; }
+-
+-document.getElementById('txtDeviceSwap').value = document.getElementById('DEVICESWAP_'+SWAP).value;
+-document.getElementById('txtEnabledSwap').value = document.getElementById('ENABLEDSWAP_'+SWAP).value;
+-
+-if (document.getElementById('ENABLEDSWAP_'+SWAP).value == '1') {
+-		document.forms[0].SwapEnable.checked = true;
+-	}
+-	else {
+-		document.forms[0].SwapEnable.checked = false;
+-	}
+-
+-
+-var dd = document.getElementById(d);
+-AssignPosition(dd);
+-dd.style.display = "block";
+-
+-SwapMountPoint = SWAP;
+-
+-}
+-
+-function HideContentSwap(d,doAction) {
+-if(d.length < 1) { return; }
+-document.getElementById(d).style.display = "none";
+-
+-if (doAction == 'update' && ConfigChanged == true ){
+-
+-	document.getElementById('DEVICESWAP_'+SwapMountPoint).value = document.getElementById('txtDeviceSwap').value;
+-	document.getElementById('ENABLEDSWAP_'+SwapMountPoint).value = document.getElementById('txtEnabledSwap').value;
+-	document.getElementById('WarningConfigChange').style.display = "block";
+-	}
+-
+-
+-	
+-}
+-function SetConfigChanged() {
+-	
+-	ConfigChanged = true;
+-	
+-	}
+-
+-function SetEnabledStatusMount() {
+-
+-	if (document.forms[0].MountEnable.checked == false) {
+-		document.getElementById('txtEnabled').value ='0';
+-		}
+-		
+-	else {
+-		document.getElementById('txtEnabled').value ='1';
+-		}
+-	ConfigChanged = true;
+-	}
+-
+-function SetEnabledStatusSwap() {
+-
+-	if (document.forms[0].SwapEnable.checked == false) {
+-		document.getElementById('txtEnabledSwap').value ='0';
+-		}
+-		
+-	else {
+-		document.getElementById('txtEnabledSwap').value ='1';
+-		}
+-	ConfigChanged = true;
+-	}
+-	
+-	
+-//--></script>
+-EOF
+-
+-# floating div for editing the mountpoints
+-echo "<div id=\"EditWindow\" style=\"display:none;position:absolute;border-style: solid;background-color: white;padding: 5px;\">"
+-echo "<table style=\"text-align: left; font-size: 0.8em;\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" summary=\"@TR<<Mountpoints>>\">"
+-echo "<tr><td width=\"100\"><strong>Target</strong></td><td colspan=\"2\"><input type=\"text\" id=\"txtTarget\" name=\"txtTarget\" value=\"\" onChange=\"SetConfigChanged()\" /></td></tr>"
+-echo "<tr><td width=\"100\"><strong>Device</strong></td><td colspan=\"2\"><input type=\"text\" id=\"txtDevice\" name=\"txtDevice\" value=\"\" onChange=\"SetConfigChanged()\" /></td></tr>"
+-echo "<tr><td width=\"100\"><strong>FStype</strong></td><td colspan=\"2\"><input type=\"text\" id=\"txtFStype\" name=\"txtFStype\" value=\"\" onChange=\"SetConfigChanged()\" /></td></tr>"
+-echo "<tr><td width=\"100\"><strong>Options</strong></td><td colspan=\"2\"><input type=\"text\" id=\"txtOptions\" name=\"txtOptions\" value=\"\" onChange=\"SetConfigChanged()\" /></td></tr>"
+-echo "<tr>"
+-echo "<td width=\"100\"><strong>Enabled</strong></td>"
+-echo "<td colspan=\"2\"><input type=\"checkbox\" id=\"MountEnable\" name=\"MountEnable\" onchange=\"SetEnabledStatusMount();\" /><input type=\"hidden\" id=\"txtEnabled\" name=\"txtEnabled\" value=\"\" /></td>"
+-echo "</tr>"
+-echo "<tr>"
+-echo "<td colspan=\"2\"><a href=\"javascript:HideContent('EditWindow','update')\">@TR<<Update>></a></td>"
+-echo "<td><a href=\"javascript:HideContent('EditWindow','cancel')\">@TR<<Cancel>></a></td>"
+-echo "</tr>"
+-echo "</table>"
+-echo "</div>"
+-
+-# floating div for editing swap
+-echo "<div id=\"EditSwapWindow\" style=\"display:none;position:absolute;border-style: solid;background-color: white;padding: 5px;\">"
+-echo "<table style=\"text-align: left; font-size: 0.8em;\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" summary=\"@TR<<swap>>\">"
+-echo "<tr><td width=\"100\"><strong>Device</strong></td><td colspan=\"2\"><input type=\"text\" id=\"txtDeviceSwap\" name=\"txtDeviceSwap\" value=\"\" onChange=\"SetConfigChanged()\" /></td></tr>"
+-echo "<tr>"
+-echo "<td width=\"100\"><strong>Enabled</strong></td>"
+-echo "<td colspan=\"2\"><input type=\"checkbox\" id=\"SwapEnable\" name=\"SwapEnable\" onchange=\"SetEnabledStatusSwap();\" /><input type=\"hidden\" id=\"txtEnabledSwap\" name=\"txtEnabledSwap\" value=\"\" onChange=\"SetConfigChanged()\" /></td>"
+-echo "</tr>"
+-echo "<tr>"
+-echo "<td colspan=\"2\"><a href=\"javascript:HideContentSwap('EditSwapWindow','update')\">@TR<<Update>></a></td>"
+-echo "<td><a href=\"javascript:HideContentSwap('EditSwapWindow','cancel')\">@TR<<Cancel>></a></td>"
+-echo "</tr>"
+-echo "</table>"
+-echo "</div>"
+-
+-uci_load fstab
+-
+-cur_color="odd"
+-echo "<h3><strong>@TR<<Mountpoint configurations>></strong></h3>"
+-echo "<div id=\"WarningConfigChange\" style=\"left:300px;top:0px;display:none;position:absolute;border-style: solid;background-color: white;padding: 5px;\"><img width=\"17\" src=\"/images/warning.png\" alt=\"Configuration changed\" /> Configuration changed. Press 'Save Changes'</div>"
+-echo "<table style=\"width: 90%; margin-left: 2.5em; text-align: left; font-size: 0.8em;\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" summary=\"@TR<<Mountpoints>>\">"
+-for mountpoint in $MOUNTPOINTS; do
+-
+-	if  [ "$FORM_submit" = "" ]; then
+-		config_get FORM_TARGET $mountpoint target
+-		config_get FORM_DEVICE $mountpoint device
+-		config_get FORM_FSTYPE $mountpoint fstype
+-		config_get FORM_OPTIONS $mountpoint options
+-		config_get FORM_ENABLED $mountpoint enabled
+-	else
+-		
+-		eval FORM_TARGET="\$FORM_TARGET_${mountpoint}"
+-		eval FORM_DEVICE="\$FORM_DEVICE_${mountpoint}"
+-		eval FORM_FSTYPE="\$FORM_FSTYPE_${mountpoint}"
+-		eval FORM_OPTIONS="\$FORM_OPTIONS_${mountpoint}"
+-		eval FORM_ENABLED="\$FORM_ENABLED_${mountpoint}"
+-	
+-		if [ "$FORM_TARGET" != "" ]; then
+-			uci_set "fstab" "$mountpoint" "target" "$FORM_TARGET"
+-			uci_set "fstab" "$mountpoint" "device" "$FORM_DEVICE"
+-			uci_set "fstab" "$mountpoint" "fstype" "$FORM_FSTYPE"
+-			uci_set "fstab" "$mountpoint" "options" "$FORM_OPTIONS"
+-			uci_set "fstab" "$mountpoint" "enabled" "$FORM_ENABLED"
+-		else
+-			config_get FORM_TARGET $mountpoint target
+-			config_get FORM_DEVICE $mountpoint device
+-			config_get FORM_FSTYPE $mountpoint fstype
+-			config_get FORM_OPTIONS $mountpoint options
+-			config_get FORM_ENABLED $mountpoint enabled
+-
+-		fi
+-	fi
+-
+-	#check if mountpoint is enabled
+-	if [ "$FORM_ENABLED" == "1" ]; then
+-		ENABLEDIMAGE="<img width=\"17\" src=\"/images/service_enabled.png\" alt=\"Mountpoint Enabled\" />"
+-		MOUNT_ENABLED="Yes"
+-	else
+-		ENABLEDIMAGE="<img width=\"17\" src=\"/images/service_disabled.png\" alt=\"Mountpoint Disabled\" />"
+-		MOUNT_ENABLED="No"
+-	fi
+-	
+-	#check if mountpoint is mounted
+-	if grep -q $FORM_TARGET /proc/mounts; then
+-		MOUNT_MOUNTED="Yes"
+-		MOUNT_TEXT="umount"
+-		MOUNT_ACTION="umount"
+-	else
+-		MOUNT_MOUNTED="No"
+-		MOUNT_TEXT="mount"
+-		MOUNT_ACTION="mount"
+-	fi
+-	
+-	#                  1              23                                       4567
+-	# de '\\\\\\\' --> \ = escape SH, \\ becomes \ which will escape CAT, last: \\\\ om java te escapen om \\ te krijgen
+-	#FORM_escOPTIONS=`echo "$FORM_OPTIONS" | sed -e 's/"/%22/g' | sed -e 's/\\\/\\\\\\\/g'` 
+-	
+-	FORM_escOPTIONS=`echo "$FORM_OPTIONS" | sed -e 's/"/\&#34;/g'` 
+-
+-	get_tr
+-	echo $tr"<td width=\"35\" align=\"center\" valign=\"middle\" rowspan=\"6\">$ENABLEDIMAGE</td><td width=\"100\"><strong>Target</strong></td><td>$FORM_TARGET</td><td width=\"35\" align=\"center\" valign=\"middle\" rowspan=\"6\"><a href=\"javascript:OpenEditWindow('EditWindow','$mountpoint')\">@TR<<edit>></a></td><td width=\"35\" align=\"center\" valign=\"middle\" rowspan=\"6\"><a href=\"javascript:RemoveMount('$mountpoint')\">@TR<<remove>></a></td><td width=\"35\" align=\"center\" valign=\"middle\" rowspan=\"6\"><a href=\"javascript:DoMount('$FORM_TARGET','$MOUNT_ACTION')\">$MOUNT_TEXT</a></td><td><input id=\"TARGET_$mountpoint\" type=\"hidden\" name=\"TARGET_$mountpoint\" value=\"$FORM_TARGET\" /></td></tr>"
+-	echo $tr"<td width=\"100\"><strong>Device</strong></td><td>$FORM_DEVICE</td><td><input id=\"DEVICE_$mountpoint\" type=\"hidden\" name=\"DEVICE_$mountpoint\" value=\"$FORM_DEVICE\" /></td></tr>"
+-	echo $tr"<td width=\"100\"><strong>FStype</strong></td><td>$FORM_FSTYPE</td><td><input id=\"FSTYPE_$mountpoint\" type=\"hidden\" name=\"FSTYPE_$mountpoint\" value=\"$FORM_FSTYPE\" /></td></tr>"
+-	echo $tr"<td width=\"100\"><strong>Options</strong></td><td>$FORM_OPTIONS</td><td><input id=\"OPTIONS_$mountpoint\" type=\"hidden\" name=\"OPTIONS_$mountpoint\" value=\"$FORM_escOPTIONS\" /></td></tr>"
+-	echo $tr"<td width=\"100\"><strong>Enabled</strong></td><td>$MOUNT_ENABLED</td><td><input id=\"ENABLED_$mountpoint\" type=\"hidden\" name=\"ENABLED_$mountpoint\" value=\"$FORM_ENABLED\" /></td></tr>"
+-	echo $tr"<td width=\"100\"><strong>Mounted</strong></td><td>$MOUNT_MOUNTED</td><td><input id=\"MOUNTED_$mountpoint\" type=\"hidden\" name=\"MOUNTED_$mountpoint\" value=\"$FORM_MOUNTED\" /></td></tr>"
+-	echo "<tr><td colspan=\"6\"><img alt=\"\" height=\"5\" width=\"1\" src=\"/images/pixel.gif\" /></td></tr>"
+-done
+-
+-echo "<tr><td colspan=\"3\">&nbsp;</td><td>&nbsp;</td><td align=\"center\"><a href=\"javascript:OpenEditWindow('EditWindow','newMount')\">@TR<<add>></a></td><td></td></tr>"
+-
+-echo "</table><br />"
+-
+-echo "<input id=\"TARGET_newMount\" type=\"hidden\" name=\"TARGET_newMount\" value=\"\" />"
+-echo "<input id=\"DEVICE_newMount\" type=\"hidden\" name=\"DEVICE_newMount\" value=\"\" />"
+-echo "<input id=\"FSTYPE_newMount\" type=\"hidden\" name=\"FSTYPE_newMount\" value=\"\" />"
+-echo "<input id=\"OPTIONS_newMount\" type=\"hidden\" name=\"OPTIONS_newMount\" value=\"\" />"
+-echo "<input id=\"ENABLED_newMount\" type=\"hidden\" name=\"ENABLED_newMount\" value=\"0\" />"
+-
+-
+-cur_color="odd"
+-echo "<h3><strong>@TR<<Swap configuration>></strong></h3>"
+-echo "<table style=\"width: 90%; margin-left: 2.5em; text-align: left; font-size: 0.8em;\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" summary=\"@TR<<Swap>>\">"
+-for swap in $SWAP; do
+-
+-	if  [ "$FORM_submit" = "" ]; then 
+-		config_get FORM_DEVICESWAP $swap device
+-		config_get FORM_ENABLEDSWAP $swap enabled
+-	else
+-		eval FORM_DEVICESWAP="\$FORM_DEVICESWAP_${swap}"
+-		eval FORM_ENABLEDSWAP="\$FORM_ENABLEDSWAP_${swap}"
+-		
+-		if [ "$FORM_DEVICESWAP" != "" ]; then
+-			uci_set fstab $swap "device" $FORM_DEVICESWAP
+-			uci_set fstab $swap "enabled" $FORM_ENABLEDSWAP
+-		else
+-			config_get FORM_DEVICESWAP $swap device
+-			config_get FORM_ENABLEDSWAP $swap enabled
+-		fi
+-	fi
+-		
+-		
+-	#check if swap is enabled
+-	if [ "$FORM_ENABLEDSWAP" == "1" ]; then
+-		ENABLEDIMAGE="<img width=\"17\" src=\"/images/service_enabled.png\" alt=\"Swap Enabled\" />"
+-		SWAP_ENABLEDSWAP="Yes"
+-	else
+-		ENABLEDIMAGE="<img width=\"17\" src=\"/images/service_disabled.png\" alt=\"Swap Disabled\" />"
+-		SWAP_ENABLEDSWAP="No"
+-	fi
+-
+-	get_tr
+-	echo $tr"<td width=\"35\" align=\"center\" valign=\"middle\" rowspan=\"2\">$ENABLEDIMAGE</td><td width=\"100\"><strong>Device</strong></td><td>$FORM_DEVICESWAP</td><td width=\"35\" align=\"center\" valign=\"middle\" rowspan=\"5\"><a href=\"javascript:OpenEditSwapWindow('EditSwapWindow','$swap')\">@TR<<edit>></a></td><td><input id=\"DEVICESWAP_$swap\" type=\"hidden\" name=\"DEVICESWAP_$swap\" value=\"$FORM_DEVICESWAP\" /></td></tr>"
+-	echo $tr"<td width=\"100\"><strong>Enabled</strong></td><td>$SWAP_ENABLEDSWAP</td><td><input id=\"ENABLEDSWAP_$swap\" type=\"hidden\" name=\"ENABLEDSWAP_$swap\" value=\"$FORM_ENABLEDSWAP\" /></td></tr>"
+-	echo "<tr><td colspan=\"3\"><img alt=\"\" height=\"5\" width=\"1\" src=\"/images/pixel.gif\" /></td></tr>"
+-done
+-echo "</table>"
+-
+-footer ?>
+-<!--
+-##WEBIF:name:System:330:Mountpoints
+--->
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-password.sh buildroot/package/webif/files/www/cgi-bin/webif/system-password.sh
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-password.sh	2010-10-17 11:57:12.000000000 +0000
++++ buildroot/package/webif/files/www/cgi-bin/webif/system-password.sh	1970-01-01 00:00:00.000000000 +0000
+@@ -1,64 +0,0 @@
+-#!/usr/bin/webif-page
+-<? 
+-. /usr/lib/webif/webif.sh
+-
+-if ! empty "$FORM_submit" ; then
+-	SAVED=1
+-	validate <<EOF
+-string|FORM_pw1|@TR<<Password>>|required min=5|$FORM_pw1
+-EOF
+-	equal "$FORM_pw1" "$FORM_pw2" || {
+-		[ -n "$ERROR" ] && ERROR="${ERROR}<br />"
+-		ERROR="${ERROR}@TR<<Passwords do not match>><br />"
+-	}
+-	if [ "$REMOTE_USER" = "root" -o "$REMOTE_USER" = "admin" ]; then
+-		empty "$ERROR" && {
+-			RES=$(
+-				(
+-					echo "$FORM_pw1"
+-					sleep 1
+-					echo "$FORM_pw2"
+-				) | passwd root 2>&1
+-			)
+-			equal "$?" 0 || ERROR="<pre>$RES</pre>"
+-		}
+-	else
+-		exists /tmp/.webif/file-httpd.conf && HTTPD_CONFIG_FILE=/tmp/.webif/file-httpd.conf || HTTPD_CONFIG_FILE=/etc/httpd.conf
+-		empty "$ERROR" && {
+-			cat $HTTPD_CONFIG_FILE | awk '
+-BEGIN {
+-	FS=":"
+-	system("/bin/rm /tmp/.webif/file-httpd.conf; mkdir /tmp/.webif/; touch /tmp/.webif/file-httpd.conf");
+-}
+-($1 != "") {
+-	if (($1 == "/cgi-bin/webif/") && (ENVIRON["REMOTE_USER"] != $2)) {
+-		print $1":"$2":"$3 >> "/tmp/.webif/file-httpd.conf"
+-	}
+-	if ($1 != "/cgi-bin/webif/") {
+-		print $1":"$2 >> "/tmp/.webif/file-httpd.conf"
+-	}
+-	if (ENVIRON["REMOTE_USER"] == $2) {
+-		("uhttpd -m " ENVIRON["FORM_pw1"]) | getline password
+-		print $1":"$2":"password >> "/tmp/.webif/file-httpd.conf"
+-	}
+-}'
+-	}
+-	fi
+-fi
+-
+-header "System" "Password" "@TR<<Password>>" '' "$SCRIPT_NAME"
+-
+-display_form <<EOF
+-start_form|@TR<<Password Change>>
+-field|@TR<<New Password>>:
+-password|pw1
+-field|@TR<<Confirm Password>>:
+-password|pw2
+-end_form
+-EOF
+-
+-footer ?>
+-
+-<!--
+-##WEBIF:name:System:250:Password
+--->
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-upgrade.sh buildroot/package/webif/files/www/cgi-bin/webif/system-upgrade.sh
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-upgrade.sh	2010-10-17 11:57:12.000000000 +0000
++++ buildroot/package/webif/files/www/cgi-bin/webif/system-upgrade.sh	1970-01-01 00:00:00.000000000 +0000
+@@ -1,57 +0,0 @@
+-#!/usr/bin/webif-page "-U /tmp -u 16384"
+-<?
+-. /usr/lib/webif/webif.sh
+-
+-board_type=$(cat /proc/cpuinfo 2>/dev/null | sed 2,20d | cut -c16-)
+-machinfo=$(uname -a 2>/dev/null)
+-if $(echo "$machinfo" | grep -q "mips"); then
+-	if $(echo "$board_type" | grep -q "Atheros"); then
+-		target="atheros-2.6"
+-	elif $(echo "$board_type" | grep -q "WP54"); then
+-		target="adm5120-2.6"
+-	elif $(echo "$machinfo" | grep -q "2\.4"); then
+-		target="brcm"
+-	elif $(echo "$machinfo" | grep -q "2\.6"); then
+-		target="brcm"
+-	fi
+-elif $(echo "$machinfo" | grep -q " i[0-9]86 "); then
+-	target="x86-2.6"
+-elif $(echo "$machinfo" | grep -q " avr32 "); then
+-	target="avr32-2.6"
+-elif $(cat /proc/cpuinfo 2>/dev/null | grep -q "IXP4"); then
+-	target="ixp4xx-2.6"
+-fi
+-
+-header "System" "Upgrade" "<img src=\"/images/upd.jpg\" alt=\"@TR<<Firmware Upgrade>>\" />&nbsp;@TR<<Firmware Upgrade>>" '' "$SCRIPT_NAME"
+-
+-if [ "$target" = "x86-2.6" -o "$target" = "brcm" -o "$target" = "adm5120-2.6"  -o "$target" = "atheros-2.6" ]; then
+-	if empty "$FORM_submit"; then
+-display_form <<EOF
+-start_form
+-field|@TR<<Do not save current configuration>>
+-checkbox|nokeepconfig|$FORM_nokeepconfig|1
+-field|@TR<<Firmware Image>>
+-upload|upgradefile
+-submit|upgrade| @TR<<Upgrade>> |
+-end_form
+-EOF
+-	else
+-		echo "<br />Upgrading firmware, please wait ... <br />"
+-		if [ "$FORM_nokeepconfig" = "1" ]; then
+-			uci_set webif general firstboot 1
+-			uci_commit "webif"
+-			sysupgrade -n $FORM_upgradefile
+-		else
+-			sysupgrade $FORM_upgradefile
+-		fi
+-		echo "@TR<<done>>."
+-	fi
+-else
+-	echo "<br />The ability to upgrade your platform has not been implemented.<br />"
+-fi
+-
+-footer
+-?>
+-<!--
+-##WEBIF:name:System:900:Upgrade
+--->
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err400.html buildroot/package/webif/files/www/errors/err400.html
 --- buildroot.orig/package/webif/files/www/errors/err400.html	1970-01-01 00:00:00.000000000 +0000
 +++ buildroot/package/webif/files/www/errors/err400.html	2010-11-14 00:30:55.000000000 +0000
