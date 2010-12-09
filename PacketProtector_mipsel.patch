@@ -4266,3 +4266,99 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +	echo "webif-  https://local.packetprotector.org/cgi-bin/webif/users.sh"
 +	echo ""
 +fi
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/sbin/diskutils buildroot/package/base-files/files/sbin/diskutils
+--- buildroot.orig/package/base-files/files/sbin/diskutils	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/base-files/files/sbin/diskutils	2010-12-09 02:27:34.000000000 +0000
+@@ -0,0 +1,24 @@
++#!/bin/sh
++
++if [ "$1" = "-h" ] ; then
++	echo "usage- diskutils"
++	echo "installs fdisk, e2fsprogs, hdparm, and usbutils to /tmp"
++	exit 0
++elif [ "$1" = "--help" ] ; then
++	echo "usage- diskutils"
++	echo "installs fdisk, e2fsprogs, hdparm, and usbutils to /tmp"
++	exit 0
++else
++	opkg update
++	opkg -d ram install fdisk
++	opkg -d ram install e2fsprogs
++	opkg -d ram install hdparm
++	opkg -d ram install usbutils
++	echo ""
++	echo "Done!"
++	echo ""
++	echo "(Optional) Update your path-"
++	echo ""
++	echo "export PATH=\$PATH:/tmp/sbin:/tmp/usr/sbin"
++	echo ""
++fi
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/sbin/pp_passwd buildroot/package/base-files/files/sbin/pp_passwd
+--- buildroot.orig/package/base-files/files/sbin/pp_passwd	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/base-files/files/sbin/pp_passwd	2010-12-09 02:27:37.000000000 +0000
+@@ -0,0 +1,64 @@
++#!/bin/sh
++#requires ash 'read -s' support
++
++if [ "$1" = "-h" ] ; then
++	echo "usage- pp_passwd [optional username]"
++	echo "updates password in /etc/shadow, /etc/freeradius/users, and .htpasswd files"
++	exit 0
++elif [ "$1" = "--help" ] ; then
++	echo "usage- pp_passwd [optional username]"
++	echo "updates password in /etc/shadow, /etc/freeradius/users, and .htpasswd files"
++	exit 0
++else
++	if [ $# = 0 ] ; then	
++		PP_USERNAME=$USER
++	else
++		PP_USERNAME=$1
++	fi
++fi
++
++#check to see if user exists
++grep -e "^$PP_USERNAME:" /etc/passwd > /dev/null
++if [ $? = 0 ] ; then
++	echo "Changing password for $PP_USERNAME"
++else
++	echo "pp_passwd: unknown user $PP_USERNAME"
++	exit 1
++fi
++
++echo -n "New password:"
++read -rs password
++echo -n "Retype password:"
++read -rs confirm
++
++if [ "$password" = "$confirm" ] ; then
++	# update /etc/shadow and /etc/freeradius/users
++	(echo $password; sleep 1; echo $password) | passwd $PP_USERNAME > /dev/null
++	sed -i "s/\"$PP_USERNAME\".*/\"$PP_USERNAME\"		Cleartext-Password := \"$password\"/" /etc/freeradius/users
++	
++	# update .htpasswd in the VPN download directory
++
++	if [ -s /www/$PP_USERNAME/.htpasswd ] ; then
++		sed -i "s/^$PP_USERNAME:.*$//" /www/$PP_USERNAME/.htpasswd
++		grep '^'$PP_USERNAME':' /etc/shadow | cut -d: -f1,2 >> /www/$PP_USERNAME/.htpasswd				
++	fi
++
++        # update .htpasswd in the VPN directory
++
++        if [ -s /www/cgi-bin/webif/vpn/.htpasswd ] ; then
++		sed -i "s/^$PP_USERNAME:.*$//" /www/cgi-bin/webif/vpn/.htpasswd
++		grep '^'$PP_USERNAME':' /etc/shadow | cut -d: -f1,2 >> /www/cgi-bin/webif/vpn/.htpasswd
++	fi
++
++	# update /www/cgi-bin/webif/.htpasswd (root only)
++
++	if [ "$PP_USERNAME" = "root" ] ; then
++		sed -i "s/^$PP_USERNAME:.*$//" /www/cgi-bin/webif/.htpasswd
++		grep '^'$PP_USERNAME':' /etc/shadow | cut -d: -f1,2 >> /www/cgi-bin/webif/.htpasswd
++	fi
++
++	echo "Password for $PP_USERNAME changed by $USER"
++
++else
++	echo "Passwords do not match.  Please try again."
++fi
