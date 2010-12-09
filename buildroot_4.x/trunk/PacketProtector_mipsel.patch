@@ -3973,3 +3973,219 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +		esac
 +	;;
 +esac
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/init.d/dns buildroot/package/base-files/files/etc/init.d/dns
+--- buildroot.orig/package/base-files/files/etc/init.d/dns	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/base-files/files/etc/init.d/dns	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,13 @@
++#!/bin/sh /etc/rc.common
++
++LANIP=`uci get network.lan.ipaddr`
++HOSTNAME=`uci get system.@system[0].hostname`
++
++start () {
++	sed "1d;2d" /etc/hosts > /tmp/hosts
++	rm /etc/hosts
++	echo "127.0.0.1 localhost $HOSTNAME" > /etc/hosts
++	[ -n "$LANIP" ] && (echo "$LANIP local.packetprotector.org local" >> /etc/hosts)
++	cat /tmp/hosts >> /etc/hosts
++	rm /tmp/hosts
++}
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/init.d/packetprotector buildroot/package/base-files/files/etc/init.d/packetprotector
+--- buildroot.orig/package/base-files/files/etc/init.d/packetprotector	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-11-14 00:30:55.000000000 +0000
+@@ -0,0 +1,195 @@
++#!/bin/sh /etc/rc.common
++START=75
++
++CONFIG_FILE="/etc/packetprotector.conf"
++
++start () {
++
++####################
++# check ntpclient
++####################
++
++ash /etc/hotplug.d/iface/20-ntpclient
++
++########################
++# setup USB directory 
++########################
++
++USB_D=/mnt/disc0_1/packetprotector/
++
++# cleanup /packetprotector
++[ -e /packetprotector ] && rm -r /packetprotector
++
++# symlink USB directory to /packetprotector
++if [ -d $USB_D ] ; then
++	chown -R root:root $USB_D
++	ln -s $USB_D /packetprotector
++fi
++
++USB_D=/packetprotector
++
++####################
++# setup swap
++####################
++
++if [ -e /mnt/disc0_1/packetprotector_swap ] ; then
++	echo "Swap file found!"
++else
++	/bin/dd if=/dev/zero of=/mnt/disc0_1/packetprotector_swap bs=1024 count=65536
++	/sbin/mkswap /mnt/disc0_1/packetprotector_swap
++fi
++
++/sbin/swapon /mnt/disc0_1/packetprotector_swap
++
++SWAP_SIZE=`du -sk /mnt/disc0_1/packetprotector_swap | cut -f 1`
++if [ $SWAP_SIZE -ge 65536 ] ; then
++	SWAP_STARTED=1
++else
++	SWAP_STARTED=0
++	echo "Swap file not found or size incorrect (should be at least 65536 KB)."
++fi
++
++####################
++# set version/name
++####################
++
++if [ -d $USB_D ] ; then
++	/sbin/uci set webif.general.firmware_version=`cat /packetprotector/etc/version`
++else
++	/sbin/uci set webif.general.firmware_version=`cat /etc/version`
++fi
++/sbin/uci set webif.general.firmware_name="PacketProtector"
++/sbin/uci commit
++
++####################
++# link /etc/services
++####################
++
++[ -e /etc/services ] && rm -f /etc/services
++if [ -d $USB_D ] ; then
++	ln -s $USB_D/etc/services /etc/services
++fi
++
++####################
++# clean tmp dir
++####################
++
++[ -d $USB_D ] && rm -rf /packetprotector/tmp/*
++
++####################
++# setup opkg.conf
++####################
++
++grep -e "^src" /etc/opkg.conf > /etc/opkg.conf.TEMP
++
++if [ -d $USB_D ] ; then
++	echo "dest packetprotector /packetprotector" >> /etc/opkg.conf.TEMP
++fi
++
++echo "dest root /" >> /etc/opkg.conf.TEMP
++echo "dest ram /tmp" >> /etc/opkg.conf.TEMP
++echo "lists_dir ext /var/opkg-lists" >> /etc/opkg.conf.TEMP
++echo "option overlay_root /overlay" >> /etc/opkg.conf.TEMP
++echo "arch mipsel 100" >> /etc/opkg.conf.TEMP
++
++mv /etc/opkg.conf.TEMP /etc/opkg.conf
++
++####################
++# setup CA
++####################
++
++cd /etc/easy-rsa
++if ([ -s keys/ca.crt ] && [ -s keys/ca.key ] && [ -s keys/server.crt ] && [ -s keys/server.key ]) ; then
++	echo "CA initialized"
++else
++	# start with a random serial number between 10 and 99
++	echo $(($RANDOM % 89 + 10)) > keys/serial
++	touch keys/index.txt
++	. ./vars
++	./build-ca-batch
++	./build-key-server-batch server
++	./build-key-radius-batch radius
++fi	
++
++if [ -s keys/crl.pem ] ; then
++	echo "CRL found"
++else
++	. ./vars
++	cp openssl-revoked.cnf openssl-client.cnf
++	./build-key-pass-batch examplerevokedcert
++	rm openssl-client.cnf
++	./revoke-full examplerevokedcert
++fi
++
++if [ -s keys/dh1024.pem ] ; then
++	echo "dh1024.pem found"
++else
++	. ./vars
++	./build-dh &
++fi	
++
++if [ ! -h /www/ca.crt ] ; then
++	ln -s /etc/easy-rsa/keys/ca.crt /www/ca.crt
++fi
++
++
++####################
++# setup/start webif
++####################
++
++rm /www/index.html
++rm /www/cgi-bin/webif/.categories
++rm /www/cgi-bin/webif/*.sh
++rm -r /www/cgi-bin/webif/vpn
++
++cd /rom/www/cgi-bin/webif
++for i in *.sh; do
++	ln -fs /rom/www/cgi-bin/webif/$i /www/cgi-bin/webif/$i
++done
++
++if [ -d $USB_D/www ] && [ $SWAP_STARTED = 1 ] ; then
++	ln -s $USB_D/www/index.html /www/index.html
++	ln -s $USB_D/www/cgi-bin/webif/.categories /www/cgi-bin/webif/.categories
++
++	if [ ! -d /www/cgi-bin/webif/vpn ] ; then
++		mkdir /www/cgi-bin/webif/vpn
++	fi
++	grep -v '^nobody:' /etc/shadow | cut -d: -f1,2 > /www/cgi-bin/webif/vpn/.htpasswd
++	chmod 600 /www/cgi-bin/webif/vpn/.htpasswd
++	ln -s $USB_D/www/cgi-bin/webif/vpn/redirect.sh /www/cgi-bin/webif/vpn/redirect.sh
++	ln -s $USB_D/www/cgi-bin/webif/vpn/VPNconnect.sh /www/cgi-bin/webif/vpn/VPNconnect.sh
++
++	cd $USB_D/www/cgi-bin/webif
++	for i in *.sh; do
++		ln -fs $USB_D/www/cgi-bin/webif/$i /www/cgi-bin/webif/$i
++	done
++else
++	ln -s /rom/www/index.html /www/index.html
++	ln -s /rom/www/cgi-bin/webif/.categories /www/cgi-bin/webif/.categories
++fi
++
++grep '^root:' /etc/shadow | cut -d: -f1,2 > /www/cgi-bin/webif/.htpasswd
++chmod 600 /www/cgi-bin/webif/.htpasswd
++
++if [ -s /etc/mini_httpd/server.pem ] ; then
++	echo "server.pem found"
++else
++	cd /etc/easy-rsa/keys
++	cat server.crt server.key > /etc/mini_httpd/server.pem
++fi
++
++/usr/sbin/mini_httpd -C /etc/mini_httpd.conf
++
++
++#########################################
++# run /packetprotector/etc/init.d scripts 
++#########################################
++
++if [ -d $USB_D ] && [ $SWAP_STARTED = 1 ] ; then
++
++	for i in `ls /packetprotector/etc/init.d/S*`; do
++		$i
++	done
++
++fi
++}
