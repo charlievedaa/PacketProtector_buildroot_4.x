@@ -1,11 +1,11 @@
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/.config buildroot/.config
 --- buildroot.orig/.config	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/.config	2010-12-09 23:21:56.000000000 +0000
++++ buildroot/.config	2010-12-12 02:24:09.000000000 +0000
 @@ -0,0 +1,1722 @@
 +#
 +# Automatically generated make config: don't edit
 +# OpenWrt version: Kamikaze (r23485)
-+# Thu Dec  9 23:12:06 2010
++# Sun Dec 12 02:23:45 2010
 +#
 +CONFIG_HAVE_DOT_CONFIG=y
 +# CONFIG_TARGET_ppc40x is not set
@@ -1170,7 +1170,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +CONFIG_PACKAGE_mini-httpd=y
 +# CONFIG_PACKAGE_mini-httpd-htpasswd is not set
 +# CONFIG_PACKAGE_mini-httpd-matrixssl is not set
-+# CONFIG_PACKAGE_mini-httpd-openssl is not set
++CONFIG_PACKAGE_mini-httpd-openssl=y
 +# CONFIG_PACKAGE_arptables is not set
 +# CONFIG_PACKAGE_chat is not set
 +CONFIG_PACKAGE_crda=y
@@ -1208,7 +1208,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_PACKAGE_pppstats is not set
 +# CONFIG_PACKAGE_pptp is not set
 +# CONFIG_PACKAGE_tc is not set
-+# CONFIG_PACKAGE_uhttpd is not set
++CONFIG_PACKAGE_uhttpd=y
 +# CONFIG_PACKAGE_uhttpd-mod-lua is not set
 +# CONFIG_PACKAGE_uhttpd-mod-tls is not set
 +# CONFIG_PACKAGE_wpa-cli is not set
