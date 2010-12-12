@@ -1,6 +1,6 @@
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/.config buildroot/.config
 --- buildroot.orig/.config	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/.config	2010-12-12 04:02:34.000000000 +0000
++++ buildroot/.config	2010-12-12 23:04:54.000000000 +0000
 @@ -0,0 +1,1722 @@
 +#
 +# Automatically generated make config: don't edit
@@ -1104,7 +1104,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +CONFIG_BUSYBOX_CONFIG_ASH_CMDCMD=y
 +# CONFIG_BUSYBOX_CONFIG_ASH_MAIL is not set
 +# CONFIG_BUSYBOX_CONFIG_ASH_OPTIMIZE_FOR_SIZE is not set
-+# CONFIG_BUSYBOX_CONFIG_ASH_RANDOM_SUPPORT is not set
++CONFIG_BUSYBOX_CONFIG_ASH_RANDOM_SUPPORT=y
 +CONFIG_BUSYBOX_CONFIG_ASH_EXPAND_PRMT=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_SH_IS_ASH=y
 +# CONFIG_BUSYBOX_CONFIG_FEATURE_SH_IS_HUSH is not set
