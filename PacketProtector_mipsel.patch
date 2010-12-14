@@ -1,6 +1,6 @@
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/.config buildroot/.config
 --- buildroot.orig/.config	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/.config	2010-12-12 23:46:01.000000000 +0000
++++ buildroot/.config	2010-12-14 02:10:26.000000000 +0000
 @@ -0,0 +1,1723 @@
 +#
 +# Automatically generated make config: don't edit
@@ -1358,7 +1358,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_PACKAGE_kmod-nls-cp850 is not set
 +# CONFIG_PACKAGE_kmod-nls-cp852 is not set
 +# CONFIG_PACKAGE_kmod-nls-cp866 is not set
-+# CONFIG_PACKAGE_kmod-nls-iso8859-1 is not set
++CONFIG_PACKAGE_kmod-nls-iso8859-1=y
 +# CONFIG_PACKAGE_kmod-nls-iso8859-13 is not set
 +# CONFIG_PACKAGE_kmod-nls-iso8859-15 is not set
 +# CONFIG_PACKAGE_kmod-nls-iso8859-2 is not set
