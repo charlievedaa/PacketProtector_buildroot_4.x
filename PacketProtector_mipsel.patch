@@ -3956,61 +3956,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +++ buildroot/package/base-files/files/etc/freeradius/users	2010-11-14 00:30:55.000000000 +0000
 @@ -0,0 +1 @@
 +"root"		Cleartext-Password := "packetprotector"
-diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/hotplug.d/usb/01-mount buildroot/package/base-files/files/etc/hotplug.d/usb/01-mount
---- buildroot.orig/package/base-files/files/etc/hotplug.d/usb/01-mount	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/hotplug.d/usb/01-mount	2010-11-14 00:30:55.000000000 +0000
-@@ -0,0 +1,51 @@
-+mount_storage() {
-+	cd /dev/discs
-+	for dev in disc*; do
-+		[ -f /tmp/.${dev}_id ] || {
-+			echo ${INTERFACE}${PRODUCT} > /tmp/.${dev}_id
-+			mount | grep /mnt/${dev} || (
-+				[ -d /mnt/. ] || {
-+					mkdir -p /tmp/mnt
-+					ln -s /tmp/mnt /
-+				}
-+				cd $dev
-+				for part in part*; do
-+					if [ $part != "part*" ] ; then
-+						path=/mnt/${dev}_${part##*part}
-+						mkdir -p ${path}
-+						mount ${part} ${path}
-+					fi
-+				done
-+			)
-+		}
-+	done
-+}
-+
-+umount_storage() {
-+	for tmp in /tmp/.*_id; do
-+		id=$(cat $tmp 2>&-)
-+		[ "${INTERFACE}${PRODUCT}" = "$id" ] && {
-+			rm -f $tmp
-+			disc=${tmp##*disc}
-+			disc=${disc%%_id}
-+			for disc in /mnt/disc${disc}*; do
-+				umount -f $disc || umount -l $disc
-+			done
-+		}
-+	done
-+}
-+
-+[ -f /proc/bus/usb/devices ] || mount -t usbfs none /proc/bus/usb
-+
-+case "$ACTION" in
-+	add)
-+		case "${INTERFACE%%/*}" in
-+			8) mount_storage ;;
-+		esac
-+	;;
-+	remove)
-+		case "${INTERFACE%%/*}" in
-+			8) umount_storage ;;
-+		esac
-+	;;
-+esac
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/init.d/dns buildroot/package/base-files/files/etc/init.d/dns
 --- buildroot.orig/package/base-files/files/etc/init.d/dns	1970-01-01 00:00:00.000000000 +0000
 +++ buildroot/package/base-files/files/etc/init.d/dns	2010-11-14 00:30:55.000000000 +0000
@@ -4030,8 +3975,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +}
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/init.d/packetprotector buildroot/package/base-files/files/etc/init.d/packetprotector
 --- buildroot.orig/package/base-files/files/etc/init.d/packetprotector	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-11-14 00:30:55.000000000 +0000
-@@ -0,0 +1,195 @@
++++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-12-14 02:02:41.000000000 +0000
+@@ -0,0 +1,194 @@
 +#!/bin/sh /etc/rc.common
 +START=75
 +
@@ -4124,7 +4069,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +echo "dest ram /tmp" >> /etc/opkg.conf.TEMP
 +echo "lists_dir ext /var/opkg-lists" >> /etc/opkg.conf.TEMP
 +echo "option overlay_root /overlay" >> /etc/opkg.conf.TEMP
-+echo "arch mipsel 100" >> /etc/opkg.conf.TEMP
 +
 +mv /etc/opkg.conf.TEMP /etc/opkg.conf
 +
