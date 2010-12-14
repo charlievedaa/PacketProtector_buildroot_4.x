@@ -1,15 +1,16 @@
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/.config buildroot/.config
 --- buildroot.orig/.config	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/.config	2010-12-14 02:10:26.000000000 +0000
-@@ -0,0 +1,1723 @@
++++ buildroot/.config	2010-12-14 02:41:21.000000000 +0000
+@@ -0,0 +1,1744 @@
 +#
 +# Automatically generated make config: don't edit
-+# OpenWrt version: Kamikaze (r23485)
-+# Sun Dec 12 23:45:09 2010
++# OpenWrt version: Kamikaze (r24557)
++# Tue Dec 14 02:40:05 2010
 +#
 +CONFIG_HAVE_DOT_CONFIG=y
 +# CONFIG_TARGET_ppc40x is not set
 +# CONFIG_TARGET_ppc44x is not set
++# CONFIG_TARGET_realview is not set
 +# CONFIG_TARGET_atheros is not set
 +# CONFIG_TARGET_ar71xx is not set
 +# CONFIG_TARGET_at91 is not set
@@ -26,14 +27,17 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_TARGET_coldfire is not set
 +# CONFIG_TARGET_mpc52xx is not set
 +# CONFIG_TARGET_mpc83xx is not set
++# CONFIG_TARGET_mpc85xx is not set
 +# CONFIG_TARGET_imx21 is not set
 +# CONFIG_TARGET_goldfish is not set
 +# CONFIG_TARGET_amazon is not set
 +# CONFIG_TARGET_ifxmips is not set
++# CONFIG_TARGET_adm8668 is not set
 +# CONFIG_TARGET_adm5120 is not set
 +# CONFIG_TARGET_xburst is not set
 +# CONFIG_TARGET_iop32x is not set
 +# CONFIG_TARGET_ixp4xx is not set
++# CONFIG_TARGET_lantiq is not set
 +# CONFIG_TARGET_malta is not set
 +# CONFIG_TARGET_kirkwood is not set
 +# CONFIG_TARGET_orion is not set
@@ -55,13 +59,14 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_TARGET_ramips_rt288x_Default is not set
 +# CONFIG_TARGET_ramips_rt305x_Default is not set
 +# CONFIG_TARGET_rb532_Default is not set
-+# CONFIG_TARGET_s3c24xx_openmoko-gta02-minimal is not set
-+# CONFIG_TARGET_s3c24xx_openmoko-gta02-full is not set
++# CONFIG_TARGET_s3c24xx_openmoko_gta02_openmoko-gta02-minimal is not set
++# CONFIG_TARGET_s3c24xx_openmoko_gta02_openmoko-gta02-full is not set
 +CONFIG_TARGET_brcm47xx_Broadcom-b43=y
 +# CONFIG_TARGET_brcm47xx_Broadcom-wl is not set
 +# CONFIG_TARGET_brcm47xx_Atheros is not set
 +# CONFIG_TARGET_brcm47xx_Atheros-ath5k is not set
 +# CONFIG_TARGET_brcm47xx_None is not set
++# CONFIG_TARGET_brcm47xx_Ps1208mfg is not set
 +# CONFIG_TARGET_brcm47xx_WGT634U is not set
 +# CONFIG_TARGET_brcm47xx_WL500GPv1 is not set
 +# CONFIG_TARGET_brcm47xx_WRT350Nv1 is not set
@@ -86,6 +91,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_TARGET_etrax_vhdl_no_fb is not set
 +# CONFIG_TARGET_ubicom32_Default is not set
 +# CONFIG_TARGET_cobalt_Default is not set
++# CONFIG_TARGET_mpc85xx_Default is not set
 +# CONFIG_TARGET_mpc52xx_Default is not set
 +# CONFIG_TARGET_xburst_qi_lb60_Default is not set
 +# CONFIG_TARGET_xburst_n516_Default is not set
@@ -109,6 +115,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_TARGET_iop32x_Default is not set
 +# CONFIG_TARGET_omap35xx_beagleboard_Beagleboard is not set
 +# CONFIG_TARGET_omap35xx_gumstix_Gumstix is not set
++# CONFIG_TARGET_lantiq_xway_Default is not set
 +# CONFIG_TARGET_ixp4xx_generic_Default is not set
 +# CONFIG_TARGET_ixp4xx_generic_Atheros-ath5k is not set
 +# CONFIG_TARGET_ixp4xx_generic_NSLU2 is not set
@@ -118,6 +125,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_TARGET_ixp4xx_harddisk_FSG3 is not set
 +# CONFIG_TARGET_octeon_generic is not set
 +# CONFIG_TARGET_octeon_mototech is not set
++# CONFIG_TARGET_adm8668_Default is not set
 +# CONFIG_TARGET_amazon_Default is not set
 +# CONFIG_TARGET_ep93xx_Default is not set
 +# CONFIG_TARGET_orion_generic_Default is not set
@@ -137,12 +145,14 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_TARGET_ar71xx_generic_DIR600A1 is not set
 +# CONFIG_TARGET_ar71xx_generic_DIR615C1 is not set
 +# CONFIG_TARGET_ar71xx_generic_DIR825B1 is not set
++# CONFIG_TARGET_ar71xx_generic_JA76PF is not set
 +# CONFIG_TARGET_ar71xx_generic_JWAP003 is not set
 +# CONFIG_TARGET_ar71xx_generic_WRT160NL is not set
 +# CONFIG_TARGET_ar71xx_generic_WRT400N is not set
 +# CONFIG_TARGET_ar71xx_generic_WNDR3700 is not set
 +# CONFIG_TARGET_ar71xx_generic_MZKW04NU is not set
 +# CONFIG_TARGET_ar71xx_generic_MZKW300NH is not set
++# CONFIG_TARGET_ar71xx_generic_TLMR3220V1 is not set
 +# CONFIG_TARGET_ar71xx_generic_TLMR3420V1 is not set
 +# CONFIG_TARGET_ar71xx_generic_TLWA901NDV1 is not set
 +# CONFIG_TARGET_ar71xx_generic_TLWR741NDV1 is not set
@@ -171,6 +181,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_TARGET_ifxmips_ar9_Atheros is not set
 +# CONFIG_TARGET_ifxmips_ar9_Ralink is not set
 +# CONFIG_TARGET_gemini_Default is not set
++# CONFIG_TARGET_realview_Default is not set
 +# CONFIG_TARGET_rdc_ar525w is not set
 +# CONFIG_TARGET_rdc_bifferboard is not set
 +# CONFIG_TARGET_rdc_r8610 is not set
@@ -223,7 +234,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +CONFIG_TARGET_BOARD="brcm47xx"
 +CONFIG_TARGET_ARCH_PACKAGES="brcm47xx"
 +CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe -mips32 -mtune=mips32 -funit-at-a-time"
-+CONFIG_LINUX_2_6_34=y
++CONFIG_LINUX_2_6_36=y
 +CONFIG_DEFAULT_base-files=y
 +CONFIG_DEFAULT_busybox=y
 +CONFIG_DEFAULT_dnsmasq=y
@@ -269,7 +280,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +#
 +# Root filesystem images
 +#
-+# CONFIG_TARGET_ROOTFS_EXT2FS is not set
++# CONFIG_TARGET_ROOTFS_EXT4FS is not set
 +# CONFIG_TARGET_ROOTFS_JFFS2 is not set
 +CONFIG_TARGET_ROOTFS_SQUASHFS=y
 +
@@ -285,6 +296,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +#
 +# General build options
 +#
++# CONFIG_DISPLAY_SUPPORT is not set
 +CONFIG_BUILD_PATENTED=y
 +CONFIG_LARGEFILE=y
 +CONFIG_SHADOW_PASSWORDS=y
@@ -330,7 +342,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +CONFIG_SOFT_FLOAT=y
 +# CONFIG_EXTRA_TARGET_ARCH is not set
 +CONFIG_EXTRA_BINUTILS_CONFIG_OPTIONS=""
-+CONFIG_BINUTILS_VERSION="2.19.1"
++CONFIG_BINUTILS_VERSION="2.20.1"
 +CONFIG_GCC_VERSION_4_3_3_CS=y
 +CONFIG_EXTRA_GCC_CONFIG_OPTIONS=""
 +# CONFIG_SSP_SUPPORT is not set
@@ -342,9 +354,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +CONFIG_GCC_VERSION="4.3.3+cs"
 +CONFIG_GCC_VERSION_4=y
 +CONFIG_GCC_VERSION_4_3=y
-+CONFIG_UCLIBC_VERSION="0.9.30.1"
++CONFIG_UCLIBC_VERSION="0.9.31"
 +CONFIG_LIBC="uClibc"
-+CONFIG_LIBC_VERSION="0.9.30.1"
++CONFIG_LIBC_VERSION="0.9.31"
 +CONFIG_TARGET_SUFFIX="uclibc"
 +# CONFIG_IB is not set
 +CONFIG_SDK=y
@@ -1259,12 +1271,14 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +CONFIG_PACKAGE_libusb=y
 +CONFIG_PACKAGE_libxtables=y
 +# CONFIG_PACKAGE_linux-atm is not set
++# CONFIG_PACKAGE_pjsip is not set
 +CONFIG_PACKAGE_zlib=y
 +
 +#
 +# IPv6
 +#
 +# CONFIG_PACKAGE_6in4 is not set
++# CONFIG_PACKAGE_6to4 is not set
 +# CONFIG_PACKAGE_ip6tables is not set
 +
 +#
@@ -1280,6 +1294,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_PACKAGE_kmod-dm is not set
 +# CONFIG_PACKAGE_kmod-ide-core is not set
 +# CONFIG_PACKAGE_kmod-loop is not set
++# CONFIG_PACKAGE_kmod-md-mod is not set
 +# CONFIG_PACKAGE_kmod-nbd is not set
 +CONFIG_PACKAGE_kmod-scsi-core=y
 +# CONFIG_PACKAGE_kmod-scsi-generic is not set
@@ -1397,6 +1412,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +#
 +# Network Devices
 +#
++# CONFIG_PACKAGE_kmod-dummy is not set
 +# CONFIG_PACKAGE_kmod-e1000 is not set
 +# CONFIG_PACKAGE_kmod-gigaset is not set
 +# CONFIG_PACKAGE_kmod-hfcmulti is not set
@@ -1426,6 +1442,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_PACKAGE_kmod-iptunnel6 is not set
 +# CONFIG_PACKAGE_kmod-ipv6 is not set
 +# CONFIG_PACKAGE_kmod-isdn4linux is not set
++# CONFIG_PACKAGE_kmod-l2tp is not set
++# CONFIG_PACKAGE_kmod-l2tp-eth is not set
++# CONFIG_PACKAGE_kmod-l2tp-ip is not set
 +# CONFIG_PACKAGE_kmod-misdn is not set
 +# CONFIG_PACKAGE_kmod-mp-alg is not set
 +# CONFIG_PACKAGE_kmod-pktgen is not set
@@ -1467,8 +1486,10 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_PACKAGE_kmod-input-joydev is not set
 +# CONFIG_PACKAGE_kmod-input-polldev is not set
 +# CONFIG_PACKAGE_kmod-leds-gpio is not set
++# CONFIG_PACKAGE_kmod-ledtrig-gpio is not set
 +# CONFIG_PACKAGE_kmod-ledtrig-morse is not set
 +# CONFIG_PACKAGE_kmod-ledtrig-netdev is not set
++# CONFIG_PACKAGE_kmod-ledtrig-netfilter is not set
 +# CONFIG_PACKAGE_kmod-libcrc32c is not set
 +# CONFIG_PACKAGE_kmod-mmc is not set
 +# CONFIG_PACKAGE_kmod-mmc-over-gpio is not set
@@ -1595,12 +1616,12 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_PACKAGE_kmod-net-airo is not set
 +# CONFIG_PACKAGE_kmod-net-hermes is not set
 +# CONFIG_PACKAGE_kmod-net-hermes-pci is not set
-+# CONFIG_PACKAGE_kmod-net-hermes-pcmcia is not set
 +# CONFIG_PACKAGE_kmod-net-hermes-plx is not set
 +# CONFIG_PACKAGE_kmod-net-ipw2100 is not set
 +# CONFIG_PACKAGE_kmod-net-ipw2200 is not set
 +# CONFIG_PACKAGE_kmod-net-libipw is not set
 +# CONFIG_PACKAGE_kmod-net-prism54 is not set
++# CONFIG_PACKAGE_kmod-net-zd1201 is not set
 +# CONFIG_PACKAGE_kmod-p54-common is not set
 +# CONFIG_PACKAGE_kmod-p54-pci is not set
 +# CONFIG_PACKAGE_kmod-p54-usb is not set
@@ -1726,9 +1747,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_PACKAGE_lua is not set
 +# CONFIG_PACKAGE_luac is not set
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/include/image.mk buildroot/include/image.mk
---- buildroot.orig/include/image.mk	2010-10-17 11:56:18.000000000 +0000
-+++ buildroot/include/image.mk	2010-11-13 23:49:17.000000000 +0000
-@@ -150,6 +150,8 @@
+--- buildroot.orig/include/image.mk	2010-12-14 02:23:40.000000000 +0000
++++ buildroot/include/image.mk	2010-12-14 02:26:43.000000000 +0000
+@@ -142,6 +142,8 @@
  	- $(FIND) $(TARGET_DIR) -type d -print0 | $(XARGS) -0 chmod 0755
  	$(INSTALL_DIR) $(TARGET_DIR)/tmp
  	chmod 0777 $(TARGET_DIR)/tmp
@@ -1738,9 +1759,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  
  define Image/mkfs/prepare
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/Makefile buildroot/package/base-files/Makefile
---- buildroot.orig/package/base-files/Makefile	2010-10-17 11:56:32.000000000 +0000
-+++ buildroot/package/base-files/Makefile	2010-12-09 02:36:38.000000000 +0000
-@@ -355,12 +355,6 @@
+--- buildroot.orig/package/base-files/Makefile	2010-12-14 02:23:52.000000000 +0000
++++ buildroot/package/base-files/Makefile	2010-12-14 02:26:43.000000000 +0000
+@@ -357,12 +357,6 @@
  			$(CP) $(PLATFORM_SUBDIR)/$(PROFILE)/base-files/* $(1)/; \
  		fi \
  	)
@@ -1755,7 +1776,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  	mkdir -p $(1)/dev
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/advanced_firewall.conf buildroot/package/base-files/files/etc/advanced_firewall.conf
 --- buildroot.orig/package/base-files/files/etc/advanced_firewall.conf	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/advanced_firewall.conf	2010-11-14 00:32:08.000000000 +0000
++++ buildroot/package/base-files/files/etc/advanced_firewall.conf	2010-12-14 02:26:43.000000000 +0000
 @@ -0,0 +1,20 @@
 +https_from_outside=block
 +ssh_from_outside=block
@@ -1778,8 +1799,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +remoteaccess_logmein=0
 +remoteaccess_pcnow=0
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/banner buildroot/package/base-files/files/etc/banner
---- buildroot.orig/package/base-files/files/etc/banner	2010-10-17 11:56:32.000000000 +0000
-+++ buildroot/package/base-files/files/etc/banner	2010-11-14 00:52:12.000000000 +0000
+--- buildroot.orig/package/base-files/files/etc/banner	2010-12-14 02:23:52.000000000 +0000
++++ buildroot/package/base-files/files/etc/banner	2010-12-14 02:26:44.000000000 +0000
 @@ -1,10 +1,22 @@
 + ---------------------------------------------------
 +
@@ -1808,8 +1829,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +
   ---------------------------------------------------
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/config/system buildroot/package/base-files/files/etc/config/system
---- buildroot.orig/package/base-files/files/etc/config/system	2010-10-17 11:56:32.000000000 +0000
-+++ buildroot/package/base-files/files/etc/config/system	2010-11-14 00:58:32.000000000 +0000
+--- buildroot.orig/package/base-files/files/etc/config/system	2010-12-14 02:23:52.000000000 +0000
++++ buildroot/package/base-files/files/etc/config/system	2010-12-14 02:26:44.000000000 +0000
 @@ -1,6 +1,6 @@
  config system
 -	option hostname	OpenWrt
@@ -1821,14 +1842,14 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  	option interface	wan
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/config/timezone buildroot/package/base-files/files/etc/config/timezone
 --- buildroot.orig/package/base-files/files/etc/config/timezone	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/config/timezone	2010-11-14 04:50:21.000000000 +0000
++++ buildroot/package/base-files/files/etc/config/timezone	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,3 @@
 +config 'timezone'
 +        option 'posixtz' 'EST5EDT,M3.2.0,M11.1.0'
 +        option 'zoneinfo' 'America/New_York'
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/README buildroot/package/base-files/files/etc/easy-rsa/README
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/README	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/README	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/README	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,161 @@
 +This is a small RSA key management package,
 +based on the openssl command line tool, that
@@ -1993,7 +2014,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +  openssl x509 -in cert.crt -text
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-ca buildroot/package/base-files/files/etc/easy-rsa/build-ca
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-ca	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-ca	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-ca	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,13 @@
 +#!/bin/sh
 +
@@ -2010,7 +2031,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-ca-batch buildroot/package/base-files/files/etc/easy-rsa/build-ca-batch
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-ca-batch	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-ca-batch	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-ca-batch	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,14 @@
 +#!/bin/sh
 +
@@ -2028,7 +2049,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-dh buildroot/package/base-files/files/etc/easy-rsa/build-dh
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-dh	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-dh	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-dh	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,12 @@
 +#!/bin/sh
 +
@@ -2044,7 +2065,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-inter buildroot/package/base-files/files/etc/easy-rsa/build-inter
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-inter	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-inter	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-inter	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,19 @@
 +#!/bin/sh
 +
@@ -2067,7 +2088,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key buildroot/package/base-files/files/etc/easy-rsa/build-key
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,20 @@
 +#!/bin/sh
 +
@@ -2091,7 +2112,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-pass buildroot/package/base-files/files/etc/easy-rsa/build-key-pass
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-pass	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key-pass	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key-pass	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,20 @@
 +#!/bin/sh
 +
@@ -2115,7 +2136,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-pass-batch buildroot/package/base-files/files/etc/easy-rsa/build-key-pass-batch
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-pass-batch	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key-pass-batch	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key-pass-batch	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,21 @@
 +#!/bin/sh
 +
@@ -2140,7 +2161,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-pkcs12 buildroot/package/base-files/files/etc/easy-rsa/build-key-pkcs12
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-pkcs12	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key-pkcs12	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key-pkcs12	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,21 @@
 +#!/bin/sh
 +
@@ -2165,7 +2186,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-radius-batch buildroot/package/base-files/files/etc/easy-rsa/build-key-radius-batch
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-radius-batch	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key-radius-batch	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key-radius-batch	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,23 @@
 +#!/bin/sh
 +
@@ -2192,7 +2213,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-server buildroot/package/base-files/files/etc/easy-rsa/build-key-server
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-server	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key-server	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key-server	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,22 @@
 +#!/bin/sh
 +
@@ -2218,7 +2239,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-server-batch buildroot/package/base-files/files/etc/easy-rsa/build-key-server-batch
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-key-server-batch	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-key-server-batch	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-key-server-batch	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,23 @@
 +#!/bin/sh
 +
@@ -2245,7 +2266,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-req buildroot/package/base-files/files/etc/easy-rsa/build-req
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-req	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-req	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-req	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,18 @@
 +#!/bin/sh
 +
@@ -2267,7 +2288,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/build-req-pass buildroot/package/base-files/files/etc/easy-rsa/build-req-pass
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/build-req-pass	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/build-req-pass	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/build-req-pass	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,18 @@
 +#!/bin/sh
 +
@@ -2289,7 +2310,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/clean-all buildroot/package/base-files/files/etc/easy-rsa/clean-all
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/clean-all	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/clean-all	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/clean-all	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,21 @@
 +#!/bin/sh
 +
@@ -2314,7 +2335,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/keys/dh1024.pem buildroot/package/base-files/files/etc/easy-rsa/keys/dh1024.pem
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/keys/dh1024.pem	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/keys/dh1024.pem	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/keys/dh1024.pem	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,5 @@
 +-----BEGIN DH PARAMETERS-----
 +MIGHAoGBALvGKBAgbQMEdRRfPVsPf7/QbT/TXhn4Mqe3mnP4WI0e8DELF5MUwUoI
@@ -2323,12 +2344,12 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +-----END DH PARAMETERS-----
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/keys/serial buildroot/package/base-files/files/etc/easy-rsa/keys/serial
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/keys/serial	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/keys/serial	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/keys/serial	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1 @@
 +01
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/list-crl buildroot/package/base-files/files/etc/easy-rsa/list-crl
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/list-crl	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/list-crl	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/list-crl	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,18 @@
 +#!/bin/sh
 +
@@ -2350,7 +2371,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/make-crl buildroot/package/base-files/files/etc/easy-rsa/make-crl
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/make-crl	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/make-crl	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/make-crl	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,18 @@
 +#!/bin/sh
 +
@@ -2372,7 +2393,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-ca.cnf buildroot/package/base-files/files/etc/easy-rsa/openssl-ca.cnf
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-ca.cnf	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl-ca.cnf	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl-ca.cnf	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,230 @@
 +#
 +# OpenSSL example configuration file.
@@ -2606,7 +2627,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +authorityKeyIdentifier=keyid:always,issuer:always
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-radius.cnf buildroot/package/base-files/files/etc/easy-rsa/openssl-radius.cnf
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-radius.cnf	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl-radius.cnf	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl-radius.cnf	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,230 @@
 +#
 +# OpenSSL example configuration file.
@@ -2840,7 +2861,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +authorityKeyIdentifier=keyid:always,issuer:always
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-revoked.cnf buildroot/package/base-files/files/etc/easy-rsa/openssl-revoked.cnf
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-revoked.cnf	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl-revoked.cnf	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl-revoked.cnf	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,233 @@
 +#
 +# OpenSSL example configuration file.
@@ -3077,7 +3098,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +authorityKeyIdentifier=keyid:always,issuer:always
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-server.cnf buildroot/package/base-files/files/etc/easy-rsa/openssl-server.cnf
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl-server.cnf	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl-server.cnf	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl-server.cnf	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,230 @@
 +#
 +# OpenSSL example configuration file.
@@ -3311,7 +3332,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +authorityKeyIdentifier=keyid:always,issuer:always
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.1 buildroot/package/base-files/files/etc/easy-rsa/openssl.1
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.1	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl.1	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl.1	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,93 @@
 +#
 +# OpenSSL example configuration file.
@@ -3408,7 +3429,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +prompt			= no
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.2 buildroot/package/base-files/files/etc/easy-rsa/openssl.2
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.2	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl.2	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl.2	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,20 @@
 +# This sets a mask for permitted string types. There are several options. 
 +# default: PrintableString, T61String, BMPString.
@@ -3432,7 +3453,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +0.organizationName		= PacketProtector.org
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.3 buildroot/package/base-files/files/etc/easy-rsa/openssl.3
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.3	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl.3	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl.3	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,114 @@
 +emailAddress			= charlie@packetprotector.org
 +
@@ -3550,7 +3571,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +authorityKeyIdentifier=keyid:always,issuer:always
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.cnf buildroot/package/base-files/files/etc/easy-rsa/openssl.cnf
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/openssl.cnf	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/openssl.cnf	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/openssl.cnf	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,255 @@
 +#
 +# OpenSSL example configuration file.
@@ -3809,7 +3830,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +authorityKeyIdentifier=keyid:always,issuer:always
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/revoke-crt buildroot/package/base-files/files/etc/easy-rsa/revoke-crt
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/revoke-crt	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/revoke-crt	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/revoke-crt	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,18 @@
 +#!/bin/sh
 +
@@ -3831,7 +3852,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/revoke-full buildroot/package/base-files/files/etc/easy-rsa/revoke-full
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/revoke-full	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/revoke-full	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/revoke-full	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,29 @@
 +#!/bin/sh
 +
@@ -3864,7 +3885,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/sign-req buildroot/package/base-files/files/etc/easy-rsa/sign-req
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/sign-req	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/sign-req	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/sign-req	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,18 @@
 +#!/bin/sh
 +
@@ -3886,7 +3907,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/vars buildroot/package/base-files/files/etc/easy-rsa/vars
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/vars	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/vars	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/vars	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,49 @@
 +# easy-rsa parameter settings
 +
@@ -3939,7 +3960,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +export KEY_EMAIL="charlie@packetprotector.org"
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/easy-rsa/xpextensions buildroot/package/base-files/files/etc/easy-rsa/xpextensions
 --- buildroot.orig/package/base-files/files/etc/easy-rsa/xpextensions	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/easy-rsa/xpextensions	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/easy-rsa/xpextensions	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,4 @@
 +[ xpclient_ext]
 +extendedKeyUsage = 1.3.6.1.5.5.7.3.2
@@ -3947,18 +3968,18 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +extendedKeyUsage = 1.3.6.1.5.5.7.3.1
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/ethers buildroot/package/base-files/files/etc/ethers
 --- buildroot.orig/package/base-files/files/etc/ethers	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/ethers	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/ethers	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,2 @@
 +# example
 +# 11:22:33:44:55:66 192.168.1.2
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/freeradius/users buildroot/package/base-files/files/etc/freeradius/users
 --- buildroot.orig/package/base-files/files/etc/freeradius/users	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/freeradius/users	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/freeradius/users	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1 @@
 +"root"		Cleartext-Password := "packetprotector"
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/init.d/dns buildroot/package/base-files/files/etc/init.d/dns
 --- buildroot.orig/package/base-files/files/etc/init.d/dns	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/init.d/dns	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/etc/init.d/dns	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,13 @@
 +#!/bin/sh /etc/rc.common
 +
@@ -3975,7 +3996,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +}
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/init.d/packetprotector buildroot/package/base-files/files/etc/init.d/packetprotector
 --- buildroot.orig/package/base-files/files/etc/init.d/packetprotector	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-12-14 02:02:41.000000000 +0000
++++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,194 @@
 +#!/bin/sh /etc/rc.common
 +START=75
@@ -4173,7 +4194,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +}
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/packetprotector.conf buildroot/package/base-files/files/etc/packetprotector.conf
 --- buildroot.orig/package/base-files/files/etc/packetprotector.conf	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/packetprotector.conf	2010-12-09 02:18:17.000000000 +0000
++++ buildroot/package/base-files/files/etc/packetprotector.conf	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,9 @@
 +# no spaces before the equals signs!
 +# 1 is enabled; 0 is disabled
@@ -4185,8 +4206,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +openvpn=1
 +snort-inline=1
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/passwd buildroot/package/base-files/files/etc/passwd
---- buildroot.orig/package/base-files/files/etc/passwd	2010-10-17 11:56:32.000000000 +0000
-+++ buildroot/package/base-files/files/etc/passwd	2010-12-09 02:19:05.000000000 +0000
+--- buildroot.orig/package/base-files/files/etc/passwd	2010-12-14 02:23:52.000000000 +0000
++++ buildroot/package/base-files/files/etc/passwd	2010-12-14 02:26:44.000000000 +0000
 @@ -1,3 +1,3 @@
 -root:!:0:0:root:/root:/bin/ash
 +root:x:0:0:root:/root:/bin/ash
@@ -4194,14 +4215,14 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  daemon:*:65534:65534:daemon:/var:/bin/false
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/shadow buildroot/package/base-files/files/etc/shadow
 --- buildroot.orig/package/base-files/files/etc/shadow	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/shadow	2010-12-09 02:19:15.000000000 +0000
++++ buildroot/package/base-files/files/etc/shadow	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,3 @@
 +root:$1$$3PU5jOpctFwuSGxWSJxAn0:13136:0:99999:7:::
 +nobody:*:13136:0:99999:7:::
 +
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/sysctl.conf buildroot/package/base-files/files/etc/sysctl.conf
---- buildroot.orig/package/base-files/files/etc/sysctl.conf	2010-10-17 11:56:32.000000000 +0000
-+++ buildroot/package/base-files/files/etc/sysctl.conf	2010-12-09 02:20:20.000000000 +0000
+--- buildroot.orig/package/base-files/files/etc/sysctl.conf	2010-12-14 02:23:52.000000000 +0000
++++ buildroot/package/base-files/files/etc/sysctl.conf	2010-12-14 02:26:44.000000000 +0000
 @@ -1,6 +1,7 @@
  kernel.panic=3
  net.ipv4.conf.default.arp_ignore=1
@@ -4212,12 +4233,12 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  net.ipv4.icmp_ignore_bogus_error_responses=1
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/version buildroot/package/base-files/files/etc/version
 --- buildroot.orig/package/base-files/files/etc/version	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/version	2010-12-09 02:20:48.000000000 +0000
++++ buildroot/package/base-files/files/etc/version	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1 @@
 +4.0
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/lib/preinit/10_essential_fs buildroot/package/base-files/files/lib/preinit/10_essential_fs
---- buildroot.orig/package/base-files/files/lib/preinit/10_essential_fs	2010-10-17 11:56:32.000000000 +0000
-+++ buildroot/package/base-files/files/lib/preinit/10_essential_fs	2010-12-09 02:24:49.000000000 +0000
+--- buildroot.orig/package/base-files/files/lib/preinit/10_essential_fs	2010-12-14 02:23:52.000000000 +0000
++++ buildroot/package/base-files/files/lib/preinit/10_essential_fs	2010-12-14 02:26:44.000000000 +0000
 @@ -16,7 +16,7 @@
  
  do_mount_tmpfs() {
@@ -4229,7 +4250,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  boot_hook_add preinit_essential do_mount_procfs
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/root/.profile buildroot/package/base-files/files/root/.profile
 --- buildroot.orig/package/base-files/files/root/.profile	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/root/.profile	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/base-files/files/root/.profile	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,17 @@
 +#!/bin/sh
 +
@@ -4250,7 +4271,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/sbin/diskutils buildroot/package/base-files/files/sbin/diskutils
 --- buildroot.orig/package/base-files/files/sbin/diskutils	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/sbin/diskutils	2010-12-09 02:27:34.000000000 +0000
++++ buildroot/package/base-files/files/sbin/diskutils	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,24 @@
 +#!/bin/sh
 +
@@ -4278,7 +4299,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/sbin/pp_passwd buildroot/package/base-files/files/sbin/pp_passwd
 --- buildroot.orig/package/base-files/files/sbin/pp_passwd	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/sbin/pp_passwd	2010-12-09 02:27:37.000000000 +0000
++++ buildroot/package/base-files/files/sbin/pp_passwd	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,64 @@
 +#!/bin/sh
 +#requires ash 'read -s' support
@@ -4345,8 +4366,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +	echo "Passwords do not match.  Please try again."
 +fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/usr/lib/common.awk buildroot/package/base-files/files/usr/lib/common.awk
---- buildroot.orig/package/base-files/files/usr/lib/common.awk	2010-10-17 11:56:32.000000000 +0000
-+++ buildroot/package/base-files/files/usr/lib/common.awk	2010-12-09 02:30:06.000000000 +0000
+--- buildroot.orig/package/base-files/files/usr/lib/common.awk	2010-12-14 02:23:52.000000000 +0000
++++ buildroot/package/base-files/files/usr/lib/common.awk	2010-12-14 02:26:44.000000000 +0000
 @@ -1,5 +1,43 @@
  # Copyright (C) 2006 OpenWrt.org
  
@@ -4392,9 +4413,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  	c=and(rshift(c, 1),0x55555555)+and(c,0x55555555)
  	c=and(rshift(c, 2),0x33333333)+and(c,0x33333333)
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/busybox/Makefile buildroot/package/busybox/Makefile
---- buildroot.orig/package/busybox/Makefile	2010-10-17 11:56:34.000000000 +0000
-+++ buildroot/package/busybox/Makefile	2010-12-09 02:42:29.000000000 +0000
-@@ -27,7 +27,6 @@
+--- buildroot.orig/package/busybox/Makefile	2010-12-14 02:23:54.000000000 +0000
++++ buildroot/package/busybox/Makefile	2010-12-14 02:26:44.000000000 +0000
+@@ -28,7 +28,6 @@
  init-y :=
  init-$(CONFIG_BUSYBOX_CONFIG_HTTPD) += httpd
  init-$(CONFIG_BUSYBOX_CONFIG_CROND) += cron
@@ -4403,7 +4424,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  define Package/busybox
    SECTION:=base
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/busybox/files/telnet buildroot/package/busybox/files/telnet
---- buildroot.orig/package/busybox/files/telnet	2010-10-17 11:56:34.000000000 +0000
+--- buildroot.orig/package/busybox/files/telnet	2010-12-14 02:23:54.000000000 +0000
 +++ buildroot/package/busybox/files/telnet	1970-01-01 00:00:00.000000000 +0000
 @@ -1,24 +0,0 @@
 -#!/bin/sh /etc/rc.common
@@ -4431,8 +4452,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 -}
 -
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/dnsmasq/files/dhcp.conf buildroot/package/dnsmasq/files/dhcp.conf
---- buildroot.orig/package/dnsmasq/files/dhcp.conf	2010-10-17 11:56:32.000000000 +0000
-+++ buildroot/package/dnsmasq/files/dhcp.conf	2010-12-09 02:46:21.000000000 +0000
+--- buildroot.orig/package/dnsmasq/files/dhcp.conf	2010-12-14 02:23:52.000000000 +0000
++++ buildroot/package/dnsmasq/files/dhcp.conf	2010-12-14 02:26:44.000000000 +0000
 @@ -13,7 +13,7 @@
  	option authoritative	1
  	option readethers	1
@@ -4443,8 +4464,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  	#option nonwildcard	1
  	#list interface		br-lan
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/dnsmasq/files/dnsmasq.init buildroot/package/dnsmasq/files/dnsmasq.init
---- buildroot.orig/package/dnsmasq/files/dnsmasq.init	2010-10-17 11:56:32.000000000 +0000
-+++ buildroot/package/dnsmasq/files/dnsmasq.init	2010-12-09 02:46:35.000000000 +0000
+--- buildroot.orig/package/dnsmasq/files/dnsmasq.init	2010-12-14 02:23:52.000000000 +0000
++++ buildroot/package/dnsmasq/files/dnsmasq.init	2010-12-14 02:26:44.000000000 +0000
 @@ -2,7 +2,7 @@
  # Copyright (C) 2007 OpenWrt.org
  
@@ -4455,8 +4476,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  
  dhcp_calc() {
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/dropbear/Makefile buildroot/package/dropbear/Makefile
---- buildroot.orig/package/dropbear/Makefile	2010-10-17 11:56:33.000000000 +0000
-+++ buildroot/package/dropbear/Makefile	2010-12-09 02:49:31.000000000 +0000
+--- buildroot.orig/package/dropbear/Makefile	2010-12-14 02:23:53.000000000 +0000
++++ buildroot/package/dropbear/Makefile	2010-12-14 02:26:44.000000000 +0000
 @@ -54,7 +54,7 @@
  	--disable-pam \
  	--enable-openpty \
@@ -4468,7 +4489,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  	--disable-utmpx \
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/haserl/Makefile buildroot/package/haserl/Makefile
 --- buildroot.orig/package/haserl/Makefile	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/haserl/Makefile	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/haserl/Makefile	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,33 @@
 +# 
 +# Copyright (C) 2006 OpenWrt.org
@@ -4505,7 +4526,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +$(eval $(call BuildPackage,haserl))
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/applejuice.pat buildroot/package/iptables/files/l7/applejuice.pat
 --- buildroot.orig/package/iptables/files/l7/applejuice.pat	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/iptables/files/l7/applejuice.pat	2010-12-09 02:57:48.000000000 +0000
++++ buildroot/package/iptables/files/l7/applejuice.pat	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,12 @@
 +# Apple Juice - P2P filesharing - http://www.applejuicenet.de
 +# Pattern attributes: great veryfast fast
@@ -4521,7 +4542,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +^ajprot\x0d\x0a
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/ares.pat buildroot/package/iptables/files/l7/ares.pat
 --- buildroot.orig/package/iptables/files/l7/ares.pat	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/iptables/files/l7/ares.pat	2010-12-09 02:57:57.000000000 +0000
++++ buildroot/package/iptables/files/l7/ares.pat	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,63 @@
 +# Ares - P2P filesharing - http://aresgalaxy.sf.net
 +# Pattern attributes: good veryfast fast undermatch
@@ -4588,7 +4609,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# haven't found any patterns.
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/h323.pat buildroot/package/iptables/files/l7/h323.pat
 --- buildroot.orig/package/iptables/files/l7/h323.pat	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/iptables/files/l7/h323.pat	2010-12-09 02:58:06.000000000 +0000
++++ buildroot/package/iptables/files/l7/h323.pat	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,36 @@
 +# H.323 - Voice over IP.
 +# Pattern attributes: ok veryfast fast
@@ -4628,7 +4649,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +^\x03..?\x08...?.?.?.?.?.?.?.?.?.?.?.?.?.?.?\x05
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/sip.pat buildroot/package/iptables/files/l7/sip.pat
 --- buildroot.orig/package/iptables/files/l7/sip.pat	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/iptables/files/l7/sip.pat	2010-12-09 02:58:13.000000000 +0000
++++ buildroot/package/iptables/files/l7/sip.pat	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,19 @@
 +# SIP - Session Initiation Protocol - Internet telephony - RFC 3261
 +# Pattern attributes: ok fast fast
@@ -4651,7 +4672,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +^(invite|register|cancel) sip[\x09-\x0d -~]*sip/[0-2]\.[0-9]
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/skypeout.pat buildroot/package/iptables/files/l7/skypeout.pat
 --- buildroot.orig/package/iptables/files/l7/skypeout.pat	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/iptables/files/l7/skypeout.pat	2010-12-09 02:58:21.000000000 +0000
++++ buildroot/package/iptables/files/l7/skypeout.pat	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,50 @@
 +# Skype to phone - UDP voice call (program to POTS phone) - http://skype.com
 +# Pattern attributes: ok slow notsofast overmatch
@@ -4705,7 +4726,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +^(\x01.?.?.?.?.?.?.?.?\x01|\x02.?.?.?.?.?.?.?.?\x02|\x03.?.?.?.?.?.?.?.?\x03|\x04.?.?.?.?.?.?.?.?\x04|\x05.?.?.?.?.?.?.?.?\x05|\x06.?.?.?.?.?.?.?.?\x06|\x07.?.?.?.?.?.?.?.?\x07|\x08.?.?.?.?.?.?.?.?\x08|\x09.?.?.?.?.?.?.?.?\x09|\x0a.?.?.?.?.?.?.?.?\x0a|\x0b.?.?.?.?.?.?.?.?\x0b|\x0c.?.?.?.?.?.?.?.?\x0c|\x0d.?.?.?.?.?.?.?.?\x0d|\x0e.?.?.?.?.?.?.?.?\x0e|\x0f.?.?.?.?.?.?.?.?\x0f|\x10.?.?.?.?.?.?.?.?\x10|\x11.?.?.?.?.?.?.?.?\x11|\x12.?.?.?.?.?.?.?.?\x12|\x13.?.?.?.?.?.?.?.?\x13|\x14.?.?.?.?.?.?.?.?\x14|\x15.?.?.?.?.?.?.?.?\x15|\x16.?.?.?.?.?.?.?.?\x16|\x17.?.?.?.?.?.?.?.?\x17|\x18.?.?.?.?.?.?.?.?\x18|\x19.?.?.?.?.?.?.?.?\x19|\x1a.?.?.?.?.?.?.?.?\x1a|\x1b.?.?.?.?.?.?.?.?\x1b|\x1c.?.?.?.?.?.?.?.?\x1c|\x1d.?.?.?.?.?.?.?.?\x1d|\x1e.?.?.?.?.?.?.?.?\x1e|\x1f.?.?.?.?.?.?.?.?\x1f|\x20.?.?.?.?.?.?.?.?\x20|\x21.?.?.?.?.?.?.?.?\x21|\x22.?.?.?.?.?.?.?.?\x22|\x23.?.?.?.?.?.?.?.?\x23|\$.?.?.?.?.?.?.?.?\$|\x25.?.?.?.?.?.?.?.?\x25|\x26.?.?.?.?.?.?.?.?\x26|\x27.?.?.?.?.?.?.?.?\x27|\(.?.?.?.?.?.?.?.?\(|\).?.?.?.?.?.?.?.?\)|\*.?.?.?.?.?.?.?.?\*|\+.?.?.?.?.?.?.?.?\+|\x2c.?.?.?.?.?.?.?.?\x2c|\x2d.?.?.?.?.?.?.?.?\x2d|\..?.?.?.?.?.?.?.?\.|\x2f.?.?.?.?.?.?.?.?\x2f|\x30.?.?.?.?.?.?.?.?\x30|\x31.?.?.?.?.?.?.?.?\x31|\x32.?.?.?.?.?.?.?.?\x32|\x33.?.?.?.?.?.?.?.?\x33|\x34.?.?.?.?.?.?.?.?\x34|\x35.?.?.?.?.?.?.?.?\x35|\x36.?.?.?.?.?.?.?.?\x36|\x37.?.?.?.?.?.?.?.?\x37|\x38.?.?.?.?.?.?.?.?\x38|\x39.?.?.?.?.?.?.?.?\x39|\x3a.?.?.?.?.?.?.?.?\x3a|\x3b.?.?.?.?.?.?.?.?\x3b|\x3c.?.?.?.?.?.?.?.?\x3c|\x3d.?.?.?.?.?.?.?.?\x3d|\x3e.?.?.?.?.?.?.?.?\x3e|\?.?.?.?.?.?.?.?.?\?|\x40.?.?.?.?.?.?.?.?\x40|\x41.?.?.?.?.?.?.?.?\x41|\x42.?.?.?.?.?.?.?.?\x42|\x43.?.?.?.?.?.?.?.?\x43|\x44.?.?.?.?.?.?.?.?\x44|\x45.?.?.?.?.?.?.?.?\x45|\x46.?.?.?.?.?.?.?.?\x46|\x47.?.?.?.?.?.?.?.?\x47|\x48.?.?.?.?.?.?.?.?\x48|\x49.?.?.?.?.?.?.?.?\x49|\x4a.?.?.?.?.?.?.?.?\x4a|\x4b.?.?.?.?.?.?.?.?\x4b|\x4c.?.?.?.?.?.?.?.?\x4c|\x4d.?.?.?.?.?.?.?.?\x4d|\x4e.?.?.?.?.?.?.?.?\x4e|\x4f.?.?.?.?.?.?.?.?\x4f|\x50.?.?.?.?.?.?.?.?\x50|\x51.?.?.?.?.?.?.?.?\x51|\x52.?.?.?.?.?.?.?.?\x52|\x53.?.?.?.?.?.?.?.?\x53|\x54.?.?.?.?.?.?.?.?\x54|\x55.?.?.?.?.?.?.?.?\x55|\x56.?.?.?.?.?.?.?.?\x56|\x57.?.?.?.?.?.?.?.?\x57|\x58.?.?.?.?.?.?.?.?\x58|\x59.?.?.?.?.?.?.?.?\x59|\x5a.?.?.?.?.?.?.?.?\x5a|\[.?.?.?.?.?.?.?.?\[|\\.?.?.?.?.?.?.?.?\\|\].?.?.?.?.?.?.?.?\]|\^.?.?.?.?.?.?.?.?\^|\x5f.?.?.?.?.?.?.?.?\x5f|\x60.?.?.?.?.?.?.?.?\x60|\x61.?.?.?.?.?.?.?.?\x61|\x62.?.?.?.?.?.?.?.?\x62|\x63.?.?.?.?.?.?.?.?\x63|\x64.?.?.?.?.?.?.?.?\x64|\x65.?.?.?.?.?.?.?.?\x65|\x66.?.?.?.?.?.?.?.?\x66|\x67.?.?.?.?.?.?.?.?\x67|\x68.?.?.?.?.?.?.?.?\x68|\x69.?.?.?.?.?.?.?.?\x69|\x6a.?.?.?.?.?.?.?.?\x6a|\x6b.?.?.?.?.?.?.?.?\x6b|\x6c.?.?.?.?.?.?.?.?\x6c|\x6d.?.?.?.?.?.?.?.?\x6d|\x6e.?.?.?.?.?.?.?.?\x6e|\x6f.?.?.?.?.?.?.?.?\x6f|\x70.?.?.?.?.?.?.?.?\x70|\x71.?.?.?.?.?.?.?.?\x71|\x72.?.?.?.?.?.?.?.?\x72|\x73.?.?.?.?.?.?.?.?\x73|\x74.?.?.?.?.?.?.?.?\x74|\x75.?.?.?.?.?.?.?.?\x75|\x76.?.?.?.?.?.?.?.?\x76|\x77.?.?.?.?.?.?.?.?\x77|\x78.?.?.?.?.?.?.?.?\x78|\x79.?.?.?.?.?.?.?.?\x79|\x7a.?.?.?.?.?.?.?.?\x7a|\{.?.?.?.?.?.?.?.?\{|\|.?.?.?.?.?.?.?.?\||\}.?.?.?.?.?.?.?.?\}|\x7e.?.?.?.?.?.?.?.?\x7e|\x7f.?.?.?.?.?.?.?.?\x7f|\x80.?.?.?.?.?.?.?.?\x80|\x81.?.?.?.?.?.?.?.?\x81|\x82.?.?.?.?.?.?.?.?\x82|\x83.?.?.?.?.?.?.?.?\x83|\x84.?.?.?.?.?.?.?.?\x84|\x85.?.?.?.?.?.?.?.?\x85|\x86.?.?.?.?.?.?.?.?\x86|\x87.?.?.?.?.?.?.?.?\x87|\x88.?.?.?.?.?.?.?.?\x88|\x89.?.?.?.?.?.?.?.?\x89|\x8a.?.?.?.?.?.?.?.?\x8a|\x8b.?.?.?.?.?.?.?.?\x8b|\x8c.?.?.?.?.?.?.?.?\x8c|\x8d.?.?.?.?.?.?.?.?\x8d|\x8e.?.?.?.?.?.?.?.?\x8e|\x8f.?.?.?.?.?.?.?.?\x8f|\x90.?.?.?.?.?.?.?.?\x90|\x91.?.?.?.?.?.?.?.?\x91|\x92.?.?.?.?.?.?.?.?\x92|\x93.?.?.?.?.?.?.?.?\x93|\x94.?.?.?.?.?.?.?.?\x94|\x95.?.?.?.?.?.?.?.?\x95|\x96.?.?.?.?.?.?.?.?\x96|\x97.?.?.?.?.?.?.?.?\x97|\x98.?.?.?.?.?.?.?.?\x98|\x99.?.?.?.?.?.?.?.?\x99|\x9a.?.?.?.?.?.?.?.?\x9a|\x9b.?.?.?.?.?.?.?.?\x9b|\x9c.?.?.?.?.?.?.?.?\x9c|\x9d.?.?.?.?.?.?.?.?\x9d|\x9e.?.?.?.?.?.?.?.?\x9e|\x9f.?.?.?.?.?.?.?.?\x9f|\xa0.?.?.?.?.?.?.?.?\xa0|\xa1.?.?.?.?.?.?.?.?\xa1|\xa2.?.?.?.?.?.?.?.?\xa2|\xa3.?.?.?.?.?.?.?.?\xa3|\xa4.?.?.?.?.?.?.?.?\xa4|\xa5.?.?.?.?.?.?.?.?\xa5|\xa6.?.?.?.?.?.?.?.?\xa6|\xa7.?.?.?.?.?.?.?.?\xa7|\xa8.?.?.?.?.?.?.?.?\xa8|\xa9.?.?.?.?.?.?.?.?\xa9|\xaa.?.?.?.?.?.?.?.?\xaa|\xab.?.?.?.?.?.?.?.?\xab|\xac.?.?.?.?.?.?.?.?\xac|\xad.?.?.?.?.?.?.?.?\xad|\xae.?.?.?.?.?.?.?.?\xae|\xaf.?.?.?.?.?.?.?.?\xaf|\xb0.?.?.?.?.?.?.?.?\xb0|\xb1.?.?.?.?.?.?.?.?\xb1|\xb2.?.?.?.?.?.?.?.?\xb2|\xb3.?.?.?.?.?.?.?.?\xb3|\xb4.?.?.?.?.?.?.?.?\xb4|\xb5.?.?.?.?.?.?.?.?\xb5|\xb6.?.?.?.?.?.?.?.?\xb6|\xb7.?.?.?.?.?.?.?.?\xb7|\xb8.?.?.?.?.?.?.?.?\xb8|\xb9.?.?.?.?.?.?.?.?\xb9|\xba.?.?.?.?.?.?.?.?\xba|\xbb.?.?.?.?.?.?.?.?\xbb|\xbc.?.?.?.?.?.?.?.?\xbc|\xbd.?.?.?.?.?.?.?.?\xbd|\xbe.?.?.?.?.?.?.?.?\xbe|\xbf.?.?.?.?.?.?.?.?\xbf|\xc0.?.?.?.?.?.?.?.?\xc0|\xc1.?.?.?.?.?.?.?.?\xc1|\xc2.?.?.?.?.?.?.?.?\xc2|\xc3.?.?.?.?.?.?.?.?\xc3|\xc4.?.?.?.?.?.?.?.?\xc4|\xc5.?.?.?.?.?.?.?.?\xc5|\xc6.?.?.?.?.?.?.?.?\xc6|\xc7.?.?.?.?.?.?.?.?\xc7|\xc8.?.?.?.?.?.?.?.?\xc8|\xc9.?.?.?.?.?.?.?.?\xc9|\xca.?.?.?.?.?.?.?.?\xca|\xcb.?.?.?.?.?.?.?.?\xcb|\xcc.?.?.?.?.?.?.?.?\xcc|\xcd.?.?.?.?.?.?.?.?\xcd|\xce.?.?.?.?.?.?.?.?\xce|\xcf.?.?.?.?.?.?.?.?\xcf|\xd0.?.?.?.?.?.?.?.?\xd0|\xd1.?.?.?.?.?.?.?.?\xd1|\xd2.?.?.?.?.?.?.?.?\xd2|\xd3.?.?.?.?.?.?.?.?\xd3|\xd4.?.?.?.?.?.?.?.?\xd4|\xd5.?.?.?.?.?.?.?.?\xd5|\xd6.?.?.?.?.?.?.?.?\xd6|\xd7.?.?.?.?.?.?.?.?\xd7|\xd8.?.?.?.?.?.?.?.?\xd8|\xd9.?.?.?.?.?.?.?.?\xd9|\xda.?.?.?.?.?.?.?.?\xda|\xdb.?.?.?.?.?.?.?.?\xdb|\xdc.?.?.?.?.?.?.?.?\xdc|\xdd.?.?.?.?.?.?.?.?\xdd|\xde.?.?.?.?.?.?.?.?\xde|\xdf.?.?.?.?.?.?.?.?\xdf|\xe0.?.?.?.?.?.?.?.?\xe0|\xe1.?.?.?.?.?.?.?.?\xe1|\xe2.?.?.?.?.?.?.?.?\xe2|\xe3.?.?.?.?.?.?.?.?\xe3|\xe4.?.?.?.?.?.?.?.?\xe4|\xe5.?.?.?.?.?.?.?.?\xe5|\xe6.?.?.?.?.?.?.?.?\xe6|\xe7.?.?.?.?.?.?.?.?\xe7|\xe8.?.?.?.?.?.?.?.?\xe8|\xe9.?.?.?.?.?.?.?.?\xe9|\xea.?.?.?.?.?.?.?.?\xea|\xeb.?.?.?.?.?.?.?.?\xeb|\xec.?.?.?.?.?.?.?.?\xec|\xed.?.?.?.?.?.?.?.?\xed|\xee.?.?.?.?.?.?.?.?\xee|\xef.?.?.?.?.?.?.?.?\xef|\xf0.?.?.?.?.?.?.?.?\xf0|\xf1.?.?.?.?.?.?.?.?\xf1|\xf2.?.?.?.?.?.?.?.?\xf2|\xf3.?.?.?.?.?.?.?.?\xf3|\xf4.?.?.?.?.?.?.?.?\xf4|\xf5.?.?.?.?.?.?.?.?\xf5|\xf6.?.?.?.?.?.?.?.?\xf6|\xf7.?.?.?.?.?.?.?.?\xf7|\xf8.?.?.?.?.?.?.?.?\xf8|\xf9.?.?.?.?.?.?.?.?\xf9|\xfa.?.?.?.?.?.?.?.?\xfa|\xfb.?.?.?.?.?.?.?.?\xfb|\xfc.?.?.?.?.?.?.?.?\xfc|\xfd.?.?.?.?.?.?.?.?\xfd|\xfe.?.?.?.?.?.?.?.?\xfe|\xff.?.?.?.?.?.?.?.?\xff)
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/skypetoskype.pat buildroot/package/iptables/files/l7/skypetoskype.pat
 --- buildroot.orig/package/iptables/files/l7/skypetoskype.pat	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/iptables/files/l7/skypetoskype.pat	2010-12-09 02:58:21.000000000 +0000
++++ buildroot/package/iptables/files/l7/skypetoskype.pat	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,14 @@
 +# Skype to Skype - UDP voice call (program to program) - http://skype.com
 +# Pattern attributes: ok veryfast fast overmatch
@@ -4723,7 +4744,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/soulseek.pat buildroot/package/iptables/files/l7/soulseek.pat
 --- buildroot.orig/package/iptables/files/l7/soulseek.pat	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/iptables/files/l7/soulseek.pat	2010-12-09 02:58:27.000000000 +0000
++++ buildroot/package/iptables/files/l7/soulseek.pat	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,17 @@
 +# Soulseek - P2P filesharing - http://slsknet.org
 +# Pattern attributes: good fast fast
@@ -4744,7 +4765,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +^(\x05..?|.\x01.[ -~]+\x01F..?.?.?.?.?.?.?)$
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/teamspeak.pat buildroot/package/iptables/files/l7/teamspeak.pat
 --- buildroot.orig/package/iptables/files/l7/teamspeak.pat	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/iptables/files/l7/teamspeak.pat	2010-12-09 02:58:32.000000000 +0000
++++ buildroot/package/iptables/files/l7/teamspeak.pat	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,15 @@
 +# TeamSpeak - VoIP application - http://goteamspeak.com
 +# Pattern attributes: good veryfast fast
@@ -4763,7 +4784,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/iptables/files/l7/tor.pat buildroot/package/iptables/files/l7/tor.pat
 --- buildroot.orig/package/iptables/files/l7/tor.pat	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/iptables/files/l7/tor.pat	2010-12-09 02:58:36.000000000 +0000
++++ buildroot/package/iptables/files/l7/tor.pat	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,17 @@
 +# Tor - The Onion Router - used for anonymization - http://tor.eff.org
 +# Pattern attributes: good notsofast notsofast
@@ -4783,8 +4804,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +tor
 +TOR1.*<identity>
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/kernel/modules/usb.mk buildroot/package/kernel/modules/usb.mk
---- buildroot.orig/package/kernel/modules/usb.mk	2010-10-17 11:56:33.000000000 +0000
-+++ buildroot/package/kernel/modules/usb.mk	2010-12-09 03:01:05.000000000 +0000
+--- buildroot.orig/package/kernel/modules/usb.mk	2010-12-14 02:23:53.000000000 +0000
++++ buildroot/package/kernel/modules/usb.mk	2010-12-14 02:26:44.000000000 +0000
 @@ -169,7 +169,7 @@
    KCONFIG:=CONFIG_USB_EHCI_HCD \
      CONFIG_USB_EHCI_AR71XX=y
@@ -4796,7 +4817,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/libusb/Makefile buildroot/package/libusb/Makefile
 --- buildroot.orig/package/libusb/Makefile	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/libusb/Makefile	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/libusb/Makefile	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,72 @@
 +#
 +# Copyright (C) 2006-2008 OpenWrt.org
@@ -4872,7 +4893,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +$(eval $(call BuildPackage,libusb))
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/libusb/patches/001-no_libusbpp.patch buildroot/package/libusb/patches/001-no_libusbpp.patch
 --- buildroot.orig/package/libusb/patches/001-no_libusbpp.patch	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/libusb/patches/001-no_libusbpp.patch	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/libusb/patches/001-no_libusbpp.patch	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,106 @@
 +--- libusb-0.1.12/Makefile.in.old	2007-01-04 16:36:50.000000000 -0700
 ++++ libusb-0.1.12/Makefile.in	2007-01-04 16:42:55.000000000 -0700
@@ -4981,9 +5002,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 + .c.o:
 + @am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/mac80211/files/lib/wifi/mac80211.sh buildroot/package/mac80211/files/lib/wifi/mac80211.sh
---- buildroot.orig/package/mac80211/files/lib/wifi/mac80211.sh	2010-10-17 11:56:33.000000000 +0000
-+++ buildroot/package/mac80211/files/lib/wifi/mac80211.sh	2010-12-12 02:17:46.000000000 +0000
-@@ -440,7 +440,7 @@
+--- buildroot.orig/package/mac80211/files/lib/wifi/mac80211.sh	2010-12-14 02:23:53.000000000 +0000
++++ buildroot/package/mac80211/files/lib/wifi/mac80211.sh	2010-12-14 02:26:44.000000000 +0000
+@@ -449,7 +449,7 @@
  	option device   radio$devidx
  	option network  lan
  	option mode     ap
@@ -4994,7 +5015,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  EOF
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/mini_httpd/Makefile buildroot/package/mini_httpd/Makefile
 --- buildroot.orig/package/mini_httpd/Makefile	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/mini_httpd/Makefile	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/mini_httpd/Makefile	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,178 @@
 +#
 +# Copyright (C) 2006 OpenWrt.org
@@ -5176,7 +5197,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +$(eval $(call BuildPackage,mini-httpd-htpasswd))
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/mini_httpd/files/mini_httpd.conf buildroot/package/mini_httpd/files/mini_httpd.conf
 --- buildroot.orig/package/mini_httpd/files/mini_httpd.conf	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/mini_httpd/files/mini_httpd.conf	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/mini_httpd/files/mini_httpd.conf	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,7 @@
 +cgipat=cgi-bin/**|**.sh
 +dir=/www
@@ -5187,7 +5208,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +certfile=/etc/mini_httpd/server.pem
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/mini_httpd/patches/001-cgi_path.patch buildroot/package/mini_httpd/patches/001-cgi_path.patch
 --- buildroot.orig/package/mini_httpd/patches/001-cgi_path.patch	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/mini_httpd/patches/001-cgi_path.patch	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/mini_httpd/patches/001-cgi_path.patch	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,16 @@
 +diff -ruN mini_httpd-1.19-old/mini_httpd.c mini_httpd-1.19-new/mini_httpd.c
 +--- mini_httpd-1.19-old/mini_httpd.c	2005-10-19 01:11:24.000000000 +0200
@@ -5207,7 +5228,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 + #define AUTH_FILE ".htpasswd"
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/mini_httpd/patches/002-realm.patch buildroot/package/mini_httpd/patches/002-realm.patch
 --- buildroot.orig/package/mini_httpd/patches/002-realm.patch	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/mini_httpd/patches/002-realm.patch	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/mini_httpd/patches/002-realm.patch	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,10 @@
 +--- mini_httpd-1.19-old/mini_httpd.c	2005-06-29 13:31:17.000000000 -0400
 ++++ mini_httpd-1.19-new/mini_httpd.c	2008-11-19 23:51:31.000000000 -0500
@@ -5221,7 +5242,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 + 	header, sizeof(header), "WWW-Authenticate: Basic realm=\"%s\"", realm );
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/ntpclient/Makefile buildroot/package/ntpclient/Makefile
 --- buildroot.orig/package/ntpclient/Makefile	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/ntpclient/Makefile	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/ntpclient/Makefile	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,49 @@
 +#
 +# Copyright (C) 2006 OpenWrt.org
@@ -5274,7 +5295,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +$(eval $(call BuildPackage,ntpclient))
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/ntpclient/files/ntpclient.config buildroot/package/ntpclient/files/ntpclient.config
 --- buildroot.orig/package/ntpclient/files/ntpclient.config	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/ntpclient/files/ntpclient.config	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/ntpclient/files/ntpclient.config	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,22 @@
 +config ntpserver
 +	option hostname '0.openwrt.pool.ntp.org'
@@ -5300,7 +5321,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +	#option count	10
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/ntpclient/files/ntpclient.hotplug buildroot/package/ntpclient/files/ntpclient.hotplug
 --- buildroot.orig/package/ntpclient/files/ntpclient.hotplug	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/ntpclient/files/ntpclient.hotplug	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/ntpclient/files/ntpclient.hotplug	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,65 @@
 +#!/bin/sh
 +# Copyright (C) 2006 OpenWrt.org
@@ -5369,7 +5390,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +esac
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/ntpclient/patches/100-daemon.patch buildroot/package/ntpclient/patches/100-daemon.patch
 --- buildroot.orig/package/ntpclient/patches/100-daemon.patch	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/ntpclient/patches/100-daemon.patch	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/ntpclient/patches/100-daemon.patch	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,24 @@
 +Index: ntpclient-2007/ntpclient.c
 +===================================================================
@@ -5397,7 +5418,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 + 				exit(1);
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/usbutils/Makefile buildroot/package/usbutils/Makefile
 --- buildroot.orig/package/usbutils/Makefile	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/usbutils/Makefile	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/usbutils/Makefile	2010-12-14 02:26:44.000000000 +0000
 @@ -0,0 +1,52 @@
 +#
 +# Copyright (C) 2007 OpenWrt.org
@@ -5452,8 +5473,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +
 +$(eval $(call BuildPackage,usbutils))
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/Makefile buildroot/package/webif/Makefile
---- buildroot.orig/package/webif/Makefile	2010-10-17 11:57:14.000000000 +0000
-+++ buildroot/package/webif/Makefile	2010-12-09 03:30:31.000000000 +0000
+--- buildroot.orig/package/webif/Makefile	2010-12-14 02:24:49.000000000 +0000
++++ buildroot/package/webif/Makefile	2010-12-14 02:26:44.000000000 +0000
 @@ -29,7 +29,6 @@
  define Package/webif/conffiles
  /etc/config/webif
@@ -5463,8 +5484,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  endef
  
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/etc/config/webif buildroot/package/webif/files/etc/config/webif
---- buildroot.orig/package/webif/files/etc/config/webif	2010-10-17 11:57:14.000000000 +0000
-+++ buildroot/package/webif/files/etc/config/webif	2010-12-09 03:21:13.000000000 +0000
+--- buildroot.orig/package/webif/files/etc/config/webif	2010-12-14 02:24:49.000000000 +0000
++++ buildroot/package/webif/files/etc/config/webif	2010-12-14 02:26:44.000000000 +0000
 @@ -1,6 +1,6 @@
  config webif general
  	option lang "en"
@@ -5483,7 +5504,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  config webif qos
  	option show_advanced_rules "0"
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/etc/httpd.conf buildroot/package/webif/files/etc/httpd.conf
---- buildroot.orig/package/webif/files/etc/httpd.conf	2010-10-17 11:57:14.000000000 +0000
+--- buildroot.orig/package/webif/files/etc/httpd.conf	2010-12-14 02:24:49.000000000 +0000
 +++ buildroot/package/webif/files/etc/httpd.conf	1970-01-01 00:00:00.000000000 +0000
 @@ -1,9 +0,0 @@
 -/cgi-bin/webif/:root:$p$root
@@ -5496,8 +5517,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 -.js:application/x-javascript
 -
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/etc/init.d/webif buildroot/package/webif/files/etc/init.d/webif
---- buildroot.orig/package/webif/files/etc/init.d/webif	2010-10-17 11:57:14.000000000 +0000
-+++ buildroot/package/webif/files/etc/init.d/webif	2010-12-09 03:25:07.000000000 +0000
+--- buildroot.orig/package/webif/files/etc/init.d/webif	2010-12-14 02:24:49.000000000 +0000
++++ buildroot/package/webif/files/etc/init.d/webif	2010-12-14 02:26:44.000000000 +0000
 @@ -128,24 +128,7 @@
  	firmware_subtitle=$CONFIG_general_firmware_subtitle
  	firmware_version=$CONFIG_general_firmware_version
@@ -5524,39 +5545,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  
  	if [ "$CONFIG_general_firstboot" = "1" ]; then
  		opkg update
-diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/usr/lib/webif/apply.sh buildroot/package/webif/files/usr/lib/webif/apply.sh
---- buildroot.orig/package/webif/files/usr/lib/webif/apply.sh	2010-10-17 11:57:13.000000000 +0000
-+++ buildroot/package/webif/files/usr/lib/webif/apply.sh	2010-12-09 03:26:46.000000000 +0000
-@@ -27,6 +27,7 @@
- HANDLERS_file='
- 	hosts) rm -f /etc/hosts; mv $config /etc/hosts; killall -HUP dnsmasq ;;
- 	ethers) rm -f /etc/ethers; mv $config /etc/ethers; killall -HUP dnsmasq ;;
-+	firewall) mv /tmp/.webif/file-firewall /etc/firewall.config && /etc/init.d/firewall restart && reload_upnpd;;
- 	dnsmasq.conf) mv /tmp/.webif/file-dnsmasq.conf /etc/dnsmasq.conf && /etc/init.d/dnsmasq restart;;
- 	httpd.conf) mv -f /tmp/.webif/file-httpd.conf /etc/httpd.conf && HTTP_RESTART=1 ;;
- '
-@@ -326,7 +327,9 @@
- 			/etc/init.d/firewall restart && reload_upnpd
- 			;;
- 		"httpd")
--			/etc/init.d/httpd restart
-+			[ -e "/etc/init.d/httpd" ] && /etc/init.d/httpd restart
-+			[ -e "/etc/init.d/uhttpd" ] && /etc/init.d/uhttpd restart
-+#			/etc/init.d/httpd restart
- 			;;
- 		"uhttpd")
- 			/etc/init.d/uhttpd restart
-@@ -349,5 +352,6 @@
- rm /tmp/.webif/* >&- 2>&-
- rm /tmp/.uci/* >&- 2>&-
- if [ "$HTTP_RESTART" = "1" ]; then
--	/etc/init.d/httpd restart
-+	[ -e "/etc/init.d/httpd" ] && /etc/init.d/httpd restart
-+	[ -e "/etc/init.d/uhttpd" ] && /etc/init.d/uhttpd restart
- fi
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/usr/lib/webif/functions.sh buildroot/package/webif/files/usr/lib/webif/functions.sh
---- buildroot.orig/package/webif/files/usr/lib/webif/functions.sh	2010-10-17 11:57:13.000000000 +0000
-+++ buildroot/package/webif/files/usr/lib/webif/functions.sh	2010-12-09 03:27:02.000000000 +0000
+--- buildroot.orig/package/webif/files/usr/lib/webif/functions.sh	2010-12-14 02:24:49.000000000 +0000
++++ buildroot/package/webif/files/usr/lib/webif/functions.sh	2010-12-14 02:26:44.000000000 +0000
 @@ -135,14 +135,14 @@
  	# emit output to std devices.
  	echo "@TR<<Installing package>>..."
@@ -5575,25 +5566,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  		}
  	}
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/usr/lib/webif/webif.sh buildroot/package/webif/files/usr/lib/webif/webif.sh
---- buildroot.orig/package/webif/files/usr/lib/webif/webif.sh	2010-10-17 11:57:13.000000000 +0000
-+++ buildroot/package/webif/files/usr/lib/webif/webif.sh	2010-12-09 03:27:33.000000000 +0000
-@@ -12,6 +12,7 @@
- # Configuration files referenced:
- #
- 
-+
- libdir=/usr/lib/webif
- wwwdir=/www
- cgidir=/www/cgi-bin/webif
-@@ -22,6 +23,7 @@
- . /usr/lib/webif/functions.sh
- . /lib/config/uci.sh
- 
-+
- uci_load "webif"
- _device="$CONFIG_general_device_name"
- 
-@@ -312,7 +314,7 @@
+--- buildroot.orig/package/webif/files/usr/lib/webif/webif.sh	2010-12-14 02:24:49.000000000 +0000
++++ buildroot/package/webif/files/usr/lib/webif/webif.sh	2010-12-14 02:38:22.000000000 +0000
+@@ -314,7 +314,7 @@
  $_endform
  <hr />
  <div id="footer">
@@ -5602,7 +5577,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  	<em>@TR<<making_usable#End user extensions for OpenWrt>></em>
  </div>
  </div> <!-- End #container -->
-@@ -325,7 +327,8 @@
+@@ -327,7 +327,8 @@
  apply_passwd() {
  	case ${SERVER_SOFTWARE%% *} in
  		mini_httpd/*)
@@ -5613,8 +5588,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  			;;
  	esac
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/info.sh buildroot/package/webif/files/www/cgi-bin/webif/info.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/info.sh	2010-10-17 11:57:12.000000000 +0000
-+++ buildroot/package/webif/files/www/cgi-bin/webif/info.sh	2010-12-09 03:34:52.000000000 +0000
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/info.sh	2010-12-14 02:24:48.000000000 +0000
++++ buildroot/package/webif/files/www/cgi-bin/webif/info.sh	2010-12-14 02:27:15.000000000 +0000
 @@ -70,6 +70,12 @@
  	echo "</pre><br />"
  }
@@ -5649,8 +5624,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  
  footer
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/reboot.sh buildroot/package/webif/files/www/cgi-bin/webif/reboot.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/reboot.sh	2010-10-17 11:57:12.000000000 +0000
-+++ buildroot/package/webif/files/www/cgi-bin/webif/reboot.sh	2010-12-09 03:35:47.000000000 +0000
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/reboot.sh	2010-12-14 02:24:48.000000000 +0000
++++ buildroot/package/webif/files/www/cgi-bin/webif/reboot.sh	2010-12-14 02:27:15.000000000 +0000
 @@ -9,7 +9,7 @@
  	uci_load "network"
  	router_ip="$CONFIG_lan_ipaddr"
@@ -5661,7 +5636,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  <br/><br/>
  @TR<<reboot_wait#Please wait about>> $timeout @TR<<reboot_seconds#seconds.>> @TR<<reboot_reload#The webif&sup2; should automatically reload.>>
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/status-asterisk.sh buildroot/package/webif/files/www/cgi-bin/webif/status-asterisk.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-asterisk.sh	2010-10-17 11:57:12.000000000 +0000
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-asterisk.sh	2010-12-14 02:24:48.000000000 +0000
 +++ buildroot/package/webif/files/www/cgi-bin/webif/status-asterisk.sh	1970-01-01 00:00:00.000000000 +0000
 @@ -1,128 +0,0 @@
 -#!/usr/bin/webif-page
@@ -5793,8 +5768,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 -##WEBIF:name:Status:901:Asterisk
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/status-basic.sh buildroot/package/webif/files/www/cgi-bin/webif/status-basic.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-basic.sh	2010-10-17 11:57:12.000000000 +0000
-+++ buildroot/package/webif/files/www/cgi-bin/webif/status-basic.sh	2010-12-09 03:40:33.000000000 +0000
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/status-basic.sh	2010-12-14 02:24:48.000000000 +0000
++++ buildroot/package/webif/files/www/cgi-bin/webif/status-basic.sh	2010-12-14 02:27:15.000000000 +0000
 @@ -99,7 +99,7 @@
  		else
  			swap_type="@TR<<status_basic_swap_file#swap file>>"
@@ -5805,7 +5780,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  	}'
  )
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-access-control.sh buildroot/package/webif/files/www/cgi-bin/webif/system-access-control.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-access-control.sh	2010-10-17 11:57:12.000000000 +0000
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-access-control.sh	2010-12-14 02:24:48.000000000 +0000
 +++ buildroot/package/webif/files/www/cgi-bin/webif/system-access-control.sh	1970-01-01 00:00:00.000000000 +0000
 @@ -1,180 +0,0 @@
 -#!/usr/bin/webif-page
@@ -5989,7 +5964,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 -##WEBIF:name:System:160:Access Control
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-crontabs.sh buildroot/package/webif/files/www/cgi-bin/webif/system-crontabs.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-crontabs.sh	2010-10-17 11:57:12.000000000 +0000
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-crontabs.sh	2010-12-14 02:24:48.000000000 +0000
 +++ buildroot/package/webif/files/www/cgi-bin/webif/system-crontabs.sh	1970-01-01 00:00:00.000000000 +0000
 @@ -1,618 +0,0 @@
 -#!/usr/bin/webif-page
@@ -6611,7 +6586,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 -##WEBIF:name:System:130:Crontabs
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-mount.sh buildroot/package/webif/files/www/cgi-bin/webif/system-mount.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-mount.sh	2010-10-17 11:57:12.000000000 +0000
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-mount.sh	2010-12-14 02:24:48.000000000 +0000
 +++ buildroot/package/webif/files/www/cgi-bin/webif/system-mount.sh	1970-01-01 00:00:00.000000000 +0000
 @@ -1,395 +0,0 @@
 -#!/usr/bin/webif-page
@@ -7010,7 +6985,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 -##WEBIF:name:System:330:Mountpoints
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-password.sh buildroot/package/webif/files/www/cgi-bin/webif/system-password.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-password.sh	2010-10-17 11:57:12.000000000 +0000
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-password.sh	2010-12-14 02:24:48.000000000 +0000
 +++ buildroot/package/webif/files/www/cgi-bin/webif/system-password.sh	1970-01-01 00:00:00.000000000 +0000
 @@ -1,64 +0,0 @@
 -#!/usr/bin/webif-page
@@ -7078,7 +7053,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 -##WEBIF:name:System:250:Password
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/cgi-bin/webif/system-upgrade.sh buildroot/package/webif/files/www/cgi-bin/webif/system-upgrade.sh
---- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-upgrade.sh	2010-10-17 11:57:12.000000000 +0000
+--- buildroot.orig/package/webif/files/www/cgi-bin/webif/system-upgrade.sh	2010-12-14 02:24:48.000000000 +0000
 +++ buildroot/package/webif/files/www/cgi-bin/webif/system-upgrade.sh	1970-01-01 00:00:00.000000000 +0000
 @@ -1,57 +0,0 @@
 -#!/usr/bin/webif-page "-U /tmp -u 16384"
@@ -7140,7 +7115,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 --->
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err400.html buildroot/package/webif/files/www/errors/err400.html
 --- buildroot.orig/package/webif/files/www/errors/err400.html	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/webif/files/www/errors/err400.html	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err400.html	2010-12-14 02:27:15.000000000 +0000
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -7188,7 +7163,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err401.html buildroot/package/webif/files/www/errors/err401.html
 --- buildroot.orig/package/webif/files/www/errors/err401.html	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/webif/files/www/errors/err401.html	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err401.html	2010-12-14 02:27:15.000000000 +0000
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -7236,7 +7211,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err403.html buildroot/package/webif/files/www/errors/err403.html
 --- buildroot.orig/package/webif/files/www/errors/err403.html	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/webif/files/www/errors/err403.html	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err403.html	2010-12-14 02:27:15.000000000 +0000
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -7284,7 +7259,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err404.html buildroot/package/webif/files/www/errors/err404.html
 --- buildroot.orig/package/webif/files/www/errors/err404.html	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/webif/files/www/errors/err404.html	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err404.html	2010-12-14 02:27:15.000000000 +0000
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -7332,7 +7307,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err500.html buildroot/package/webif/files/www/errors/err500.html
 --- buildroot.orig/package/webif/files/www/errors/err500.html	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/webif/files/www/errors/err500.html	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err500.html	2010-12-14 02:27:15.000000000 +0000
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -7380,7 +7355,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err501.html buildroot/package/webif/files/www/errors/err501.html
 --- buildroot.orig/package/webif/files/www/errors/err501.html	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/webif/files/www/errors/err501.html	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err501.html	2010-12-14 02:27:15.000000000 +0000
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -7428,7 +7403,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/webif/files/www/errors/err503.html buildroot/package/webif/files/www/errors/err503.html
 --- buildroot.orig/package/webif/files/www/errors/err503.html	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/webif/files/www/errors/err503.html	2010-11-14 00:30:55.000000000 +0000
++++ buildroot/package/webif/files/www/errors/err503.html	2010-12-14 02:27:15.000000000 +0000
 @@ -0,0 +1,44 @@
 +<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 +<head>
@@ -7475,9 +7450,9 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/target/linux/brcm47xx/image/Makefile buildroot/target/linux/brcm47xx/image/Makefile
---- buildroot.orig/target/linux/brcm47xx/image/Makefile	2010-10-17 11:56:21.000000000 +0000
-+++ buildroot/target/linux/brcm47xx/image/Makefile	2010-12-09 03:18:35.000000000 +0000
-@@ -92,6 +92,8 @@
+--- buildroot.orig/target/linux/brcm47xx/image/Makefile	2010-12-14 02:23:43.000000000 +0000
++++ buildroot/target/linux/brcm47xx/image/Makefile	2010-12-14 02:27:15.000000000 +0000
+@@ -97,6 +97,8 @@
  define Image/Build/squashfs
  	$(call Image/Build/jffs2-64k,$(1))
  	$(call Image/Build/jffs2-128k,$(1))
