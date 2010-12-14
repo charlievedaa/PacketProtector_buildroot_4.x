@@ -4817,21 +4817,20 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
  
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/libusb/Makefile buildroot/package/libusb/Makefile
 --- buildroot.orig/package/libusb/Makefile	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/libusb/Makefile	2010-12-14 02:26:44.000000000 +0000
-@@ -0,0 +1,72 @@
++++ buildroot/package/libusb/Makefile	2009-04-17 15:22:00.000000000 +0000
+@@ -0,0 +1,71 @@
 +#
 +# Copyright (C) 2006-2008 OpenWrt.org
 +#
 +# This is free software, licensed under the GNU General Public License v2.
 +# See /LICENSE for more information.
 +#
-+# $Id: Makefile 12966 2008-10-13 15:42:09Z nbd $
 +
 +include $(TOPDIR)/rules.mk
 +
 +PKG_NAME:=libusb
 +PKG_VERSION:=0.1.12
-+PKG_RELEASE:=1
++PKG_RELEASE:=2
 +
 +PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 +PKG_SOURCE_URL:=@SF/libusb
@@ -4873,7 +4872,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +		$(1)/usr/include/
 +
 +	$(INSTALL_DIR) $(1)/usr/lib
-+	$(INSTALL_DATA) \
++	$(CP) \
 +		$(PKG_INSTALL_DIR)/usr/lib/libusb*.{la,so*,a} \
 +		$(1)/usr/lib/
 +
@@ -4885,15 +4884,269 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +
 +define Package/libusb/install
 +	$(INSTALL_DIR) $(1)/usr/lib
-+	$(INSTALL_DATA) \
-+		$(PKG_INSTALL_DIR)/usr/lib/libusb*.so.* \
++	$(CP) \
++		$(PKG_INSTALL_DIR)/usr/lib/libusb*.so* \
 +		$(1)/usr/lib/
 +endef
 +
 +$(eval $(call BuildPackage,libusb))
-diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/libusb/patches/001-no_libusbpp.patch buildroot/package/libusb/patches/001-no_libusbpp.patch
---- buildroot.orig/package/libusb/patches/001-no_libusbpp.patch	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/libusb/patches/001-no_libusbpp.patch	2010-12-14 02:26:44.000000000 +0000
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/libusb/patches/000-debian_packed.patch buildroot/package/libusb/patches/000-debian_packed.patch
+--- buildroot.orig/package/libusb/patches/000-debian_packed.patch	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/libusb/patches/000-debian_packed.patch	2009-05-28 08:42:10.000000000 +0000
+@@ -0,0 +1,52 @@
++
++---
++ usb.h.in |   10 +++++-----
++ 1 file changed, 5 insertions(+), 5 deletions(-)
++
++--- a/usb.h.in
+++++ b/usb.h.in
++@@ -66,14 +66,14 @@
++ struct usb_descriptor_header {
++ 	u_int8_t  bLength;
++ 	u_int8_t  bDescriptorType;
++-};
+++} __attribute__ ((packed));
++ 
++ /* String descriptor */
++ struct usb_string_descriptor {
++ 	u_int8_t  bLength;
++ 	u_int8_t  bDescriptorType;
++ 	u_int16_t wData[1];
++-};
+++} __attribute__ ((packed));
++ 
++ /* HID descriptor */
++ struct usb_hid_descriptor {
++@@ -85,7 +85,7 @@
++ 	/* u_int8_t  bReportDescriptorType; */
++ 	/* u_int16_t wDescriptorLength; */
++ 	/* ... */
++-};
+++} __attribute__ ((packed));
++ 
++ /* Endpoint descriptor */
++ #define USB_MAXENDPOINTS	32
++@@ -172,7 +172,7 @@
++ 	u_int8_t  iProduct;
++ 	u_int8_t  iSerialNumber;
++ 	u_int8_t  bNumConfigurations;
++-};
+++} __attribute__ ((packed));
++ 
++ struct usb_ctrl_setup {
++ 	u_int8_t  bRequestType;
++@@ -180,7 +180,7 @@
++ 	u_int16_t wValue;
++ 	u_int16_t wIndex;
++ 	u_int16_t wLength;
++-};
+++} __attribute__ ((packed));
++ 
++ /*
++  * Standard requests
++
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/libusb/patches/001-debian_ansi_types.patch buildroot/package/libusb/patches/001-debian_ansi_types.patch
+--- buildroot.orig/package/libusb/patches/001-debian_ansi_types.patch	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/libusb/patches/001-debian_ansi_types.patch	2009-05-28 08:42:10.000000000 +0000
+@@ -0,0 +1,194 @@
++
++---
++ usb.h.in |  118 ++++++++++++++++++++++++++++++++-------------------------------
++ 1 file changed, 60 insertions(+), 58 deletions(-)
++
++--- a/usb.h.in
+++++ b/usb.h.in
++@@ -13,8 +13,10 @@
++ 
++ #include <unistd.h>
++ #include <stdlib.h>
+++#include <stdint.h>
++ #include <limits.h>
++ 
+++#include <sys/param.h>
++ #include <dirent.h>
++ 
++ /*
++@@ -64,40 +66,40 @@
++ 
++ /* All standard descriptors have these 2 fields in common */
++ struct usb_descriptor_header {
++-	u_int8_t  bLength;
++-	u_int8_t  bDescriptorType;
+++	uint8_t  bLength;
+++	uint8_t  bDescriptorType;
++ } __attribute__ ((packed));
++ 
++ /* String descriptor */
++ struct usb_string_descriptor {
++-	u_int8_t  bLength;
++-	u_int8_t  bDescriptorType;
++-	u_int16_t wData[1];
+++	uint8_t  bLength;
+++	uint8_t  bDescriptorType;
+++	uint16_t wData[1];
++ } __attribute__ ((packed));
++ 
++ /* HID descriptor */
++ struct usb_hid_descriptor {
++-	u_int8_t  bLength;
++-	u_int8_t  bDescriptorType;
++-	u_int16_t bcdHID;
++-	u_int8_t  bCountryCode;
++-	u_int8_t  bNumDescriptors;
++-	/* u_int8_t  bReportDescriptorType; */
++-	/* u_int16_t wDescriptorLength; */
+++	uint8_t  bLength;
+++	uint8_t  bDescriptorType;
+++	uint16_t bcdHID;
+++	uint8_t  bCountryCode;
+++	uint8_t  bNumDescriptors;
+++	/* uint8_t  bReportDescriptorType; */
+++	/* uint16_t wDescriptorLength; */
++ 	/* ... */
++ } __attribute__ ((packed));
++ 
++ /* Endpoint descriptor */
++ #define USB_MAXENDPOINTS	32
++ struct usb_endpoint_descriptor {
++-	u_int8_t  bLength;
++-	u_int8_t  bDescriptorType;
++-	u_int8_t  bEndpointAddress;
++-	u_int8_t  bmAttributes;
++-	u_int16_t wMaxPacketSize;
++-	u_int8_t  bInterval;
++-	u_int8_t  bRefresh;
++-	u_int8_t  bSynchAddress;
+++	uint8_t  bLength;
+++	uint8_t  bDescriptorType;
+++	uint8_t  bEndpointAddress;
+++	uint8_t  bmAttributes;
+++	uint16_t wMaxPacketSize;
+++	uint8_t  bInterval;
+++	uint8_t  bRefresh;
+++	uint8_t  bSynchAddress;
++ 
++ 	unsigned char *extra;	/* Extra descriptors */
++ 	int extralen;
++@@ -115,15 +117,15 @@
++ /* Interface descriptor */
++ #define USB_MAXINTERFACES	32
++ struct usb_interface_descriptor {
++-	u_int8_t  bLength;
++-	u_int8_t  bDescriptorType;
++-	u_int8_t  bInterfaceNumber;
++-	u_int8_t  bAlternateSetting;
++-	u_int8_t  bNumEndpoints;
++-	u_int8_t  bInterfaceClass;
++-	u_int8_t  bInterfaceSubClass;
++-	u_int8_t  bInterfaceProtocol;
++-	u_int8_t  iInterface;
+++	uint8_t  bLength;
+++	uint8_t  bDescriptorType;
+++	uint8_t  bInterfaceNumber;
+++	uint8_t  bAlternateSetting;
+++	uint8_t  bNumEndpoints;
+++	uint8_t  bInterfaceClass;
+++	uint8_t  bInterfaceSubClass;
+++	uint8_t  bInterfaceProtocol;
+++	uint8_t  iInterface;
++ 
++ 	struct usb_endpoint_descriptor *endpoint;
++ 
++@@ -141,14 +143,14 @@
++ /* Configuration descriptor information.. */
++ #define USB_MAXCONFIG		8
++ struct usb_config_descriptor {
++-	u_int8_t  bLength;
++-	u_int8_t  bDescriptorType;
++-	u_int16_t wTotalLength;
++-	u_int8_t  bNumInterfaces;
++-	u_int8_t  bConfigurationValue;
++-	u_int8_t  iConfiguration;
++-	u_int8_t  bmAttributes;
++-	u_int8_t  MaxPower;
+++	uint8_t  bLength;
+++	uint8_t  bDescriptorType;
+++	uint16_t wTotalLength;
+++	uint8_t  bNumInterfaces;
+++	uint8_t  bConfigurationValue;
+++	uint8_t  iConfiguration;
+++	uint8_t  bmAttributes;
+++	uint8_t  MaxPower;
++ 
++ 	struct usb_interface *interface;
++ 
++@@ -158,28 +160,28 @@
++ 
++ /* Device descriptor */
++ struct usb_device_descriptor {
++-	u_int8_t  bLength;
++-	u_int8_t  bDescriptorType;
++-	u_int16_t bcdUSB;
++-	u_int8_t  bDeviceClass;
++-	u_int8_t  bDeviceSubClass;
++-	u_int8_t  bDeviceProtocol;
++-	u_int8_t  bMaxPacketSize0;
++-	u_int16_t idVendor;
++-	u_int16_t idProduct;
++-	u_int16_t bcdDevice;
++-	u_int8_t  iManufacturer;
++-	u_int8_t  iProduct;
++-	u_int8_t  iSerialNumber;
++-	u_int8_t  bNumConfigurations;
+++	uint8_t  bLength;
+++	uint8_t  bDescriptorType;
+++	uint16_t bcdUSB;
+++	uint8_t  bDeviceClass;
+++	uint8_t  bDeviceSubClass;
+++	uint8_t  bDeviceProtocol;
+++	uint8_t  bMaxPacketSize0;
+++	uint16_t idVendor;
+++	uint16_t idProduct;
+++	uint16_t bcdDevice;
+++	uint8_t  iManufacturer;
+++	uint8_t  iProduct;
+++	uint8_t  iSerialNumber;
+++	uint8_t  bNumConfigurations;
++ } __attribute__ ((packed));
++ 
++ struct usb_ctrl_setup {
++-	u_int8_t  bRequestType;
++-	u_int8_t  bRequest;
++-	u_int16_t wValue;
++-	u_int16_t wIndex;
++-	u_int16_t wLength;
+++	uint8_t  bRequestType;
+++	uint8_t  bRequest;
+++	uint16_t wValue;
+++	uint16_t wIndex;
+++	uint16_t wLength;
++ } __attribute__ ((packed));
++ 
++ /*
++@@ -250,7 +252,7 @@
++ 
++   void *dev;		/* Darwin support */
++ 
++-  u_int8_t devnum;
+++  uint8_t devnum;
++ 
++   unsigned char num_children;
++   struct usb_device **children;
++@@ -262,7 +264,7 @@
++   char dirname[PATH_MAX + 1];
++ 
++   struct usb_device *devices;
++-  u_int32_t location;
+++  uint32_t location;
++ 
++   struct usb_device *root_dev;
++ };
++
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/libusb/patches/002-no_libusbpp.patch buildroot/package/libusb/patches/002-no_libusbpp.patch
+--- buildroot.orig/package/libusb/patches/002-no_libusbpp.patch	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/libusb/patches/002-no_libusbpp.patch	2009-05-28 08:42:10.000000000 +0000
 @@ -0,0 +1,106 @@
 +--- libusb-0.1.12/Makefile.in.old	2007-01-04 16:36:50.000000000 -0700
 ++++ libusb-0.1.12/Makefile.in	2007-01-04 16:42:55.000000000 -0700
@@ -5001,6 +5254,20 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 + 
 + .c.o:
 + @am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
+diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/libusb/patches/003-automake-compat.patch buildroot/package/libusb/patches/003-automake-compat.patch
+--- buildroot.orig/package/libusb/patches/003-automake-compat.patch	1970-01-01 00:00:00.000000000 +0000
++++ buildroot/package/libusb/patches/003-automake-compat.patch	2010-12-11 02:31:45.000000000 +0000
+@@ -0,0 +1,10 @@
++--- a/configure.in
+++++ b/configure.in
++@@ -149,6 +149,7 @@ if test "x$enable_debug" = "xyes"; then
++ fi
++ 
++ # Checks for programs.
+++AC_PROG_CXX
++ AC_LANG_CPLUSPLUS
++ AC_PROG_CC
++ AM_PROG_CC_C_O
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/mac80211/files/lib/wifi/mac80211.sh buildroot/package/mac80211/files/lib/wifi/mac80211.sh
 --- buildroot.orig/package/mac80211/files/lib/wifi/mac80211.sh	2010-12-14 02:23:53.000000000 +0000
 +++ buildroot/package/mac80211/files/lib/wifi/mac80211.sh	2010-12-14 02:26:44.000000000 +0000
