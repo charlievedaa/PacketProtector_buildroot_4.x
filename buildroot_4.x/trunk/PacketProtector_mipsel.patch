@@ -3996,8 +3996,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +}
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/init.d/packetprotector buildroot/package/base-files/files/etc/init.d/packetprotector
 --- buildroot.orig/package/base-files/files/etc/init.d/packetprotector	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-12-14 02:26:44.000000000 +0000
-@@ -0,0 +1,194 @@
++++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-12-15 02:27:19.000000000 +0000
+@@ -0,0 +1,204 @@
 +#!/bin/sh /etc/rc.common
 +START=75
 +
@@ -4015,6 +4015,10 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# setup USB directory 
 +########################
 +
++if [ -e /dev/sda1 ] ; then
++	[ -e /mnt/disc0_1 ] || mkdir /mnt/disc0_1
++	mount /dev/sda1 /mnt/disc0_1
++fi
 +USB_D=/mnt/disc0_1/packetprotector/
 +
 +# cleanup /packetprotector
@@ -4060,6 +4064,12 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +fi
 +/sbin/uci set webif.general.firmware_name="PacketProtector"
 +/sbin/uci commit
++
++####################
++# setup /etc/hosts
++####################
++
++/etc/init.d/dns start
 +
 +####################
 +# link /etc/services
