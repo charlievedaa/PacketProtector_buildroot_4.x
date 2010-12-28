@@ -1,11 +1,11 @@
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/.config buildroot/.config
 --- buildroot.orig/.config	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/.config	2010-12-14 02:41:21.000000000 +0000
++++ buildroot/.config	2010-12-28 04:43:04.000000000 +0000
 @@ -0,0 +1,1744 @@
 +#
 +# Automatically generated make config: don't edit
 +# OpenWrt version: Kamikaze (r24557)
-+# Tue Dec 14 02:40:05 2010
++# Tue Dec 28 04:41:50 2010
 +#
 +CONFIG_HAVE_DOT_CONFIG=y
 +# CONFIG_TARGET_ppc40x is not set
@@ -1401,7 +1401,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_PACKAGE_kmod-ipt-nat-extra is not set
 +CONFIG_PACKAGE_kmod-ipt-nathelper=y
 +# CONFIG_PACKAGE_kmod-ipt-nathelper-extra is not set
-+# CONFIG_PACKAGE_kmod-ipt-queue is not set
++CONFIG_PACKAGE_kmod-ipt-queue=y
 +# CONFIG_PACKAGE_kmod-ipt-tproxy is not set
 +# CONFIG_PACKAGE_kmod-ipt-ulog is not set
 +# CONFIG_PACKAGE_kmod-nf-conntrack-netlink is not set
@@ -1412,7 +1412,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +#
 +# Network Devices
 +#
-+# CONFIG_PACKAGE_kmod-dummy is not set
++CONFIG_PACKAGE_kmod-dummy=y
 +# CONFIG_PACKAGE_kmod-e1000 is not set
 +# CONFIG_PACKAGE_kmod-gigaset is not set
 +# CONFIG_PACKAGE_kmod-hfcmulti is not set
@@ -1457,7 +1457,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_PACKAGE_kmod-sched is not set
 +# CONFIG_PACKAGE_kmod-sctp is not set
 +# CONFIG_PACKAGE_kmod-sit is not set
-+# CONFIG_PACKAGE_kmod-tun is not set
++CONFIG_PACKAGE_kmod-tun=y
 +# CONFIG_PACKAGE_kmod-wprobe is not set
 +
 +#
