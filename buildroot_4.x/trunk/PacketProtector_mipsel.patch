@@ -7762,12 +7762,13 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +</html>
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/target/linux/brcm47xx/image/Makefile buildroot/target/linux/brcm47xx/image/Makefile
 --- buildroot.orig/target/linux/brcm47xx/image/Makefile	2010-12-14 02:23:43.000000000 +0000
-+++ buildroot/target/linux/brcm47xx/image/Makefile	2010-12-14 02:27:15.000000000 +0000
-@@ -97,6 +97,8 @@
++++ buildroot/target/linux/brcm47xx/image/Makefile	2010-12-30 03:53:20.000000000 +0000
+@@ -97,6 +97,9 @@
  define Image/Build/squashfs
  	$(call Image/Build/jffs2-64k,$(1))
  	$(call Image/Build/jffs2-128k,$(1))
 +	cp $(BIN_DIR)/openwrt-brcm47xx-squashfs.trx $(BIN_DIR)/packetprotector-brcm-`cat $(TOPDIR)/package/base-files/files/etc/version`.trx
++	cp $(BIN_DIR)/openwrt-wrt350n_v1-squashfs.bin $(BIN_DIR)/packetprotector-wrt350n_v1-`cat $(TOPDIR)/package/base-files/files/etc/version`.bin
 +	cp $(BIN_DIR)/openwrt-wrtsl54gs-squashfs.bin $(BIN_DIR)/packetprotector-wrtsl54gs-`cat $(TOPDIR)/package/base-files/files/etc/version`.bin
  endef
  
