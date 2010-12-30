@@ -18,17 +18,6 @@ svn export https://packetprotector.org/repos/buildroot_4.x/trunk/PacketProtector
 ./PacketProtector_mipsel.sh
 rm PacketProtector_mipsel.sh
 
-# additional patches
-# WL-500W only
-svn export https://packetprotector.org/repos/buildroot_4.x/trunk/PacketProtector_mimo.patch
-patch -p1 < PacketProtector_mimo.patch
-rm PacketProtector_mimo.patch
-
-# WRT350N only
-svn export https://packetprotector.org/repos/buildroot_4.x/trunk/PacketProtector_wrt350n_v1.patch
-patch -p1 < PacketProtector_wrt350n_v1.patch
-rm PacketProtector_wrt350n_v1.patch
-
 # (OPTIONAL) update the PacketProtector patch
 # aftering making changes to the buildroot
 cd ~
