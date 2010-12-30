@@ -1,11 +1,11 @@
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/.config buildroot/.config
 --- buildroot.orig/.config	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/.config	2010-12-29 04:43:34.000000000 +0000
++++ buildroot/.config	2010-12-30 02:40:11.000000000 +0000
 @@ -0,0 +1,1744 @@
 +#
 +# Automatically generated make config: don't edit
 +# OpenWrt version: Kamikaze (r24557)
-+# Wed Dec 29 04:42:35 2010
++# Thu Dec 30 02:39:28 2010
 +#
 +CONFIG_HAVE_DOT_CONFIG=y
 +# CONFIG_TARGET_ppc40x is not set
@@ -987,7 +987,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# CONFIG_BUSYBOX_CONFIG_FTPD is not set
 +# CONFIG_BUSYBOX_CONFIG_FTPGET is not set
 +# CONFIG_BUSYBOX_CONFIG_FTPPUT is not set
-+# CONFIG_BUSYBOX_CONFIG_HOSTNAME is not set
++CONFIG_BUSYBOX_CONFIG_HOSTNAME=y
 +# CONFIG_BUSYBOX_CONFIG_HTTPD is not set
 +CONFIG_BUSYBOX_CONFIG_IFCONFIG=y
 +CONFIG_BUSYBOX_CONFIG_FEATURE_IFCONFIG_STATUS=y
@@ -3996,8 +3996,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +}
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/init.d/packetprotector buildroot/package/base-files/files/etc/init.d/packetprotector
 --- buildroot.orig/package/base-files/files/etc/init.d/packetprotector	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-12-15 02:27:19.000000000 +0000
-@@ -0,0 +1,204 @@
++++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-12-30 02:41:05.000000000 +0000
+@@ -0,0 +1,219 @@
 +#!/bin/sh /etc/rc.common
 +START=75
 +
@@ -4160,12 +4160,27 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +	ln -s $USB_D/www/index.html /www/index.html
 +	ln -s $USB_D/www/cgi-bin/webif/.categories /www/cgi-bin/webif/.categories
 +
++	if [ ! -d /www/cgi-bin/webif/login ] ; then
++		mkdir /www/cgi-bin/webif/login
++	fi
++	grep -v '^nobody:' /etc/shadow | cut -d: -f1,2 > /www/cgi-bin/webif/login/.htpasswd
++	chmod 600 /www/cgi-bin/webif/login/.htpasswd
++	ln -s $USB_D/www/cgi-bin/webif/login/password.sh /www/cgi-bin/webif/login/password.sh
++	ln -s $USB_D/www/cgi-bin/webif/login/redirect.sh /www/cgi-bin/webif/login/redirect.sh
++
++	if [ ! -d /www/cgi-bin/webif/proxy ] ; then
++		mkdir /www/cgi-bin/webif/proxy
++	fi
++	grep -v '^nobody:' /etc/shadow | cut -d: -f1,2 > /www/cgi-bin/webif/proxy/.htpasswd
++	chmod 600 /www/cgi-bin/webif/proxy/.htpasswd
++	ln -s $USB_D/www/cgi-bin/webif/proxy/bypass.sh /www/cgi-bin/webif/proxy/bypass.sh
++	ln -s $USB_D/www/cgi-bin/webif/proxy/scan.sh /www/cgi-bin/webif/proxy/scan.sh
++
 +	if [ ! -d /www/cgi-bin/webif/vpn ] ; then
 +		mkdir /www/cgi-bin/webif/vpn
 +	fi
 +	grep -v '^nobody:' /etc/shadow | cut -d: -f1,2 > /www/cgi-bin/webif/vpn/.htpasswd
 +	chmod 600 /www/cgi-bin/webif/vpn/.htpasswd
-+	ln -s $USB_D/www/cgi-bin/webif/vpn/redirect.sh /www/cgi-bin/webif/vpn/redirect.sh
 +	ln -s $USB_D/www/cgi-bin/webif/vpn/VPNconnect.sh /www/cgi-bin/webif/vpn/VPNconnect.sh
 +
 +	cd $USB_D/www/cgi-bin/webif
