@@ -4003,8 +4003,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +}
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/base-files/files/etc/init.d/packetprotector buildroot/package/base-files/files/etc/init.d/packetprotector
 --- buildroot.orig/package/base-files/files/etc/init.d/packetprotector	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-12-30 02:41:05.000000000 +0000
-@@ -0,0 +1,219 @@
++++ buildroot/package/base-files/files/etc/init.d/packetprotector	2010-12-31 22:49:18.000000000 +0000
+@@ -0,0 +1,221 @@
 +#!/bin/sh /etc/rc.common
 +START=75
 +
@@ -4043,7 +4043,8 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +# setup swap
 +####################
 +
-+if [ -e /mnt/disc0_1/packetprotector_swap ] ; then
++if [ -d $USB_D ] ; then
++  if [ -e /mnt/disc0_1/packetprotector_swap ] ; then
 +	echo "Swap file found!"
 +else
 +	/bin/dd if=/dev/zero of=/mnt/disc0_1/packetprotector_swap bs=1024 count=65536
@@ -4058,6 +4059,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +else
 +	SWAP_STARTED=0
 +	echo "Swap file not found or size incorrect (should be at least 65536 KB)."
++  fi
 +fi
 +
 +####################
