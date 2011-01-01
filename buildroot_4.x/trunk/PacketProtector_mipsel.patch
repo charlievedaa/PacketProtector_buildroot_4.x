@@ -4849,18 +4849,6 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +
 +tor
 +TOR1.*<identity>
-diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/kernel/modules/usb.mk buildroot/package/kernel/modules/usb.mk
---- buildroot.orig/package/kernel/modules/usb.mk	2010-12-14 02:23:53.000000000 +0000
-+++ buildroot/package/kernel/modules/usb.mk	2010-12-14 02:26:44.000000000 +0000
-@@ -169,7 +169,7 @@
-   KCONFIG:=CONFIG_USB_EHCI_HCD \
-     CONFIG_USB_EHCI_AR71XX=y
-   FILES:=$(LINUX_DIR)/drivers/usb/host/ehci-hcd.ko
--  AUTOLOAD:=$(call AutoLoad,40,ehci-hcd,1)
-+  AUTOLOAD:=$(call AutoLoad,50,ehci-hcd,1)
-   $(call AddDepends/usb)
- endef
- 
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/package/libusb/Makefile buildroot/package/libusb/Makefile
 --- buildroot.orig/package/libusb/Makefile	1970-01-01 00:00:00.000000000 +0000
 +++ buildroot/package/libusb/Makefile	2009-04-17 15:22:00.000000000 +0000
