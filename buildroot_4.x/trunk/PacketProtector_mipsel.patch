@@ -1,11 +1,11 @@
 diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_dir --exclude=tmp -ruN buildroot.orig/.config buildroot/.config
 --- buildroot.orig/.config	1970-01-01 00:00:00.000000000 +0000
-+++ buildroot/.config	2010-12-30 02:51:13.000000000 +0000
++++ buildroot/.config	2011-01-02 02:19:55.000000000 +0000
 @@ -0,0 +1,1751 @@
 +#
 +# Automatically generated make config: don't edit
 +# OpenWrt version: Kamikaze (r24557)
-+# Thu Dec 30 02:50:22 2010
++# Sun Jan  2 02:19:13 2011
 +#
 +CONFIG_HAVE_DOT_CONFIG=y
 +# CONFIG_TARGET_ppc40x is not set
@@ -772,7 +772,7 @@ diff --exclude=.svn --exclude=.config.old --exclude=scripts --exclude=staging_di
 +#
 +# Login/Password Management Utilities
 +#
-+# CONFIG_BUSYBOX_CONFIG_FEATURE_SHADOWPASSWDS is not set
++CONFIG_BUSYBOX_CONFIG_FEATURE_SHADOWPASSWDS=y
 +# CONFIG_BUSYBOX_CONFIG_USE_BB_PWD_GRP is not set
 +# CONFIG_BUSYBOX_CONFIG_USE_BB_CRYPT is not set
 +CONFIG_BUSYBOX_CONFIG_ADDGROUP=y
